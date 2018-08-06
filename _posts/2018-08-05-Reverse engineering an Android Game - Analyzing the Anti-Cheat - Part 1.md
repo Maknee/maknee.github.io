@@ -79,5 +79,7 @@ We'll use a combination of static and dynamic analysis tools like [IDA](https://
 
 ## Bypassing the anticheat
 
-I want these series to be about analyzing the anticheat, not about cheating I do not endorse cheating, especially in online games. 
+I want these series to be about analyzing the anticheat.
+
+I do not endorse cheating, especially in online games. 
 
