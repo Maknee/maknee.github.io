@@ -77,9 +77,12 @@ We'll use a combination of static and dynamic analysis tools like [IDA](https://
 
 [Part 2](https://google.com)
 
+## Extra finds
+There's a `float highSpenderProbability` that is stored in a class. All I can say is that is value is used to determine if the user is a [whale](https://www.reddit.com/r/gaming/comments/63lvak/what_is_a_whale/).
+
 ## Bypassing the anticheat
 
-I want these series to be about analyzing the anticheat.
+This series is only about analyzing the anticheat.
 
 I do not endorse cheating, especially in online games. 
 
