@@ -31,6 +31,7 @@ make-smaller-titles: true
                   {% for post in site.posts limit: site.post_limit %}
 
                       <li>
+                          <img src="{{ post.thumbnail }}" height="30" width="30" />
                           <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
                           <small class="hidden-xs">{{ post.date | date: "%B %-d, %Y" }}</small>
                       </li>
