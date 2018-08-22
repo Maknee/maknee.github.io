@@ -154,7 +154,9 @@ You might have noticed that `Call(...)` is used to call the appropriate function
 while ((index_of_slash = str.find(delimiter, start_index) != std::string::npos))
 {% endhighlight %}
 
-This definitely is harder to read, but the variable/function names are in the correct order. On the technical side, the reason why `Call(...)` is necessary will be discussed in a future post.
+`Call` is how one calls an class' function/method in OOC. `Call` requires at least two parameters to be passed, of which the first two are the `object variable`, which is `str` in the example and the second is the object's `function` that we wish to call, which is `find`. The rest are arguments to the function call. So, in the example above, we want `str` to call `find` the `delimiter` at offset `start_index`. 
+
+Using `Call` definitely is harder to read than the C++ way, but the variable/function names are formatted in the correct order. On the technical side, the reason why `Call(...)` is necessary will be discussed in a future post.
 
 Also, `NPOS` is used instead of `std::string::npos` as C doesn't have namespaces.
 
