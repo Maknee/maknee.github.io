@@ -4,7 +4,7 @@ title:      Reverse engineering an Android Game - Analyzing the Anti-Cheat - Par
 date:       2018-08-05 12:32:18
 summary:    Taking a look at android game's anti-cheat
 categories: reverse-engineering
-thumbnail:  "/assets/images/2018-08-05/game-image.jpg"
+thumbnail:  "/assets/images/posts/2018-08-05/game-image.jpg"
 tags:
  - android
  - reverse-engineering
@@ -17,7 +17,7 @@ I've recently been interested with mobile reverse engineering. It's something ne
 
 Today, we'll be looking at a recent popular mmorpg based game that is like its predecessor on PC. Like many mobile games, it includes auto-hunt and huge pay2win elements, but at least, you are given a opporunity to progress in the game without grinding through everything manually.
 
-![Android game](/assets/images/2018-08-05/game-image.jpg)
+![Android game](/assets/images/posts/2018-08-05/game-image.jpg)
 
 ## Unpacking the apk
 
@@ -25,11 +25,11 @@ The apk can be found online through many sites, the most popular being [APKPure]
 
 Once the apk has been downloaded, one can unpack the apk and generate a disassembly of java source by uploading the apk to [JavaDecompiler](http://www.javadecompilers.com/apk)
 
-![java-decompiler](/assets/images/2018-08-05/java-decompiler.png)
+![java-decompiler](/assets/images/posts/2018-08-05/java-decompiler.png)
 
 The site uses [Jadx](https://github.com/skylot/jadx) to decompile the dex files into the source java files.
 
-![java-decompiler-save](/assets/images/2018-08-05/java-decompiler-save.png)
+![java-decompiler-save](/assets/images/posts/2018-08-05/java-decompiler-save.png)
 
 Once it's done, you can click the save button to save the unpacked contents to desktop.
 
@@ -37,7 +37,7 @@ Once it's done, you can click the save button to save the unpacked contents to d
 
 If any process that attaches to the game or any cheat-related programs are launched, something similar to the following will appear:
 
-![illegal](/assets/images/2018-08-05/illegal.png)
+![illegal](/assets/images/posts/2018-08-05/illegal.png)
 
 :(, I guess it's not that simple to crack
 
@@ -59,11 +59,11 @@ After searching around with the individual strings and combining them, the magic
 
 What we get:
 
-![find-kill-process](/assets/images/2018-08-05/find-kill-process.png)
+![find-kill-process](/assets/images/posts/2018-08-05/find-kill-process.png)
 
 Clicking on the first entry:
 
-![click-find-kill-process](/assets/images/2018-08-05/click-find-kill-process.png)
+![click-find-kill-process](/assets/images/posts/2018-08-05/click-find-kill-process.png)
 
 Multiple strings in this file indicates that this file loads/interfaces with the anticheat.
 

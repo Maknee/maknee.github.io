@@ -21,6 +21,7 @@ make-smaller-titles: true
 
             {% include social_links.html %}
           </div>
+
           <div class="col-md-12 main content-panel">
 
             <div class="articles">
@@ -44,7 +45,57 @@ make-smaller-titles: true
 
             </div>
 
-        </div>
+          </div>
 
+          <div class="col-md-12 main content-panel">
+            <div class="articles">
+
+              <h2>Projects</h2>
+
+              <ul>
+                  <h2>{{ site.projects.label }}</h2>
+                  {% for project in site.projects %}
+
+                      <li>
+                          <img src="{{ project.thumbnail }}" height="30" width="30" />
+                          <a href="{{ project.url | prepend: site.baseurl }}">{{ project.title }}</a>
+                          <br>
+                          <small class="hidden-xs">{{ project.summary }}</small>
+                      </li>
+
+                  {% endfor %}
+              </ul>
+
+            </div>
+          </div>
+
+          <div class="col-md-12 main content-panel">
+            <div class="articles">
+              <h2>Who am I?</h2>
+              I'm just a regular student at the University of Pennsylvania, majoring in Computer Science.
+
+              <br>
+              <br>
+
+              I like to work on things that catch my eye and seem pretty interesting. 
+
+              <br>
+              <br>
+              
+              Some of the cool computer science-y stuff I've touched/worked on include OS dev, reversing engineering malware, device drivers, VR, android dev, device drivers, llvm/clang, ... anything that is CS related
+
+            </div>
+          </div>
+
+          <div class="col-md-12 main content-panel">
+            <div class="articles">
+
+              <h2>Other blogs/Cool peeps</h2>
+              <ul>
+                <a href="https://blog.xpnsec.com/">XPN</a> 
+              </ul>
+              
+            </div>
+          </div>
     </div>
 </div>

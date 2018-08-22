@@ -4,7 +4,7 @@ title:      Object Oriented C Library - Introduction
 date:       2018-08-17 12:32:18
 summary:    Object Oriented C Library
 categories: C
-thumbnail:  "/assets/images/2018-08-17/thumbnail.jpg"
+thumbnail:  "/assets/images/posts/2018-08-17/thumbnail.jpg"
 tags:
  - C
  - C++
@@ -13,7 +13,7 @@ tags:
 
 ## Ah... good ol C
 
-<img src="/assets/images/2018-08-17/c_programming.jpg" width="35%">
+<img src="/assets/images/posts/2018-08-17/c_programming.jpg" width="35%">
 
 I have been always a big fan of C. 
 
@@ -34,13 +34,13 @@ However, there are a plethora of reasons as to why C is not an attractive modern
 2. Suitable standard library - C standard library. There are many gotchas in the standard library. There are many [deprecated functions](https://wiki.sei.cmu.edu/confluence/display/c/MSC24-C.+Do+not+use+deprecated+or+obsolescent+functions) in the standard library. There are many thread unsafe functions in the standard library. The standard library will make you [sad](https://youtu.be/8GxqvnQyaxs?t=23) sometimes. :(
 3. Getting something done - C doesn't have [vectors](https://en.cppreference.com/w/cpp/container/vector). C doesn't have [maps](https://en.cppreference.com/w/cpp/container/map). C doesn't really even have proper [strings](https://symas.com/the-sad-state-of-c-strings/). C doesn't have anything really besides pointers and memory that the programmer has to figure out how to use. This makes developing something in a timely manner incredibly frustrating and difficult.
 
-<img src="/assets/images/2018-08-17/feelsbadman.png" width="30%">
+<img src="/assets/images/posts/2018-08-17/feelsbadman.png" width="30%">
 
 ## C++ like C?
 
 Wait. There's still hope!
 
-<img src="/assets/images/2018-08-17/feelsgoodman.png" width="50%">
+<img src="/assets/images/posts/2018-08-17/feelsgoodman.png" width="50%">
 <span class="rainbow">Introducing [OOC](https://github.com/Maknee/OOC)! (Object oriented C library)</span> - [Github link](https://github.com/Maknee/OOC)
 
 OOC is a library wrapper I wrote around a year ago. It is mainly influenced by C++ and has C++ like syntax.
@@ -216,6 +216,8 @@ Did you just say [macros](https://stackoverflow.com/questions/14041453/why-are-p
 <center><font size="-1"><em>Yes.</em></font></center>
 </p>
 
+In order to implement psuedo templating and have more usable and readable API, macros are necessary.
+
 In the next few posts, we will dive into more examples and how OOC works internally.
 
 ---
@@ -231,3 +233,10 @@ Current version is version 2 (OOC_V2) where the API has been simplified. If you 
 [Snaipe](https://github.com/Snaipe) implemented smart pointers in C with gcc extensions [libcsptr](https://github.com/Snaipe/libcsptr). This is really awesome!
 
 Go check out his [post](https://snai.pe/c/c-smart-pointers/) about his project. This could be used to create a [RAII](https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization)-like effect with OOC. 
+
+---
+
+## Object Oriented C Series:
+
+[Introduction]({{ site.baseurl }}{% link _posts/2018-08-17-Object Oriented C Library - Introduction.md %})
+
