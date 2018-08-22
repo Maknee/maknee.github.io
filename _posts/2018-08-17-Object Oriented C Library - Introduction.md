@@ -222,9 +222,11 @@ In the next few posts, we will dive into more examples and how OOC works interna
 
 ## Extra tid bits
 
-Current version is version 2 (OOC_V2) where the API has been simplified. If you see version 1 code (OOC_V1), the type is passed to every `Call`. By default, version 2 is enabled.
+[Documentation](https://codedocs.xyz/Maknee/OOC/index.html)
 
 [More examples](https://github.com/Maknee/OOC/blob/master/examples)
+
+Current version is version 2 (OOC_V2) where the API has been simplified. If you see version 1 code (OOC_V1), the type is passed to every `Call`. By default, version 2 is enabled.
 
 [Snaipe](https://github.com/Snaipe) implemented smart pointers in C with gcc extensions [libcsptr](https://github.com/Snaipe/libcsptr). This is really awesome!
 
