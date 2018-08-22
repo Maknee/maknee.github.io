@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Object Oriented C Library - OOC
+title:      Object Oriented C Library - Introduction
 date:       2018-08-17 12:32:18
 summary:    Object Oriented C Library
 categories: C
