@@ -2,12 +2,10 @@
 layout:     post
 title:      Object Oriented C Library
 summary:    Taking C to a different level
-categories: C
+categories: project
 thumbnail:  "/assets/images/projects/OOC/thumbnail.jpg"
 tags:
- - C
- - C++
- - Object Oriented C
+ - project
 ---
 
 ![Thumbnail](/assets/images/projects/OOC/thumbnail.jpg)
