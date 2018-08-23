@@ -2,7 +2,8 @@
 layout:     post
 title:      Simple Advanced Wars
 summary:    An Advanced Wars Java Clone made in one week
-categories: project
+categories: Java
+rank:       1
 thumbnail:  "/assets/images/projects/Simple Advanced Wars/thumbnail.jpg"
 tags:
  - project

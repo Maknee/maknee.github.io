@@ -54,7 +54,8 @@ make-smaller-titles: true
 
               <ul>
                   <h2>{{ site.projects.label }}</h2>
-                  {% for project in site.projects %}
+                  {% assign sorted_projects = site.projects | sort: 'rank' | reverse %}
+                  {% for project in sorted_projects %}
 
                       <li>
                           <img src="{{ project.thumbnail }}" height="30" width="30" />

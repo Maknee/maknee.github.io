@@ -2,7 +2,8 @@
 layout:     post
 title:      Object Oriented C Library
 summary:    Taking C to a different level
-categories: project
+categories: C
+rank:       7
 thumbnail:  "/assets/images/projects/OOC/thumbnail.jpg"
 tags:
  - project

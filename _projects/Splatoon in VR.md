@@ -2,7 +2,8 @@
 layout:     post
 title:      Splatoon in VR
 summary:    The splatoon game, but in VR!
-categories: project
+categories: VR
+rank:       3
 thumbnail:  "/assets/images/projects/Splatoon in VR/thumbnail.jpg"
 tags:
  - project
