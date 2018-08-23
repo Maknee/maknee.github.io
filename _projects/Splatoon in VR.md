@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Splatoon in VR
-summary:    A VR class project using Unreal Engine 4
+summary:    The splatoon game, but in VR!
 categories: project
 thumbnail:  "/assets/images/projects/Splatoon in VR/thumbnail.jpg"
 tags:
