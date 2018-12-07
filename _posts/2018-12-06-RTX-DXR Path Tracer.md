@@ -12,8 +12,14 @@ tags:
  - DirectX12
 ---
 
-## Links to other posts
-- [DXR Path Tracer Usage]()
+## Information
+- [Github Repo](https://github.com/rtx-on/rtx-explore)
+- [My github](https://github.com/Maknee)
+- [My twitter](https://twitter.com/makneee)
+
+## Links to series
+- [DXR Path Tracer Introduction]({{ site.baseurl }}{% link _posts/2018-12-06-RTX-DXR Path Tracer.md %})
+- [DXR Path Tracer Usage]({{ site.baseurl }}{% link _posts/2018-12-06-RTX-DXR Path Tracer User Guide.md %})
 - [DXR Path Tracer Host-Side Explanation]()
 - [DXR Path Tracer HLSL Explanation]()
 
@@ -193,3 +199,5 @@ Here's images of it working:
 <img align="center" src="/assets/images/posts/2018-12-06/editor-scene.gif" width="100%">
 
 I haven't done the final demo yet, but I'll update here when it happens.
+
+Let me know if you have any questions!
