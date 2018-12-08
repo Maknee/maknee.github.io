@@ -20,7 +20,7 @@ tags:
 ## Links to series
 - [DXR Path Tracer Introduction]({{ site.baseurl }}{% link _posts/2018-12-06-RTX-DXR Path Tracer.md %})
 - [DXR Path Tracer Usage]({{ site.baseurl }}{% link _posts/2018-12-06-RTX-DXR Path Tracer User Guide.md %})
-- [DXR Path Tracer Host-Side Explanation]()
+- [DXR Path Tracer Host-Side Explanation]({{ site.baseurl }}{% link _posts/2018-12-07-RTX-DXR Path Tracer Host.md %})
 - [DXR Path Tracer HLSL Explanation]()
 
 ## Introduction to Ray Tracing

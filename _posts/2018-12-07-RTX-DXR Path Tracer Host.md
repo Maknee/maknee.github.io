@@ -20,7 +20,7 @@ tags:
 ## Links to series
 - [DXR Path Tracer Introduction]({{ site.baseurl }}{% link _posts/2018-12-06-RTX-DXR Path Tracer.md %})
 - [DXR Path Tracer Usage]({{ site.baseurl }}{% link _posts/2018-12-06-RTX-DXR Path Tracer User Guide.md %})
-- [DXR Path Tracer Host-Side Explanation]()
+- [DXR Path Tracer Host-Side Explanation]({{ site.baseurl }}{% link _posts/2018-12-07-RTX-DXR Path Tracer Host.md %})
 - [DXR Path Tracer HLSL Explanation]()
 
 ## What do you mean by host side?
@@ -50,172 +50,161 @@ If you want great tutorials for an intro to DirectX 12, take a look here:
 
 ## Root Signature/Parameters and Heap descriptor layout
 
-*Some of these images are from [3DGEP Tutorial](https://www.3dgep.com/learning-directx12-1/) and [Braynzar Tutorial](https://www.braynzarsoft.net/viewtutorial/q16390-04-directx-12-braynzar-soft-tutorials), so shoutout to them for the some of the best tutorials on directx12 and image*
+<img src="http://www.braynzarsoft.net/image/100204" width="100%">
 
-<img src=http://www.braynzarsoft.net/image/100204" width="35%">
+*Some of these images are from [3DGEP Tutorial](https://www.3dgep.com/learning-directx12-1/) and [Braynzar Tutorial](https://www.braynzarsoft.net/viewtutorial/q16390-04-directx-12-braynzar-soft-tutorials), so shoutout to them for the some of the best tutorials on directx12 and image*
 
 In DirectX12, one needs to create a [root signature](https://docs.microsoft.com/en-us/windows/desktop/direct3d12/root-signatures) that describes the parameters that are passed to the [hlsl](https://docs.microsoft.com/en-us/windows/desktop/direct3dhlsl/dx-graphics-hlsl) shader code, which is where the magic happens.
 
 The root signture is sort of like a [function signature](https://www.csee.umbc.edu/~chang/cs202/Lectures/modules/m04-overload/slides.php?print) in C/C++, which defines the parameters that are passed to the function.
 
-
-
 So, how does one allocate these so called "parameters" and hook them up with the root signature? One uses a [descriptor heap](https://docs.microsoft.com/en-us/windows/desktop/direct3d12/descriptor-heaps)
 
+~~I'm sorta skipping myself ahead here, but here is the image of how the path tracer's resources are allocated and I will explain what is happening after
 
+<img src="/assets/images/posts/2018-12-07/DXR-Layout.svg" width="100%">
 
-<p align="center">
-<iframe width="400" height="300" src="https://www.youtube.com/embed/cwQgjq0mCdE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
+*You probably want to open the image by right clicking it and selecting open in new tab to get a clearer picture :)*
 
+In the image, the root signature contains two entries. One is a [descriptor table](https://docs.microsoft.com/en-us/windows/desktop/direct3d12/descriptor-tables-overview) and the other is an array of [samplers](https://cglearn.eu/pub/computer-graphics/textures-and-sampling), which points to different samplers to grab values from a texture
 
-- GLTF loading
-- Saving/loading scenes
-- Adding objects
-- Adding models
-- Adding diffuse/normal textures
-- Adding materials
-- Editing the object's properties
-- Saving the image
-- Loading the image to compare currently rendered image with the loaded image side by side
-- Effects such as anti-aliasing and depth of field
-- Much more other small editing capabilities
+A descriptor table (in this case), is describing all the parameters (resources) that are going to passed to the hlsl shader code.
 
-The list will expand as work continues on the project.
+<img src="http://www.braynzarsoft.net/image/100209" width="50%">
+<img src="http://www.braynzarsoft.net/image/100208" width="50%">
 
-# Blog about history of project
+Each entry in the descriptor table is a descriptor range, which contains the number of entries in the descriptor heap that should be bound to the entry and what [space](https://docs.microsoft.com/en-us/windows/desktop/direct3d12/resource-binding-in-hlsl) the entry should be in (why spaces are used is explained in the HLSL post).
 
-## Starting out the project
+For the project, I have descriptor range entries for `vertices`, `indices`, `materials`, `objects`, `diffuse textures`, and `normal textures`. These ranges point to an entry in the descriptor heap and contain the number of elements from the start of the entry in the descriptor heap. They also describe the type of resource being used.
 
-Ziad was working hard on trying to find a final project to do and kudos to him for doing so. In the end, the team was formed and our team name was rtx-on (based on the [meme](https://knowyourmeme.com/memes/rtx-off-rtx-on))
+Next, we have the [descriptor heap](https://docs.microsoft.com/en-us/windows/desktop/direct3d12/descriptor-heaps), which contains [handles](https://docs.microsoft.com/en-us/windows/desktop/api/d3d12/ns-d3d12-d3d12_cpu_descriptor_handle), which are opaque pointers to the resource, sorta like a [FILE](http://www.cplusplus.com/reference/cstdio/FILE/), in C, where one should not access the contents, or dereference the object. One *should* only pass the handle to function calls.
 
-<img src="/assets/images/posts/2018-12-06/rtx-on.png" width="35%">
+Now, to the [resources](https://docs.microsoft.com/en-us/windows/desktop/api/d3d12/nn-d3d12-id3d12resource), which are abstractions that wrap data and can be on the CPU or on the GPU
 
-Source is based on the song (I found it kind of interesting...?)
+These resources point to actual data, which could be vertices, textures, materials, etc..., as shown in the image.
+
+`Objects` are kind of unique here. They provide yet another indirection to the `vertex`, `texture`, `material` resource by having an offset those particular resources. You can see in the hlsl post how the offsets are used.
+
+So, how does hlsl shader part come in?
 
 <p align="center">
-<iframe width="400" height="300" src="https://www.youtube.com/embed/cwQgjq0mCdE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://giphy.com/embed/8lQyyys3SGBoUUxrUp" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/andrea-8lQyyys3SGBoUUxrUp"></a></p> 
 </p>
 
-I had no clue what I was getting into, so as what I usually do, I just jump right into it and see what I need to understand and break down what I need to do to get things done.
+Well, when the [command list](https://docs.microsoft.com/en-us/windows/desktop/direct3d12/recording-command-lists-and-bundles) sets the [root signature](https://docs.microsoft.com/en-us/windows/desktop/api/d3d12/nf-d3d12-id3d12graphicscommandlist-setcomputerootsignature) and the [descriptor table](https://docs.microsoft.com/en-us/windows/desktop/api/d3d12/nf-d3d12-id3d12graphicscommandlist-setcomputerootdescriptortable) associated with the signature, which essentially binds the root signature with the actual heap table resources and executes the command list, the resources are available in the hlsl code!
 
-## Into the pits of hell
+So in theory, if one wanted to access the first diffuse texture, it can be done as so:
 
-For the first week, I was hit hard by the reality of the project. DXR is built on top of [DirectX12](https://docs.microsoft.com/en-us/windows/desktop/direct3d12/what-is-directx-12-), which is a windows-specific graphics API that allows graphics programmers to have more direct access to the hardware resources like [Vulkan](https://www.khronos.org/vulkan/)
+{% highlight cpp %}
+    Texture2D text[] : register(t0, space5);
+    
+    ...
+    
+    Texture2D first_texture = text[0];
+{% endhighlight %}
 
-While this is awesome for optimizations and trying to make the most performant application such as a game, the API is very explicit and requires the programmer to manage the hardware resources and synchronize the GPU and CPU barriers. I had many experiences where I would spend hours trying to debug the application and *attempt* to find something online, but the questions asked forums did not match my problem.
+<p align="center">
+<iframe src="https://giphy.com/embed/xT0xerduMfvL0GL7TG" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/nba-expression-russell-westbrook-xT0xerduMfvL0GL7TG"></a></p>
+</p>
 
-<img align="center" src="/assets/images/posts/2018-12-06/my-code-work.png" width="35%">
+Wow, that was a lot to explain. Hopefully, you get an idea of what was done!
 
-Also, I didn't have any experience with lower level graphics APIs at all (CIS565 pretty much only dealt with [CUDA](https://developer.nvidia.com/cuda-zone), and vulkan with a [Vuklan project](https://github.com/Maknee/Project6-Vulkan-Grass-Rendering))
+If something is missing or not explained very well, shoot me a message! I'll be happy to answer.
 
-The lab didn't actually have a RTX graphics card either, but fortunately, [Microsoft's fallback layer](https://github.com/Microsoft/DirectX-Graphics-Samples/blob/master/Libraries/D3D12RaytracingFallback/readme.md) could be used. This allowed for non-rtx cards to use the same API (for the most part)
+## Acceleration Structures
 
-Again, Microsoft had [excellent samples for DXR](https://github.com/Microsoft/DirectX-Graphics-Samples/tree/master/Samples/Desktop/D3D12Raytracing), which saved our butts from hours of manually building everything from scratch. The project was then built on top of their example.
+<p align="center">
+<iframe src="https://giphy.com/embed/wRimw2I5PWErm" width="480" height="321" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/initial-d-nakasato-takeshi-wRimw2I5PWErm"></a></p>
+</p>
 
-For the first milestone, it was mostly trying to figure out the API and add a couple things on top:
+*Initial D, gotta accelerate*
 
-- Single Object Loading
-- Single Diffuse Texture Loading
-- Single Normal Texture Loading
-- Finding a invaluable debugger ([Pix Debugger](https://blogs.msdn.microsoft.com/pix/download/))
+Well moving on to more specific API calls to DXR/RTX, which is building the [acceleration structures](https://devblogs.nvidia.com/introduction-nvidia-rtx-directx-ray-tracing/), which is nicely explained in this [post by Nvidia](https://devblogs.nvidia.com/introduction-nvidia-rtx-directx-ray-tracing/)
 
-<img align="center" src="/assets/images/posts/2018-12-06/gun_normap.gif" width="100%">
+<img src="https://devblogs.nvidia.com/wp-content/uploads/2018/03/raytrace_02-625x383.png" width="50%">
 
-<img align="center" src="/assets/images/posts/2018-12-06/dragon.png" width="100%">
+*image taken from exactly the [Nvidia post](https://devblogs.nvidia.com/introduction-nvidia-rtx-directx-ray-tracing/)
 
-[Link to milestone 1 presentation](https://github.com/rtx-on/rtx-explore/blob/master/Milestones/Milestone%201%20presentation.pptx)
+In the DXR Path tracer, it's pretty much exactly the same as what is described in the post
 
-## Was there even a Thanksgiving?
+For each model, create the bottom level acceleration structure and have a geometry descriptor that points to the vertices and indices resources
 
-The second week was [Thanksgiving](https://en.wikipedia.org/wiki/Thanksgiving)
+*Pseudo-ish code of the source is shown below. The code is not exactly the source, since I want readers to get a general sense of what was done and not read verbose C++ code.
 
+{% highlight cpp %}
+    //Geometry that describes the vertices and indices the bottom level acceleration structure will hold
+    geometryDesc.Type = D3D12_RAYTRACING_GEOMETRY_TYPE_TRIANGLES;
+    geometryDesc.Triangles.IndexBuffer = indices.resource->GetGPUVirtualAddress();
+    geometryDesc.Triangles.IndexCount = indices_count;
+    ...
 
-<img align="center" src="/assets/images/posts/2018-12-06/thanksgiving.jpg" width="35%">
+    geometryDesc.Triangles.VertexBuffer.StartAddress = vertices.resource->GetGPUVirtualAddress();
+    geometryDesc.Triangles.VertexCount = vertices_count;
+    ...
 
-I didn't really have time to celebrate. I was working on the host code for the most part. In particular, I had to get multiple model loading and texture loading to work, but I wanted to do something else first...
+    //Get PreBuild information
+    m_dxrDevice->GetRaytracingAccelerationStructurePrebuildInfo(..., &bottom_pre_build_info);
+    ...
 
-So, I spent three of the four full days refactoring (the source code was a [ball of mud](https://en.wikipedia.org/wiki/Big_ball_of_mud))
+    //update the descriptor
+    bottom_acceleration_descriptor.pre_build = bottom_pre_build_info;
 
-<img align="center" src="/assets/images/posts/2018-12-06/ball-of-mud.jpg" width="35%">
+    //Build the Acceleration Structure with the command list
+    rtxCmdList->BuildRaytracingAccelerationStructure(&bottom_acceleration_descriptor, ...);
+{% endhighlight %}
 
-Anddddddddd, nothing really came out of it. I didn't even get a chance to compile it. (my inexperience with API had my spinning my head around) :(
+Then, for the top level, there are instances, which do the following:
 
-I really hit a wall.
+- hold the model transformation matrix (translation, rotation, scale)
+- hold the instance id (which is the object's index) and is passed to the HLSL shader code (the usage will be explained in the HLSL post)
+- hold a handle to the bottom level acceleration structure
 
-<img align="center" src="/assets/images/posts/2018-12-06/hit-a-wall.jpg" width="35%">
+{% highlight cpp %}
+    //Build the instances
+    std::vector<D3D12_RAYTRACING_FALLBACK_INSTANCE_DESC> instanceDescArray;
+    for (int i = 0; i < objects.size(); i++) {
+        D3D12_RAYTRACING_INSTANCE_DESC instanceDesc = {};
+    
+        SceneObject obj = objects[i];
+        Model* model = obj.model;
+    
+        memcpy(instanceDesc.Transform, obj.getTransform3x4(), 12 * sizeof(FLOAT));
+        
+        instanceDesc.InstanceID = i;
+        instanceDesc.AccelerationStructure = model->bottom_level_acceleration_structure);
+        ...
+    }
+    ...
 
-(In case you're asking, no, I actually did not throw my head at a wall)
+    instanceDescResource = AllocateCBV(instanceDescArray, ...);
+    ...
 
-So, for the day right before the milestone day, I worked on the model/texture loading with Ziad and Liam. We started at 2PMish. Things didn't really work out until literally 11PM, when we all left and I went to my room and wrote code for an hour and thirty minutes and got multiple model/texture loading to work.
+    //Get PreBuild information
+    m_dxrDevice->GetRaytracingAccelerationStructurePrebuildInfo(..., &top_pre_build_info);
+    ...
 
-Feels good man!
+    //update the descriptor and make sure that the descriptor points to the instanceDescArray
+    top_acceleration_descriptor.pre_build = top_pre_build_info;
+    top_acceleration_descriptor.Inputs.InstanceDescs = instanceDescResource->GetGPUVirtualAddress();
+    ...
 
-<img align="center" src="/assets/images/posts/2018-12-06/so_good.png" width="35%">
+    //Build the Acceleration Structure with the command list
+    rtxCmdList->BuildRaytracingAccelerationStructure(&top_acceleration_descriptor...);
+{% endhighlight %}
 
-For the second milestone, the team got the following done:
+Then, at the end, before executing the command list, and running the hlsl code, the top level acceleration structure is binded to the command list
 
-- Multiple Model/Texture loading
-- Scene file loading
-- Path tracer pipeline
-- Diffuse, Reflective, Refractive, Fresnel, Schlick
+{% highlight cpp %}
+    commandList->SetComputeRootShaderResourceView(
+        GlobalRootSignatureParams::AccelerationStructureSlot,
+        m_topLevelAccelerationStructure->GetGPUVirtualAddress()
+    );
+{% endhighlight %}
 
-<img align="center" src="/assets/images/posts/2018-12-06/multiple_model_textures.png" width="100%">
+<p align="center">
+<iframe src="https://giphy.com/embed/yJFeycRK2DB4c" width="480" height="384" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/yJFeycRK2DB4c"></a></p>
+</p>
 
-<img align="center" src="/assets/images/posts/2018-12-06/mario_diffuse2.png" width="100%">
-
-<img align="center" src="/assets/images/posts/2018-12-06/Frennel.png" width="100%">
-
-<img align="center" src="/assets/images/posts/2018-12-06/dragon.gif" width="100%">
-
-[Link to milestone 2 presentation](https://github.com/rtx-on/rtx-explore/blob/master/Milestones/Milestone%201%20presentation.pptx)
-
-## Just Keep Chugging
-
-<img align="center" src="/assets/images/posts/2018-12-06/chugging.jpg" width="35%">
-
-Week 3 was much better. I was finally getting a hang of directx12 and a nasty normal bug was fixed that finally produced actual path tracing images.
-
-I also got to mess with actually moving the objects for fun (acceleration structures and hooked up Liam's minecraft project code and got chunk generation to work)
-
-<img align="center" src="/assets/images/posts/2018-12-06/Picture5.jpg" width="100%">
-
-<img align="center" src="/assets/images/posts/2018-12-06/Picture6.png" width="100%">
-
-(The tree was textured as dirt, haha)
-
-In addition, I worked on gltf loading using [tinygltf](https://github.com/syoyo/tinygltf). Ugh, it was a mess since documentation was a bit lacking...
-
-But, I got it to work mostly.
-
-Here's some images:
-
-<img align="center" src="/assets/images/posts/2018-12-06/Picture1.png" width="100%">
-<img align="center" src="/assets/images/posts/2018-12-06/Picture2.png" width="100%">
-<img align="center" src="/assets/images/posts/2018-12-06/Picture3.png" width="100%">
-<img align="center" src="/assets/images/posts/2018-12-06/Picture4.png" width="100%">
-
-For the actual milestone, the images were pretty amazing:
-
-<img align="center" src="/assets/images/posts/2018-12-06/bloch.png" width="100%">
-<img align="center" src="/assets/images/posts/2018-12-06/Dragon_3.png" width="100%">
-<img align="center" src="/assets/images/posts/2018-12-06/newchromie.png" width="100%">
-
-[Link to milestone 3 presentation](https://github.com/rtx-on/rtx-explore/blob/master/Milestones/Milestone%203%20presentation.pptx)
-
-## It's finally over?
-
-This week, it's pretty much trying to make everything neat and nice. 
-
-I managed to hook [ImGUI](https://github.com/ocornut/imgui), an awesome gui library to our code and worked on making the application a model editor-ish application.
-
-One can add edit all the materials, textures, objects and is able to load/save scenes and other goodies.
-
-Here's images of it working:
-
-<img align="center" src="/assets/images/posts/2018-12-06/editor-mario.png" width="100%">
-<img align="center" src="/assets/images/posts/2018-12-06/editor-scene.gif" width="100%">
-
-I haven't done the final demo yet, but I'll update here when it happens.
+Well, that's all I have for now. Hopefully more people are going to get into the awesome DXR API and build amazing applications with it!
 
 Let me know if you have any questions!
