@@ -13,7 +13,7 @@ tags:
 ---
 
 ## Information
-- [Github Repo](https://github.com/rtx-on/rtx-explore)
+- [Rtx-explore github repo](https://github.com/rtx-on/rtx-explore)
 - [My github](https://github.com/Maknee)
 - [My twitter](https://twitter.com/makneee)
 
@@ -21,7 +21,7 @@ tags:
 - [DXR Path Tracer Introduction]({{ site.baseurl }}{% link _posts/2018-12-06-RTX-DXR Path Tracer.md %})
 - [DXR Path Tracer Usage]({{ site.baseurl }}{% link _posts/2018-12-06-RTX-DXR Path Tracer User Guide.md %})
 - [DXR Path Tracer Host-Side Explanation]({{ site.baseurl }}{% link _posts/2018-12-07-RTX-DXR Path Tracer Host.md %})
-- [DXR Path Tracer HLSL Explanation]()
+- [DXR Path Tracer HLSL Explanation]({{ site.baseurl }}{% link _posts/2018-12-08-RTX-DXR Path Tracer HLSL.md %})
 
 ## Building the project
 
@@ -32,6 +32,10 @@ The required environment and building instructions are on the [github repo](http
 To start, download the project.
 
 Open it in visual studio and click the green `Debug` button, or switch to `Release` for better performance. This should *hopefully* run the project. Let us know if it does not run.
+
+## What if I don't have a RTX card?
+
+No worries. There is a fallback layer that microsoft has provided, so you can still run the program :)!
 
 ## Basic Usage
 

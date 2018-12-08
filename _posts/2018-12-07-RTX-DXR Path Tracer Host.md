@@ -13,7 +13,7 @@ tags:
 ---
 
 ## Information
-- [Github Repo](https://github.com/rtx-on/rtx-explore)
+- [Rtx-explore github repo](https://github.com/rtx-on/rtx-explore)
 - [My github](https://github.com/Maknee)
 - [My twitter](https://twitter.com/makneee)
 
@@ -21,7 +21,7 @@ tags:
 - [DXR Path Tracer Introduction]({{ site.baseurl }}{% link _posts/2018-12-06-RTX-DXR Path Tracer.md %})
 - [DXR Path Tracer Usage]({{ site.baseurl }}{% link _posts/2018-12-06-RTX-DXR Path Tracer User Guide.md %})
 - [DXR Path Tracer Host-Side Explanation]({{ site.baseurl }}{% link _posts/2018-12-07-RTX-DXR Path Tracer Host.md %})
-- [DXR Path Tracer HLSL Explanation]()
+- [DXR Path Tracer HLSL Explanation]({{ site.baseurl }}{% link _posts/2018-12-08-RTX-DXR Path Tracer HLSL.md %})
 
 ## What do you mean by host side?
 
@@ -123,7 +123,7 @@ Well moving on to more specific API calls to DXR/RTX, which is building the [acc
 
 <img src="https://devblogs.nvidia.com/wp-content/uploads/2018/03/raytrace_02-625x383.png" width="50%">
 
-*image taken from exactly the [Nvidia post](https://devblogs.nvidia.com/introduction-nvidia-rtx-directx-ray-tracing/)
+*image taken from the [Nvidia post](https://devblogs.nvidia.com/introduction-nvidia-rtx-directx-ray-tracing/)
 
 In the DXR Path tracer, it's pretty much exactly the same as what is described in the post
 

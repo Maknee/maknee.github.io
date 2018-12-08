@@ -13,7 +13,7 @@ tags:
 ---
 
 ## Information
-- [Github Repo](https://github.com/rtx-on/rtx-explore)
+- [Rtx-explore github repo](https://github.com/rtx-on/rtx-explore)
 - [My github](https://github.com/Maknee)
 - [My twitter](https://twitter.com/makneee)
 
@@ -21,7 +21,7 @@ tags:
 - [DXR Path Tracer Introduction]({{ site.baseurl }}{% link _posts/2018-12-06-RTX-DXR Path Tracer.md %})
 - [DXR Path Tracer Usage]({{ site.baseurl }}{% link _posts/2018-12-06-RTX-DXR Path Tracer User Guide.md %})
 - [DXR Path Tracer Host-Side Explanation]({{ site.baseurl }}{% link _posts/2018-12-07-RTX-DXR Path Tracer Host.md %})
-- [DXR Path Tracer HLSL Explanation]()
+- [DXR Path Tracer HLSL Explanation]({{ site.baseurl }}{% link _posts/2018-12-08-RTX-DXR Path Tracer HLSL.md %})
 
 ## Introduction to Ray Tracing
 
@@ -45,7 +45,7 @@ This generates a much more realistic image as rays in nature, are random to a ce
 
 I worked on a DXR path tracer project this semester for the [GPU Programing class, CIS565 at the University of Pennsylvania](https://cis565-fall-2018.github.io/)
 
-For the final project, my group consisting of ([Ziad](https://github.com/ziedbha), [Liam](https://github.com/liamdugan) and I, [Henry](https://github.com/Maknee)) decided to work on a [DXR path tracer project](https://github.com/rtx-on/rtx-explore) using the brand new [DXR (DirectX Ray Tracing) API](https://blogs.msdn.microsoft.com/directx/2018/03/19/announcing-microsoft-directx-raytracing/)
+For the final project, my group consisting of ([Zied](https://github.com/ziedbha), [Liam](https://github.com/liamdugan) and I, [Henry](https://github.com/Maknee)) decided to work on a [DXR path tracer project](https://github.com/rtx-on/rtx-explore) using the brand new [DXR (DirectX Ray Tracing) API](https://blogs.msdn.microsoft.com/directx/2018/03/19/announcing-microsoft-directx-raytracing/)
 
 ## Features
 
@@ -62,14 +62,13 @@ The DXR Project includes the following features, but not limited to:
 - Loading the image to compare currently rendered image with the loaded image side by side
 - Effects such as anti-aliasing and depth of field
 - Much more other small editing capabilities
-
-The list will expand as work continues on the project.
+- Other stuff as time progresses
 
 # Blog about history of project
 
 ## Starting out the project
 
-Ziad was working hard on trying to find a final project to do and kudos to him for doing so. In the end, the team was formed and our team name was rtx-on (based on the [meme](https://knowyourmeme.com/memes/rtx-off-rtx-on))
+Zied was working hard on trying to find a final project to do and kudos to him for doing so. In the end, the team was formed and our team name was rtx-on (based on the [meme](https://knowyourmeme.com/memes/rtx-off-rtx-on))
 
 <img src="/assets/images/posts/2018-12-06/rtx-on.png" width="35%">
 
@@ -129,7 +128,7 @@ I really hit a wall.
 
 (In case you're asking, no, I actually did not throw my head at a wall)
 
-So, for the day right before the milestone day, I worked on the model/texture loading with Ziad and Liam. We started at 2PMish. Things didn't really work out until literally 11PM, when we all left and I went to my room and wrote code for an hour and thirty minutes and got multiple model/texture loading to work.
+So, for the day right before the milestone day, I worked on the model/texture loading with Zied and Liam. We started at 2PMish. Things didn't really work out until literally 11PM, when we all left and I went to my room and wrote code for an hour and thirty minutes and got multiple model/texture loading to work.
 
 Feels good man!
 
