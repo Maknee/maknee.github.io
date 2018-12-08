@@ -199,7 +199,7 @@ You can actually save the screen with the comparison as well!
 You should be now ready to make super-duper awesome RTX-DXR On 2080 images :)
 
 <p align="center">
-<iframe src="https://giphy.com/embed/5BTyQlNh8Ugmc" width="480" height="374" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/thumbs-glitch-way-5BTyQlNh8Ugmc">via GIPHY</a></p>
+<iframe src="https://giphy.com/embed/5BTyQlNh8Ugmc" width="480" height="374" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/thumbs-glitch-way-5BTyQlNh8Ugmc"></a></p>
 </p>
 
 
