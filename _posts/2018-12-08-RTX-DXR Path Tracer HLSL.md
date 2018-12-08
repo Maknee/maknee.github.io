@@ -13,7 +13,7 @@ tags:
 ---
 
 ## Information
-- [Rtx-explore github](https://github.com/rtx-on/rtx-explore)
+- [Rtx-explore github repo](https://github.com/rtx-on/rtx-explore)
 - [My github](https://github.com/Maknee)
 - [My twitter](https://twitter.com/makneee)
 
@@ -32,7 +32,7 @@ Here are links to my group members who handled most of the HLSL part, if you wis
 
 ## What is HLSL?
 
-HLSL stands for have long sleep lie, which is when you sleep for so long that you feel tired.
+HLSL stands for `have long sleep lie`, which is when you sleep for so long that you feel tired.
 
 <p align="center">
 <iframe src="https://giphy.com/embed/gH9mmqt8VKfe0" width="480" height="348" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/gH9mmqt8VKfe0"></a></p>
@@ -257,7 +257,7 @@ With path tracing, it needs to accumulate colors to make the image more realisti
 for (int i = 0; i < depth; i++) {
     TraceRay(Scene, RAY_FLAG_CULL_BACK_FACING_TRIANGLES, ~0, 0, 1, 0, ray, payload);
     ...
-//accumulate using payload.color
+    //accumulate using payload.color
     ...
 }
 {% endhighlight %}
