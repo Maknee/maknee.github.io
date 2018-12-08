@@ -64,6 +64,8 @@ The DXR Project includes the following features, but not limited to:
 - Much more other small editing capabilities
 - Other stuff as time progresses
 
+Move onto [DXR Path Tracer Usage]({{ site.baseurl }}{% link _posts/2018-12-06-RTX-DXR Path Tracer User Guide.md %}), if not interested about the history of the project
+
 # Blog about history of project
 
 ## Starting out the project
