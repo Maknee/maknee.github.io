@@ -10,7 +10,7 @@ google_analytics: "UA-124405916-1"
 disqus_account: https-maknee-github-io
 github_repository: https://github.com/Maknee/maknee.github.io
 addthis_id: ra-5b7d834995ae703a
-post_limit: 10
+post_limit: 999
 
 # Social usernames/URLs
 twitter_username: makneee
