@@ -9,7 +9,7 @@ tags:
  - project
 ---
 
-![Thumbnail](/assets/images/projects/Fireworks Festival - Three js/thumbnail.jpg)
+{% include image.html path="/assets/images/projects/Fireworks Festival - Three js/thumbnail.jpg" width="100%" %}
 
 This was my first experience with [three js](https://threejs.org/), a 3D javascript library and [WebVR](https://webvr.info/), a tool that allows the VR experience in the browser. 
 

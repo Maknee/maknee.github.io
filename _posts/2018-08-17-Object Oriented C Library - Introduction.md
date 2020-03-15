@@ -13,7 +13,7 @@ tags:
 
 ## Ah... good ol C
 
-<img src="/assets/images/posts/2018-08-17/c_programming.jpg" width="35%">
+{% include image.html path="/assets/images/posts/2018-08-17/c_programming.jpg" width="35%" %}
 
 I have been always a big fan of C. 
 
@@ -28,20 +28,21 @@ C has been around for ages. It hasn't changed much, but it is still a popular la
 
 However, there are a plethora of reasons as to why C is not an attractive modern language to work with.
 
-<img src="https://media1.tenor.com/images/5578616247515b540d877db81818f009/tenor.gif?itemid=7866344" width="50%">
+{% include image.html path="https://media1.tenor.com/images/5578616247515b540d877db81818f009/tenor.gif?itemid=7866344" width="50%" %}
 
 1. Memory management - Other languages like Java have a [garbage collector](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)), so one doesn't have to worry about managing memory 
 2. Suitable standard library - C standard library. There are many gotchas in the standard library. There are many [deprecated functions](https://wiki.sei.cmu.edu/confluence/display/c/MSC24-C.+Do+not+use+deprecated+or+obsolescent+functions) in the standard library. There are many thread unsafe functions in the standard library. The standard library will make you [sad](https://youtu.be/8GxqvnQyaxs?t=23) sometimes. :(
 3. Getting something done - C doesn't have [vectors](https://en.cppreference.com/w/cpp/container/vector). C doesn't have [maps](https://en.cppreference.com/w/cpp/container/map). C doesn't really even have proper [strings](https://symas.com/the-sad-state-of-c-strings/). C doesn't have anything really besides pointers and memory that the programmer has to figure out how to use. This makes developing something in a timely manner incredibly frustrating and difficult.
 
-<img src="/assets/images/posts/2018-08-17/feelsbadman.png" width="30%">
+{% include image.html path="/assets/images/posts/2018-08-17/feelsbadman.png" width="30%" %}
 
 ## C++ like C?
 
 Wait. There's still hope!
 
-<img src="/assets/images/posts/2018-08-17/feelsgoodman.png" width="50%">
-<span class="rainbow">Introducing [OOC](https://github.com/Maknee/OOC)! (Object oriented C library)</span> - [Github link](https://github.com/Maknee/OOC)
+{% include image.html path="/assets/images/posts/2018-08-17/feelsgoodman.png" width="50%" %}
+
+Introducing [OOC](https://github.com/Maknee/OOC)! (Object oriented C library) - [Github link](https://github.com/Maknee/OOC)
 
 OOC is a library wrapper I wrote around a year ago. It is mainly influenced by C++ and has C++ like syntax.
 
@@ -170,10 +171,7 @@ MoveCall(directories, push_back, directory);
 
 This is where it gets interesting. In C++11, [move semantics](https://stackoverflow.com/questions/3106110/what-are-move-semantics) became part of the C++ standard. To summarize, one could "move" the ownership of an object to another object or as some people describe it -- "[moves its guts to the new object](http://blogs.microsoft.co.il/alon/2013/04/03/introduction-to-c-11-series-part-9-r-value-l-value-move-semantics-and-perfect-forwarding/)".
 
-<p>
-<img src="https://media1.tenor.com/images/7f7394d62fa69a576f88dde163ae420e/tenor.gif?itemid=11687378" width="50%" alt>
-<center><font size="-1"><em>Literally taking its guts.</em></font></center>
-</p>
+{% include image.html path="https://media1.tenor.com/images/7f7394d62fa69a576f88dde163ae420e/tenor.gif?itemid=11687378" width="50%" text = "Literally taking its guts" %}
 
 Basically, in the example above, `MoveCall(directories, push_back, directory);` would transfer move directory into directories vector, thus making directory invalid to use afterwards.
 
@@ -204,19 +202,13 @@ Call(directories, push_back, directory);
 
 ## How does heck does this even work?
 
-<p>
-<img src="https://media.giphy.com/media/12NUbkX6p4xOO4/giphy.gif" width="50%" alt>
-<center><font size="-1"><em>Magic.</em></font></center>
-</p>
+{% include image.html path="https://media.giphy.com/media/12NUbkX6p4xOO4/giphy.gif" width="50%" text="Magic" %}
 
 Magic macros.
 
 Did you just say [macros](https://stackoverflow.com/questions/14041453/why-are-preprocessor-macros-evil-and-what-are-the-alternatives), the awful, undebuggable, copy paste preprocessor magic?
 
-<p>
-<img src="https://media1.tenor.com/images/2d7df72b568551605943631988722703/tenor.gif?itemid=4905592" width="50%" alt>
-<center><font size="-1"><em>Yes.</em></font></center>
-</p>
+{% include image.html path="https://media1.tenor.com/images/2d7df72b568551605943631988722703/tenor.gif?itemid=4905592" width="50%" text="Yes." %}
 
 In order to implement psuedo templating and have more usable and readable API, macros are necessary.
 

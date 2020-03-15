@@ -14,6 +14,8 @@ tags:
 
 ## Information
 - [Rtx-explore github repo](https://github.com/rtx-on/rtx-explore)
+- [Slides](https://github.com/rtx-on/rtx-explore/tree/master/Milestones)
+- [Presentation](https://www.youtube.com/watch?v=QZiQ-c8jtgY&t=29m30s)
 - [My github](https://github.com/Maknee)
 - [My twitter](https://twitter.com/makneee)
 
@@ -35,7 +37,7 @@ This allows for tons of performance and removes overhead for having the driver m
 
 However, on the other hand, DirectX 12 can make you pull your hair out because either you're missing a parameter or missing a call. The API is verrrrrrrrrrryyyyyyyyyyy explicit.
 
-<img src="/assets/images/posts/2018-12-07/directx-12.jpg" width="35%">
+{% include image.html path="/assets/images/posts/2018-12-07/directx-12.jpg" width="35%" %}
 
 ## Experience with DirectX 12
 
@@ -50,7 +52,7 @@ If you want great tutorials for an intro to DirectX 12, take a look here:
 
 ## Root Signature/Parameters and Heap descriptor layout
 
-<img src="http://www.braynzarsoft.net/image/100204" width="100%">
+{% include image.html path="http://www.braynzarsoft.net/image/100204" width="100%" %}
 
 *Some of these images are from [3DGEP Tutorial](https://www.3dgep.com/learning-directx12-1/) and [Braynzar Tutorial](https://www.braynzarsoft.net/viewtutorial/q16390-04-directx-12-braynzar-soft-tutorials), so shoutout to them for the some of the best tutorials on directx12 and image*
 
@@ -62,7 +64,7 @@ So, how does one allocate these so called "parameters" and hook them up with the
 
 ~~I'm sorta skipping myself ahead here, but here is the image of how the path tracer's resources are allocated and I will explain what is happening after
 
-<img src="/assets/images/posts/2018-12-07/DXR-Layout.svg" width="100%">
+{% include image.html path="/assets/images/posts/2018-12-07/DXR-Layout.svg" width="100%" %}
 
 *You probably want to open the image by right clicking it and selecting open in new tab to get a clearer picture :)*
 
@@ -70,8 +72,8 @@ In the image, the root signature contains two entries. One is a [descriptor tabl
 
 A descriptor table (in this case), is describing all the parameters (resources) that are going to passed to the hlsl shader code.
 
-<img src="http://www.braynzarsoft.net/image/100209" width="50%">
-<img src="http://www.braynzarsoft.net/image/100208" width="50%">
+{% include image.html path="http://www.braynzarsoft.net/image/100209" width="50%" %}
+{% include image.html path="http://www.braynzarsoft.net/image/100208" width="50%" %}
 
 Each entry in the descriptor table is a descriptor range, which contains the number of entries in the descriptor heap that should be bound to the entry and what [space](https://docs.microsoft.com/en-us/windows/desktop/direct3d12/resource-binding-in-hlsl) the entry should be in (why spaces are used is explained in the HLSL post).
 
@@ -121,7 +123,7 @@ If something is missing or not explained very well, shoot me a message! I'll be 
 
 Well moving on to more specific API calls to DXR/RTX, which is building the [acceleration structures](https://devblogs.nvidia.com/introduction-nvidia-rtx-directx-ray-tracing/), which is nicely explained in this [post by Nvidia](https://devblogs.nvidia.com/introduction-nvidia-rtx-directx-ray-tracing/)
 
-<img src="https://devblogs.nvidia.com/wp-content/uploads/2018/03/raytrace_02-625x383.png" width="50%">
+{% include image.html path="https://devblogs.nvidia.com/wp-content/uploads/2018/03/raytrace_02-625x383.png" width="50%" %}
 
 *image taken from the [Nvidia post](https://devblogs.nvidia.com/introduction-nvidia-rtx-directx-ray-tracing/)
 

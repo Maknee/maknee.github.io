@@ -1,0 +1,12 @@
+<center>
+    <p>
+        <center>
+            <img src="{{ include.path }}" width="{{% if include.width %}}{{ include.width }}{{% else %}} 50% {{% endif %}}" alt>
+        </center>
+        {% if include.text %}
+        <center>
+            <font size=" -1"><em>{{ include.text }}</em></font>
+        </center>
+        {% endif %}
+    </p>
+</center>

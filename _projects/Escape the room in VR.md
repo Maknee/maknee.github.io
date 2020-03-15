@@ -9,7 +9,7 @@ tags:
  - project
 ---
 
-![Thumbnail](/assets/images/projects/Escape the room in VR/thumbnail.png)
+{% include image.html path="/assets/images/projects/Escape the room in VR/thumbnail.png" width="100%" %}
 
 This was a final class project that uses Unreal Engine 4 to create the escape the room experience, but in VR. I had tons of fun working on this project and my group members were an absolute blast to work with.
 

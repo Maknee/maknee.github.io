@@ -1,12 +1,23 @@
 ---
 layout: default
 ---
+<div class="post">
 
-<div class="container-fluid index">
-  <div class="row index all-posts">
-    <h2 class="header" itemprop="headline"> {{ page.title }} </h2>
-    <div class="col-md-12 content-panel articles">
-       {{ content }}
-    </div>
-  </div>
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title2 }}</h1>
+    <h5 class="post-description">{{ page.description }}</h5>
+  </header>
+
+  <article class="post-content {{page.title}} clearfix">
+    {{ content }}
+  </article>
+
+  {% if page.news %}
+  {% include news.html %}
+  {% endif %}
+
+  {% if page.social %}
+  {% include social.html %}
+  {% endif %}
+
 </div>

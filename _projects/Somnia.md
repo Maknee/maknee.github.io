@@ -9,7 +9,7 @@ tags:
  - project
 ---
 
-![Thumbnail](/assets/images/projects/Somnia/thumbnail.png)
+{% include image.html path="/assets/images/projects/Somnia/thumbnail.png" width="100%" %}
 
 This was a final class android project that has the goal to make others wake up.
 
@@ -17,10 +17,7 @@ Why was this app created?
 
 College CIS kids. A lot of kiddos like myself don't wake up on time, so this app was born.
 
-<p>
-<img src="https://media1.tenor.com/images/7e31ba2ef9a152dbda09418daafc4edd/tenor.gif?itemid=5701461" width="50%" alt>
-<center><font size="-1"><em>Coffee?</em></font></center>
-</p>
+{% include image.html path="https://media1.tenor.com/images/7e31ba2ef9a152dbda09418daafc4edd/tenor.gif?itemid=5701461" text="Coffee?"%}
 
 Here is a couple of shots/explanation of the app:
 

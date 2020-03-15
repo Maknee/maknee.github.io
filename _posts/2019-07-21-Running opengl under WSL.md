@@ -11,7 +11,7 @@ tags:
  - WSL
 ---
 
-<img src="/assets/images/posts/2019-07-21/icon.png" width="100%">
+{% include image.html path="/assets/images/posts/2019-07-21/icon.png" width="100%" %}
 
 ## Opengl and WSL
 
@@ -27,7 +27,7 @@ However, advanced opengl apps can definitely run under WSL!
 
 # Demo
 
-<img align="center" src="/assets/images/posts/2019-07-21/running.gif" width="100%">
+{% include image.html path="/assets/images/posts/2019-07-21/running.gif" width="100%" %}
 
 The demo can be found [here](https://github.com/Maknee/OpenglUnderWSL)
 

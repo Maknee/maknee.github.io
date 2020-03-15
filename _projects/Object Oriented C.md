@@ -9,7 +9,7 @@ tags:
  - project
 ---
 
-![Thumbnail](/assets/images/projects/OOC/thumbnail.jpg)
+{% include image.html path="/assets/images/projects/OOC/thumbnail.jpg" width="100%" %}
 
 ---
 

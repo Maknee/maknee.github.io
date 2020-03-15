@@ -9,7 +9,7 @@ tags:
  - project
 ---
 
-![Thumbnail](/assets/images/projects/PennOS Hardware Wrapper/thumbnail.jpg)
+{% include image.html path="/assets/images/projects/PennOS Hardware Wrapper/thumbnail.jpg" width="100%" %}
 
 ## OS Class
 

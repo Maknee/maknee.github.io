@@ -14,6 +14,8 @@ tags:
 
 ## Information
 - [Rtx-explore github repo](https://github.com/rtx-on/rtx-explore)
+- [Slides](https://github.com/rtx-on/rtx-explore/tree/master/Milestones)
+- [Presentation](https://www.youtube.com/watch?v=QZiQ-c8jtgY&t=29m30s)
 - [My github](https://github.com/Maknee)
 - [My twitter](https://twitter.com/makneee)
 
@@ -54,7 +56,7 @@ From the last post about the host code, there are some answers answers to be ans
 
 Here is the image of the resource layout again:
 
-<img src="/assets/images/posts/2018-12-07/DXR-Layout.svg" width="100%">
+{% include image.html path="/assets/images/posts/2018-12-07/DXR-Layout.svg" width="100%" %}
 
 Why did I use a different space for each descriptor range? This is because HLSL actually allows for [dynamic indexing](https://docs.microsoft.com/en-us/windows/desktop/direct3d12/dynamic-indexing-using-hlsl-5-1), which is basically a unbounded array
 
@@ -143,7 +145,7 @@ As you may recall, each top level instance points to a lower level structure.
 
 Here is the image from Nvidia again:
 
-<img src="https://devblogs.nvidia.com/wp-content/uploads/2018/03/raytrace_02-625x383.png" width="50%">
+{% include image.html path="https://devblogs.nvidia.com/wp-content/uploads/2018/03/raytrace_02-625x383.png" width="50%" %}
 
 *image taken from the [Nvidia post](https://devblogs.nvidia.com/introduction-nvidia-rtx-directx-ray-tracing/)
 
@@ -200,7 +202,7 @@ Now to the more interesting part -- path tracing
 
 The image below shows a ray being show from the pixel and bouncing until it hits a light source:
 
-<img align="center" src="/assets/images/posts/2018-12-08/path-tracing.gif" width="100%">
+{% include image.html path="/assets/images/posts/2018-12-08/path-tracing.gif" width="100%" %}
 
 Unlike a ray tracer, where rays bounces towards a light source, a path tracer bounces rays in a random direction, making the ray colors more natural, but also can take longer to compute since there may be more bounces.
 

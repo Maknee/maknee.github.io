@@ -9,7 +9,7 @@ tags:
  - project
 ---
 
-![Thumbnail](/assets/images/projects/VPad/thumbnail.jpg)
+{% include image.html path="/assets/images/projects/VPad/thumbnail.jpg" width="100%" %}
 
 VPad was a class project where my group built a custom controller to play a small driving Unity game. My partner did most of the controller while I handled writing the game.
 

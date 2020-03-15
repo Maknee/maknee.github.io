@@ -9,7 +9,7 @@ tags:
  - project
 ---
 
-![Thumbnail](/assets/images/projects/Simple Advanced Wars/thumbnail.jpg)
+{% include image.html path="/assets/images/projects/Simple Advanced Wars/thumbnail.jpg" width="100%" %}
 
 Advanced wars was a game that brings back memories of childhood. It is a turned-based war game boy advance game where the objective is to capture another player's headquarters. 
 
@@ -27,11 +27,11 @@ There were some parts I had to figure out since this was pure java (no external 
 
 Some screen shots:
 
-![Gamplay](/assets/images/projects/Simple Advanced Wars/Example.png)
+{% include image.html path="/assets/images/projects/Simple Advanced Wars/Example.png" width="100%" %}
 Selecting a location for an unit to move to
-![Gamplay](/assets/images/projects/Simple Advanced Wars/Movement.png)
+{% include image.html path="/assets/images/projects/Simple Advanced Wars/Movement.png" width="100%" %}
 Purchasing an unit
-![Gamplay](/assets/images/projects/Simple Advanced Wars/Purchase.png)
+{% include image.html path="/assets/images/projects/Simple Advanced Wars/Purchase.png" width="100%" %}
 
 
 ## Compiling / Running

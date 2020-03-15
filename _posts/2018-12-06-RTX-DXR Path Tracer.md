@@ -14,6 +14,8 @@ tags:
 
 ## Information
 - [Rtx-explore github repo](https://github.com/rtx-on/rtx-explore)
+- [Slides](https://github.com/rtx-on/rtx-explore/tree/master/Milestones)
+- [Presentation](https://www.youtube.com/watch?v=QZiQ-c8jtgY&t=29m30s)
 - [My github](https://github.com/Maknee)
 - [My twitter](https://twitter.com/makneee)
 
@@ -72,7 +74,7 @@ Move onto [DXR Path Tracer Usage]({{ site.baseurl }}{% link _posts/2018-12-06-RT
 
 Zied was working hard on trying to find a final project to do and kudos to him for doing so. In the end, the team was formed and our team name was rtx-on (based on the [meme](https://knowyourmeme.com/memes/rtx-off-rtx-on))
 
-<img src="/assets/images/posts/2018-12-06/rtx-on.png" width="35%">
+{% include image.html path="/assets/images/posts/2018-12-06/rtx-on.png" width="35%" %}
 
 Source is based on the song (I found it kind of interesting...?)
 
@@ -88,7 +90,7 @@ For the first week, I was hit hard by the reality of the project. DXR is built o
 
 While this is awesome for optimizations and trying to make the most performant application such as a game, the API is very explicit and requires the programmer to manage the hardware resources and synchronize the GPU and CPU barriers. I had many experiences where I would spend hours trying to debug the application and *attempt* to find something online, but the questions asked forums did not match my problem.
 
-<img align="center" src="/assets/images/posts/2018-12-06/my-code-work.png" width="35%">
+{% include image.html path="/assets/images/posts/2018-12-06/my-code-work.png" width="35%" %}
 
 Also, I didn't have any experience with lower level graphics APIs at all (CIS565 pretty much only dealt with [CUDA](https://developer.nvidia.com/cuda-zone), and vulkan with a [Vuklan project](https://github.com/Maknee/Project6-Vulkan-Grass-Rendering))
 
@@ -103,9 +105,9 @@ For the first milestone, it was mostly trying to figure out the API and add a co
 - Single Normal Texture Loading
 - Finding a invaluable debugger ([Pix Debugger](https://blogs.msdn.microsoft.com/pix/download/))
 
-<img align="center" src="/assets/images/posts/2018-12-06/gun_normap.gif" width="100%">
+{% include image.html path="/assets/images/posts/2018-12-06/gun_normap.gif" width="100%" %}
 
-<img align="center" src="/assets/images/posts/2018-12-06/dragon.png" width="100%">
+{% include image.html path="/assets/images/posts/2018-12-06/dragon.png" width="100%" %}
 
 [Link to milestone 1 presentation](https://github.com/rtx-on/rtx-explore/blob/master/Milestones/Milestone%201%20presentation.pptx)
 
@@ -114,19 +116,19 @@ For the first milestone, it was mostly trying to figure out the API and add a co
 The second week was [Thanksgiving](https://en.wikipedia.org/wiki/Thanksgiving)
 
 
-<img align="center" src="/assets/images/posts/2018-12-06/thanksgiving.jpg" width="35%">
+{% include image.html path="/assets/images/posts/2018-12-06/thanksgiving.jpg" width="35%" %}
 
 I didn't really have time to celebrate. I was working on the host code for the most part. In particular, I had to get multiple model loading and texture loading to work, but I wanted to do something else first...
 
 So, I spent three of the four full days refactoring (the source code was a [ball of mud](https://en.wikipedia.org/wiki/Big_ball_of_mud))
 
-<img align="center" src="/assets/images/posts/2018-12-06/ball-of-mud.jpg" width="35%">
+{% include image.html path="/assets/images/posts/2018-12-06/ball-of-mud.jpg" width="35%" %}
 
 Anddddddddd, nothing really came out of it. I didn't even get a chance to compile it. (my inexperience with API had my spinning my head around) :(
 
 I really hit a wall.
 
-<img align="center" src="/assets/images/posts/2018-12-06/hit-a-wall.jpg" width="35%">
+{% include image.html path="/assets/images/posts/2018-12-06/hit-a-wall.jpg" width="35%" %}
 
 (In case you're asking, no, I actually did not throw my head at a wall)
 
@@ -134,7 +136,7 @@ So, for the day right before the milestone day, I worked on the model/texture lo
 
 Feels good man!
 
-<img align="center" src="/assets/images/posts/2018-12-06/so_good.png" width="35%">
+{% include image.html path="/assets/images/posts/2018-12-06/so_good.png" width="35%" %}
 
 For the second milestone, the team got the following done:
 
@@ -143,27 +145,27 @@ For the second milestone, the team got the following done:
 - Path tracer pipeline
 - Diffuse, Reflective, Refractive, Fresnel, Schlick
 
-<img align="center" src="/assets/images/posts/2018-12-06/multiple_model_textures.png" width="100%">
+{% include image.html path="/assets/images/posts/2018-12-06/multiple_model_textures.png" width="100%" %}
 
-<img align="center" src="/assets/images/posts/2018-12-06/mario_diffuse2.png" width="100%">
+{% include image.html path="/assets/images/posts/2018-12-06/mario_diffuse2.png" width="100%" %}
 
-<img align="center" src="/assets/images/posts/2018-12-06/Frennel.png" width="100%">
+{% include image.html path="/assets/images/posts/2018-12-06/Frennel.png" width="100%" %}
 
-<img align="center" src="/assets/images/posts/2018-12-06/dragon.gif" width="100%">
+{% include image.html path="/assets/images/posts/2018-12-06/dragon.gif" width="100%" %}
 
 [Link to milestone 2 presentation](https://github.com/rtx-on/rtx-explore/blob/master/Milestones/Milestone%201%20presentation.pptx)
 
 ## Just Keep Chugging
 
-<img align="center" src="/assets/images/posts/2018-12-06/chugging.jpg" width="35%">
+{% include image.html path="/assets/images/posts/2018-12-06/chugging.jpg" width="35%" %}
 
 Week 3 was much better. I was finally getting a hang of directx12 and a nasty normal bug was fixed that finally produced actual path tracing images.
 
 I also got to mess with actually moving the objects for fun (acceleration structures and hooked up Liam's minecraft project code and got chunk generation to work)
 
-<img align="center" src="/assets/images/posts/2018-12-06/Picture5.jpg" width="100%">
+{% include image.html path="/assets/images/posts/2018-12-06/Picture5.jpg" width="100%" %}
 
-<img align="center" src="/assets/images/posts/2018-12-06/Picture6.png" width="100%">
+{% include image.html path="/assets/images/posts/2018-12-06/Picture6.png" width="100%" %}
 
 (The tree was textured as dirt, haha)
 
@@ -173,16 +175,16 @@ But, I got it to work mostly.
 
 Here's some images:
 
-<img align="center" src="/assets/images/posts/2018-12-06/Picture1.png" width="100%">
-<img align="center" src="/assets/images/posts/2018-12-06/Picture2.png" width="100%">
-<img align="center" src="/assets/images/posts/2018-12-06/Picture3.png" width="100%">
-<img align="center" src="/assets/images/posts/2018-12-06/Picture4.png" width="100%">
+{% include image.html path="/assets/images/posts/2018-12-06/Picture1.png" width="100%" %}
+{% include image.html path="/assets/images/posts/2018-12-06/Picture2.png" width="100%" %}
+{% include image.html path="/assets/images/posts/2018-12-06/Picture3.png" width="100%" %}
+{% include image.html path="/assets/images/posts/2018-12-06/Picture4.png" width="100%" %}
 
 For the actual milestone, the images were pretty amazing:
 
-<img align="center" src="/assets/images/posts/2018-12-06/bloch.png" width="100%">
-<img align="center" src="/assets/images/posts/2018-12-06/Dragon_3.png" width="100%">
-<img align="center" src="/assets/images/posts/2018-12-06/newchromie.png" width="100%">
+{% include image.html path="/assets/images/posts/2018-12-06/bloch.png" width="100%" %}
+{% include image.html path="/assets/images/posts/2018-12-06/Dragon_3.png" width="100%" %}
+{% include image.html path="/assets/images/posts/2018-12-06/newchromie.png" width="100%" %}
 
 [Link to milestone 3 presentation](https://github.com/rtx-on/rtx-explore/blob/master/Milestones/Milestone%203%20presentation.pptx)
 
@@ -196,8 +198,8 @@ One can add edit all the materials, textures, objects and is able to load/save s
 
 Here's images of it working:
 
-<img align="center" src="/assets/images/posts/2018-12-06/editor-mario.png" width="100%">
-<img align="center" src="/assets/images/posts/2018-12-06/editor-scene.gif" width="100%">
+{% include image.html path="/assets/images/posts/2018-12-06/editor-mario.png" width="100%" %}
+{% include image.html path="/assets/images/posts/2018-12-06/editor-scene.gif" width="100%" %}
 
 I haven't done the final demo yet, but I'll update here when it happens.
 

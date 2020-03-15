@@ -9,7 +9,7 @@ tags:
  - project
 ---
 
-![Thumbnail](/assets/images/projects/Splatoon in VR/thumbnail.jpg)
+{% include image.html path="/assets/images/projects/Splatoon in VR/thumbnail.jpg" width="100%" %}
 
 If you've never heard of Splatoon before, it's a really cool game where the objective is to shoot other players and cover as much of the map as possible with your paint color.
 
