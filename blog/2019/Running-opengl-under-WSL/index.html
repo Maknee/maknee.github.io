@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Henry Zhu</title>
+  <title>Henry Zhu | Running opengl under WSL</title>
   <meta name="description" content="Personal website for random stuff
 ">
 
@@ -15,15 +15,15 @@
 " />
   <meta property="og:type" content="object" />
   <meta property="og:title" content="Henry Zhu" />
-  <meta property="og:url" content="/blog/" />
-  <meta property="og:description" content="" />
+  <meta property="og:url" content="/blog/2019/Running-opengl-under-WSL/" />
+  <meta property="og:description" content="Running opengl under WSL" />
   <meta property="og:image" content="" />
   
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 
   <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="canonical" href="/blog/">
+  <link rel="canonical" href="/blog/2019/Running-opengl-under-WSL/">
 </head>
 
 <body>
@@ -90,59 +90,99 @@
 
   <div class="page-content">
     <div class="wrapper">
-      <ul class="post-list">
-  
-  <li>
-    <a class="post-title" href="/blog/2019/Running-opengl-under-WSL/">Running opengl under WSL</a>
-    <p class="post-meta">July 21, 2019 — 02:01</p>
-    <p>Running opengl under WSL</p>
-  </li>
-  
-  <li>
-    <a class="post-title" href="/blog/2019/Practical-Reverse-Engineering-Sample-D/">Practical Reverse Engineering Sample D</a>
-    <p class="post-meta">February 27, 2019 — 19:00</p>
-    <p>Reverse Engineering Sample D</p>
-  </li>
-  
-  <li>
-    <a class="post-title" href="/blog/2018/RTX-DXR-Path-Tracer-HLSL/">DXR-RTX Path Tracer Project HLSL Shader Code</a>
-    <p class="post-meta">December 8, 2018 — 01:01</p>
-    <p>DXR-RTX Path Tracer Project HLSL Shader Code</p>
-  </li>
-  
-  <li>
-    <a class="post-title" href="/blog/2018/RTX-DXR-Path-Tracer-Host/">DXR-RTX Path Tracer Project Host Code</a>
-    <p class="post-meta">December 7, 2018 — 07:32</p>
-    <p>DXR-RTX Path Tracer Project Host Code</p>
-  </li>
-  
-  <li>
-    <a class="post-title" href="/blog/2018/RTX-DXR-Path-Tracer/">DXR-RTX Path Tracer Project Introduction</a>
-    <p class="post-meta">December 6, 2018 — 07:32</p>
-    <p>DXR-RTX Path Tracer Project</p>
-  </li>
-  
-  <li>
-    <a class="post-title" href="/blog/2018/RTX-DXR-Path-Tracer-User-Guide/">DXR-RTX Path Tracer Project User Guide</a>
-    <p class="post-meta">December 6, 2018 — 07:32</p>
-    <p>DXR-RTX Path Tracer Project User Guide</p>
-  </li>
-  
-  <li>
-    <a class="post-title" href="/blog/2018/Object-Oriented-C-Library-Introduction/">Object Oriented C Library - Introduction</a>
-    <p class="post-meta">August 17, 2018 — 08:32</p>
-    <p>Object Oriented C Library</p>
-  </li>
-  
-  <li>
-    <a class="post-title" href="/blog/2018/Reverse-engineering-an-Android-Game-Analysis/">Reverse engineering an Android Game - Analysis</a>
-    <p class="post-meta">August 5, 2018 — 08:32</p>
-    <p>Taking a look at android game's internals</p>
-  </li>
-  
-</ul>
+      <div class="post">
 
+  <header class="post-header">
+    <h1 class="post-title">Running opengl under WSL</h1>
+    <p class="post-meta">July 21, 2019</p>
+  </header>
 
+  <article class="post-content">
+    <center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2019-07-21/icon.png" width="100% 50% " alt="" />
+        </center>
+        
+    </p>
+</center>
+
+<h2 id="opengl-and-wsl">Opengl and WSL</h2>
+
+<p>There is little information about opengl under wsl. The first post that comes up on google with a blog states that opengl doesn’t function under WSL and he gave up.</p>
+
+<p>https://bowenzhai.ca/2018/04/15/OpenGL-Development-on-WSL-From-Setting-Up-to-Giving-Up-And-What-I-Learned/</p>
+
+<p>A response from the WSL repo states that it may/may not work</p>
+
+<p>https://github.com/microsoft/WSL/issues/2855</p>
+
+<p>However, advanced opengl apps can definitely run under WSL!</p>
+
+<h1 id="demo">Demo</h1>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2019-07-21/running.gif" width="100% 50% " alt="" />
+        </center>
+        
+    </p>
+</center>
+
+<p>The demo can be found <a href="https://github.com/Maknee/OpenglUnderWSL">here</a></p>
+
+<h2 id="setup">Setup</h2>
+
+<p><a href="https://github.com/Maknee/OpenglUnderWSL">The demo includes scripts for installing the following</a></p>
+
+<p>Some dependencies to install</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install mesa-utils
+
+sudo apt-get install x11-apps
+
+sudo apt install clang
+
+sudo apt-get install libglfw3
+
+sudo apt-get install libglfw3-dev
+</code></pre></div></div>
+
+<p>On the desktop, install <a href="https://mobaxterm.mobatek.net/download-home-edition.html">MobaXterm</a>, which has a X server for displaying graphics from WSL</p>
+
+<h2 id="test">Test</h2>
+
+<p>Run the following to see if it works:</p>
+
+<p><code class="language-plaintext highlighter-rouge">export DISPLAY=:0</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">xeyes</code></p>
+
+<p>Now compile your program with the flags</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-lX11 -lGL `pkg-config --static --libs glfw3`
+</code></pre></div></div>
+
+<p>In your opengl code, DO NOT INITIALIZE THE CORE! Comment it out</p>
+
+<p><code class="language-plaintext highlighter-rouge">//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</code></p>
+
+<p>Now run your program including the environment variable to tell opengl to run with 3.3
+<code class="language-plaintext highlighter-rouge">MESA_GL_VERSION_OVERRIDE=3.3</code></p>
+
+<p>For example,
+<code class="language-plaintext highlighter-rouge">MESA_GL_VERSION_OVERRIDE=3.3 ./test_program</code></p>
+
+<p>Now you can run opengl applications under WSL! :)</p>
+
+<p>Let me know if this works for you / or you encounter problems!</p>
+
+  </article>
+
+  
+
+</div>
 
     </div>
   </div>

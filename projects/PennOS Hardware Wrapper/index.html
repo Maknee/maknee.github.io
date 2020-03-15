@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Henry Zhu | PennOS Hardware Wrapper</title>
+  <meta name="description" content="Personal website for random stuff
+">
+
+  
+  <meta property="og:site_name" content="Personal website for random stuff
+" />
+  <meta property="og:type" content="object" />
+  <meta property="og:title" content="Henry Zhu" />
+  <meta property="og:url" content="/projects/PennOS%20Hardware%20Wrapper/" />
+  <meta property="og:description" content="PennOS Hardware Wrapper" />
+  <meta property="og:image" content="" />
+  
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="/projects/PennOS%20Hardware%20Wrapper/">
+</head>
+
+<body>
+
+  <header class="site-header">
+
+  <div class="wrapper">
+
+    
+    <span class="site-title">
+      
+      <strong>Henry</strong> Zhu
+    </span>
+    
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" />
+            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" />
+            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger">
+        <!-- Blog -->
+        <a class="page-link" href="/blog/">blog</a>
+
+        <!-- Pages -->
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="page-link" href="/projects/">projects</a>
+        
+        
+        
+        <a class="page-link" href="/publications/">publications</a>
+        
+        
+        
+        
+
+        <!-- About -->
+        <a class="page-link" href="/">about</a>
+
+        <!-- CV link -->
+        <!-- <a class="page-link" href="/assets/pdf/CV.pdf">vitae</a> -->
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+  <div class="page-content">
+    <div class="wrapper">
+      <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">PennOS Hardware Wrapper</h1>
+    <p class="post-meta">March 15, 2020</p>
+  </header>
+
+  <article class="post-content">
+    <center>
+    <p>
+        <center>
+            <img src="/assets/images/projects/PennOS Hardware Wrapper/thumbnail.jpg" width="100% 50% " alt="" />
+        </center>
+        
+    </p>
+</center>
+
+<h2 id="os-class">OS Class</h2>
+
+<p>The <a href="http://www.cis.upenn.edu/~boonloo/cis380-fa17/">OS class</a> at my university has assignments and projects that run as an application under linux, unlike <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-828-operating-system-engineering-fall-2012/">some OS classes in other universities that develop run on baremetal</a>, which is immensely more difficult to debug.</p>
+
+<p>The class was difficult and I learned a lot about how unix worked (Shells, pipes, redirection, signals, …) and OSes in general (virtual memory, scheduling, caching, threads, …).</p>
+
+<p>For the final project, the goal was to create a file system, scheduler and shell, which took a lot of effort and was an awesome learning experience.</p>
+
+<p>
+<img src="https://media1.tenor.com/images/a7b78e862abbdd98be690e5bbb7b29c5/tenor.gif?itemid=11631902" width="50%" alt="" />
+<center><font size="-1"><em>Still doesn't know how virtual memory magic works internally since we were working at an application level</em></font></center>
+</p>
+
+<h2 id="so-whats-wrong">So, what’s wrong?</h2>
+
+<p>However, I wasn’t satisfied with not learning the more hardware-y side of things. Abstraction of topics are nice, but, for me, I want to dive a bit deeper. I had only five days before the deadline.</p>
+
+<p>Let’s execute this bad boi on x86 baremetal.</p>
+
+<center>
+    <iframe width="600" height="400" src="https://www.youtube.com/embed/QK-k52oNjvU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="">
+    </iframe>
+</center>
+
+<h2 id="wait-how">Wait, how?</h2>
+
+<p>I used <a href="https://www.qemu.org/">qmeu</a>, an open source machine emulator that could emulate an x86 machine to test/run my code and cross compliation tool chain to compile the code, so we didn’t have to link with any libraries (that’s why it’s baremetal :))</p>
+
+<p>Also used <a href="https://en.wikipedia.org/wiki/GNU_GRUB">GRUB</a>, so I didn’t have to deal with nasty super specific hardware specifications and GRUB also gives a lot of information about the machine like the memory range.</p>
+
+<p>To run on an actual machine, I used <a href="https://rufus.akeo.ie/">rufus</a> to format my image, since I’m on windows, but you can format the usb on the linux cli and install it like any other OS.</p>
+
+<h2 id="please-gimme-details">Please gimme details.</h2>
+
+<p>The final project had several dependencies.</p>
+
+<h3 id="libraries">Libraries</h3>
+
+<p>Remember booting on baremetal and linking with any libraries that is specific to the OS is a no-no.</p>
+
+<p>
+<img src="/assets/images/projects/PennOS Hardware Wrapper/c-standard-library-functions
+.jpg" width="50%" alt="" />
+<center><font size="-1"><em>You're kidding that I can't even use the standard library...</em></font></center>
+</p>
+
+<p>No… I’m not kidding. <a href="https://www.gnu.org/software/libc/">GNU C Library</a> wraps around <a href="https://en.wikipedia.org/wiki/System_call">system calls</a> that are specific to the kernel.</p>
+
+<p>
+<img src="https://media1.tenor.com/images/294523bd51e91be13033035775cd013d/tenor.gif?itemid=5890434" width="50%" alt="" />
+<center><font size="-1"><em>Writing C in general</em></font></center>
+</p>
+
+<p>Basically, what I did was try to implement every function I used by myself. So, for example, printf, malloc, and other standard library functions had to be implemented. (Very simple implementation)</p>
+
+<h3 id="cpu-specific-stuff">CPU specific stuff</h3>
+
+<p><a href="https://en.wikibooks.org/wiki/X86_Assembly/Programmable_Interval_Timer">PIT</a>, <a href="https://wiki.osdev.org/8259_PIC">PIC</a>, <a href="https://wiki.osdev.org/Interrupt_Service_Routines">ISR</a>, memory…</p>
+
+<p>Unfortunately, I won’t be going into this much as it’s going to make this post 10x longer, but it’s a lot of CPU specific setup to get interrupts to work.</p>
+
+<p>But, here’s the <a href="https://wiki.osdev.org/Main_Page">x86 OS dev link</a> that provides a ton of information about everything OS dev related.</p>
+
+<p>BTW, I only used physical memory and did not setup virtual memory.</p>
+
+<p>
+<img src="https://media1.tenor.com/images/5deafc275f9f7e3c95a773d2e4aa625a/tenor.gif?itemid=4953511" width="50%" alt="" />
+<center><font size="-1"><em>Virtual memory still is black magic.</em></font></center>
+</p>
+
+<h3 id="threading-library">Threading Library</h3>
+
+<p>Our “threading” (I guess you can call it that) library used for the project was a combination of <a href="http://pubs.opengroup.org/onlinepubs/7908799/xsh/ucontext.h.html">ucontext</a>, even though it is <a href="https://stackoverflow.com/questions/17768925/ucontext-in-linux">deprecated</a> and the <a href="https://www.gnu.org/software/libc/manual/html_node/Setting-an-Alarm.html">alarm signal</a>.</p>
+
+<p>ucontext is a <a href="http://www.manpagez.com/man/3/ucontext/">user level thread context</a>.</p>
+
+<p>The alarm signal would be sent every x milliseconds and in the signal handler, ucontext would fetch the correct context (containing the saved registers, instruction being executed and flags) and go to that context. Think of this context as the very simplified version of the kernel thread structure like, for example, the <a href="https://docs.microsoft.com/en-us/windows-hardware/drivers/kernel/eprocess">ETHREAD</a> structure in the windows kernel.</p>
+
+<p>Here’s a really detailed <a href="https://anonymalias.github.io/2017/01/09/ucontext-theory/">explanation</a> with cool pictures and everything, albeit in chinese and explaining the x64 version.</p>
+
+<p>It’s actually quite awesome how it’s implemented.</p>
+
+<p>I made my version a bit simplier <a href="https://github.com/Maknee/PennOS-hardware-wrapper/blob/master/ucontext_stub.asm">version</a> (does not perserve signals, etc).</p>
+
+<p>In order to create a context, one needs to store the contents of the current stack into a ucontext_t structure and allocate memory for the new stack. If this is confusing, I’ll provide an example below and details about the ucontext_t structure.</p>
+
+<p>Everything that is required for the simpliest ucontext_t structure (<a href="https://code.woboq.org/userspace/glibc/sysdeps/unix/sysv/linux/x86/sys/ucontext.h.html">help from glibc source</a>):</p>
+
+<p><a href="https://github.com/Maknee/PennOS-hardware-wrapper/blob/master/ucontext.h">Source</a></p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="k">typedef</span> <span class="k">struct</span> <span class="n">cpu_registers</span>
+<span class="p">{</span>
+	<span class="kt">uint32_t</span> <span class="n">eax</span><span class="p">;</span>
+	<span class="kt">uint32_t</span> <span class="n">ebx</span><span class="p">;</span>
+	<span class="kt">uint32_t</span> <span class="n">ecx</span><span class="p">;</span>
+	<span class="kt">uint32_t</span> <span class="n">edx</span><span class="p">;</span>
+	<span class="kt">uint32_t</span> <span class="n">edi</span><span class="p">;</span>
+	<span class="kt">uint32_t</span> <span class="n">esi</span><span class="p">;</span>
+	<span class="kt">uint32_t</span> <span class="n">ebp</span><span class="p">;</span>
+
+	<span class="kt">uint32_t</span> <span class="n">esp</span><span class="p">;</span>
+	<span class="kt">uint32_t</span> <span class="n">ss</span><span class="p">;</span>
+	<span class="kt">uint32_t</span> <span class="n">ds</span><span class="p">;</span>
+	
+	<span class="kt">uint32_t</span> <span class="n">eip</span><span class="p">;</span>
+	<span class="kt">uint32_t</span> <span class="n">eflags</span><span class="p">;</span>
+	<span class="kt">uint32_t</span> <span class="n">cs</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">cpu_registers</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">ucontext</span>
+<span class="p">{</span>
+	<span class="k">struct</span> <span class="n">ucontext</span> <span class="o">*</span><span class="n">uc_link</span><span class="p">;</span>
+	<span class="n">stack_t</span> <span class="n">uc_stack</span><span class="p">;</span>
+	<span class="n">cpu_registers</span> <span class="n">registers</span><span class="p">;</span>
+	<span class="n">sigset_t</span> <span class="n">uc_sigmask</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">ucontext_t</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">getcontext</span><span class="p">(</span><span class="n">ucontext_t</span> <span class="o">*</span><span class="n">ucp</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">setcontext</span><span class="p">(</span><span class="k">const</span> <span class="n">ucontext_t</span> <span class="o">*</span><span class="n">ucp</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">makecontext</span><span class="p">(</span><span class="n">ucontext_t</span> <span class="o">*</span><span class="n">ucp</span><span class="p">,</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">)(),</span> <span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="p">...);</span>
+<span class="kt">int</span> <span class="nf">swapcontext</span><span class="p">(</span><span class="n">ucontext_t</span> <span class="o">*</span><span class="n">oucp</span><span class="p">,</span> <span class="k">const</span> <span class="n">ucontext_t</span> <span class="o">*</span><span class="n">ucp</span><span class="p">);</span></code></pre></figure>
+
+<p>As you can see, it’s mostly about containing the register values and the stack.</p>
+
+<p>Example of making a context</p>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">do_something</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="p">...</span>
+	<span class="n">ucontext_t</span><span class="o">*</span> <span class="n">uc</span><span class="p">;</span> <span class="c1">//make context pointer</span>
+
+	<span class="n">getcontext</span><span class="p">(</span><span class="n">uc</span><span class="p">);</span> <span class="c1">//get information about the current stack/registers</span>
+
+	<span class="n">uc</span><span class="o">-&gt;</span><span class="n">uc_stack</span><span class="p">.</span><span class="n">ss_sp</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="mi">4096</span><span class="p">));</span> <span class="c1">//allocate a 4kb stack</span>
+	<span class="n">uc</span><span class="o">-&gt;</span><span class="n">uc_stack</span><span class="p">.</span><span class="n">ss_size</span> <span class="o">=</span> <span class="mi">4096</span><span class="p">;</span> <span class="c1">//size of stack</span>
+	<span class="n">uc</span><span class="o">-&gt;</span><span class="n">uc_stack</span><span class="p">.</span><span class="n">ss_flags</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//flags </span>
+
+	<span class="n">makecontext</span><span class="p">(</span><span class="n">uc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">do_something</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">//now change the context structure to point to do_something</span>
+	<span class="n">setcontext</span><span class="p">(</span><span class="n">uc</span><span class="p">);</span> <span class="c1">//now execute do_something</span>
+<span class="p">...</span></code></pre></figure>
+
+<p>In the example above, we call <code class="language-plaintext highlighter-rouge">getcontext(...)</code> in order to allocate memory for the <code class="language-plaintext highlighter-rouge">ucontext_t</code> struct and store information such as the current register values into the structure.</p>
+
+<p>Then, we call <code class="language-plaintext highlighter-rouge">makecontext(...)</code> to setup a function call on the allocated stack to <code class="language-plaintext highlighter-rouge">do_something(...)</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">setcontext(...)</code> actually switches the context to the other context.</p>
+
+<p>WARNING: x86 assembly below</p>
+
+<p>
+<img src="https://media1.tenor.com/images/e1a1761d7520cef3712a7d3b1305e3b3/tenor.gif?itemid=9749377" width="50%" alt="" />
+<center><font size="-1"><em>Don't worry, I'll summarize below.</em></font></center>
+</p>
+
+<p><a href="https://github.com/Maknee/PennOS-hardware-wrapper/blob/master/ucontext_stub.asm#L38">Source</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>global getcontext
+getcontext:
+	
+	;get parameter (ucontext_t* ucp)
+	mov eax, [esp + 4]
+	
+	;eax not preserved
+	;save general purpose registers
+	;mov [eax + ucontext_t.eax], 0
+	mov [eax + ucontext_t.ebx], ebx
+	mov [eax + ucontext_t.ecx], ecx
+	mov [eax + ucontext_t.edx], edx
+	mov [eax + ucontext_t.edi], edi
+	mov [eax + ucontext_t.esi], esi
+	mov [eax + ucontext_t.ebp], ebp
+	
+	...
+
+	ret
+</code></pre></div></div>
+
+<p>To summarize, all this does is save the register values into the <code class="language-plaintext highlighter-rouge">cpu_registers</code> struct</p>
+
+<hr />
+
+<p>Now for <code class="language-plaintext highlighter-rouge">makecontext(...)</code></p>
+
+<p><a href="https://github.com/Maknee/PennOS-hardware-wrapper/blob/master/ucontext_stub.asm#L171">Source</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>global makecontext
+makecontext:
+
+	;get parameter (ucontext_t* ucp)
+	mov eax, [esp + 4]
+	
+	;get parameter (void (*function)())
+	mov ecx, [esp + 8]
+
+	;store the function of what we want to run
+	mov [eax + ucontext_t.eip], ecx
+
+	;get parameter (argc)
+	mov edx, [esp + 12]
+
+	...
+
+	;get each parameter and populate stack
+	;jump if ecx == 0
+	jecxz .done_args
+
+.more_args:
+	
+	;get from rightmost to leftmost
+	mov eax, [esp + ecx * 4 + 12]
+	mov [edx + ecx * 4], eax
+	
+	dec ecx
+	jnz .more_args
+
+	...
+
+	ret
+</code></pre></div></div>
+
+<p>To summarize again, <code class="language-plaintext highlighter-rouge">makecontext(...)</code> pushes everything on the stack, so it’s ready to swap.</p>
+
+<p>Here’s the stack when makecontext is done. As you can see, it contains the parameters and return address. (The function address is stored in ucontext.eip)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>;void makecontext(ucontext_t *ucp, void (*func)(), int argc, ...);
+;https://code.woboq.org/userspace/glibc/sysdeps/unix/sysv/linux/i386/makecontext.S.html
+
+;top of stack
+
+;-------------
+;ucontext_termination (return address)
+;-------------
+;parameters to func
+;-------------
+;termination function
+;-------------
+;uc_link
+;-------------
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">setcontext(...)</code> actually switches to the other context.</p>
+
+<p><a href="https://github.com/Maknee/PennOS-hardware-wrapper/blob/master/ucontext_stub.asm#L107">Source</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>global setcontext
+setcontext:
+
+	...
+
+	;push return address context's eip
+	mov ecx, [eax + ucontext_t.eip]
+	push ecx
+	
+	mov ecx, [eax + ucontext_t.cs]
+	;mov cs, cx ;doing so results in a general protection fault?
+	
+	;restore eflags
+	mov ecx, [eax + ucontext_t.eflags]
+	push ecx
+	popf
+	
+	;eax not preserved
+	;save general purpose registers
+	;mov [eax + ucontext_t.eax], 0
+	mov ebx, [eax + ucontext_t.ebx]
+	mov ecx, [eax + ucontext_t.ecx]
+	mov edx, [eax + ucontext_t.edx]
+	mov edi, [eax + ucontext_t.edi]
+	mov esi, [eax + ucontext_t.esi]
+	mov ebp, [eax + ucontext_t.ebp]
+
+	;return to the ucontext's eip we pushed earlier
+	ret
+</code></pre></div></div>
+
+<p>To summarize again, it restores all the register values and uses a <a href="https://stackoverflow.com/questions/30916768/differences-between-call-pushret-and-pushjump-in-assembly">push ret technique</a> to <code class="language-plaintext highlighter-rouge">push</code> the function address on the stack and then use the <code class="language-plaintext highlighter-rouge">ret</code> to return to the function address, which is pretty neat.</p>
+
+<p>Here is the state of the stack before <code class="language-plaintext highlighter-rouge">ret</code> is called.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>;-------------
+;function to execute (from ucontext's eip, which is set by makecontext)
+;------------- (assume everything down here is set from make context
+;ucontext_termination (return address)
+;-------------
+;parameters to func
+;-------------
+;termination function
+;-------------
+;uc_link
+;-------------
+</code></pre></div></div>
+
+<p>I learned a lot from doing this project on my own and it was pretty cool to see my own application run on a machine by itself! :)</p>
+
+<p><a href="https://github.com/Maknee/PennOS-hardware-wrapper">Github link</a></p>
+
+  </article>
+
+  
+
+</div>
+
+    </div>
+  </div>
+
+  <div class="wrapper">
+  &copy; Copyright 2020 Henry Zhu.
+  Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+
+  
+</div>
+
+  <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+<script src="/assets/js/katex.js"></script>
+
+
+
+<!-- Load Anchor JS -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js"></script>
+<script>
+  anchors.options.visible = 'always';
+  anchors.add('article h2, article h3, article h4, article h5, article h6');
+</script>
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/assets/css/academicons.min.css">
+
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-124405916-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+</body>
+
+</html>

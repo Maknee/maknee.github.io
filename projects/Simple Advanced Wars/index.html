@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Henry Zhu</title>
+  <title>Henry Zhu | Simple Advanced Wars</title>
   <meta name="description" content="Personal website for random stuff
 ">
 
@@ -15,15 +15,15 @@
 " />
   <meta property="og:type" content="object" />
   <meta property="og:title" content="Henry Zhu" />
-  <meta property="og:url" content="/blog/" />
-  <meta property="og:description" content="" />
+  <meta property="og:url" content="/projects/Simple%20Advanced%20Wars/" />
+  <meta property="og:description" content="Simple Advanced Wars" />
   <meta property="og:image" content="" />
   
 
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
 
   <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="canonical" href="/blog/">
+  <link rel="canonical" href="/projects/Simple%20Advanced%20Wars/">
 </head>
 
 <body>
@@ -90,59 +90,86 @@
 
   <div class="page-content">
     <div class="wrapper">
-      <ul class="post-list">
-  
-  <li>
-    <a class="post-title" href="/blog/2019/Running-opengl-under-WSL/">Running opengl under WSL</a>
-    <p class="post-meta">July 21, 2019 — 02:01</p>
-    <p>Running opengl under WSL</p>
-  </li>
-  
-  <li>
-    <a class="post-title" href="/blog/2019/Practical-Reverse-Engineering-Sample-D/">Practical Reverse Engineering Sample D</a>
-    <p class="post-meta">February 27, 2019 — 19:00</p>
-    <p>Reverse Engineering Sample D</p>
-  </li>
-  
-  <li>
-    <a class="post-title" href="/blog/2018/RTX-DXR-Path-Tracer-HLSL/">DXR-RTX Path Tracer Project HLSL Shader Code</a>
-    <p class="post-meta">December 8, 2018 — 01:01</p>
-    <p>DXR-RTX Path Tracer Project HLSL Shader Code</p>
-  </li>
-  
-  <li>
-    <a class="post-title" href="/blog/2018/RTX-DXR-Path-Tracer-Host/">DXR-RTX Path Tracer Project Host Code</a>
-    <p class="post-meta">December 7, 2018 — 07:32</p>
-    <p>DXR-RTX Path Tracer Project Host Code</p>
-  </li>
-  
-  <li>
-    <a class="post-title" href="/blog/2018/RTX-DXR-Path-Tracer/">DXR-RTX Path Tracer Project Introduction</a>
-    <p class="post-meta">December 6, 2018 — 07:32</p>
-    <p>DXR-RTX Path Tracer Project</p>
-  </li>
-  
-  <li>
-    <a class="post-title" href="/blog/2018/RTX-DXR-Path-Tracer-User-Guide/">DXR-RTX Path Tracer Project User Guide</a>
-    <p class="post-meta">December 6, 2018 — 07:32</p>
-    <p>DXR-RTX Path Tracer Project User Guide</p>
-  </li>
-  
-  <li>
-    <a class="post-title" href="/blog/2018/Object-Oriented-C-Library-Introduction/">Object Oriented C Library - Introduction</a>
-    <p class="post-meta">August 17, 2018 — 08:32</p>
-    <p>Object Oriented C Library</p>
-  </li>
-  
-  <li>
-    <a class="post-title" href="/blog/2018/Reverse-engineering-an-Android-Game-Analysis/">Reverse engineering an Android Game - Analysis</a>
-    <p class="post-meta">August 5, 2018 — 08:32</p>
-    <p>Taking a look at android game's internals</p>
-  </li>
-  
-</ul>
+      <div class="post">
 
+  <header class="post-header">
+    <h1 class="post-title">Simple Advanced Wars</h1>
+    <p class="post-meta">March 15, 2020</p>
+  </header>
 
+  <article class="post-content">
+    <center>
+    <p>
+        <center>
+            <img src="/assets/images/projects/Simple Advanced Wars/thumbnail.jpg" width="100% 50% " alt="" />
+        </center>
+        
+    </p>
+</center>
+
+<p>Advanced wars was a game that brings back memories of childhood. It is a turned-based war game boy advance game where the objective is to capture another player’s headquarters.</p>
+
+<p>Here is some gameplay if you have never seen the game before:</p>
+
+<center>
+    <iframe width="600" height="400" src="https://www.youtube.com/embed/gj07BISWs0U" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="">
+    </iframe>
+</center>
+
+<h2 id="what-i-did">What I did</h2>
+
+<p>So, I took it on myself to write a basic copy of game in one week, which was an incredible learning experience (First big java project!)</p>
+
+<p>Also, the clone is written in pure java using java swing.</p>
+
+<p>There were some parts I had to figure out since this was pure java (no external libraries). Rendering was basically layering images on top of each other. I don’t even talk about how I managed to get basic movement animations/ranged attack missles to work.</p>
+
+<p>Some screen shots:</p>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/projects/Simple Advanced Wars/Example.png" width="100% 50% " alt="" />
+        </center>
+        
+    </p>
+</center>
+<p>Selecting a location for an unit to move to</p>
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/projects/Simple Advanced Wars/Movement.png" width="100% 50% " alt="" />
+        </center>
+        
+    </p>
+</center>
+<p>Purchasing an unit</p>
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/projects/Simple Advanced Wars/Purchase.png" width="100% 50% " alt="" />
+        </center>
+        
+    </p>
+</center>
+
+<h2 id="compiling--running">Compiling / Running</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd SimpleAdvancedWarsJava
+cd src
+mv ../*.png .
+mv ../LeaderBoard.txt .
+javac *.java
+java Game
+</code></pre></div></div>
+
+<p><a href="https://github.com/Maknee/SimpleAdvancedWarsJava">Github link</a></p>
+
+  </article>
+
+  
+
+</div>
 
     </div>
   </div>
