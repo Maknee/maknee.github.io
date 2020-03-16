@@ -7,8 +7,7 @@ description:
 profile:
   align: right
   image: profile_pic.jpg
-  address: >
-    <p>Me!</p>
+  address:
 
 news: true
 social: true
