@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Henry Zhu | Running opengl under WSL</title>
+  <meta name="description" content="Personal website for random stuff
+">
+
+  
+  <meta property="og:site_name" content="Personal website for random stuff
+" />
+  <meta property="og:type" content="object" />
+  <meta property="og:title" content="Henry Zhu" />
+  <meta property="og:url" content="/blog/2019/Running-opengl-under-WSL/" />
+  <meta property="og:description" content="Running opengl under WSL" />
+  <meta property="og:image" content="" />
+  
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="/blog/2019/Running-opengl-under-WSL/">
+</head>
+
+<body>
+
+  <header class="site-header">
+
+  <div class="wrapper">
+
+    
+    <span class="site-title">
+      
+      <strong>Henry</strong> Zhu
+    </span>
+    
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" />
+            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" />
+            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger">
+        <!-- Blog -->
+        <a class="page-link" href="/blog/">blog</a>
+
+        <!-- Pages -->
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="page-link" href="/projects/">projects</a>
+        
+        
+        
+        <a class="page-link" href="/publications/">publications</a>
+        
+        
+        
+        
+
+        <!-- About -->
+        <a class="page-link" href="/">about</a>
+
+        <!-- CV link -->
+        <!-- <a class="page-link" href="/assets/pdf/CV.pdf">vitae</a> -->
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+  <div class="page-content">
+    <div class="wrapper">
+      <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Running opengl under WSL</h1>
+    <p class="post-meta">July 21, 2019</p>
+  </header>
+
+  <article class="post-content">
+    <center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2019-07-21/icon.png" width="100% 50% " alt="" />
+        </center>
+        
+    </p>
+</center>
+
+<h2 id="opengl-and-wsl">Opengl and WSL</h2>
+
+<p>There is little information about opengl under wsl. The first post that comes up on google with a blog states that opengl doesn’t function under WSL and he gave up.</p>
+
+<p>https://bowenzhai.ca/2018/04/15/OpenGL-Development-on-WSL-From-Setting-Up-to-Giving-Up-And-What-I-Learned/</p>
+
+<p>A response from the WSL repo states that it may/may not work</p>
+
+<p>https://github.com/microsoft/WSL/issues/2855</p>
+
+<p>However, advanced opengl apps can definitely run under WSL!</p>
+
+<h1 id="demo">Demo</h1>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2019-07-21/running.gif" width="100% 50% " alt="" />
+        </center>
+        
+    </p>
+</center>
+
+<p>The demo can be found <a href="https://github.com/Maknee/OpenglUnderWSL">here</a></p>
+
+<h2 id="setup">Setup</h2>
+
+<p><a href="https://github.com/Maknee/OpenglUnderWSL">The demo includes scripts for installing the following</a></p>
+
+<p>Some dependencies to install</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt install mesa-utils
+
+sudo apt-get install x11-apps
+
+sudo apt install clang
+
+sudo apt-get install libglfw3
+
+sudo apt-get install libglfw3-dev
+</code></pre></div></div>
+
+<p>On the desktop, install <a href="https://mobaxterm.mobatek.net/download-home-edition.html">MobaXterm</a>, which has a X server for displaying graphics from WSL</p>
+
+<h2 id="test">Test</h2>
+
+<p>Run the following to see if it works:</p>
+
+<p><code class="language-plaintext highlighter-rouge">export DISPLAY=:0</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">xeyes</code></p>
+
+<p>Now compile your program with the flags</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-lX11 -lGL `pkg-config --static --libs glfw3`
+</code></pre></div></div>
+
+<p>In your opengl code, DO NOT INITIALIZE THE CORE! Comment it out</p>
+
+<p><code class="language-plaintext highlighter-rouge">//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</code></p>
+
+<p>Now run your program including the environment variable to tell opengl to run with 3.3
+<code class="language-plaintext highlighter-rouge">MESA_GL_VERSION_OVERRIDE=3.3</code></p>
+
+<p>For example,
+<code class="language-plaintext highlighter-rouge">MESA_GL_VERSION_OVERRIDE=3.3 ./test_program</code></p>
+
+<p>Now you can run opengl applications under WSL! :)</p>
+
+<p>Let me know if this works for you / or you encounter problems!</p>
+
+  </article>
+
+  
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'https-maknee-github-io';
+    var disqus_identifier = '/blog/2019/Running opengl under WSL';
+    var disqus_title = "Running opengl under WSL";
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+
+</div>
+    </div>
+  </div>
+
+  <div class="wrapper">
+  &copy; Copyright 2021 Henry Zhu.
+  
+  
+</div>
+
+  <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+<script src="/assets/js/katex.js"></script>
+
+
+
+<!-- Load Anchor JS -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js"></script>
+<script>
+  anchors.options.visible = 'always';
+  anchors.add('article h2, article h3, article h4, article h5, article h6');
+</script>
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/assets/css/academicons.min.css">
+
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-124405916-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+</body>
+
+</html>
