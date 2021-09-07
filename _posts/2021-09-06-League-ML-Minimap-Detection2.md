@@ -177,7 +177,7 @@ What do you mean generate your own data? You need people playing a game, right?
 
 A trick I came up with is to simply generate a possible image of the minimap that mimics a real scenario as close as possible.
 
-{% include image.html path="/assets/images/posts/2021-09-06/generation_demo.gif" width="100%" text="Question ping"%}
+{% include image.html path="/assets/images/posts/2021-09-06/generation_demo.gif" width="100%" text="Minimap generation"%}
 
 At first glance, it may seem like a image of a mininmap from a real game, but upon closer inspection, one can see that champions are out of place, some lane minion locations does not make sense and pings are oddly placed.
 
