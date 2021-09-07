@@ -1,0 +1,16 @@
+<center>
+    <p>
+        <center>
+            <img src="{{ include.path }}" width="{{% if include.width %}}{{ include.width }}{{% else %}} 50% {{% endif %}}" alt>
+        </center>
+        {% if include.text %}
+        <center>
+            <em>{{ include.text }}
+                {% if include.url_source %}
+                (Image source: <a href="{{ include.url_source }}">{{ include.url_text}}</a>)
+                {% endif %}
+            </em>
+        </center>
+        {% endif %}
+    </p>
+</center>

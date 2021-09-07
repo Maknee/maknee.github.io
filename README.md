@@ -1,6 +1,6 @@
 # Personal website
 
-Uses template from ![https://github.com/alshedivat/al-folio]
+Uses template from ![https://github.com/alshedivat/al-folio]. Credits.
 
 Not exactly the same -- uses a modification
 
