@@ -5,6 +5,7 @@ date:       2018-08-17 12:32:18
 summary:    Object Oriented C Library
 categories: C
 thumbnail:  "/assets/images/posts/2018-08-17/thumbnail.jpg"
+comments:   true
 tags:
  - C
  - C++

@@ -5,6 +5,7 @@ date:       2019-07-21 06:01:00
 summary:    Running opengl under WSL
 categories: Opengl
 thumbnail:  "/assets/images/posts/2019-07-21/icon.png"
+comments:   true
 tags:
  - C++
  - Opengl

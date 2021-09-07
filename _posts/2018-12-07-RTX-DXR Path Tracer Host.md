@@ -5,6 +5,7 @@ date:       2018-12-07 12:32:18
 summary:    DXR-RTX Path Tracer Project Host Code
 categories: DXR
 thumbnail:  "/assets/images/posts/2018-12-07/thumbnail.jpg"
+comments:   true
 tags:
  - C++
  - RTX

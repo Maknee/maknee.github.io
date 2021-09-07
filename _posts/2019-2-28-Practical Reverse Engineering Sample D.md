@@ -5,6 +5,7 @@ date:       2019-02-28 00:00:01
 summary:    Reverse Engineering Sample D
 categories: reverse-engineering
 thumbnail:  "/assets/images/posts/PracticalReverseEngineering/Samples/D/front.jpg"
+comments:   true
 tags:
  - windows
  - reverse-engineering

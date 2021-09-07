@@ -74,10 +74,12 @@ $theme-color:       $purple;
 $code-color:        $dark-gray;
 $text-color:        $mid-gray;
 $background-color:  white;
+$crimson-color:     #e0491f;
+$crimson-color-light: #f9493f;
 
 // Links
-$link-color:        $theme-color;
-$link-hover-color:  darken($theme-color, 40%);
+$link-color:        $crimson-color;
+$link-hover-color:  darken($link-color, 40%);
 
 // Breakpoints
 $breakpoint-md: '(min-width: 52em)';

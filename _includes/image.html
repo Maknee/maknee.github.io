@@ -5,7 +5,11 @@
         </center>
         {% if include.text %}
         <center>
-            <font size=" -1"><em>{{ include.text }}</em></font>
+            <em>{{ include.text }}
+                {% if include.url_source %}
+                (Image source: <a href="{{ include.url_source }}">{{ include.url_text}}</a>)
+                {% endif %}
+            </em>
         </center>
         {% endif %}
     </p>

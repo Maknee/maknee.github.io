@@ -5,6 +5,7 @@ date:       2018-12-08 06:01:00
 summary:    DXR-RTX Path Tracer Project HLSL Shader Code
 categories: DXR
 thumbnail:  "/assets/images/posts/2018-12-08/thumbnail.jpg"
+comments:   true
 tags:
  - C++
  - RTX

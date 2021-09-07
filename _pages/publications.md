@@ -4,7 +4,7 @@ permalink: /publications/
 title: publications
 title2: Publications
 description: Publications I've worked on!
-years: [2019, 2018]
+years: [2021, 2020, 2019, 2018]
 ---
 
 {% for y in page.years %}
