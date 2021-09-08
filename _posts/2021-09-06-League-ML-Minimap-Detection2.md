@@ -42,6 +42,10 @@ Two key components are necessary to train the machine learning model, which will
 1. Image of minimap
 2. Positions of the champions on the minimap
 
+## Abstract
+
+This blog explores existing/current work related to minimap champion detection. Prior attempts fail, being built off of limited and biased data. I will show you in this blog how to build a simpler model trained on easy-to-obtain data that outperforms the existing work by overcoming data limitations. An extensive evaluation is done to show that my method is much more robust over existing work with the ability to detect all champions.
+
 ## Related Work
 
 There has been previous work that attempted to solve the problem of detecting champions on the minimap.
@@ -217,7 +221,9 @@ Since the generator operates independently, the generator can be replicated many
 
 ### Model
 
-There are many models that can be used for object detection. Some of the more popular architectures currently include [YOLOv3](https://pjreddie.com/media/files/papers/YOLOv3.pdf) and [Faster R-CNN](https://arxiv.org/abs/1506.01497). Let's keep things simple. I will use the [Faster R-CNN ResNet50](https://pytorch.org/docs/stable/torchvision/models.html#faster-r-cnn) model used in the [pytorch object detection finetuning tutorial from official pytorch website](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html). However, in this case, there are slight changes; the model will not be fine-tuned and trained from scratch.
+There are many models that can be used for object detection. Some of the more popular architectures currently include [YOLOv3](https://pjreddie.com/media/files/papers/YOLOv3.pdf) and [Faster R-CNN](https://arxiv.org/abs/1506.01497).
+
+Let's keep things simple. I will use the [Faster R-CNN ResNet50](https://pytorch.org/docs/stable/torchvision/models.html#faster-r-cnn) model used in the [pytorch object detection finetuning tutorial from official pytorch website](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html). However, in this case, there are slight changes; the model will not be fine-tuned, but trained from scratch.
 
 In [1 - Finetuning from a pretrained model](https://pytorch.org/tutorials/intermediate/torchvision_tutorial.html#finetuning-from-a-pretrained-model), modifications are made to train the model from scratch and detect the correct number of classes.
 
@@ -569,7 +575,7 @@ Graphs and numbers are great on their own, but a comparison would greatly benefi
 
 Therefore, I am going to use [Farza's object detector](https://github.com/farzaa/DeepLeague) as a comparison. I would compare [Pandascore's object detector](https://medium.com/pandascore-stories/league-of-legends-getting-champion-coordinates-from-the-minimap-using-deep-learning-48a49d35bb74) as well, but the company has not released their work to the public. 
 
-I will perform the same evaluation techniques to his object detector and analyze how both object detectors compare. Farza feeds in `295x295` pixel images, which get rescaled to `416x416` pixels. My images are `256x256` pixels in size and are rescaled as well. Do note that some champion images have changed such as Fiddlesticks <img src="/assets/images/posts/2021-09-06/fiddlesticks.png" width="30"> or have been introduced such as Sett <img src="/assets/images/posts/2021-09-06/sett.png" width="30"> since Farza's release, so I have only considered the champions he has included in his [dataset](https://github.com/farzaa/DeepLeague/blob/master/YAD2K/model_data/league_classes.txt) (56 champions) when detecting champions in my images. Thus, the total champions his detector should be able detect is `602` in my dataset. Here is the [modified version of DeepLeague that does the evaluation](https://github.com/Maknee/DeepLeague).
+I will perform the same evaluation techniques to his object detector and analyze how both object detectors compare. Farza feeds in `295x295` pixel images, which get rescaled to `416x416` pixels. My images are `256x256` pixels in size and are rescaled as well. Do note that some champion images have changed such as Fiddlesticks <img src="/assets/images/posts/2021-09-06/fiddlesticks.png" width="30"> or have been introduced such as Sett <img src="/assets/images/posts/2021-09-06/sett.png" width="30"> since Farza's release, so I have only considered the champions he has included in his [dataset](https://github.com/farzaa/DeepLeague/blob/master/YAD2K/model_data/league_classes.txt) (56 champions) when detecting champions in my images. Here is the [modified version of DeepLeague that does the evaluation](https://github.com/Maknee/DeepLeague).
 
 <div style="display: flex; text-align: center">
     <div class="flex: 50.00%; padding: 5px;">
@@ -838,13 +844,21 @@ In some cases, there can be assumptions made to detect the actual champions in t
 
 This was primarly a learning experience for myself; The goal was not meant to be a perfect end-to-end solution. There are definitely other better ways to handle problem like the previous post with computer vision techniques (using way less resources, which is incredibly important in running the program alongside a live game). 
 
+#### Why use Faster R-CNN ResNet50 when you can use something less complex?
+
+Yup. This is a huge model. Why use it? Cause it was part of the torchvision tutorial and was exteremely easy to modify to get working. Could definitely use something way less complex as a model. For example, [yolo](https://github.com/ultralytics/yolov5) :)
+
+#### Where is the evaluation on FPS?
+
+Approximately around 20-30 FPS on my machine (4 cores, 2060) playing a game in real time. Quite important factor I left out. I could have dove deep into this and plotted some nice graph comparisons, but this blog is already long as it is. A suggestion for higher frames is to slowdown the footage or replay (0.5x). If you're looking to run ingame, I suggest you change the model (as I stated above). 
+
 #### League-X Evaluation
 
 There is no comparison with League-X because the evaluation framework cannot be easily adapted to League-X and I do not want to put more effort into evaluations anymore (I found League-X after I had written the entire post already). It does have some of the issues like the other projects where not all champions are in the dataset and in particular, a very limited training set for champions, so the results should be somewhat similar to the evaluation of DeepLeague.
 
 #### Source
 
-Will publish in some unknown time. Have to fix my really messy code and organize it in some readable manner (feel free to ping me if you **REALLY** want to see it, have to dig it up and may be outdated for current versions)
+The source is published [here](https://github.com/Maknee/LeagueMinimapDetectionCNN)
 
 #### End
 
