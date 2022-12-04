@@ -60,10 +60,12 @@ There are quite a few machine learning projects that have been done with League 
 {% include image.html path="https://miro.medium.com/max/1280/1*2JoRTb2sr-2xz1FYM20iAg.gif" width="100%" text="Detecting champions on the minimap" url_source="https://medium.com/@farzatv/deepleague-leveraging-computer-vision-and-deep-learning-on-the-league-of-legends-mini-map-giving-d275fd17c4e0" url_text="Medium" %}
 
 * [Voice Assistant](https://gosu.ai/platform/league-of-legends) that recommends players with advice to improve their gameplay
-{% include youtube.html id="QGVL7Cp388E" %}
+
+<iframe width="800" height="600" src="https://www.youtube.com/embed/QGVL7Cp388E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 * [LeagueAI](https://arxiv.org/pdf/1905.13546.pdf) is a basic AI that performs basic actions by determining the state of the game via image detection
-{% include youtube.html id="iB4PoNJuXzc" %}
+
+<iframe width="800" height="600" src="https://www.youtube.com/embed/iB4PoNJuXzc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Moving forward
 
