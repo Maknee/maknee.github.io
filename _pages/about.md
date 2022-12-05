@@ -13,9 +13,7 @@ news: true
 social: true
 ---
 
-Hi there! I graduated from college with a computer science degree. 
-
-My current research deals with a combination of compartmentalization, tracing, and code transformation.
+Hi there! I graduated from college with a computer science degree and now I'm a 1st year PhD at UIUC working under [Tianyin Xu](https://tianyin.github.io/) and making systems more reliable. 
 
 I like to tinker with other low-level systems like-stuff such as clang/llvm, reverse-engineering and computer graphics.
 

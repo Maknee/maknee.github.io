@@ -50,3 +50,28 @@
     display: block;
     font-size: 42px;
 }
+
+.toc__list:before {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+   
+.toc_detail {
+    margin: 0 2px 40px;
+    border: 1px solid rgb(238, 238, 238);
+    background: rgb(245, 245, 245);
+    border-radius: 8px;
+    padding: 0.4em;
+    font-size: 15px;
+}
+
+.toc__sublist li {
+}
+   
+.toc-h2:first-child {
+}  
+   
+#toc a {
+    color: #2d2b2b;
+    text-decoration: underline;
+}

@@ -3,6 +3,17 @@
 
 @string{aps = {,}}
 
+@inproceedings{sultana2022pitchfork,
+  title={Towards Practical Application-level Support for Privilege Separation}, 
+  author={Sultana, Nik and Zhu, Henry and Zhong, Ke and Zheng, Zhilei and Mao, Ruijie and Chauhan, Digvijaysinh and Carrasquillo, Stephen and Mao, Ruijie and Zhao, Junyong and Shi, Lei and Vasilakis, Nikos and Loo, Boon Thau},
+  booktitle={2022 Annual Computer Security Applications Conference (ACSAC)}, 
+  year={2022},
+  volume={},
+  number={},
+  abstract={Privilege separation (privsep) is an effective technique for improving software’s security through the compartmentalization of code, data, and dependencies in which we have limited trust. Applying privsep involves separating software components from each other and assigning them different privileges. This often involves ad hoc, laborious and error-prone restructuring of software into concurrent processes. This effort hinders the application of privsep},
+  paper={http://www.cs.iit.edu/~nsultana1/files/pitchfork_CR_draft.pdf},
+}
+
 @inproceedings{9150309,
   title={Debugging strongly-compartmentalized distributed systems}, 
   author={Zhu, Henry and Sultana, Nik and Loo, Boon Thau},
@@ -12,43 +23,26 @@
   number={},
   pages={538-547},
   abstract={Splitting software into distributed compartments is an important software security technique that limits the effect of vulnerabilities. Unfortunately the resulting systems are difficult to analyze or debug interactively when compared to the original. Not only are compartments distributed and executed in parallel, but they may also be strongly isolated by being sandboxed or run in minimal environments that lack debugging facilities.This paper is the first to study practical debugging techniques for strongly-isolated distributed compartments. We adapt ideas from other remote or distributed debugging settings to this domain, and implement and describe two radically different approaches to this problem. We evaluate these approaches both qualitatively and quantitatively, and using both toy examples and real-world open-source software. Our main finding is that out of the two approaches, using GDB remote stubs presents a good balance of performance, flexibility and usability, and we characterize this more precisely in our evaluation},
-  paper={/assets/pdf/2020_compart_debug.pdf},
-  presentation={https://youtu.be/16_bMEAJLwI},
-}
-
-@inproceedings{junyong,
-  title={A Case Study of Fine-Grained Software Compartmentalization using cURL},
-  author={Junyong Zhao and Henry Zhu and Nik Sultana and Boon Thau Loo},
-  booktitle={Annual Computer Security Applications Conference (ACSAC Posters)},
-  year={2020},
-  poster={2020_usability_of_debugger.pdf},
-}
-
-@inproceedings{steven,
-  title={A Case Study of Fine-Grained Software Compartmentalization using cURL},
-  author={Stephen Carrasquillo and Junyong Zhao and Henry Zhu and Nik Sultana and Boon Thau Loo},
-  booktitle={Annual Computer Security Applications Conference (ACSAC Posters)},
-  year={2020},
-  poster={2020_fine_grained_compartmentialization.pdf},
+  paper={https://www.seas.upenn.edu/~nsultana/files/compart_debug.pdf},
 }
 
 @inproceedings{sultana2019trace,
   title={Trace-based Behaviour Analysis of Network Servers},
   author={Sultana, Nik and Rao, Achala and Jin, Zihao and Pashakhanloo, Pardis and Zhu, Henry and Yegneswaran, Vinod and Loo, Boon Thau},
-  booktitle={15th International Conference on Network and Service Management (CNSM)},
+  booktitle={2019 15th International Conference on Network and Service Management (CNSM)},
   pages={1--5},
   year={2019},
   organization={IEEE},
   abstract={Analysing software and networks can be done using established tools, such as debuggers and packet analysers, but using established tools to analyse network software is difficult and impractical because of the sheer detail the tools present and the performance overheads they typically impose. This makes it difficult to precisely diagnose performance anomalies in network software to identify their causes (is it a DoS attack or a bug?) and determine what needs to be fixed.We present Flowdar: a practical tool for analysing software traces to produce intuitive summaries of network software behaviour by abstracting unimportant details and demultiplexing traces into different sessions’ subtraces. Flowdar can use existing state-of-the-art tracing tools for lower overhead during trace gathering for offline analysis. Using Flowdar we can drill down when diagnosing performance anomalies without getting overwhelmed  in detail or burdening the system being observed. We show that Flowdar can be applied to existing real-world software and can digest complex behaviour into an intuitive visualisation.},
-  paper={/assets/pdf/2019_flowdar.pdf},
+  paper={https://www.seas.upenn.edu/%7Ensultana/files/flowdar_cnsm19.pdf},
 }
 
 @inproceedings{sultana2018making,
   title={Making Break-ups Less Painful: Source-level Support for Transforming Legacy Software into a Network of Tasks},
   author={Sultana, Nik and Rao, Achala and Jin, Zihao and Pashakhanloo, Pardis and Zhu, Henry and Zhong, Ke and Loo, Boon Thau},
-  booktitle={Proceedings of the 2018 Workshop on Forming an Ecosystem Around Software Transformation (FEAST)},
+  booktitle={Proceedings of the 2018 Workshop on Forming an Ecosystem Around Software Transformation},
   pages={14--19},
   year={2018},
   abstract={"Breaking up" software into a dataflow network of tasks can improve availability and performance by exploiting the flexibility of the resulting graph, more granular resource use, hardware concurrency and modern interconnects. Decomposing legacy systems in this manner is difficult and ad hoc however, raising such challenges as weaker consistency and potential data races. Thus it is difficult to build on battle-tested legacy systems. We propose a paradigm and supporting tools for developers to recognize task-level modularity opportunities in software. We use the Apache web server as an example of legacy software to test our ideas. This is a stepping stone towards realizing a vision where automated decision-support tools assist in the decomposition of systems to improve the reuse of components, meet performance targets or exploit new hardware devices and topologies.},
-  paper={/assets/pdf/2018_chopflow.pdf},
+  paper={https://www.seas.upenn.edu/%7Ensultana/files/feast.pdf},
 }
