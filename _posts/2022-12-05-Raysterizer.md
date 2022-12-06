@@ -13,7 +13,7 @@ tags:
  - C++
 ---
 
-{% include image.html path="/assets/images/posts/2022-12-05/icon.png" width="100%" %}
+{% include image.html path="/assets/images/posts/2022-12-05/example_dolphin.gif" %}
 
 <!--
 ### Updates
