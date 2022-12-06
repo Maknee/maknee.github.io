@@ -477,6 +477,17 @@ There's a lot of things I have in mind for future work
     - As for source code generation from these libraries (a lot of times, the code is compiled to a graphic specific assembly such as [DXBC](http://timjones.io/blog/archive/2015/09/02/parsing-direct3d-shader-bytecode), internal assembly for directx), there's some tools to lift to spirv. For example, [this tool converts dxbc to dxil](https://github.com/Nukem9/Dxbc2Dxil) and then [this tool can convert dxil to spriv](https://github.com/HansKristian-Work/dxil-spirv)
     - Obviously, the source code won't be perfect, but at least it's a start
 
+## Addressing RTX Remix
+
+Recently, [RTX Remix](https://www.nvidia.com/en-us/geforce/rtx-remix/) has been in development. It's very similar to Raysterizer in many regards, and very different in other categories:
+
+- It's closed sourced
+- Focused on DirectX (Only dx8/9, no dx10/11)[https://www.reddit.com/r/nvidia/comments/yauy67/rtx_remix_qa_with_nvidia/]
+- Focused really only for modders (... offers little customizability since it's closed sourced)
+- Not released yet, so I'm not so sure how performant and good it actually is.
+
+I've been working on Raysterizer on my own, so there's a lot of niceness (UI, ease of use) lacking compared to Remix.
+
 ## End
 
 Thanks for reading this post. As always, feel free to reach out to me on twitter or comment below if you have any questions! 
