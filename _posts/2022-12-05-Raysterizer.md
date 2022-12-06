@@ -13,7 +13,7 @@ tags:
  - C++
 ---
 
-{% include image.html path="/assets/images/posts/2022-12-05/example_dolphin.gif" %}
+{% include image.html path="/assets/images/posts/2022-12-05/example_dolphin.gif" width="100%" %}
 
 <!--
 ### Updates
@@ -482,7 +482,7 @@ There's a lot of things I have in mind for future work
 Recently, [RTX Remix](https://www.nvidia.com/en-us/geforce/rtx-remix/) has been in development. It's very similar to Raysterizer in many regards, and very different in other categories:
 
 - It's closed sourced
-- Focused on DirectX (Only dx8/9, no dx10/11)[https://www.reddit.com/r/nvidia/comments/yauy67/rtx_remix_qa_with_nvidia/]
+- Focused on DirectX [Only dx8/9, no dx10/11](https://www.reddit.com/r/nvidia/comments/yauy67/rtx_remix_qa_with_nvidia/)
 - Focused really only for modders (... offers little customizability since it's closed sourced)
 - Not released yet, so I'm not so sure how performant and good it actually is.
 
