@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Henry Zhu | Raysterizer</title>
+  <meta name="description" content="Personal website for random stuff
+">
+
+  
+  <meta property="og:site_name" content="Personal website for random stuff
+" />
+  <meta property="og:type" content="object" />
+  <meta property="og:title" content="Henry Zhu" />
+  <meta property="og:url" content="/blog/2022/Raysterizer/" />
+  <meta property="og:description" content="Raysterizer" />
+  <meta property="og:image" content="" />
+  
+
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="/blog/2022/Raysterizer/">
+</head>
+
+<body>
+
+  <header class="site-header">
+
+  <div class="wrapper">
+
+    
+    <span class="site-title">
+      
+      <strong>Henry</strong> Zhu
+    </span>
+    
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" />
+            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" />
+            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" />
+          </svg>
+        </span>
+      </label>
+
+      <div class="trigger">
+        <!-- Blog -->
+        <a class="page-link" href="/blog/">blog</a>
+
+        <!-- Pages -->
+        
+        
+        
+        
+        
+        
+        
+        
+        <a class="page-link" href="/projects/">projects</a>
+        
+        
+        
+        <a class="page-link" href="/publications/">publications</a>
+        
+        
+        
+        
+
+        <!-- About -->
+        <a class="page-link" href="/">about</a>
+
+        <!-- CV link -->
+        <!-- <a class="page-link" href="/assets/pdf/CV.pdf">vitae</a> -->
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+  <div class="page-content">
+    <div class="wrapper">
+      <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Raysterizer</h1>
+    <p class="post-meta">December 4, 2022</p>
+  </header>
+
+  <article class="post-content">
+      <details class="toc_detail">
+      <summary>Table of contents</summary>
+        <ul id="toc" class="toc__list">
+<li class="toc-entry toc-h2"><a href="#demo-video">Demo video</a></li>
+<li class="toc-entry toc-h2"><a href="#what-is-raysterizer">What is Raysterizer?</a>
+<ul class="toc__sublist">
+<li class="toc-entry toc-h3"><a href="#background">Background</a></li>
+<li class="toc-entry toc-h3"><a href="#motivation">Motivation</a></li>
+<li class="toc-entry toc-h3"><a href="#introducing-raysterizer">Introducing Raysterizer</a></li>
+<li class="toc-entry toc-h3"><a href="#features">Features</a></li>
+<li class="toc-entry toc-h3"><a href="#problems">Problems</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#so-how-does-it-work">So…, how does it work?</a></li>
+<li class="toc-entry toc-h2"><a href="#the-devil-is-in-the-details">The devil is in the details</a>
+<ul class="toc__sublist">
+<li class="toc-entry toc-h3"><a href="#redirecting-opengl">Redirecting OpenGL</a></li>
+<li class="toc-entry toc-h3"><a href="#translating-opengl-and-maintaining-state">Translating OpenGL and Maintaining State</a></li>
+<li class="toc-entry toc-h3"><a href="#analysis">Analysis</a></li>
+<li class="toc-entry toc-h3"><a href="#vulkan-ray-tracing">Vulkan Ray Tracing</a></li>
+<li class="toc-entry toc-h3"><a href="#renderer">Renderer</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#source-code">Source code</a></li>
+<li class="toc-entry toc-h2"><a href="#future-work">Future work</a>
+<ul class="toc__sublist">
+<li class="toc-entry toc-h3"><a href="#really-into-the-future">Really into the future</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#addressing-rtx-remix">Addressing RTX Remix</a></li>
+<li class="toc-entry toc-h2"><a href="#end">End</a></li>
+</ul>
+    </details>
+    <center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/example_dolphin.gif" width="100% 50% " alt="" />
+        </center>
+        
+    </p>
+</center>
+
+<!--
+### Updates
+
+- <span style="color:DeepSkyBlue">**This was made back in March 2020 right as COVID hit. After over a year of forgetting to upload this post, I finally uploaded.**</span>
+- <span style="color:DeepSkyBlue">**[2021-09-06]: Added section under [Related Work](#related-work) on [League-X](#league-x) and [League-X Evaluation](#league-x-evaluation).**</span>
+-->
+
+<h2 id="demo-video">Demo video</h2>
+
+<center>
+    <iframe width="600" height="400" src="https://www.youtube.com/embed/iuHRDvmhX9Y" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="">
+    </iframe>
+</center>
+
+<h2 id="what-is-raysterizer">What is Raysterizer?</h2>
+
+<p>Raysterizer (Ray-ster-izer) is a framework that transforms existing real-time graphical applications using rasterization to use ray tracing instead. Think of this as a way to improve the graphics quality of existing programs with new methods for rendering.</p>
+
+<ul>
+  <li>The project name is a play on words combining the terms ray tracing and rasterization.</li>
+</ul>
+
+<h3 id="background">Background</h3>
+
+<p>Over the last few years, a lot of has change in landscape of graphics, especially hardware. Many companies such as NVIDIA, AMD, and Intel have invested in creating hardware that performs ray tracing in real-time. In the past, <a href="https://en.wikipedia.org/wiki/Rasterisation">rasterization</a> was the choice for rendering as it could be done in real-time, but <a href="https://en.wikipedia.org/wiki/Ray_tracing_(graphics)">ray tracing</a> was far slower, but in general, more graphically appealing.</p>
+
+<ul>
+  <li>For readers with less knowledge about rasterization and ray tracing, this video by NVIDIA is a great way to get an overview.</li>
+</ul>
+
+<center>
+    <iframe width="600" height="400" src="https://www.youtube.com/embed/ynCxnR1i0QY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="">
+    </iframe>
+</center>
+
+<ul>
+  <li>And also take a look at <a href="https://blog.imaginationtech.com/hybrid-rendering-for-real-time-lighting/">this blog post by Imagination</a>.</li>
+</ul>
+
+<h3 id="motivation">Motivation</h3>
+
+<p>Although the hardware is there, software libraries and applications have been taking a very long time to support and use the hardware. Many games supporting the ray tracing are developed with ray tracing in mind from the ground up. Such examples are <a href="https://www.nvidia.com/en-us/geforce/campaigns/quake-II-rtx/">Quake II RTX</a>, <a href="https://www.youtube.com/watch?v=Kic-QDmS_Yw">Control</a> and <a href="https://www.youtube.com/watch?v=91kxRGeg9wQ">Minecraft RTX</a>.</p>
+
+<p>But… what if we could leverage existing applications (in particular, games) and make them way more beautiful with ray tracing? If so, we could play games dating a decade ago or more in a new refreshing way (much like many remasters such as <a href="https://www.youtube.com/watch?v=KfjG9ZLGBHE">Dark Souls: Remastered</a>, <a href="https://www.youtube.com/watch?v=SI16qkJtm0U">The Last of Us</a> and <a href="https://www.youtube.com/watch?v=u3wS-Q2KBpk">Resident Evil 2</a>)</p>
+
+<p>Modders could use Raysterizer to easily enhance how a game looks (I’ll discuss the possibilites later in detail).</p>
+
+<p>Graphics programmers can use the tool to run and test their ray tracing shaders on a variety of existing games to see how well the shader performs and looks.</p>
+
+<h3 id="introducing-raysterizer">Introducing Raysterizer</h3>
+
+<p>This is where Raysterizer comes into the scene. Raysterizer takes existing applications rendering using rasterization to use ray tracing instead. In particular, currently, it transforms existing graphics applications using OpenGL fixed rasterization pipe to use Vulkan ray tracing.</p>
+
+<p>For example, Raysterizer can transform popular games/applications such as <a href="https://en.wikipedia.org/wiki/RuneScape">Runescape</a> and <a href="https://dolphin-emu.org/">Dolphin</a>!</p>
+
+<h4 id="examples">Examples</h4>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/example_dolphin.gif" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Different games (mostly dolphin)
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/example_fox.gif" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Melee (running under dolphin)
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/example_runescape.gif" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Old School Runescape (left is original, right is raysterized)
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/example_craft.gif" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Craft (Minecraft clone) (left is original, right is raysterized)
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<h3 id="features">Features</h3>
+
+<p>Raysterizer currently a renderer that has these features:</p>
+
+<ul>
+  <li>ray traced <a href="https://en.wikipedia.org/wiki/Ambient_occlusion">ambient occulusion</a></li>
+  <li>ray traced shadows</li>
+  <li>ray traced reflections</li>
+  <li><a href="https://en.wikipedia.org/wiki/Global_illumination">global illumination</a></li>
+</ul>
+
+<p>Raysterizer can target both open sourced and closed sourced applications. For example, dolphin is open sourced and old school runescape is closed sourced (technically, runelite is open sourced, but we kind of can ignore that…) or Roblox, which is definitely closed sourced.</p>
+
+<p>Raysterizer can target application written in any language since raysterizer interacts with the application at the level of the graphics library. (For example, Old School Runescape is running java)</p>
+
+<p>Raysterizer can run on any graphics card that supports Vulkan ray tracing. This includes Intel, AMD and NVIDIA cards.</p>
+
+<p>You can take any application that uses opengl to render, put the raysterizer files in the same directory and run the application as usual and bam, the application should be using ray tracing instead!</p>
+
+<p>For modders, Raysterizer provides a plethora of information and power to edit how the graphics is shown:</p>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/edit_mesh.gif" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Edit mesh properties
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/edit_lighting.gif" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Edit lighting properties
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/mod_glsl.gif" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>View and edit the original shader code from the application
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/mod_textures.gif" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>View and edit textures
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/edit_shader.gif" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Edit and customize ray tracing shaders
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/nvidia_debug_nsight.gif" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Running NVIDIA NSight Debugger with raysterizer
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<h3 id="problems">Problems</h3>
+
+<p>Raysterizer only works on graphics cards that support hardware ray tracing and only supports windows and OpenGL applications.</p>
+
+<p>It doesn’t work with 32 bit applications (such as <a href="https://en.wikipedia.org/wiki/Amnesia:_The_Dark_Descent">Amnesia: The Dark Descent</a>)</p>
+
+<p>Raysterizer is in a development stage…, expect crashes and many hacky fixes to get a particular application to perform well.</p>
+
+<p>Some examples, I have faced</p>
+<ul>
+  <li>Filtering out certain polygons that are transparent in the original application, but not in the raysterizered version</li>
+  <li>Filtering out some OpenGL features to get Raysterizer to interact correctly</li>
+  <li>Use explicit OpenGL version</li>
+  <li>Search for fields for position, color or normals in source code that cannot be automatically detected (more on this later)</li>
+</ul>
+
+<p>Definitely performance issues can occur on some applications (Do not recommend running raysterizer on something semi-modern with 1M+ polygons)</p>
+
+<p>Oh god, I don’t really even want to talk about figuring out crashes…</p>
+<ul>
+  <li>Can you attach a graphics debugger before the game crashes?</li>
+  <li>Can you figure out which series of graphics call caused it to crash?</li>
+  <li>Is the raysterizer code missing some implementation specific call to some archaic OpenGL graphics call?</li>
+  <li>Did the polygons get transformed correct with the correct model view projection martix?</li>
+  <li>Did the data get copied from CPU to GPU correctly?</li>
+  <li>so on and so forth…</li>
+</ul>
+
+<h2 id="so-how-does-it-work">So…, how does it work?</h2>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/overview1.png" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Overview
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<p>At a very high level, when an application runs on the raysterizer framework, it</p>
+
+<ol>
+  <li>Takes any calls to graphics library (in this case OpenGL) to upload an object, draw an object, etc…</li>
+  <li>Forward these these calls to analysis tool to break down the object into its textures, positions, etc…</li>
+  <li>Uses the components to reconstruct the object on ray tracing hardware and use the ray tracing renderer instead</li>
+  <li>Render to the screen a ray traced version of the scene</li>
+</ol>
+
+<h2 id="the-devil-is-in-the-details">The devil is in the details</h2>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/overview2.png" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Overview (Zooming into the Raysterizer Runtime)
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<p>I’ll break down the overview image into sections below that will explain each component of the system:</p>
+
+<ul>
+  <li><a href="#redirecting-opengl">Redirecting OpenGL</a></li>
+  <li><a href="#translating-opengl-and-maintaining-state">Translating OpenGL and Maintaining State</a></li>
+  <li><a href="#analysis">Analysis</a></li>
+  <li><a href="#vulkan-ray-tracing">Vulkan Ray Tracing</a></li>
+  <li><a href="#renderer">Renderer</a></li>
+</ul>
+
+<h3 id="redirecting-opengl">Redirecting OpenGL</h3>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/overview_focus_1.png" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Redirection
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<ul>
+  <li>Note: Keep in mind that Raysterizer targets 64-bit processes and Windows</li>
+</ul>
+
+<p>There are many ways to redirect control flow from a library. One common way is to hook the library at runtime by <a href="https://en.wikipedia.org/wiki/Code_injection">code injection</a>, but this complicates things as it requires first running the application and then running another piece of software that modifies the application. In addition, this may cause more timing or race conditions if the application isn’t properly paused at the beginning.</p>
+
+<p>So instead, I opted for <a href="https://attack.mitre.org/techniques/T1574/001/">dll hjacking</a>. In order for an application to use the OpenGL library, the application has to find and load <code class="language-plaintext highlighter-rouge">opengl32.dll</code> (the OpenGL dynamic library) which implements the underlying functionality of the OpenGL API. Windows loads libraries in a certain way by first searching the current directory and then the system directory. By naming a library I created <code class="language-plaintext highlighter-rouge">opengl32.dll</code> and putting it in same directory as the application, the application will search and load my version of <code class="language-plaintext highlighter-rouge">opengl32.dll</code> instead of the system version.</p>
+
+<p>With this approach, one needs to implement the functions exported by <code class="language-plaintext highlighter-rouge">opengl32.dll</code> in order for the application to work properly. I did do this, but for most of the functions I was not interested in, I immediately redirected calls to the proper calls of system <code class="language-plaintext highlighter-rouge">opengl32.dll</code>. However, for the functions I was interested in, I wrote code to gather or modify data fed into the OpenGL library before directing the call back to system <code class="language-plaintext highlighter-rouge">opengl32.dll</code>.</p>
+
+<h3 id="translating-opengl-and-maintaining-state">Translating OpenGL and Maintaining State</h3>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/overview_focus_2.png" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Translation
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<p>At this point, OpenGL calls can be intercepted. This is one of the more important and tricky parts. Raysterizer actually has to keep OpenGL state internally (while OpenGL itself state machine, its internals are not exposed). Raysterizer keeps track of Vertex Array Buffers, Vertex Buffer Objects, Frame Buffer Objects, etc…, which is difficult enough with the millions of different ways these objects can be edited.</p>
+
+<p>But what makes it more tricky is that Raysterizer has to keep track of every state before the image is rendered.</p>
+
+<p>See, unlike rasterization, ray tracing requires all state to be visible (every object, texture, etc are in memory) in order to work (Think about it, a ray needs all of the objects in the scene to be known before it is cast). Rasterization is all about rendering one or a bunch of objects and tossing those objects out because rasterization works at a single layer level (draw object, write rgb to screen, write to depth buffer and move on to the next object).</p>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/rasterization_vs_raytracing1.png" width="50% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Rasterization vs Ray Tracing
+                
+                (Image source: <a href="https://www.alexvoica.com/ray-tracing-made-easy/">alexvoica.com</a>)
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/rasterization_vs_raytracing2.jpg" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Rasterization vs Ray Tracing
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/vertex_array_objects_ebo.png" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Touching the surface of state management in OpenGL
+                
+                (Image source: <a href="https://learnopengl.com/Getting-started/Hello-Triangle">LearnOpenGL</a>)
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<p>So, what does how does this influence to how raysterizer is implemented? Every time a draw call is made, Raysterizer needs to keep a snapshot of all the resources used in that draw call. Depending on the complexity of the application, say, an object is 100 million triangles. So, if the object gets drawn twice, Raysterizer has to copy the object in two snapshats (200 million triangles in total) and then use those triangles for ray tracing. This will cause a huge performance hit as most of a frame, raysterizer will be copying data to create a snapshot (this was a problem in very early versions of Raysterizer).</p>
+
+<p>An optimization is to create diffs and check hashes between resources to see if anything has changed between snapshots. So instead of copying a resource, Raysterizer will create a reference to the previous snapshot’s resource if the resource has not been modified since the previous snapshot. However, this adds even more complexity as now Raysterizer needs to keep track of modifications and hashes per resource. But, this is worth the performance gains!</p>
+
+<p>Once the state is all tracked, we need to perform some analysis on the resources.</p>
+
+<h3 id="analysis">Analysis</h3>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/overview_focus_3.png" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Analysis
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<p>The analysis component of Raysterizer is the magic sauce that allows ray tracing to be possible. This can be broken down into a couple of components.</p>
+
+<h4 id="breaking-down-textures-and-vertices">Breaking down textures and vertices</h4>
+
+<p>Each texture and vertices in OpenGL need to be uploaded into separate buffers that are supported by Vulkan ray tracing. Textures are simple - map the corresponding OpenGL texture properties to equalivent Vulkan texture properties. Vertex buffers are simple on paper (just upload the same buffer to Vulkan!), but there’s some interesting parts to Vulkan ray tracing and ray tracing in general that need to be addressed.</p>
+
+<p>To implement some features such as shadows and reflections in ray tracing, there needs to be variables that need to be exposed (normals, albedo color, metallicness, roughness). This can be done very coarsely by performing some regex to grab the names in the buffer and exposing those values in the shader.</p>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/vertex_attribute_pointer_interleaved.png" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Example of buffer layout
+                
+                (Image source: <a href="https://learnopengl.com/Getting-started/Shaders">LearnOpenGL</a>)
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<p>In terms of the ray tracing API, it needs to know how big each vertex is and where and how the position is structured in the vertex. In 99% of cases, the position is embedded as the first element of the vertex. How the position is structured could range from 2 ints to 4 floats. Simple enough.</p>
+
+<p>However, what is most difficult is that ray tracing needs to know the transformation matrix ahead of time…</p>
+
+<h4 id="figuring-out-model-view-projection">Figuring out model view projection</h4>
+
+<p>The most crucial part that makes raysterizer work is figuring out the <a href="https://learnopengl.com/Getting-started/Coordinate-Systems">model view projection matrices</a>.</p>
+
+<p>Why do we even need to figure this out? Normally, aren’t these matrices just computed in the shader code? For example,</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#version 330 core
+</span><span class="k">layout</span> <span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">in</span> <span class="kt">vec3</span> <span class="n">pos</span><span class="p">;</span>
+
+<span class="k">uniform</span> <span class="kt">mat4</span> <span class="n">model</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">mat4</span> <span class="n">view</span><span class="p">;</span>
+<span class="k">uniform</span> <span class="kt">mat4</span> <span class="n">projection</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nb">gl_Position</span> <span class="o">=</span> <span class="n">projection</span> <span class="o">*</span> <span class="n">view</span> <span class="o">*</span> <span class="n">model</span> <span class="o">*</span> <span class="kt">vec4</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="n">f</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Well, much like what was described for <a href="#translating-opengl-and-maintaining-state">resource tracking</a>, since this is computed per draw call, the ray tracing requires all state to be known before ray tracing is done. So, we need to know these matrices ahead of time as well :)..</p>
+
+<p>In particular, in Vulkan Ray Tracing, there’s a concept of top level acceleration structures (TLAS) and bottom level acceleration structures (BLAS). These are opaque structures created in Vulkan that represent objects in the ray tracing scene. Think of BLAS as an abstract container that holds the vertex data and TLAS as an instantiation of one or more BLAS as an actual object.</p>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/AccelerationStructure.svg" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Acceleration Structures
+                
+                (Image source: <a href="https://nvpro-samples.github.io/vk_raytracing_tutorial_KHR/">NVIDIA Vulkan Ray Tracing Tutorial</a>)
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<p>TLAS contain a very important field, which is how the object is transformed in the scene. Take a look at <code class="language-plaintext highlighter-rouge">transform</code> field in <code class="language-plaintext highlighter-rouge">VkAccelerationStructureInstanceKHR</code>. This usually represents <a href="http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/">the model matrix, which describes how a mesh is translated, rotated and scaled</a>.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkAccelerationStructureInstanceKHR.html</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">VkAccelerationStructureInstanceKHR</span> <span class="p">{</span>
+    <span class="n">VkTransformMatrixKHR</span>          <span class="n">transform</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>                      <span class="n">instanceCustomIndex</span><span class="o">:</span><span class="mi">24</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>                      <span class="n">mask</span><span class="o">:</span><span class="mi">8</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>                      <span class="n">instanceShaderBindingTableRecordOffset</span><span class="o">:</span><span class="mi">24</span><span class="p">;</span>
+    <span class="n">VkGeometryInstanceFlagsKHR</span>    <span class="n">flags</span><span class="o">:</span><span class="mi">8</span><span class="p">;</span>
+    <span class="kt">uint64_t</span>                      <span class="n">accelerationStructureReference</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">VkAccelerationStructureInstanceKHR</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VkTransformMatrixKHR.html</span>
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">VkTransformMatrixKHR</span> <span class="p">{</span>
+    <span class="kt">float</span>    <span class="n">matrix</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
+<span class="p">}</span> <span class="n">VkTransformMatrixKHR</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>One might ask, why don’t you just make this matrix the identity matrix and handle all matrix multiplication like you do in rasterization. Well, one, the ray tracing shaders does not expose a way to modify vertex attributes like the rasterization ones. Second, even if the shaders exposed a way to modify vertex attributes, there’s a huge performance pentality since the hardware optimizes the ray tracing scene to trace rays optimially. If every mesh was not transformed, they would all be pretty much overlap each other in the scene, which is not great for ray tracing (Think about whether the ray would reach certain parts of the cone in the image below)</p>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/mvp_problem.png" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Scene with transformed meshes (Left), Scene with meshes without model matrix applied (Right)
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<p>So, what have been attempted to extract the model view projection matrices?</p>
+
+<p>One brute force way I did this originally was to regex to names to grab these projections. However, these matrices come in many different names such as <code class="language-plaintext highlighter-rouge">modelViewProjection</code>, <code class="language-plaintext highlighter-rouge">MVP</code>, <code class="language-plaintext highlighter-rouge">modViewProj</code>, <code class="language-plaintext highlighter-rouge">mViewprj</code>, and many others. In fact, many times, the correct variable is intermediate variable coming from the computation some variables. Take, for example, how dolphin does this:</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#version 330 core
+</span><span class="k">layout</span> <span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">in</span> <span class="kt">vec3</span> <span class="n">pos</span><span class="p">;</span>
+
+<span class="n">UBO_BINDING</span><span class="p">(</span><span class="n">std140</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">uniform</span> <span class="n">VSBlock</span> <span class="p">{</span>
+    <span class="p">...</span>
+	<span class="n">float4</span> <span class="n">cproj</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+    <span class="p">...</span>
+	<span class="n">float4</span> <span class="n">ctrmtx</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="n">ATTRIBUTE_LOCATION</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">in</span> <span class="n">float4</span> <span class="n">rawpos</span><span class="p">;</span>
+<span class="n">ATTRIBUTE_LOCATION</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">in</span> <span class="n">uint4</span> <span class="n">posmtx</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kt">int</span> <span class="n">posidx</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">posmtx</span><span class="p">.</span><span class="n">r</span><span class="p">);</span>
+    <span class="n">float4</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">float4</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">ctrmtx</span><span class="p">[</span><span class="n">posidx</span><span class="p">],</span> <span class="n">rawpos</span><span class="p">),</span> <span class="n">dot</span><span class="p">(</span><span class="n">ctrmtx</span><span class="p">[</span><span class="n">posidx</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">rawpos</span><span class="p">),</span> <span class="n">dot</span><span class="p">(</span><span class="n">ctrmtx</span><span class="p">[</span><span class="n">posidx</span><span class="o">+</span><span class="mi">2</span><span class="p">],</span> <span class="n">rawpos</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">...</span>
+    <span class="n">o</span><span class="p">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">float4</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">cproj</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">),</span> <span class="n">dot</span><span class="p">(</span><span class="n">cproj</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pos</span><span class="p">),</span> <span class="n">dot</span><span class="p">(</span><span class="n">cproj</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">pos</span><span class="p">),</span> <span class="n">dot</span><span class="p">(</span><span class="n">cproj</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">pos</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In the example above, the model matrix is actually constructed from <code class="language-plaintext highlighter-rouge">mat4(ctrmtx[posidx], ctrmtx[posidx + 1], ctrmtx[posidx + 2], float4(0, 0, 0, 1))</code> and the view projection matrix is composed from <code class="language-plaintext highlighter-rouge">mat4(cproj[0], cproj[1], cproj[2], cproj[3])</code>.</p>
+
+<p>The first real attempt at doing this I used a theorem prover, <a href="https://github.com/Z3Prover/z3">z3 solver</a>, to attempt to create a system of equations from the glsl code. It worked, but was incredibly slow…</p>
+
+<p>So, I was bummed out for a bit since it needed to be both correct and <strong>FAST</strong>. I could try to modify the original shader, find the important code that create the matrices, but I felt that was again too hacky (much like regexing).</p>
+
+<p>After some time thinking and working emulation (some projects modifying binaries at this time with dynamic analysis), an idea popped up in my head about running the shader in a virtual machine with certain inputs and running those inputs until I hit some certain state and then inspecting the intermediate values! And the perfect project fit that box - <a href="https://github.com/dfranx/SPIRV-VM">SPIRV-VM</a>. This is a project which executes spirv (what glsl can be compiled to) in a virtual machine.</p>
+
+<p>So, the the next step is how to find the intermediate values that are important (representing the model view projection matrices). Thus, this is where static analysis comes in to play. Let’s disassemble the spirv with <a href="https://github.com/KhronosGroup/SPIRV-Tools">spirv-tools</a> and perform some data analysis. I built a dependency graph from variables that influence (modify) the output position, which is in most cases <code class="language-plaintext highlighter-rouge">gl_Position</code>. Then, when the virtual machine is chugging along each instruction, I can check if this variable influences <code class="language-plaintext highlighter-rouge">gl_Position</code> and mark down its value. When the virtual machine finishes executing, I construct a mapping to multiply the intermediate values to get the correct model, view and projection matrices. For example, let’s say we have the dolphin example above. We want <code class="language-plaintext highlighter-rouge">mat4(ctrmtx[posidx], ctrmtx[posidx + 1], ctrmtx[posidx + 2], float4(0, 0, 0, 1))</code>. We cannot just grab the intermediate values directly since we do not want to multiply by <code class="language-plaintext highlighter-rouge">rawpos</code> such as the result from <code class="language-plaintext highlighter-rouge">float4(dot(ctrmtx[posidx], rawpos)</code> since we want the matrices that multiply <code class="language-plaintext highlighter-rouge">rawpos</code>. So, the mapping would look like this</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+<span class="n">matrix1</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctrmtx</span><span class="p">[</span><span class="n">posidx</span><span class="p">],</span> <span class="n">ctrmtx</span><span class="p">[</span><span class="n">posidx</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">ctrmtx</span><span class="p">[</span><span class="n">posidx</span><span class="o">+</span><span class="mi">2</span><span class="p">],</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">matrix2</span> <span class="o">=</span> <span class="p">[</span><span class="n">cproj</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cproj</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cproj</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cproj</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<p>The last question is what values do I plug into the virtual machine? I find a vertex in the vertex buffer with non-zero position and sync any variables in the OpenGL state with the variables in the virtual machine such as <code class="language-plaintext highlighter-rouge">uniforms</code> and <code class="language-plaintext highlighter-rouge">storage buffers</code>. A single vertex should be fine because the model view position matrix is usually applied to each vertex in a mesh.</p>
+
+<p>Finally, we have a way to extract these important matrices! And, it runs fast too.</p>
+
+<ul>
+  <li>There probably is a better way to perform analysis. Unforunately, I’ve never taken a compiler course, so I might be missing some knowledge to do this better.</li>
+</ul>
+
+<h3 id="vulkan-ray-tracing">Vulkan Ray Tracing</h3>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/overview_focus_4.png" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Vulkan Ray Tracing
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<h4 id="shader-transformation">Shader Transformation</h4>
+
+<p>OpenGL shaders are written in GLSL. Vulkan shaders are written in GLSL. Most things are similar, but there are some differences. Simple things such as some syntax has changed. With the introduction of the ray tracing shader, it requires a different way of writing shaders. And…, thus we need a glsl parser (tokenization) to rewrite the source code.</p>
+
+<p>Originally, I had a mapping from OpenGL rasterization code directly to ray tracing shaders (ray generation, hit, miss). This became pretty unsustainable as I edit most of the existing code with arrays instead of buffers. Remember that ray tracing requires to know all state when rendering is performed while rasterization is a draw and forget? Well, basically my transformations looked like this:</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">uniform</span> <span class="kt">vec3</span> <span class="n">color</span><span class="p">;</span>
+
+<span class="o">--&gt;</span>
+
+<span class="k">layout</span><span class="p">(</span><span class="n">binding</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="kt">vec3</span> <span class="n">color_</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">color</span><span class="p">[];</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Not only that, but the logic had to be edited as well.</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">vec3</span> <span class="n">outColor</span> <span class="o">=</span> <span class="n">mix</span><span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">color</span><span class="p">);</span>
+
+<span class="o">--&gt;</span>
+
+<span class="kt">vec3</span> <span class="n">color</span> <span class="o">=</span> <span class="n">color_</span><span class="p">[</span><span class="n">draw_call_index</span><span class="p">]</span>
+<span class="kt">vec3</span> <span class="n">outColor</span> <span class="o">=</span> <span class="n">mix</span><span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">color</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>This makes it even more complicated with textures as in the code, they cannot be stored as a temporary variable, making the transformation more inlined…</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">uniform</span> <span class="kt">sampler2D</span> <span class="n">myTexture</span><span class="p">;</span>
+
+<span class="kt">vec3</span> <span class="n">color</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">myTexture</span><span class="p">,</span> <span class="n">coords</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>So, this is illegal</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">uniform</span> <span class="kt">sampler2D</span> <span class="n">myTexture</span><span class="p">[];</span>
+<span class="p">...</span>
+<span class="kt">sampler2D</span> <span class="n">myTexture</span> <span class="o">=</span> <span class="n">myTexture_</span><span class="p">[</span><span class="n">draw_call_index</span><span class="p">];</span>
+<span class="kt">vec3</span> <span class="n">color</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">myTexture</span><span class="p">,</span> <span class="n">coords</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>And what should be done is this:</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">uniform</span> <span class="kt">sampler2D</span> <span class="n">myTexture</span><span class="p">[];</span>
+<span class="p">...</span>
+<span class="kt">vec3</span> <span class="n">color</span> <span class="o">=</span> <span class="n">texture</span><span class="p">(</span><span class="n">myTexture_</span><span class="p">[</span><span class="n">draw_call_index</span><span class="p">],</span> <span class="n">coords</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>I haven’t even discussed the state management from the CPU side. I needed to keep track of all the buffers on the vulkan side as well and made sure each buffer was associated with the correct draw call.</p>
+
+<p>Instead, I threw this out as it became way too complex. Instead, I opted for an another approach.</p>
+
+<p>What if we could run the the rasterized code as usual and then take the results outputted from the pipeline and use those instead (for example, the transformed positions, normals, colors, etc…) as input to the ray tracing pipeline. This is known as hybrid rendering and it commonly used since combines the strengths of both rasterization and ray tracing for speed and picture quality. I use this method to simplify the code transformation that is performed.</p>
+
+<p>For Raysterizer, it captures the output position, colors, normals, etc and stores them in a texture (called a gbuffer) and then uses these gbuffers for ray tracing. The example below by <a href="https://mamoniem.com/behind-the-pretty-frames-elden-ring/">Mamoniem</a> shows how Elden Ring renders to gbuffers.</p>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/EldenRing__GBuffers_Color.gif" width="50% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>GBuffer Color
+                
+                (Image source: <a href="https://mamoniem.com/behind-the-pretty-frames-elden-ring/">Mamoniem</a>)
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/EldenRing__GBuffers_Depth.gif" width="50% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>GBuffer Depth
+                
+                (Image source: <a href="https://mamoniem.com/behind-the-pretty-frames-elden-ring/">Mamoniem</a>)
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/EldenRing__GBuffers_Normal.gif" width="50% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>GBuffer Normal
+                
+                (Image source: <a href="https://mamoniem.com/behind-the-pretty-frames-elden-ring/">Mamoniem</a>)
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/EldenRing__GBuffers_Surface.gif" width="50% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>GBuffer Surface
+                
+                (Image source: <a href="https://mamoniem.com/behind-the-pretty-frames-elden-ring/">Mamoniem</a>)
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<p>So, the code transformation mostly is done with uniforms to shader buffer objects and creating some code to extract variables (based on names) to store into the gbuffers.</p>
+
+<h4 id="vertex-format-transformation">Vertex Format Transformation</h4>
+
+<p>Originally, I had a lot of difficulties trying to change the shape and size of vertices and their properties from strictly using ray tracing shaders, but now with a hybrid approach, this is a bit easier. Vertices are still somewhat of a problem as the ray tracing shader needs to access the fields correctly and vertex structs can come in all shapes and forms. This can be done using <code class="language-plaintext highlighter-rouge">GL_EXT_buffer_reference2</code> glsl feature, which basically allows pointer casting and sending the offsets to the vertices’ fields in the gpu buffer. To make this more clear, one can basically perform this (in c for reference)</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">Vertex</span> <span class="p">{</span>
+    <span class="n">vec3</span> <span class="n">position</span><span class="p">;</span>
+    <span class="n">vec3</span> <span class="n">normal</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="p">...;</span>
+<span class="kt">void</span><span class="o">*</span> <span class="n">vertex_data</span> <span class="o">=</span> <span class="p">...;</span>
+<span class="n">Vertex</span><span class="o">*</span> <span class="n">vertices</span> <span class="o">=</span> <span class="p">((</span><span class="n">Vertex</span><span class="o">*</span><span class="p">)</span><span class="n">vertex_data</span><span class="p">);</span>
+<span class="n">vec3</span> <span class="n">normal</span> <span class="o">=</span> <span class="n">vertices</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">normal</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>In glsl, it looks like this</p>
+
+<div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">layout</span><span class="p">(</span><span class="n">buffer_reference</span><span class="p">,</span> <span class="n">scalar</span><span class="p">,</span> <span class="n">buffer_reference_align</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="n">readonly</span> <span class="n">buffer</span> <span class="n">Vec3Ptr</span>
+<span class="p">{</span>
+    <span class="kt">vec3</span> <span class="n">data</span><span class="p">[];</span>
+<span class="p">};</span>
+
+<span class="k">layout</span> <span class="p">(</span><span class="n">set</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">binding</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">std430</span><span class="p">)</span> <span class="n">readonly</span> <span class="n">buffer</span> <span class="n">VertexBuffer</span> 
+<span class="p">{</span>
+    <span class="n">Vertex</span> <span class="n">data</span><span class="p">[];</span>
+<span class="p">}</span> <span class="n">Vertices</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+
+<span class="n">uint64_t</span> <span class="n">normal_offset</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">// Made up offset</span>
+<span class="n">uint64_t</span> <span class="n">vertex_stride</span> <span class="o">=</span> <span class="p">...;</span>
+
+<span class="kt">vec3</span> <span class="n">normal</span> <span class="o">=</span> <span class="n">Vec3Ptr</span><span class="p">(</span><span class="n">vertices</span> <span class="o">+</span> <span class="kt">uint</span><span class="p">((</span><span class="n">index</span> <span class="o">*</span> <span class="n">vertex_stride</span><span class="p">)</span> <span class="o">+</span> <span class="n">normal_offset</span><span class="p">)).</span><span class="n">data</span><span class="p">[</span><span class="mi">0u</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>Now these fields of a vertex can be exposed correctly to the ray tracing shader.</p>
+
+<h3 id="renderer">Renderer</h3>
+
+<center>
+    <p>
+        <center>
+            <img src="/assets/images/posts/2022-12-05/overview_focus_4.png" width="100% 50% " alt="" />
+        </center>
+        
+        <center>
+            <em>Renderer
+                
+            </em>
+        </center>
+        
+    </p>
+</center>
+
+<p>The renderer is highly influenced by <a href="https://github.com/diharaw/hybrid-rendering">Diharaw’s renderer</a>. I chose this as the base for rendering as its code was pretty clean and well, it’s using hybrid rendering which I use as well. I really wanted base the renderer off of <a href="https://github.com/EmbarkStudios/kajiya">Kajiya</a>, but it was much more complex and most likely needed a render graph to make it way easier to implement all of the features.</p>
+
+<p>So, what does this renderer have to offer?</p>
+
+<p>Graphics features</p>
+
+<ul>
+  <li>Ray Traced Ambient Occlusion</li>
+  <li>Ray Traced Shadows</li>
+  <li>Ray Traced Reflections</li>
+  <li>Global Illumination</li>
+</ul>
+
+<p>But what’s great about the renderer is that the shaders can be modified to incorporate any technique and mesh properties can be overrided in raysterizer (as shown in the overview images with the cube and code file)</p>
+
+<p>This renderer only touches the surface of what is possible. It doesn’t include <a href="https://research.nvidia.com/publication/2021-06_restir-gi-path-resampling-real-time-path-tracing">ReSTIR</a> for lighting and performance, <a href="https://www.nvidia.com/en-us/geforce/technologies/dlss/">NVIDIA’s DLSS</a> or <a href="https://www.amd.com/en/technologies/fidelityfx-super-resolution">AMD’s FSR</a> for upscaling and many other cool techniques.</p>
+
+<h2 id="source-code">Source code</h2>
+
+<p>Check it out here!</p>
+
+<p><a href="https://github.com/Maknee/Raysterizer">https://github.com/Maknee/Raysterizer</a></p>
+
+<h2 id="future-work">Future work</h2>
+
+<p>There’s a lot of things I have in mind for future work</p>
+
+<ul>
+  <li>Support 32-bit applications
+    <ul>
+      <li>To do this, I think the best way is to create proxy opengl library that forwards the 32bit calls to our 64bit library (By the way, Vulkan ray tracing is not natively supported on 32bit applications, have tested this…)
+        <ul>
+          <li>Create a 32bit shared library that exports the same functions as opengl32.dll</li>
+          <li>Use these 32bit -&gt; 64bit injectors/frameworks (<a href="https://github.com/ez8-co/yapi">YAPI</a>, <a href="https://github.com/rwfpl/rewolf-wow64ext">Wow64EXT</a>) to load in the the 64bit raysterizer library and have the hooked functions call the same functions exported by raysterizer
+            <ul>
+              <li>Raysterizer can be loaded by calling `DWORD64 RayterizerModule = LoadLibraryA.Dw64(“Raysterizer.dll”)”</li>
+              <li>Then let’s redirect for example, <code class="language-plaintext highlighter-rouge">void BufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const void* data)</code> by calling something like <code class="language-plaintext highlighter-rouge">XCall64(RayterizerModule, "BufferSubData")</code> in the function body</li>
+              <li>Repeat for the rest of the functions</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Render Graph
+    <ul>
+      <li>A render graph allows for way easier control of the rendering process (in essence, iterate and add/remove graphic passes)</li>
+      <li>Think of the graph as like a compute graph for actions to do and works almost like a domain specific language (DSL), so it’s easy to
+        <ul>
+          <li>Visual how resources are created, used and destroyed</li>
+          <li>Edit how passes act on the resources</li>
+        </ul>
+      </li>
+      <li><a href="https://logins.github.io/graphics/2021/05/31/RenderGraphs.html">Here’s a nice blog going more in depth about render graphs</a></li>
+      <li>Would be really nice to have this as much more visual appealing images could be created by using rendering techniques in <a href="https://github.com/EmbarkStudios/kajiya">Kajiya</a></li>
+    </ul>
+  </li>
+  <li>Test on more opengl games
+    <ul>
+      <li><a href="https://www.pcgamingwiki.com/wiki/List_of_OpenGL_games">There’s a plethora of other games to support/test…</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="really-into-the-future">Really into the future</h3>
+
+<ul>
+  <li>Support for Linux &amp; Mac
+    <ul>
+      <li>Linux
+        <ul>
+          <li>Probably use <a href="https://liveoverflow.com/hooking-on-linux-with-ld_preload-pwn-adventure-3/">LD_PRELOAD</a> for hooking opengl</li>
+          <li>Everything else should work? Probably there are a couple of windows api calls I’ve embedded into the project</li>
+          <li>Maybe even run it through <a href="https://www.winehq.org/">wine</a>?</li>
+        </ul>
+      </li>
+      <li>Mac
+        <ul>
+          <li>I have no clue</li>
+          <li>Can ray tracing be ran through <a href="https://moltengl.com/moltenvk/">MoltenVk</a>?</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Support for other graphic libraries such as Directx9
+    <ul>
+      <li>This would need some rewriting of the intermediate layer as it’s somehow tightly coupled with the OpenGL layer</li>
+      <li>As for source code generation from these libraries (a lot of times, the code is compiled to a graphic specific assembly such as <a href="http://timjones.io/blog/archive/2015/09/02/parsing-direct3d-shader-bytecode">DXBC</a>, internal assembly for directx), there’s some tools to lift to spirv. For example, <a href="https://github.com/Nukem9/Dxbc2Dxil">this tool converts dxbc to dxil</a> and then <a href="https://github.com/HansKristian-Work/dxil-spirv">this tool can convert dxil to spriv</a></li>
+      <li>Obviously, the source code won’t be perfect, but at least it’s a start</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="addressing-rtx-remix">Addressing RTX Remix</h2>
+
+<p>Recently, <a href="https://www.nvidia.com/en-us/geforce/rtx-remix/">RTX Remix</a> has been in development. It’s very similar to Raysterizer in many regards, and very different in other categories:</p>
+
+<ul>
+  <li>It’s closed sourced</li>
+  <li>Focused on DirectX <a href="https://www.reddit.com/r/nvidia/comments/yauy67/rtx_remix_qa_with_nvidia/">Only dx8/9, no dx10/11</a></li>
+  <li>Focused really only for modders (… offers little customizability since it’s closed sourced)</li>
+  <li>Not released yet, so I’m not so sure how performant and good it actually is.</li>
+</ul>
+
+<p>I’ve been working on Raysterizer on my own, so there’s a lot of niceness (UI, ease of use) lacking compared to Remix.</p>
+
+<h2 id="end">End</h2>
+
+<p>Thanks for reading this post. As always, feel free to reach out to me on twitter or comment below if you have any questions!</p>
+
+<p>Special thanks to <a href="https://twitter.com/LiamDugan_">Liam Dugan</a> and <a href="https://twitter.com/Justin_L_Shaw">Justin Shaw</a> for giving advice and whole lot of movitation to work on this project! :)</p>
+
+  </article>
+
+  
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'https-maknee-github-io';
+    var disqus_identifier = '/blog/2022/Raysterizer';
+    var disqus_title = "Raysterizer";
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  
+
+</div>
+    </div>
+  </div>
+
+  <div class="wrapper">
+  &copy; Copyright 2023 Henry Zhu.
+  
+  
+</div>
+
+  <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+<script src="/assets/js/katex.js"></script>
+
+
+
+<!-- Load Anchor JS -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js"></script>
+<script>
+  anchors.options.visible = 'always';
+  anchors.add('article h2, article h3, article h4, article h5, article h6');
+</script>
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/assets/css/academicons.min.css">
+
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-124405916-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+</body>
+
+</html>
