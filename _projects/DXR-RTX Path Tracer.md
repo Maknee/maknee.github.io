@@ -4,7 +4,7 @@ title:      DXR-RTX Path Tracer
 summary:    A path tracer implemented using the DirectX Raytracing API
 categories: DXR
 rank:       10
-thumbnail:  "/assets/images/projects/DXR-RTX Path Tracer/thumbnail.png"
+img:  "/assets/images/projects/DXR-RTX Path Tracer/thumbnail.png"
 tags:
  - project
 ---

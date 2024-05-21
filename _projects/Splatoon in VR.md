@@ -4,7 +4,7 @@ title:      Splatoon in VR
 summary:    The splatoon game, but in VR!
 categories: VR
 rank:       3
-thumbnail:  "/assets/images/projects/Splatoon in VR/thumbnail.jpg"
+img:  "/assets/images/projects/Splatoon in VR/thumbnail.jpg"
 tags:
  - project
 ---

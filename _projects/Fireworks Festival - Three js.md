@@ -4,7 +4,7 @@ title:      Fireworks Festival - Three js
 summary:    A cool small VR project involving three js and WebVR
 categories: VR
 rank:       4
-thumbnail:  "/assets/images/projects/Fireworks Festival - Three js/thumbnail.jpg"
+img:  "/assets/images/projects/Fireworks Festival - Three js/thumbnail.jpg"
 tags:
  - project
 ---

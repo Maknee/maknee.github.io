@@ -4,7 +4,7 @@ title:      Machine Learning with League of Legends - Introduction
 date:       2020-03-18 06:01:00
 summary:    Background information for League of Legends
 categories: Opengl
-thumbnail:  "/assets/images/posts/2019-03-18/icon.jpg"
+thumbnail: "/assets/images/posts/2021-09-05/icon.jpg"
 comments:   true
 tags:
  - Machine Learning

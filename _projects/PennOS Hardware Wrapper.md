@@ -4,7 +4,7 @@ title:      PennOS Hardware Wrapper
 summary:    Booting an OS course project on baremetal x86
 categories: C
 rank:       6
-thumbnail:  "/assets/images/projects/PennOS Hardware Wrapper/thumbnail.jpg"
+img:  "/assets/images/projects/PennOS Hardware Wrapper/thumbnail.jpg"
 tags:
  - project
 ---

@@ -1,50 +1,37 @@
 ---
 layout: page
 title: projects
-title2: Projects
 permalink: /projects/
-description: Projects I've created :)
+description: My list of projects
+nav: true
+nav_order: 3
+display_categories: []
+horizontal: false
 ---
 
-{% assign sorted_projects = site.projects | sort: 'rank' | reverse %}
-{% for project in sorted_projects %}
+<!-- pages/projects.md -->
+<div class="projects">
 
-{% if project.redirect %}
-<div class="project">
-    <div class="thumbnail">
-        <a href="{{ project.redirect }}" target="_blank">
-        {% if project.thumbnail %}
-        <img class="thumbnail" src="{{ project.thumbnail | prepend: site.baseurl | prepend: site.url }}"/>
-        {% else %}
-        <div class="thumbnail blankbox"></div>
-        {% endif %}    
-        <span>
-            <h1>{{ project.title }}</h1>
-            <br/>
-            <p>{{ project.summary }}</p>
-        </span>
-        </a>
+<!-- Display projects without categories -->
+
+{% assign sorted_projects = site.projects | sort: "importance" %}
+
+  <!-- Generate cards for each project -->
+
+{% if page.horizontal %}
+
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-2">
+    {% for project in sorted_projects %}
+      {% include projects_horizontal.liquid %}
+    {% endfor %}
     </div>
+  </div>
+  {% else %}
+  <div class="row row-cols-1 row-cols-md-3">
+    {% for project in sorted_projects %}
+      {% include projects.liquid %}
+    {% endfor %}
+  </div>
+  {% endif %}
 </div>
-{% else %}
-
-<div class="project ">
-    <div class="thumbnail">
-        <a href="{{ project.url | prepend: site.baseurl | prepend: site.url }}">
-        {% if project.thumbnail %}
-        <img class="thumbnail" src="{{ project.thumbnail | prepend: site.baseurl | prepend: site.url }}"/>
-        {% else %}
-        <div class="thumbnail blankbox"></div>
-        {% endif %}    
-        <span>
-            <h1>{{ project.title }}</h1>
-            <br/>
-            <p>{{ project.summary }}</p>
-        </span>
-        </a>
-    </div>
-</div>
-
-{% endif %}
-
-{% endfor %}

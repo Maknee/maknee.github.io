@@ -4,7 +4,7 @@ title:      Scene++
 summary:    Interacting with the real world with Augmenting Reality
 categories: DXR
 rank:       9
-thumbnail:  "/assets/images/projects/Scene++/thumbnail.png"
+img:  "/assets/images/projects/Scene++/thumbnail.png"
 tags:
  - project
 ---

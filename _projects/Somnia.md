@@ -4,7 +4,7 @@ title:      Somnia
 summary:    Android app that wakes/challenges others to wake up
 categories: Android
 rank:       3
-thumbnail:  "/assets/images/projects/Somnia/thumbnail.png"
+img:  "/assets/images/projects/Somnia/thumbnail.png"
 tags:
  - project
 ---

@@ -4,7 +4,7 @@ title:      Simple Advanced Wars
 summary:    An Advanced Wars Java Clone made in one week
 categories: Java
 rank:       1
-thumbnail:  "/assets/images/projects/Simple Advanced Wars/thumbnail.jpg"
+img:  "/assets/images/projects/Simple Advanced Wars/thumbnail.jpg"
 tags:
  - project
 ---

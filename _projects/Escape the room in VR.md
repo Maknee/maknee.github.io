@@ -4,7 +4,7 @@ title:      Escape the room in VR
 summary:    A VR class project using Unreal Engine 4
 categories: VR
 rank:       5
-thumbnail:  "/assets/images/projects/Escape the room in VR/thumbnail.png"
+img:  "/assets/images/projects/Escape the room in VR/thumbnail.png"
 tags:
  - project
 ---

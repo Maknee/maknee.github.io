@@ -4,7 +4,7 @@ title:      Object Oriented C Library
 summary:    Taking C to a different level
 categories: C
 rank:       7
-thumbnail:  "/assets/images/projects/OOC/thumbnail.jpg"
+img:  "/assets/images/projects/OOC/thumbnail.jpg"
 tags:
  - project
 ---

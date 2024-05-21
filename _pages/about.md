@@ -1,16 +1,19 @@
 ---
 layout: about
+title: about
 permalink: /
-title2: <strong>Henry Zhu</strong>
-description: 
+subtitle: 
 
 profile:
-  align: right
-  image: profile_pic.jpg
-  address:
+  align: left
+  image: profile.jpg
+  image_circular: false # crops the image to make it circular
+  more_info: >
+    <p>Photo taken in chicago</p>
 
-news: true
-social: true
+news: true # includes a list of news items
+selected_papers: true # includes a list of papers marked as "selected={true}"
+social: true # includes social icons at the bottom of the page
 ---
 
 Hi there! I graduated from college with a computer science degree and I'm now a second year PhD at UIUC working under [Ramnatthan Alagappan](https://ramalagappan.github.io) and [Aishwarya Ganesan](https://aishwaryaganesan.github.io) to build interesting and highly perfomant distributed and storage systems.

@@ -4,7 +4,7 @@ title:      VPad
 summary:    A virtual reality driving game with a custom made controller
 categories: VR
 rank:       2
-thumbnail:  "/assets/images/projects/VPad/thumbnail.jpg"
+img:  "/assets/images/projects/VPad/thumbnail.jpg"
 tags:
  - project
 ---
