@@ -111,7 +111,7 @@
       <d-bibliography src="{{ page.bibliography | prepend: '/assets/bibliography/' | relative_url }}"></d-bibliography>
 
       {% if site.disqus_shortname and page.disqus_comments %}{% include disqus.liquid %}{% endif %}
-      {% if site.giscus.repo and page.giscus_comments %}
+      {% if site.giscus.repo and page.comments %}
         {% include giscus.liquid %}
       {% endif %}
     </div>
