@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      RAID Benchmark for machine-generated text review
+title:      Review - RAID | Benchmark for machine-generated text review
 date:       2024-06-26 00:00:00
 summary:    RAID Benchmark for machine-generated text review
 categories: Ramblings
