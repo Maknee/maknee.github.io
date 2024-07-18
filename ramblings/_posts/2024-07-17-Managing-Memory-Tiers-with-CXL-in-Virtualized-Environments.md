@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Review - Managing Memory Tiers with CXL in Virtualized Environments
-date:       2024-06-26 00:00:00
+date:       2024-07-18 00:00:00
 summary:    Review - Managing Memory Tiers with CXL in Virtualized Environments
 categories: Ramblings
 # thumbnail:  "/assets/images/posts/2022-12-05/icon.png"
