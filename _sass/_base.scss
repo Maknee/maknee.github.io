@@ -845,6 +845,15 @@ code {
   padding: 3px 3px;
 }
 
+.toc {
+  // background: var(--global-text-color);
+  background-color: var(--global-text-color-light);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 5px;
+  padding: .4em 2em;
+  margin: 0 0 4em;
+}
+
 // Transitioning Themes
 html.transition,
 html.transition *,
