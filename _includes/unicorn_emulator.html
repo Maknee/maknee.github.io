@@ -191,11 +191,11 @@
     };
 
     function alignDown(size, alignment) {
-        return Number(BigInt(size) & ~(BigInt(alignment) - 1));
+        return Number(BigInt(size) & ~(BigInt(alignment) - BigInt(1)));
     }
 
     function alignUp(size, alignment) {
-        return Number((BigInt(size) + (BigInt(alignment) - 1)) & ~(BigInt(alignment) - 1));
+        return Number((BigInt(size) + (BigInt(alignment) - BigInt(1))) & ~(BigInt(alignment) - BigInt(1)));
     }
 
     const UNICORN_ALIGNMENT = 0x1000;
