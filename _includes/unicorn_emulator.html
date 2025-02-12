@@ -605,9 +605,10 @@
                         const currentAddr = parseInt(addrCell.textContent, 16);
                         // Get next row's address if it exists
                         const nextRow = rows[index + 1];
-                        const nextAddr = nextRow ?
-                            parseInt(nextRow.querySelector('td:first-child')?.textContent || '0', 16) :
-                            currentAddr + 0x1000; // Use large value if last row
+                        const nextAddr = nextRow ? (() => {
+                            const cell = nextRow.querySelector('td:first-child');
+                            return parseInt(cell ? cell.textContent : '0', 16);
+                        })() : currentAddr + 0x1000;
 
                         if (targetAddr >= currentAddr && targetAddr < nextAddr) {
                             // Remove previous highlights
