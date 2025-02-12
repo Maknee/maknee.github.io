@@ -561,10 +561,12 @@
                         this.searchAssemblyAddress(asmAddrSearch.value);
                     }
                 });
-                this.element.querySelector('.asm-addr-search + .search-icon')
-                    ?.addEventListener('click', () => {
+                const searchIcon = this.element.querySelector('.asm-addr-search + .search-icon');
+                if (searchIcon) {
+                    searchIcon.addEventListener('click', () => {
                         this.searchAssemblyAddress(asmAddrSearch.value);
                     });
+                }
             }
 
             // Memory address search
@@ -575,10 +577,12 @@
                         this.searchMemoryAddress(memAddrSearch.value);
                     }
                 });
-                this.element.querySelector('.mem-addr-search + .search-icon')
-                    ?.addEventListener('click', () => {
+                const memSearchIcon = this.element.querySelector('.mem-addr-search + .search-icon');
+                if (memSearchIcon) {
+                    memSearchIcon.addEventListener('click', () => {
                         this.searchMemoryAddress(memAddrSearch.value);
                     });
+                }
             }
         }
 
