@@ -1,0 +1,821 @@
+<!-- _includes/unicorn_emulator.html -->
+<link defer href="https://cdn.materialdesignicons.com/1.8.36/css/materialdesignicons.min.css" rel="stylesheet">
+<link defer href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+<link defer href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+
+<script defer src="{{ '/assets/js/split.min.js' | relative_url | bust_file_cache }}"></script>
+<script defer src="{{ '/assets/js/unicorn-x86.min.js' | relative_url | bust_file_cache }}"></script>
+<script defer src="{{ '/assets/js/capstone-x86.min.js' | relative_url | bust_file_cache }}"></script>
+<script defer src="{{ '/assets/js/keystone-x86.min.js' | relative_url | bust_file_cache }}"></script>
+
+
+<!-- _includes/unicorn_emulator.html -->
+<div class="unicorn-container" id="{{ include.id | default: 'unicorn-default' }}" data-assembly="{{ include.assembly }}"
+    data-registers="{{ include.registers }}" data-memory-view="{{ include.memory_view | default: '0x10000' }}"
+    data-memory-raw="{{ include.memory_raw | default: '' }}">
+
+    <div id="pane-l" class="split split-horizontal">
+        <div id="pane-lt" class="split pane">
+            <div class="toolbar assembler-toolbar">
+                <div class="toolbar-button disabled" data-action="run" title="Run">
+                    <i class="mdi mdi-play"></i>
+                </div>
+                <div class="toolbar-button disabled" title="Pause">
+                    <i class="mdi mdi-pause"></i>
+                </div>
+                <span class="toolbar-sep"></span>
+                <div class="toolbar-button disabled" title="Step into">
+                    <i class="mdi mdi-debug-step-into"></i>
+                </div>
+                <div class="toolbar-button disabled" title="Step over">
+                    <i class="mdi mdi-debug-step-over"></i>
+                </div>
+                <div class="toolbar-button disabled" title="Step out">
+                    <i class="mdi mdi-debug-step-out"></i>
+                </div>
+                <span class="toolbar-sep"></span>
+                <div class="toolbar-button disabled" title="Set breakpoints">
+                    <i class="mdi mdi-checkbox-multiple-blank-circle"></i>
+                </div>
+                <div class="toolbar-button disabled" title="Delete all breakpoints">
+                    <i class="mdi mdi-checkbox-multiple-blank-circle-outline"></i>
+                </div>
+                <span class="toolbar-sep"></span>
+                <div class="toolbar-button" data-action="copy" title="Copy assembly">
+                    <i class="mdi mdi-content-copy"></i>
+                </div>
+                <div class="toolbar-button" data-action="paste" title="Paste assembly">
+                    <i class="mdi mdi-content-paste"></i>
+                </div>
+                <div class="toolbar-button" data-action="clear" title="Remove assembly">
+                    <i class="mdi mdi-eraser"></i>
+                </div>
+            </div>
+            <div class="toolbar-search">
+                <input type="text" class="asm-addr-search" placeholder="Address (e.g. 0x1000)">
+                <i class="mdi mdi-magnify search-icon"></i>
+            </div>
+            <div class="content scrollable">
+                <table id="assembler-{{ include.id }}" class="assembler-table">
+                    <tr>
+                        <th width="80px">Address</th>
+                        <th width="150px">Bytes</th>
+                        <th>Assembly</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div id="pane-lb" class="split pane">
+            <div class="toolbar">
+                Memory
+            </div>
+            <div class="toolbar-search">
+                <input type="text" class="mem-addr-search" placeholder="Address (e.g. 0x1000)">
+                <i class="mdi mdi-magnify search-icon"></i>
+            </div>
+            <div class="content scrollable">
+                <table id="memory-{{ include.id }}" class="memory-table">
+                    <tr>
+                        <th width="80px">Address</th>
+                        <th width="354px">Bytes</th>
+                        <th>ASCII</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="pane-r" class="split split-horizontal">
+        <div id="pane-rt" class="split pane">
+            <div class="toolbar">Registers</div>
+            <div class="content">
+                <table id="registers-{{ include.id }}" class="registers-table">
+                    <tr>
+                        <th width="60px">Reg</th>
+                        <th width="100px">Value</th>
+                        <th>Number</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    // Register class
+    class Register {
+        constructor(name, type, id, container) {
+            this.name = name;
+            this.type = type;
+            this.id = id;
+            this.container = container;
+            this.value = 0;
+
+            this.row = document.createElement('tr');
+            this.row.innerHTML = `
+            <td>${name}</td>
+            <td class="reg-value" data-reg="${name}">0000000000000000</td>
+            <td class="reg-number">0</td>
+        `;
+
+            this.row.querySelector('.reg-value').addEventListener('dblclick', this.startEdit.bind(this));
+        }
+
+        startEdit(event) {
+            const cell = event.target;
+            const currentValue = cell.textContent;
+            cell.innerHTML = `<input type="text" value="${currentValue}">`;
+            const input = cell.querySelector('input');
+            input.select();
+
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    try {
+                        const newValue = parseInt(input.value, 16);
+                        if (isNaN(newValue)) {
+                            throw new Error('Invalid hex value');
+                        }
+                        this.setValue(newValue);
+                        this.update();
+                    } catch (error) {
+                        console.error('Error setting register value:', error);
+                        this.update();
+                    }
+                }
+            });
+
+            input.addEventListener('blur', () => {
+                this.update();
+            });
+        }
+
+        setValue(value) {
+            this.value = value >>> 0;
+            this.container.emulator.reg_write_i64(this.id, this.value);
+        }
+
+        getValue() {
+            return this.container.emulator.reg_read_i64(this.id);
+        }
+
+        update() {
+            const newValue = this.getValue();
+            const hexValue = newValue.toString(16).padStart(16, '0');
+            const cell = this.row.querySelector('.reg-value');
+            cell.textContent = hexValue;
+            this.row.querySelector('.reg-number').textContent = newValue;
+
+            if (newValue != this.value) {
+                cell.classList.add('changed');
+                setTimeout(() => cell.classList.remove('changed'), 500);
+
+                this.row.style.color = '#FA8';
+            } else {
+                this.row.style.color = '#EEE';
+            }
+            this.value = newValue;
+        }
+    }
+
+    // Singleton manager for all instances
+    const UnicornEmulator = {
+        instances: {},
+
+        async init(id, config) {
+            if (this.instances[id]) return;
+            this.instances[id] = new UnicornContainer(id, config);
+            return this.instances[id];
+        }
+    };
+
+    function alignDown(size, alignment) {
+        return Number(BigInt(size) & ~(BigInt(alignment) - 1n));
+    }
+
+    function alignUp(size, alignment) {
+        return Number((BigInt(size) + (BigInt(alignment) - 1n)) & ~(BigInt(alignment) - 1n));
+    }
+
+    const UNICORN_ALIGNMENT = 0x1000;
+
+    // Handler class for each emulator instance
+    class UnicornContainer {
+        constructor(id, config = {}) {
+            this.id = id;
+            this.config = config;
+            this.element = document.getElementById(id);
+
+            this.initialize().catch(err => {
+                console.error('Error initializing emulator:', err);
+            });
+        }
+
+        async initialize() {
+            // Initialize emulator components
+            this.emulator = new uc.Unicorn(uc.ARCH_X86, uc.MODE_64);
+            this.assembler = new ks.Keystone(ks.ARCH_X86, ks.MODE_64);
+            this.disassembler = new cs.Capstone(cs.ARCH_X86, cs.MODE_64);
+
+            // Setup split panes
+            Split([
+                this.element.querySelector('#pane-l'),
+                this.element.querySelector('#pane-r')
+            ], {
+                gutterSize: 7,
+                sizes: [55, 45]
+            });
+
+            Split([
+                this.element.querySelector('#pane-lt'),
+                this.element.querySelector('#pane-lb')
+            ], {
+                direction: 'vertical',
+                sizes: [60, 40],
+                gutterSize: 7
+            });
+
+            this.isRunning = false;
+            this.currentInstruction = null;
+
+            // Initialize registers
+            this.initializeRegisters();
+
+            // Load initial assembly if provided
+            if (this.config.assembly) {
+                this.loadAssembly(this.config.assembly);
+            }
+
+            if (this.config.memory_raw) {
+                this.initializeMemory(this.config.memory_raw);
+            }
+
+            this.initializeAddressSearch();
+
+            // Initialize memory view
+            this.updateMemoryView();
+
+            // Bind button events
+            this.bindButtons();
+        }
+
+        initializeRegisters() {
+            this.registers = {};
+            const registerTable = this.element.querySelector('.registers-table');
+
+            [
+                'rax', 'rbx', 'rcx', 'rdx',
+                'rsi', 'rdi', 'rbp', 'rsp',
+                'r8', 'r9', 'r10', 'r11',
+                'r12', 'r13', 'r14', 'r15',
+                'rip'
+            ].forEach(name => {
+                const reg = new Register(
+                    name.toUpperCase(),
+                    'i64',
+                    uc[`X86_REG_${name.toUpperCase()}`],
+                    this
+                );
+                this.registers[name] = reg;
+                registerTable.appendChild(reg.row);
+            });
+
+            // Set initial register values
+            if (this.config.registers) {
+                Object.entries(this.config.registers).forEach(([name, value]) => {
+                    const reg = this.registers[name.toLowerCase()];
+                    if (reg) {
+                        const numValue = typeof value === 'string' ? parseInt(value, 16) : value;
+                        reg.setValue(numValue);
+                        reg.update();
+                    }
+                });
+            }
+        }
+
+        bindButtons() {
+            // Find the assembler toolbar
+            const toolbar = this.element.querySelector('.assembler-toolbar');
+
+            if (!toolbar) {
+                console.error('Could not find toolbar in container:', this.id);
+                return;
+            }
+
+            // Define the button actions
+            const actions = {
+                run: () => {
+                    this.run();
+                },
+                copy: () => {
+                    this.copyAsm();
+                },
+                paste: () => {
+                    this.pasteAsm();
+                },
+                clear: () => {
+                    this.clearAsm();
+                }
+            };
+
+            // Find and bind all buttons
+            toolbar.querySelectorAll('.toolbar-button[data-action]').forEach(button => {
+                const action = button.dataset.action;
+
+                if (actions[action]) {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        console.log(`Button ${action} clicked`);
+                        actions[action].call(this);
+                    });
+                }
+            });
+
+            const stepButton = this.element.querySelector('.toolbar-button[title="Step into"]');
+            if (stepButton) {
+                stepButton.classList.remove('disabled');
+                stepButton.addEventListener('click', () => this.step());
+            }
+        }
+
+        run() {
+            console.log('Running emulation');
+            try {
+                // this.emulator.reg_write_i64(uc.X86_REG_RIP, 0x1000);
+                this.emulator.emu_start(this.startAddress, this.endAddress, 0, 0);
+
+                // Update all registers
+                Object.values(this.registers).forEach(reg => reg.update());
+
+                // Update memory view
+                this.updateMemoryView();
+
+                this.updateInstructionPointer();
+
+            } catch (error) {
+                console.error('Error running emulation:', error);
+
+                this.updateInstructionPointer();
+            }
+        }
+
+        async step() {
+            try {
+                // Get current EIP
+                const eip = this.registers.rip.getValue();
+
+                // Find next instruction end by disassembling current instruction
+                const currentBytes = Array.from(this.emulator.mem_read(eip, 15));  // Read enough bytes
+                const instruction = this.disassembler.disasm(currentBytes, eip)[0];
+
+                if (!instruction) {
+                    throw new Error('Could not disassemble current instruction');
+                }
+
+                // Calculate next instruction address
+                const nextAddr = eip + instruction.size;
+
+                // Execute until next instruction
+                this.emulator.emu_start(eip, nextAddr, 0, 1);
+
+                // Update registers
+                Object.values(this.registers).forEach(reg => reg.update());
+
+                // Update memory view
+                this.updateMemoryView();
+
+                // Update instruction pointer visualization
+                this.updateInstructionPointer();
+
+            } catch (error) {
+                console.error('Error during step:', error);
+                alert('Error during step execution');
+            }
+        }
+
+        updateInstructionPointer() {
+            // Remove previous highlight
+            const rows = this.element.querySelectorAll('.assembler-table tr');
+            rows.forEach(row => {
+                row.classList.remove('instruction-pointer');
+            });
+
+            // Get current EIP
+            const eip = this.registers.rip.getValue();
+
+            // Find and highlight current instruction row
+            rows.forEach(row => {
+                const addrCell = row.querySelector('td:first-child');
+                if (addrCell) {
+                    const rowAddr = parseInt(addrCell.textContent, 16);
+                    if (rowAddr === eip) {
+                        row.classList.add('instruction-pointer');
+                        // Scroll into view if not visible
+                        const container = this.element.querySelector('.content.scrollable');
+                        const rowRect = row.getBoundingClientRect();
+                        const containerRect = container.getBoundingClientRect();
+
+                        if (rowRect.top < containerRect.top || rowRect.bottom > containerRect.bottom) {
+                            row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }
+                }
+            });
+        }
+
+
+        copyAsm() {
+            const asmText = Array.from(this.element.querySelectorAll('.asm-instruction'))
+                .map(cell => cell.textContent)
+                .join('\n');
+
+            navigator.clipboard.writeText(asmText);
+        }
+
+        pasteAsm() {
+            const text = prompt('Paste assembly code:');
+            if (text) {
+                // Clear existing assembly
+                const table = this.element.querySelector('.assembler-table');
+                Array.from(table.querySelectorAll('tr:not(:first-child)'))
+                    .forEach(row => row.remove());
+
+                // Load new assembly
+                this.loadAssembly(text);
+            }
+        }
+
+        clearAsm() {
+            const table = this.element.querySelector('.assembler-table');
+            Array.from(table.querySelectorAll('tr:not(:first-child)'))
+                .forEach(row => row.remove());
+
+            // Clear memory at program location
+            // const zeros = new Uint8Array(0x1000);
+            // this.emulator.mem_write(0x1000, zeros);
+
+            // Reset EIP
+            this.emulator.reg_write_i64(uc.X86_REG_RIP, this.startAddress);
+            this.registers.rip.update();
+
+            // Update memory view
+            this.updateMemoryView();
+        }
+
+        loadAssembly(asmText) {
+            if (!asmText) return;
+
+            const instructions = asmText
+                .split(/[\n;]+/)
+                .map(line => line.trim())
+                .filter(line => line);
+
+            const assemblerTable = this.element.querySelector('.assembler-table');
+            let address = this.registers.rip.getValue();
+            let allBytes = [];
+
+            instructions.forEach(asm => {
+                try {
+                    const bytes = Array.from(this.assembler.asm(asm));
+                    if (bytes && bytes.length > 0) {
+                        allBytes.push(...bytes);
+
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                        <td>${address.toString(16).padStart(8, '0')}</td>
+                        <td>${bytes.map(b => b.toString(16).padStart(2, '0')).join(' ')}</td>
+                        <td class="asm-instruction">${asm}</td>
+                    `;
+                        assemblerTable.appendChild(row);
+                        address += bytes.length;
+                    }
+                } catch (error) {
+                    console.error(`Error assembling instruction "${asm}":`, error);
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                    <td>${address.toString(16).padStart(8, '0')}</td>
+                    <td class="error">Error</td>
+                    <td class="asm-instruction error">${asm}</td>
+                `;
+                    row.classList.add('error');
+                    assemblerTable.appendChild(row);
+                }
+            });
+
+            let startAddress = this.registers.rip.getValue();
+            this.allBytes = allBytes;
+            this.startAddress = startAddress;
+            this.endAddress = startAddress + allBytes.length;
+            this.bytesStartAddress = alignDown(this.startAddress, UNICORN_ALIGNMENT);
+            this.bytesEndAddress = alignUp(Math.max(this.bytesStartAddress, this.endAddress), UNICORN_ALIGNMENT);
+            // console.log(this.startAddress, this.endAddress);
+            // this.emulator.mem_map(0x1000, 0x100000, uc.PROT_ALL);
+
+            console.log('Mapping', this.startAddress, this.bytesStartAddress, this.bytesEndAddress);
+            this.emulator.mem_map(this.bytesStartAddress, this.bytesEndAddress, uc.PROT_ALL);
+            this.emulator.hook_add(uc.HOOK_MEM_READ | uc.HOOK_MEM_WRITE, (handle, type, addr_lo, addr_hi, size, value_lo, value_hi, user_data) => {
+                // Convert to regular numbers instead of BigInt
+                const address = Number(addr_lo) + (Number(addr_hi) * 0x100000000);
+                const value = Number(value_lo) + (Number(value_hi) * 0x100000000);
+
+                if (type & uc.HOOK_MEM_READ) {
+                    console.log('Memory READ at', '0x' + address.toString(16), 'size =', size);
+                }
+                if (type & uc.HOOK_MEM_WRITE) {
+                    console.log('Memory WRITE at', '0x' + address.toString(16), 'size =', size, 'value =', '0x' + value.toString(16));
+                }
+            });
+
+            this.emulator.hook_add(uc.HOOK_CODE, (handle, addr_lo, addr_hi, size, user_data) => {
+                const address = Number(addr_lo) + (Number(addr_hi) * 0x100000000);
+                const rsi = this.emulator.reg_read_i64(uc.X86_REG_RSI);
+                const rip = this.emulator.reg_read_i64(uc.X86_REG_RIP);
+                console.log('Instruction at:', '0x' + rip.toString(16));
+                console.log('Execution at:', '0x' + address.toString(16));
+                console.log('RSI =', '0x' + rsi.toString(16));
+            });
+
+            // For unmapped memory access
+            this.emulator.hook_add(
+                uc.HOOK_MEM_READ_UNMAPPED | uc.HOOK_MEM_WRITE_UNMAPPED | uc.HOOK_MEM_FETCH_UNMAPPED,
+                (handle, type, addr_lo, addr_hi, size, value_lo, value_hi, user_data) => {
+                    const rsi = this.emulator.reg_read_i64(uc.X86_REG_RSI);
+                    console.log('RSI =', '0x' + rsi.toString(16));
+                    const address = Number(addr_lo) + (Number(addr_hi) * 0x100000000);
+                    console.log('ACCESS to UNMAPPED memory at', '0x' + address.toString(16), 'size =', size);
+                    return false;  // Stop emulation
+                }
+            );
+
+            this.emulator.mem_write(this.startAddress, allBytes);
+            this.updateInstructionPointer();
+        }
+
+        initializeAddressSearch() {
+            // Assembly address search
+            const asmAddrSearch = this.element.querySelector('.asm-addr-search');
+            if (asmAddrSearch) {
+                asmAddrSearch.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.searchAssemblyAddress(asmAddrSearch.value);
+                    }
+                });
+                this.element.querySelector('.asm-addr-search + .search-icon')
+                    ?.addEventListener('click', () => {
+                        this.searchAssemblyAddress(asmAddrSearch.value);
+                    });
+            }
+
+            // Memory address search
+            const memAddrSearch = this.element.querySelector('.mem-addr-search');
+            if (memAddrSearch) {
+                memAddrSearch.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.searchMemoryAddress(memAddrSearch.value);
+                    }
+                });
+                this.element.querySelector('.mem-addr-search + .search-icon')
+                    ?.addEventListener('click', () => {
+                        this.searchMemoryAddress(memAddrSearch.value);
+                    });
+            }
+        }
+
+        searchAssemblyAddress(addressStr) {
+            try {
+                // Parse address
+                let address = addressStr.trim().toLowerCase();
+                if (!address.startsWith('0x')) {
+                    address = '0x' + address;
+                }
+                const targetAddr = parseInt(address, 16);
+
+                // Find matching row
+                const rows = this.element.querySelectorAll('.assembler-table tr');
+                let found = false;
+
+                rows.forEach((row, index) => {
+                    const addrCell = row.querySelector('td:first-child');
+                    if (addrCell) {
+                        const currentAddr = parseInt(addrCell.textContent, 16);
+                        // Get next row's address if it exists
+                        const nextRow = rows[index + 1];
+                        const nextAddr = nextRow ?
+                            parseInt(nextRow.querySelector('td:first-child')?.textContent || '0', 16) :
+                            currentAddr + 0x1000; // Use large value if last row
+
+                        if (targetAddr >= currentAddr && targetAddr < nextAddr) {
+                            // Remove previous highlights
+                            rows.forEach(r => r.classList.remove('highlight-row'));
+                            // Highlight this row
+                            row.classList.add('highlight-row');
+                            // Scroll into view
+                            row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            found = true;
+                        }
+                    }
+                });
+
+                if (!found) {
+                    alert('Address not found in assembly');
+                }
+            } catch (error) {
+                console.error('Error searching address:', error);
+                alert('Invalid address format. Use hex (e.g., 0x1000 or 1000)');
+            }
+        }
+
+        searchMemoryAddress(addressStr) {
+            try {
+                // Parse address
+                let address = addressStr.trim().toLowerCase();
+                if (!address.startsWith('0x')) {
+                    address = '0x' + address;
+                }
+                const targetAddr = parseInt(address, 16);
+
+                // Find the closest row and update memory view
+                const alignedAddr = alignDown(targetAddr, 16);
+                this.config.memory_view = '0x' + alignedAddr.toString(16);
+                this.updateMemoryView();
+
+                // Highlight the specific byte
+                const rows = this.element.querySelectorAll('.memory-table tr');
+                setTimeout(() => {
+                    rows.forEach(row => {
+                        const addrCell = row.querySelector('td:first-child');
+                        if (addrCell) {
+                            const rowAddr = parseInt(addrCell.textContent, 16);
+                            if (rowAddr <= targetAddr && rowAddr + 16 > targetAddr) {
+                                // Remove previous highlights
+                                rows.forEach(r => r.classList.remove('highlight-row'));
+                                // Highlight this row
+                                row.classList.add('highlight-row');
+                                // Scroll into view
+                                row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }
+                        }
+                    });
+                }, 100);
+            } catch (error) {
+                console.error('Error searching address:', error);
+                alert('Invalid address format. Use hex (e.g., 0x1000 or 1000)');
+            }
+        }
+
+        setMemoryView() {
+            const viewInput = this.element.querySelector('.memory-view-input');
+            if (!viewInput) return;
+
+            try {
+                // Parse the input address
+                let address = viewInput.value.trim();
+
+                // Add 0x prefix if not present
+                if (!address.startsWith('0x')) {
+                    address = '0x' + address;
+                }
+
+                // Convert to number
+                const numAddress = parseInt(address, 16);
+
+                // Validate address
+                if (isNaN(numAddress)) {
+                    throw new Error('Invalid address');
+                }
+
+                // Align to 16-byte boundary
+                const alignedAddress = alignDown(numAddress, 16);
+
+                // Update config
+                this.config.memory_view = '0x' + alignedAddress.toString(16);
+
+                // Update view
+                this.updateMemoryView();
+
+                // Update input to show aligned address
+                viewInput.value = this.config.memory_view;
+
+            } catch (error) {
+                console.error('Error setting memory view:', error);
+                alert('Invalid address. Please use hexadecimal format (e.g., 0x10000)');
+            }
+        }
+
+        updateMemoryView() {
+            const memoryTable = this.element.querySelector('.memory-table');
+            // Clear existing rows except header
+            Array.from(memoryTable.querySelectorAll('tr:not(:first-child)'))
+                .forEach(row => row.remove());
+
+            const baseAddr = parseInt(this.config.memory_view, 16);
+            const rowCount = 16;
+            const bytesPerRow = 16;
+
+            for (let i = 0; i < rowCount; i++) {
+                const addr = baseAddr + (i * bytesPerRow);
+                const bytes = Array.from(this.emulator.mem_read(addr, bytesPerRow));
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td>${addr.toString(16).padStart(8, '0')}</td>
+                <td>${bytes.map(b => b.toString(16).padStart(2, '0')).join(' ')}</td>
+                <td>${bytes.map(b => (b >= 32 && b <= 126) ? String.fromCharCode(b) : '.').join('')}</td>
+            `;
+                memoryTable.appendChild(row);
+            }
+        }
+
+        initializeMemory(memoryConfig) {
+            try {
+                // Parse memory config from string format
+                const memoryEntries = memoryConfig.split(',').map(entry => entry.trim());
+
+                memoryEntries.forEach(entry => {
+                    const [addr, bytes] = entry.split(':').map(part => part.trim());
+                    if (!addr || !bytes) return;
+
+                    // Parse address
+                    const address = parseInt(addr, 16);
+
+                    // Parse bytes
+                    const byteArray = bytes.split(' ').map(b => parseInt(b, 16));
+
+                    // Ensure memory region is mapped
+                    const alignedAddr = alignDown(address, UNICORN_ALIGNMENT);
+                    const endAddr = alignUp(address + byteArray.length, UNICORN_ALIGNMENT);
+
+                    try {
+                        console.log('Mapping memory', address, alignedAddr, endAddr);
+                        this.emulator.mem_map(alignedAddr, endAddr, uc.PROT_ALL);
+                    } catch (e) {
+                        // Region might already be mapped, that's ok
+                        console.log('Memory region already mapped:', e);
+                    }
+
+                    // Write bytes to memory
+                    this.emulator.mem_write(address, byteArray);
+                });
+            } catch (error) {
+                console.error('Error initializing memory:', error);
+            }
+        }
+    }
+
+    function waitForDependencies(callback) {
+        if (typeof uc !== 'undefined' &&
+            typeof ks !== 'undefined' &&
+            typeof cs !== 'undefined' &&
+            typeof Split !== 'undefined') {
+            callback();
+        } else {
+            console.log('Waiting for dependencies...');
+            setTimeout(() => waitForDependencies(callback), 100);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.unicorn-container').forEach(container => {
+            const id = container.id;
+
+            // Get assembly from a data attribute
+            const assembly = container.dataset.assembly || '';
+            const registersRaw = container.dataset.registers || '{}';
+            const memoryView = container.dataset.memoryView || '0x10000';
+            const memoryRaw = container.dataset.memoryRaw || '';
+
+            let registers = {};
+            try {
+                if (registersRaw && registersRaw !== '{}') {
+                    registers = JSON.parse(registersRaw);
+                }
+            } catch (e) {
+                console.warn('Error parsing registers:', e);
+                // Try key-value format as fallback
+                try {
+                    registersRaw.split(',').forEach(pair => {
+                        const [key, value] = pair.split(':');
+                        if (key && value) {
+                            registers[key.trim()] = value.trim();
+                        }
+                    });
+                } catch (e2) {
+                    console.error('Failed to parse registers in both formats:', e2);
+                }
+            }
+
+            const config = {
+                assembly: assembly,
+                registers: registers,
+                memory_view: memoryView,
+                memory_raw: memoryRaw
+            };
+
+            waitForDependencies(() => {
+                UnicornEmulator.init(id, config)
+                    .catch(error => console.error(`Failed to initialize ${id}:`, error));
+            });
+        });
+    });
+</script>

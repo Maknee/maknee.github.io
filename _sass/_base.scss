@@ -1125,3 +1125,415 @@ swiper-container {
     border-bottom: 2px solid var(--global-text-color);
   }
 }
+
+// table {
+//   border-collapse: collapse;
+//   margin: 25px 0;
+//   font-size: 0.9em;
+//   font-family: sans-serif;
+//   min-width: 400px;
+//   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+//   thead tr {
+//     background-color: #009879;
+//     color: #ffffff;
+//     text-align: left;
+//   }
+
+//   th,
+//   td {
+//     padding: 12px 15px;
+//   }
+
+//   tbody tr {
+//     border-bottom: 1px solid #dddddd;
+
+//     &:nth-of-type(even) {
+//       background-color: #f3f3f3;
+//     }
+
+//     &:last-of-type {
+//       border-bottom: 2px solid #009879;
+//     }
+//   }
+// }
+
+.dataTables_wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.dataTables_scroll {
+  margin-top: 20px;
+}
+
+.dataTables_scrollHead table thead th {
+  background-color: #009879;
+  color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.dataTables_length,
+.dataTables_filter {
+  margin-bottom: 15px;
+}
+
+.dataTables_paginate {
+  margin-top: 15px;
+}
+
+/* Add this to your _sass directory, e.g., in _sass/_custom.scss */
+/* Reset counter to start from 1 (for [2]) */
+article {
+  counter-reset: sidenote-counter 0;
+  position: relative;
+  overflow: visible;
+}
+
+.sidenote {
+  float: right;
+  clear: right;
+  margin-right: -40%;
+  width: 40%;
+  margin-top: -1.5em;
+  margin-bottom: 1em;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  position: relative;
+  color: #666;
+  word-wrap: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
+  padding-right: 2em;
+  /* Increased padding to ensure text doesn't touch window edge */
+}
+
+.sidenote::before {
+  content: "[" counter(sidenote-counter) "]: ";
+  font-weight: bold;
+}
+
+.sidenote-ref {
+  vertical-align: super;
+  font-size: 0.7rem;
+  cursor: pointer;
+  color: var(--global-theme-color)
+}
+
+.sidenote-ref::before {
+  counter-increment: sidenote-counter;
+  content: "[" counter(sidenote-counter) "]";
+}
+
+@media (max-width: $max-content-width) {
+  .sidenote {
+    float: none;
+    margin: 1rem 0;
+    width: 100%;
+    padding: 0.5rem;
+    background: var(--global-bg-color);
+    border-left: 3px solid #dee2e6;
+  }
+}
+
+.sidenote+.sidenote {
+  margin-top: 0.5em;
+}
+
+.sidenote {
+  background: var(--global-bg-color);
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+}
+
+.unicorn-container {
+  height: 100vh;
+  background-color: #222;
+  font-family: 'Open Sans', sans-serif;
+  position: relative;
+  padding: 6px;
+
+  a {
+    color: #ACE;
+    text-decoration: none;
+
+    &:hover {
+      color: #79B;
+    }
+  }
+
+  .nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    float: left;
+    padding: 10px;
+    width: calc(100% - 20px);
+    color: #FFF;
+
+    a {
+      color: #EEE;
+      text-decoration: none;
+      border: 0;
+      -moz-outline-style: none;
+
+      &:hover,
+      &:active,
+      &:visited,
+      &:focus {
+        color: #EEE;
+        text-decoration: none;
+        outline: none;
+      }
+    }
+  }
+
+  .navbar-sep {
+    margin-left: 4px;
+    border-left: 1px solid #888;
+    padding-right: 8px;
+    width: 1px;
+  }
+
+  .navbar-demo {
+    font-weight: 100;
+    font-size: 9pt;
+  }
+
+  /* Separation */
+  .split {
+    box-sizing: border-box;
+
+    &.split-horizontal {
+      height: 100%;
+      float: left;
+    }
+  }
+
+  .gutter {
+    background-color: #444;
+    background-repeat: no-repeat;
+    background-position: 50%;
+
+    &.gutter-horizontal {
+      cursor: col-resize;
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+      filter: brightness(0.5);
+      height: 100%;
+      float: left;
+    }
+
+    &.gutter-vertical {
+      cursor: row-resize;
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
+      filter: brightness(0.5);
+    }
+  }
+
+  /* Panes */
+  .pane {
+    height: 100%;
+    background-color: #666;
+    color: #EEE;
+    font-size: 14px;
+  }
+
+  .content {
+    position: relative;
+    overflow-y: scroll;
+    width: 100%;
+    height: calc(100% - 28px);
+
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #666;
+      border-radius: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #444;
+      border-radius: 20px;
+    }
+
+    input[type="text"] {
+      font-family: 'Inconsolata';
+      font-size: 14px;
+      color: #EEE;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+    }
+
+    >table {
+      margin: 0px 10px;
+      width: calc(100% - 20px);
+      text-align: left;
+      border-collapse: collapse;
+      background: none !important;
+      color: inherit !important;
+    }
+  }
+
+  .row-instruction,
+  .row-register,
+  .row-memory {
+    font-family: 'Inconsolata';
+    font-size: 14px;
+  }
+
+  .row-instruction:hover,
+  .row-register:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Toolbar */
+  .toolbar {
+    background-color: #444;
+    padding: 4px;
+    height: 20px;
+    color: #EEE;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .toolbar-sep {
+    margin-left: 2px;
+    border-left: 1px solid #555;
+    margin-right: 5px;
+    width: 0px;
+    display: inline-block;
+  }
+
+  .toolbar-button {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    color: #EEE;
+    background-color: #555;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+
+    &:hover {
+      background-color: #666;
+    }
+
+    &:active {
+      color: #DDD;
+    }
+
+    &.disabled {
+      background-color: #555;
+      color: #999;
+      box-shadow: none;
+      cursor: default;
+    }
+  }
+
+  .assembler-toolbar {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    gap: 5px;
+    background: #2A2A2A;
+    border-bottom: 1px solid #3A3A3A;
+    min-height: 32px;
+  }
+
+  .toolbar-button-group {
+    display: flex;
+    gap: 5px;
+  }
+
+  .toolbar-search {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    /* Push search to the right */
+    min-width: 150px;
+    /* Minimum width for search */
+    max-width: 200px;
+    /* Maximum width for search */
+  }
+
+  .asm-addr-search,
+  .mem-addr-search {
+    flex: 1;
+    min-width: 120px;
+    background: #2A2A2A;
+    border: 1px solid #3A3A3A;
+    color: #EEE;
+    padding: 4px 8px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 13px;
+    height: 24px;
+  }
+
+  .search-icon {
+    padding: 4px;
+    cursor: pointer;
+    color: #888;
+  }
+
+  .assembler-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .assembler-table th,
+  .assembler-table td {
+    padding: 4px 8px;
+    text-align: left;
+    border-bottom: 1px solid #3A3A3A;
+  }
+
+  .assembler-table th:first-child,
+  .assembler-table td:first-child {
+    width: 100px;
+    /* Fixed width for address column */
+  }
+
+  .assembler-table th:nth-child(2),
+  .assembler-table td:nth-child(2) {
+    width: 150px;
+    /* Fixed width for bytes column */
+  }
+
+  /* Make sure content is scrollable */
+  .content.scrollable {
+    height: calc(100% - 42px);
+    /* Subtract toolbar height */
+    overflow-y: auto;
+  }
+
+  /* Add spacing between toolbar buttons */
+  .toolbar-sep {
+    width: 1px;
+    height: 20px;
+    background: #3A3A3A;
+    margin: 0 5px;
+  }
+
+  /* Container layout */
+  .pane {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .instruction-pointer {
+    background-color: rgba(255, 165, 0, 0.2);
+  }
+
+  .instruction-pointer td {
+    border-left: 2px solid orange !important;
+  }
+}

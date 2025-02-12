@@ -250,6 +250,7 @@ plugins:
   - jekyll-toc
   - jekyll-twitter-plugin
   - jemoji
+  - jekyll-jupyter-notebook
 
 # Sitemap settings
 defaults:
