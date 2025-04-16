@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      An Intro to DeepSeek's Distributed Filesystem
+title:      An Intro to DeepSeek's Distributed File System
 date:       2025-04-15 06:00:00
 summary:    3FS
 categories: 3FS
@@ -16,7 +16,7 @@ mermaid:
 
 # Series
 
-- [An Intro to DeepSeek's Distributed Filesystem]({{ site.baseurl }}{% link _posts/2025-04-15-3FS-Performance-Journal-1.md %})
+- [An Intro to DeepSeek's Distributed File System]({{ site.baseurl }}{% link _posts/2025-04-15-3FS-Performance-Journal-1.md %})
 
 <!--
 - [3FS Evaluation Discussion]({{ site.baseurl }}{% link _posts/2018-12-06-RTX-DXR Path Tracer User Guide.md %})
