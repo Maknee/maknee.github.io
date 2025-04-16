@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      An Intro to Deepseek's Distributed Filesystem
+title:      An Intro to DeepSeek's Distributed Filesystem
 date:       2025-04-15 06:00:00
 summary:    3FS
 categories: 3FS
@@ -16,7 +16,7 @@ mermaid:
 
 # Series
 
-- [An Intro to Deepseek's Distributed Filesystem]({{ site.baseurl }}{% link _posts/2025-04-15-3FS-Performance-Journal-1.md %})
+- [An Intro to DeepSeek's Distributed Filesystem]({{ site.baseurl }}{% link _posts/2025-04-15-3FS-Performance-Journal-1.md %})
 
 <!--
 - [3FS Evaluation Discussion]({{ site.baseurl }}{% link _posts/2018-12-06-RTX-DXR Path Tracer User Guide.md %})
@@ -28,7 +28,7 @@ mermaid:
 
 # What is 3FS?
 
-3FS ([Fire-Flyer File System](https://github.com/deepseek-ai/3FS)<span class="sidenote-ref"></span><span class="sidenote">Geez, what a tongue twister</span>) is a distributed filesystem released by [Deepseek](https://www.deepseek.com/) during their [open source release week](https://github.com/deepseek-ai/open-infra-index). This blog post will dive into what distributed file systems are and how 3FS operates, starting with some background.
+3FS ([Fire-Flyer File System](https://github.com/deepseek-ai/3FS)<span class="sidenote-ref"></span><span class="sidenote">Geez, what a tongue twister</span>) is a distributed filesystem released by [DeepSeek](https://www.deepseek.com/) during their [open source release week](https://github.com/deepseek-ai/open-infra-index). This blog post will dive into what distributed file systems are and how 3FS operates, starting with some background.
 
 ## What is a distributed filesystem?
 
@@ -171,7 +171,7 @@ With that in mind, I want to dive deep into analyzing the performance of this re
 
 Some questions I want to explore:
 
-- Do some of the Deepseek's claims hold up, especially regarding [FUSE bottlenecks](https://github.com/deepseek-ai/3FS/blob/ee9a5cee0a85c64f4797bf380257350ca1becd36/docs/design_notes.md#limitations-of-fuse)?
+- Do some of the DeepSeek's claims hold up, especially regarding [FUSE bottlenecks](https://github.com/deepseek-ai/3FS/blob/ee9a5cee0a85c64f4797bf380257350ca1becd36/docs/design_notes.md#limitations-of-fuse)?
 - Can I reproduce their performance graphs in some way?
 - In what scenario does the performance degrade?
 - What are the system's bottlenecks (CPU/memory/disk/network)?
