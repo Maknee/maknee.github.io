@@ -1,0 +1,256 @@
+/* InfiniBand Benchmark Visualization Styles */
+
+/* Main container styles */
+.ib-benchmark-container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    margin-bottom: 15px;
+    position: relative;
+    min-height: 500px;
+  }
+  
+  .ib-benchmark-container h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  /* Controls styling */
+  .ib-benchmark-container .ib-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .ib-benchmark-container .ib-control-group {
+    flex: 1;
+    min-width: 150px;
+  }
+  
+  .ib-benchmark-container .ib-control-group label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  
+  .ib-benchmark-container select {
+    width: 100%;
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+  }
+  
+  /* Plot container */
+  .ib-benchmark-container .ib-plot-container {
+    height: 450px;
+    width: 100%;
+    border: 1px solid #ddd; /* Add a border to see the container */
+  }
+  
+  .ib-benchmark-container .ib-benchmark-note {
+    font-size: 12px;
+    color: #666;
+    margin-top: 10px;
+  }
+  
+  /* Draggable panel styles */
+  .ib-draggable-panel {
+    position: absolute;
+    width: 400px;
+    height: 350px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    overflow: hidden;
+    resize: both;
+    display: none;
+  }
+  
+  /* Panel header styling */
+  .ib-draggable-panel .ib-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ddd;
+    cursor: move;
+    user-select: none;
+  }
+  
+  .ib-draggable-panel .ib-panel-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 5px;
+    max-width: calc(100% - 50px);
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  /* Panel controls */
+  .ib-draggable-panel .ib-panel-controls {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  
+  .ib-draggable-panel .ib-collapse-btn,
+  .ib-draggable-panel .ib-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+    padding: 2px;
+  }
+  
+  .ib-draggable-panel .ib-collapse-btn:hover,
+  .ib-draggable-panel .ib-close-btn:hover {
+    color: #333;
+  }
+  
+  /* Panel content styling */
+  .ib-draggable-panel .ib-panel-content {
+    padding: 10px;
+    height: calc(100% - 40px);
+    overflow: visible; /* Changed from auto to visible */
+    max-height: 400px;
+  }
+  
+  /* Collapsed panel state */
+  .ib-draggable-panel.ib-panel-collapsed .ib-panel-content {
+    display: none;
+  }
+  
+  .ib-draggable-panel.ib-panel-collapsed {
+    width: auto !important;
+    height: auto !important;
+    min-width: 180px !important;
+    resize: none;
+  }
+  
+  /* Panel content components */
+  .ib-draggable-panel .ib-panel-details {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .ib-draggable-panel .ib-panel-plot {
+    width: 100%;
+    height: 250px;
+    overflow: visible;
+  }
+  
+  /* Improve resize handle visibility */
+  .ib-draggable-panel::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, transparent 50%, #ccc 50%);
+    cursor: se-resize;
+  }
+  
+  /* Active panels indicator */
+  .ib-panels-indicator {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    padding: 6px 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 12px;
+    display: none;
+    z-index: 999;
+  }
+  
+  /* Button styles */
+  .ib-action-button {
+    padding: 4px 8px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-left: 6px;
+    cursor: pointer;
+    font-size: 11px;
+  }
+  
+  .ib-action-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Error message */
+  .ib-error {
+    color: #d32f2f;
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .ib-draggable-panel {
+      width: 90%;
+      left: 5%;
+      right: 5%;
+    }
+    
+    .ib-panels-indicator {
+      bottom: 8px;
+      right: 8px;
+      font-size: 11px;
+      padding: 5px 8px;
+    }
+  }
+  
+  /* Ensure Plotly tooltips appear above panels */
+  .js-plotly-plot .plotly .hoverlayer {
+    z-index: 1001 !important;
+  }
+  
+  /* Loading state */
+  .ib-plot-container.ib-lazy-load {
+      min-height: 400px;
+      background-color: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+  }
+  
+  .ib-plot-container.ib-lazy-load::before {
+      content: "Loading benchmark data...";
+      color: #666;
+      font-style: italic;
+  }
+  
+  /* Loading animation */
+  .ib-plot-container.ib-lazy-load::after {
+      content: "";
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border: 4px solid #ddd;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      animation: ib-spin 1s linear infinite;
+      top: calc(50% - 20px);
+      left: calc(50% - 20px);
+  }
+  
+  @keyframes ib-spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }

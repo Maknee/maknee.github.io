@@ -1537,3 +1537,15 @@ article {
     border-left: 2px solid orange !important;
   }
 }
+
+.image-container {
+  text-align: center;
+  margin: 2em 0;
+  position: relative;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  display: inline-block;
+}

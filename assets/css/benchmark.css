@@ -1,0 +1,246 @@
+/* Compressed benchmark-style.css */
+
+/* Main container styles */
+.benchmark-container {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 15px;
+  position: relative;
+  min-height: 500px;
+}
+
+.benchmark-container h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+/* Controls styling */
+.benchmark-container .controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.benchmark-container .control-group {
+  flex: 1;
+  min-width: 150px;
+}
+
+.benchmark-container .control-group label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.benchmark-container select {
+  width: 100%;
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+}
+
+/* Plot container */
+.benchmark-container .plot-container {
+  height: 450px;
+  width: 100%;
+}
+
+.benchmark-container .benchmark-note {
+  font-size: 12px;
+  color: #666;
+  margin-top: 10px;
+}
+
+/* Draggable panel styles */
+.benchmark-draggable-panel {
+  position: absolute;
+  width: 400px;
+  height: 350px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  overflow: hidden;
+  resize: both;
+  display: none;
+}
+
+/* Panel header styling */
+.benchmark-draggable-panel .panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+  cursor: move;
+  user-select: none;
+}
+
+.benchmark-draggable-panel .panel-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 5px;
+  max-width: calc(100% - 50px);
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Panel controls */
+.benchmark-draggable-panel .panel-controls {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.benchmark-draggable-panel .collapse-btn,
+.benchmark-draggable-panel .close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+  padding: 2px;
+}
+
+.benchmark-draggable-panel .collapse-btn:hover,
+.benchmark-draggable-panel .close-btn:hover {
+  color: #333;
+}
+
+/* Panel content styling */
+.benchmark-draggable-panel .panel-content {
+  padding: 10px;
+  height: calc(100% - 40px);
+  overflow: visible; /* Change from auto to visible */
+  max-height: 400px; /* Add a max height */
+}
+
+/* Collapsed panel state */
+.benchmark-draggable-panel.panel-collapsed .panel-content {
+  display: none;
+}
+
+.benchmark-draggable-panel.panel-collapsed {
+  width: auto !important;
+  height: auto !important;
+  min-width: 180px !important;
+  resize: none;
+}
+
+/* Panel content components */
+.benchmark-draggable-panel .latency-details {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.benchmark-draggable-panel .latency-plot-container {
+  width: 100%;
+  height: 250px;
+  overflow: visible;
+}
+
+/* Improve resize handle visibility */
+.benchmark-draggable-panel::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, transparent 50%, #ccc 50%);
+  cursor: se-resize;
+}
+
+/* Active panels indicator */
+.active-panels-indicator {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+  padding: 6px 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 12px;
+  display: none;
+  z-index: 999;
+}
+
+/* Button styles */
+.action-button {
+  padding: 4px 8px;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin-left: 6px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.action-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .benchmark-draggable-panel {
+    width: 90%;
+    left: 5%;
+    right: 5%;
+  }
+  
+  .active-panels-indicator {
+    bottom: 8px;
+    right: 8px;
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+}
+
+/* Ensure Plotly tooltips appear above panels */
+.js-plotly-plot .plotly .hoverlayer {
+  z-index: 1001 !important;
+}
+
+.plot-container.lazy-load {
+    min-height: 400px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.plot-container.lazy-load::before {
+    content: "Loading benchmark data...";
+    color: #666;
+    font-style: italic;
+}
+
+/* Optional loading animation */
+.plot-container.lazy-load::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #ddd;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    top: calc(50% - 20px);
+    left: calc(50% - 20px);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
