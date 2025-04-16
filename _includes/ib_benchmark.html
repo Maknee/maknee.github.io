@@ -1,0 +1,146 @@
+<!-- ib-benchmark.html -->
+{% if include.first_load %}
+<link rel="stylesheet" href="{{ '/assets/css/ib_benchmark.css' | relative_url }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.27.1/plotly.min.js"></script>
+<script src="{{ '/assets/js/ib_benchmark.js' | relative_url }}"></script>
+{% endif %}
+
+<div class="ib-benchmark-container" id="ib-benchmark-container-{{ include.id }}" 
+     {% if include.data_path %}data-path="{{ include.data_path | relative_url }}"{% endif %}>
+    <h2>{{ include.title }}</h2>
+    
+    <div class="ib-controls">
+        <div class="ib-control-group">
+            <label for="testType-{{ include.id }}">Test Type</label>
+            <select id="testType-{{ include.id }}">
+                <option value="send_bw" {% if include.default_test_type == "send_bw" %}selected{% endif %}>Send Bandwidth</option>
+                <option value="send_lat" {% if include.default_test_type == "send_lat" %}selected{% endif %}>Send Latency</option>
+                <option value="read_bw" {% if include.default_test_type == "read_bw" %}selected{% endif %}>Read Bandwidth</option>
+                <option value="read_lat" {% if include.default_test_type == "read_lat" %}selected{% endif %}>Read Latency</option>
+                <option value="write_bw" {% if include.default_test_type == "write_bw" %}selected{% endif %}>Write Bandwidth</option>
+                <option value="write_lat" {% if include.default_test_type == "write_lat" %}selected{% endif %}>Write Latency</option>
+            </select>
+        </div>
+
+        <div class="ib-control-group">
+            <label for="viewMode-{{ include.id }}">View Mode</label>
+            <select id="viewMode-{{ include.id }}">
+                <option value="3d" {% if include.default_view_mode == "3d" %}selected{% endif %}>3D Graph</option>
+                <option value="2d" {% if include.default_view_mode == "2d" %}selected{% endif %}>2D Graph</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="ib-plot-{{ include.id }}" class="ib-plot-container ib-lazy-load"></div>
+    
+    <!-- Panels indicator -->
+    <div id="ib-panels-indicator-{{ include.id }}" class="ib-panels-indicator" style="display: none;">
+        <span>Active Panels: <span id="ib-panel-count-{{ include.id }}">0</span></span>
+        <button id="ib-arrange-btn-{{ include.id }}" class="ib-action-button">Arrange</button>
+        <button id="ib-close-all-btn-{{ include.id }}" class="ib-action-button">Close All</button>
+    </div>
+
+    {% if include.note %}
+    <div class="ib-benchmark-note">
+        <p>{{ include.note }}</p>
+    </div>
+    {% endif %}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create intersection observer for lazy loading
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const container = entry.target.closest('.ib-benchmark-container');
+                        const id = container.id.replace('ib-benchmark-container-', '');
+                        const plotEl = document.getElementById('ib-plot-' + id);
+                        
+                        // Check if already loading or loaded to prevent duplicate requests
+                        if (!plotEl.dataset.loading) {
+                            plotEl.dataset.loading = 'true';
+                            
+                            // Load the benchmark data and initialize the plot
+                            loadIBBenchmarkData(id);
+                        }
+                        
+                        // Stop observing once we've started loading
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '200px 0px', // Load when within 200px of viewport
+                threshold: 0.01
+            });
+            
+            // Start observing the plot container
+            const plotContainer = document.getElementById('ib-plot-{{ include.id }}');
+            if (plotContainer) {
+                observer.observe(plotContainer);
+            }
+        });
+        
+        // Function to load benchmark data
+        function loadIBBenchmarkData(id) {
+            // Ensure benchmark.js is loaded before initializing
+            function waitForIBBenchmarkJs() {
+                if (typeof initInfiniBandPlot === 'function') {
+                    // Function exists, proceed with initialization
+                    const container = document.getElementById('ib-benchmark-container-' + id);
+                    const dataPath = container.getAttribute('data-path');
+                    
+                    if (dataPath) {
+                        // Use fetch API to load JSON data only when needed
+                        fetch(dataPath)
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! Status: ${response.status}`);
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                // Store data and initialize the plot
+                                const processedData = processBenchmarkData(data);
+                                const plotId = 'ib-plot-' + id;
+                                const testType = document.getElementById('testType-' + id).value;
+                                const viewMode = document.getElementById('viewMode-' + id).value;
+                                
+                                // Use our new function to initialize the plot
+                                window['ibPlot_' + id] = initInfiniBandPlot(plotId, processedData, {
+                                    defaultTest: testType || 'send_bw',
+                                    viewMode: viewMode || '3d'
+                                });
+                                
+                                document.getElementById(plotId).classList.remove('ib-lazy-load');
+                                
+                                // Setup event listeners for controls
+                                document.getElementById('testType-' + id).addEventListener('change', function(e) {
+                                    const plotObj = window['ibPlot_' + id];
+                                    if (plotObj && plotObj.setTestType) {
+                                        plotObj.setTestType(e.target.value);
+                                    }
+                                });
+                                
+                                document.getElementById('viewMode-' + id).addEventListener('change', function(e) {
+                                    const plotObj = window['ibPlot_' + id];
+                                    if (plotObj && plotObj.setViewMode) {
+                                        plotObj.setViewMode(e.target.value);
+                                    }
+                                });
+                            })
+                            .catch(error => {
+                                console.error('Error loading InfiniBand benchmark data:', error);
+                                document.getElementById('ib-plot-' + id).innerHTML = 
+                                    '<div class="ib-error">Error loading benchmark data. Check console for details.</div>';
+                            });
+                    }
+                } else {
+                    // Function not available yet, wait and try again
+                    setTimeout(() => waitForIBBenchmarkJs(), 100);
+                }
+            }
+            
+            waitForIBBenchmarkJs();
+        }
+    </script>
+</div>

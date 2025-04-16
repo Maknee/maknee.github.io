@@ -1,0 +1,1422 @@
+{
+  "metadata": {
+    "timestamp": "2025-03-27 21:05:51",
+    "commands_run": [
+      "send_bw",
+      "send_lat",
+      "write_bw",
+      "write_lat",
+      "read_bw",
+      "read_lat"
+    ],
+    "server_mode": false,
+    "remote_ip": "10.10.1.8",
+    "all_sizes": true,
+    "bidirectional": true,
+    "iterations": 100000
+  },
+  "results": {
+    "send_bw": {
+      "test_type": "ib_send_bw",
+      "configuration": {
+        "Dual-port": "OFF\t\tDevice         : mlx5_2",
+        "Number of qps": "1\t\tTransport type : IB",
+        "Connection type": "RC\t\tUsing SRQ      : OFF",
+        "PCIe relax order": "ON\t\tLock-free      : OFF",
+        "ibv_wr* API": "ON\t\tUsing DDP      : OFF",
+        "TX depth": "128",
+        "RX depth": "512",
+        "CQ Moderation": "100",
+        "Mtu": "4096[B]",
+        "Link type": "Ethernet",
+        "GID index": "3",
+        "Max inline data": "0[B]",
+        "rdma_cm QPs": "OFF",
+        "Data ex. method": "Ethernet"
+      },
+      "addresses": {
+        "local": "LID 0000 QPN 0x01c2 PSN 0xd2dfbe",
+        "local_gid": "00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:07",
+        "remote": "LID 0000 QPN 0x018b PSN 0x637cca",
+        "remote_gid": "00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:07\n remote address: LID 0000 QPN 0x018b PSN 0x637cca\n GID: 00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:08"
+      },
+      "results": [
+        {
+          "bytes": 2,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 8.42,
+          "msg_rate_Mpps": 4.416437
+        },
+        {
+          "bytes": 4,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 16.95,
+          "msg_rate_Mpps": 4.443599
+        },
+        {
+          "bytes": 8,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 33.99,
+          "msg_rate_Mpps": 4.454668
+        },
+        {
+          "bytes": 16,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 67.74,
+          "msg_rate_Mpps": 4.439126
+        },
+        {
+          "bytes": 32,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 135.67,
+          "msg_rate_Mpps": 4.445501
+        },
+        {
+          "bytes": 64,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 279.64,
+          "msg_rate_Mpps": 4.581611
+        },
+        {
+          "bytes": 128,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 560.23,
+          "msg_rate_Mpps": 4.589419
+        },
+        {
+          "bytes": 256,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 1070.73,
+          "msg_rate_Mpps": 4.38569
+        },
+        {
+          "bytes": 512,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 2693.16,
+          "msg_rate_Mpps": 5.515585
+        },
+        {
+          "bytes": 1024,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 4958.22,
+          "msg_rate_Mpps": 5.077221
+        },
+        {
+          "bytes": 2048,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 7970.62,
+          "msg_rate_Mpps": 4.080958
+        },
+        {
+          "bytes": 4096,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 9996.79,
+          "msg_rate_Mpps": 2.559178
+        },
+        {
+          "bytes": 8192,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 10631.87,
+          "msg_rate_Mpps": 1.360879
+        },
+        {
+          "bytes": 16384,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 11834.09,
+          "msg_rate_Mpps": 0.757382
+        },
+        {
+          "bytes": 32768,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 11938.07,
+          "msg_rate_Mpps": 0.382018
+        },
+        {
+          "bytes": 65536,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 15893.76,
+          "msg_rate_Mpps": 0.2543
+        },
+        {
+          "bytes": 131072,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 12239.86,
+          "msg_rate_Mpps": 0.097919
+        },
+        {
+          "bytes": 262144,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 17633.04,
+          "msg_rate_Mpps": 0.070532
+        },
+        {
+          "bytes": 524288,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 13714.23,
+          "msg_rate_Mpps": 0.027428
+        },
+        {
+          "bytes": 1048576,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 14119.03,
+          "msg_rate_Mpps": 0.014119
+        },
+        {
+          "bytes": 2097152,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 13508.9,
+          "msg_rate_Mpps": 0.006754
+        },
+        {
+          "bytes": 4194304,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 13441.57,
+          "msg_rate_Mpps": 0.00336
+        },
+        {
+          "bytes": 8388608,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 13741.92,
+          "msg_rate_Mpps": 0.001718
+        }
+      ],
+      "timestamp": "2025-03-27 20:45:44"
+    },
+    "send_lat": {
+      "test_type": "ib_send_lat",
+      "configuration": {
+        "Dual-port": "OFF\t\tDevice         : mlx5_2",
+        "Number of qps": "1\t\tTransport type : IB",
+        "Connection type": "RC\t\tUsing SRQ      : OFF",
+        "PCIe relax order": "ON\t\tLock-free      : OFF",
+        "ibv_wr* API": "ON\t\tUsing DDP      : OFF",
+        "TX depth": "1",
+        "Mtu": "4096[B]",
+        "Link type": "Ethernet",
+        "GID index": "3",
+        "Max inline data": "236[B]",
+        "rdma_cm QPs": "OFF",
+        "Data ex. method": "Ethernet"
+      },
+      "addresses": {
+        "local": "LID 0000 QPN 0x01c3 PSN 0x724e86",
+        "local_gid": "00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:07",
+        "remote": "LID 0000 QPN 0x018c PSN 0x792302",
+        "remote_gid": "00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:07\n remote address: LID 0000 QPN 0x018c PSN 0x792302\n GID: 00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:08"
+      },
+      "results": [
+        {
+          "bytes": 2,
+          "iterations": 100000,
+          "latency_min_usec": 2.45,
+          "latency_max_usec": 18.89,
+          "latency_typical_usec": 2.53,
+          "latency_avg_usec": 2.57,
+          "latency_stdev_usec": 0.14,
+          "latency_99percentile_usec": 2.68,
+          "latency_99.9percentile_usec": 5.01
+        },
+        {
+          "bytes": 4,
+          "iterations": 100000,
+          "latency_min_usec": 2.57,
+          "latency_max_usec": 15.27,
+          "latency_typical_usec": 2.63,
+          "latency_avg_usec": 2.64,
+          "latency_stdev_usec": 0.13,
+          "latency_99percentile_usec": 2.68,
+          "latency_99.9percentile_usec": 4.79
+        },
+        {
+          "bytes": 8,
+          "iterations": 100000,
+          "latency_min_usec": 2.57,
+          "latency_max_usec": 11.38,
+          "latency_typical_usec": 2.62,
+          "latency_avg_usec": 2.63,
+          "latency_stdev_usec": 0.1,
+          "latency_99percentile_usec": 2.68,
+          "latency_99.9percentile_usec": 4.53
+        },
+        {
+          "bytes": 16,
+          "iterations": 100000,
+          "latency_min_usec": 2.58,
+          "latency_max_usec": 13.12,
+          "latency_typical_usec": 2.63,
+          "latency_avg_usec": 2.64,
+          "latency_stdev_usec": 0.11,
+          "latency_99percentile_usec": 2.69,
+          "latency_99.9percentile_usec": 4.68
+        },
+        {
+          "bytes": 32,
+          "iterations": 100000,
+          "latency_min_usec": 2.58,
+          "latency_max_usec": 13.27,
+          "latency_typical_usec": 2.64,
+          "latency_avg_usec": 2.65,
+          "latency_stdev_usec": 0.11,
+          "latency_99percentile_usec": 2.69,
+          "latency_99.9percentile_usec": 4.71
+        },
+        {
+          "bytes": 64,
+          "iterations": 100000,
+          "latency_min_usec": 2.71,
+          "latency_max_usec": 14.79,
+          "latency_typical_usec": 2.85,
+          "latency_avg_usec": 2.83,
+          "latency_stdev_usec": 0.12,
+          "latency_99percentile_usec": 2.91,
+          "latency_99.9percentile_usec": 4.81
+        },
+        {
+          "bytes": 128,
+          "iterations": 100000,
+          "latency_min_usec": 2.79,
+          "latency_max_usec": 11.88,
+          "latency_typical_usec": 2.93,
+          "latency_avg_usec": 2.92,
+          "latency_stdev_usec": 0.11,
+          "latency_99percentile_usec": 2.99,
+          "latency_99.9percentile_usec": 4.87
+        },
+        {
+          "bytes": 256,
+          "iterations": 100000,
+          "latency_min_usec": 3.52,
+          "latency_max_usec": 17.45,
+          "latency_typical_usec": 3.66,
+          "latency_avg_usec": 3.66,
+          "latency_stdev_usec": 0.13,
+          "latency_99percentile_usec": 3.73,
+          "latency_99.9percentile_usec": 5.78
+        },
+        {
+          "bytes": 512,
+          "iterations": 100000,
+          "latency_min_usec": 3.68,
+          "latency_max_usec": 20.92,
+          "latency_typical_usec": 3.85,
+          "latency_avg_usec": 3.85,
+          "latency_stdev_usec": 0.13,
+          "latency_99percentile_usec": 3.94,
+          "latency_99.9percentile_usec": 6.07
+        },
+        {
+          "bytes": 1024,
+          "iterations": 100000,
+          "latency_min_usec": 3.76,
+          "latency_max_usec": 14.21,
+          "latency_typical_usec": 3.91,
+          "latency_avg_usec": 3.91,
+          "latency_stdev_usec": 0.11,
+          "latency_99percentile_usec": 3.97,
+          "latency_99.9percentile_usec": 5.91
+        },
+        {
+          "bytes": 2048,
+          "iterations": 100000,
+          "latency_min_usec": 4.31,
+          "latency_max_usec": 100.26,
+          "latency_typical_usec": 4.46,
+          "latency_avg_usec": 4.47,
+          "latency_stdev_usec": 0.62,
+          "latency_99percentile_usec": 4.66,
+          "latency_99.9percentile_usec": 6.69
+        },
+        {
+          "bytes": 4096,
+          "iterations": 100000,
+          "latency_min_usec": 5.44,
+          "latency_max_usec": 98.32,
+          "latency_typical_usec": 5.57,
+          "latency_avg_usec": 5.57,
+          "latency_stdev_usec": 0.17,
+          "latency_99percentile_usec": 5.77,
+          "latency_99.9percentile_usec": 7.59
+        },
+        {
+          "bytes": 8192,
+          "iterations": 100000,
+          "latency_min_usec": 6.39,
+          "latency_max_usec": 100.97,
+          "latency_typical_usec": 6.52,
+          "latency_avg_usec": 6.54,
+          "latency_stdev_usec": 0.24,
+          "latency_99percentile_usec": 6.71,
+          "latency_99.9percentile_usec": 8.62
+        },
+        {
+          "bytes": 16384,
+          "iterations": 100000,
+          "latency_min_usec": 8.5,
+          "latency_max_usec": 104.08,
+          "latency_typical_usec": 8.7,
+          "latency_avg_usec": 8.72,
+          "latency_stdev_usec": 0.21,
+          "latency_99percentile_usec": 8.97,
+          "latency_99.9percentile_usec": 10.88
+        },
+        {
+          "bytes": 32768,
+          "iterations": 100000,
+          "latency_min_usec": 12.93,
+          "latency_max_usec": 105.95,
+          "latency_typical_usec": 13.14,
+          "latency_avg_usec": 13.15,
+          "latency_stdev_usec": 0.24,
+          "latency_99percentile_usec": 13.38,
+          "latency_99.9percentile_usec": 15.41
+        },
+        {
+          "bytes": 65536,
+          "iterations": 100000,
+          "latency_min_usec": 9.95,
+          "latency_max_usec": 117.72,
+          "latency_typical_usec": 10.12,
+          "latency_avg_usec": 13.2,
+          "latency_stdev_usec": 5.37,
+          "latency_99percentile_usec": 22.59,
+          "latency_99.9percentile_usec": 23.56
+        },
+        {
+          "bytes": 131072,
+          "iterations": 100000,
+          "latency_min_usec": 14.8,
+          "latency_max_usec": 135.56,
+          "latency_typical_usec": 15.64,
+          "latency_avg_usec": 15.78,
+          "latency_stdev_usec": 3.0,
+          "latency_99percentile_usec": 15.91,
+          "latency_99.9percentile_usec": 39.95
+        },
+        {
+          "bytes": 262144,
+          "iterations": 100000,
+          "latency_min_usec": 25.48,
+          "latency_max_usec": 175.6,
+          "latency_typical_usec": 26.8,
+          "latency_avg_usec": 27.05,
+          "latency_stdev_usec": 5.33,
+          "latency_99percentile_usec": 27.1,
+          "latency_99.9percentile_usec": 123.0
+        },
+        {
+          "bytes": 524288,
+          "iterations": 100000,
+          "latency_min_usec": 46.91,
+          "latency_max_usec": 242.63,
+          "latency_typical_usec": 49.11,
+          "latency_avg_usec": 49.39,
+          "latency_stdev_usec": 8.17,
+          "latency_99percentile_usec": 49.54,
+          "latency_99.9percentile_usec": 180.59
+        },
+        {
+          "bytes": 1048576,
+          "iterations": 100000,
+          "latency_min_usec": 89.74,
+          "latency_max_usec": 462.61,
+          "latency_typical_usec": 94.31,
+          "latency_avg_usec": 94.9,
+          "latency_stdev_usec": 13.35,
+          "latency_99percentile_usec": 95.2,
+          "latency_99.9percentile_usec": 309.16
+        },
+        {
+          "bytes": 2097152,
+          "iterations": 100000,
+          "latency_min_usec": 175.42,
+          "latency_max_usec": 3155.36,
+          "latency_typical_usec": 183.67,
+          "latency_avg_usec": 185.47,
+          "latency_stdev_usec": 31.04,
+          "latency_99percentile_usec": 270.9,
+          "latency_99.9percentile_usec": 640.65
+        },
+        {
+          "bytes": 4194304,
+          "iterations": 100000,
+          "latency_min_usec": 346.44,
+          "latency_max_usec": 1623.76,
+          "latency_typical_usec": 362.37,
+          "latency_avg_usec": 407.71,
+          "latency_stdev_usec": 85.25,
+          "latency_99percentile_usec": 672.16,
+          "latency_99.9percentile_usec": 1210.97
+        },
+        {
+          "bytes": 8388608,
+          "iterations": 100000,
+          "latency_min_usec": 688.4,
+          "latency_max_usec": 3442.92,
+          "latency_typical_usec": 771.54,
+          "latency_avg_usec": 850.07,
+          "latency_stdev_usec": 181.76,
+          "latency_99percentile_usec": 1442.56,
+          "latency_99.9percentile_usec": 1951.8
+        }
+      ],
+      "timestamp": "2025-03-27 20:51:37"
+    },
+    "write_bw": {
+      "test_type": "ib_write_bw",
+      "configuration": {
+        "Dual-port": "OFF\t\tDevice         : mlx5_2",
+        "Number of qps": "1\t\tTransport type : IB",
+        "Connection type": "RC\t\tUsing SRQ      : OFF",
+        "PCIe relax order": "ON\t\tLock-free      : OFF",
+        "ibv_wr* API": "ON\t\tUsing DDP      : OFF",
+        "TX depth": "128",
+        "CQ Moderation": "100",
+        "Mtu": "4096[B]",
+        "Link type": "Ethernet",
+        "GID index": "3",
+        "Max inline data": "0[B]",
+        "rdma_cm QPs": "OFF",
+        "Data ex. method": "Ethernet"
+      },
+      "addresses": {
+        "local": "LID 0000 QPN 0x01c4 PSN 0x144fad RKey 0x1a4f00 VAddr 0x007fae241ff000",
+        "local_gid": "00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:07",
+        "remote": "LID 0000 QPN 0x018d PSN 0x52a80b RKey 0x182600 VAddr 0x007f8acad10000",
+        "remote_gid": "00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:07\n remote address: LID 0000 QPN 0x018d PSN 0x52a80b RKey 0x182600 VAddr 0x007f8acad10000\n GID: 00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:08"
+      },
+      "results": [
+        {
+          "bytes": 2,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 13.26,
+          "msg_rate_Mpps": 6.95446
+        },
+        {
+          "bytes": 4,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 26.94,
+          "msg_rate_Mpps": 7.063018
+        },
+        {
+          "bytes": 8,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 53.85,
+          "msg_rate_Mpps": 7.057801
+        },
+        {
+          "bytes": 16,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 107.74,
+          "msg_rate_Mpps": 7.060551
+        },
+        {
+          "bytes": 32,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 214.89,
+          "msg_rate_Mpps": 7.041424
+        },
+        {
+          "bytes": 64,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 431.16,
+          "msg_rate_Mpps": 7.064203
+        },
+        {
+          "bytes": 128,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 857.02,
+          "msg_rate_Mpps": 7.020715
+        },
+        {
+          "bytes": 256,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 1666.07,
+          "msg_rate_Mpps": 6.82422
+        },
+        {
+          "bytes": 512,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 3627.2,
+          "msg_rate_Mpps": 7.428496
+        },
+        {
+          "bytes": 1024,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 6637.62,
+          "msg_rate_Mpps": 6.796921
+        },
+        {
+          "bytes": 2048,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 12066.7,
+          "msg_rate_Mpps": 6.178149
+        },
+        {
+          "bytes": 4096,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 14380.22,
+          "msg_rate_Mpps": 3.681338
+        },
+        {
+          "bytes": 8192,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 15604.26,
+          "msg_rate_Mpps": 1.997346
+        },
+        {
+          "bytes": 16384,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 19597.54,
+          "msg_rate_Mpps": 1.254243
+        },
+        {
+          "bytes": 32768,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 13994.07,
+          "msg_rate_Mpps": 0.44781
+        },
+        {
+          "bytes": 65536,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 17026.14,
+          "msg_rate_Mpps": 0.272418
+        },
+        {
+          "bytes": 131072,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 16206.49,
+          "msg_rate_Mpps": 0.129652
+        },
+        {
+          "bytes": 262144,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 16818.58,
+          "msg_rate_Mpps": 0.067274
+        },
+        {
+          "bytes": 524288,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 16496.85,
+          "msg_rate_Mpps": 0.032994
+        },
+        {
+          "bytes": 1048576,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 20286.71,
+          "msg_rate_Mpps": 0.020287
+        },
+        {
+          "bytes": 2097152,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 16362.91,
+          "msg_rate_Mpps": 0.008181
+        },
+        {
+          "bytes": 4194304,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 16503.62,
+          "msg_rate_Mpps": 0.004126
+        },
+        {
+          "bytes": 8388608,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 22475.26,
+          "msg_rate_Mpps": 0.002809
+        }
+      ],
+      "timestamp": "2025-03-27 20:54:40"
+    },
+    "write_lat": {
+      "test_type": "ib_write_lat",
+      "configuration": {
+        "Dual-port": "OFF\t\tDevice         : mlx5_2",
+        "Number of qps": "1\t\tTransport type : IB",
+        "Connection type": "RC\t\tUsing SRQ      : OFF",
+        "PCIe relax order": "OFF\t\tLock-free      : OFF",
+        "ibv_wr* API": "ON\t\tUsing DDP      : OFF",
+        "TX depth": "1",
+        "Mtu": "4096[B]",
+        "Link type": "Ethernet",
+        "GID index": "3",
+        "Max inline data": "220[B]",
+        "rdma_cm QPs": "OFF",
+        "Data ex. method": "Ethernet"
+      },
+      "addresses": {
+        "local": "LID 0000 QPN 0x01c5 PSN 0x3d186e RKey 0x180dec VAddr 0x007f1779676000",
+        "local_gid": "00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:07",
+        "remote": "LID 0000 QPN 0x018e PSN 0xcd2346 RKey 0x180dec VAddr 0x007f5a2f8cf000",
+        "remote_gid": "00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:07\n remote address: LID 0000 QPN 0x018e PSN 0xcd2346 RKey 0x180dec VAddr 0x007f5a2f8cf000\n GID: 00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:08"
+      },
+      "results": [
+        {
+          "bytes": 2,
+          "iterations": 100000,
+          "latency_min_usec": 2.49,
+          "latency_max_usec": 14.08,
+          "latency_typical_usec": 2.53,
+          "latency_avg_usec": 2.57,
+          "latency_stdev_usec": 0.11,
+          "latency_99percentile_usec": 2.76,
+          "latency_99.9percentile_usec": 4.41
+        },
+        {
+          "bytes": 4,
+          "iterations": 100000,
+          "latency_min_usec": 2.59,
+          "latency_max_usec": 12.93,
+          "latency_typical_usec": 2.65,
+          "latency_avg_usec": 2.66,
+          "latency_stdev_usec": 0.12,
+          "latency_99percentile_usec": 2.76,
+          "latency_99.9percentile_usec": 4.26
+        },
+        {
+          "bytes": 8,
+          "iterations": 100000,
+          "latency_min_usec": 2.62,
+          "latency_max_usec": 11.95,
+          "latency_typical_usec": 2.65,
+          "latency_avg_usec": 2.66,
+          "latency_stdev_usec": 0.09,
+          "latency_99percentile_usec": 2.76,
+          "latency_99.9percentile_usec": 4.21
+        },
+        {
+          "bytes": 16,
+          "iterations": 100000,
+          "latency_min_usec": 2.57,
+          "latency_max_usec": 12.59,
+          "latency_typical_usec": 2.65,
+          "latency_avg_usec": 2.66,
+          "latency_stdev_usec": 0.1,
+          "latency_99percentile_usec": 2.76,
+          "latency_99.9percentile_usec": 4.27
+        },
+        {
+          "bytes": 32,
+          "iterations": 100000,
+          "latency_min_usec": 2.63,
+          "latency_max_usec": 11.11,
+          "latency_typical_usec": 2.68,
+          "latency_avg_usec": 2.68,
+          "latency_stdev_usec": 0.09,
+          "latency_99percentile_usec": 2.78,
+          "latency_99.9percentile_usec": 4.21
+        },
+        {
+          "bytes": 64,
+          "iterations": 100000,
+          "latency_min_usec": 2.67,
+          "latency_max_usec": 10.99,
+          "latency_typical_usec": 2.7,
+          "latency_avg_usec": 2.7,
+          "latency_stdev_usec": 0.1,
+          "latency_99percentile_usec": 2.73,
+          "latency_99.9percentile_usec": 4.18
+        },
+        {
+          "bytes": 128,
+          "iterations": 100000,
+          "latency_min_usec": 2.72,
+          "latency_max_usec": 15.55,
+          "latency_typical_usec": 2.8,
+          "latency_avg_usec": 2.8,
+          "latency_stdev_usec": 0.11,
+          "latency_99percentile_usec": 2.83,
+          "latency_99.9percentile_usec": 4.48
+        },
+        {
+          "bytes": 256,
+          "iterations": 100000,
+          "latency_min_usec": 3.47,
+          "latency_max_usec": 17.09,
+          "latency_typical_usec": 3.52,
+          "latency_avg_usec": 3.53,
+          "latency_stdev_usec": 0.11,
+          "latency_99percentile_usec": 3.6,
+          "latency_99.9percentile_usec": 5.05
+        },
+        {
+          "bytes": 512,
+          "iterations": 100000,
+          "latency_min_usec": 3.56,
+          "latency_max_usec": 12.89,
+          "latency_typical_usec": 3.64,
+          "latency_avg_usec": 3.65,
+          "latency_stdev_usec": 0.1,
+          "latency_99percentile_usec": 3.81,
+          "latency_99.9percentile_usec": 5.21
+        },
+        {
+          "bytes": 1024,
+          "iterations": 100000,
+          "latency_min_usec": 3.57,
+          "latency_max_usec": 15.46,
+          "latency_typical_usec": 3.64,
+          "latency_avg_usec": 3.65,
+          "latency_stdev_usec": 0.11,
+          "latency_99percentile_usec": 3.81,
+          "latency_99.9percentile_usec": 5.05
+        },
+        {
+          "bytes": 2048,
+          "iterations": 100000,
+          "latency_min_usec": 3.99,
+          "latency_max_usec": 13.25,
+          "latency_typical_usec": 4.05,
+          "latency_avg_usec": 4.06,
+          "latency_stdev_usec": 0.1,
+          "latency_99percentile_usec": 4.23,
+          "latency_99.9percentile_usec": 5.54
+        },
+        {
+          "bytes": 4096,
+          "iterations": 100000,
+          "latency_min_usec": 4.77,
+          "latency_max_usec": 103.9,
+          "latency_typical_usec": 4.83,
+          "latency_avg_usec": 4.86,
+          "latency_stdev_usec": 0.32,
+          "latency_99percentile_usec": 5.02,
+          "latency_99.9percentile_usec": 6.52
+        },
+        {
+          "bytes": 8192,
+          "iterations": 100000,
+          "latency_min_usec": 5.43,
+          "latency_max_usec": 15.08,
+          "latency_typical_usec": 5.53,
+          "latency_avg_usec": 5.54,
+          "latency_stdev_usec": 0.11,
+          "latency_99percentile_usec": 5.72,
+          "latency_99.9percentile_usec": 6.96
+        },
+        {
+          "bytes": 16384,
+          "iterations": 100000,
+          "latency_min_usec": 7.1,
+          "latency_max_usec": 101.97,
+          "latency_typical_usec": 7.24,
+          "latency_avg_usec": 7.26,
+          "latency_stdev_usec": 0.13,
+          "latency_99percentile_usec": 7.47,
+          "latency_99.9percentile_usec": 9.07
+        },
+        {
+          "bytes": 32768,
+          "iterations": 100000,
+          "latency_min_usec": 10.22,
+          "latency_max_usec": 21.43,
+          "latency_typical_usec": 10.37,
+          "latency_avg_usec": 10.39,
+          "latency_stdev_usec": 0.11,
+          "latency_99percentile_usec": 10.57,
+          "latency_99.9percentile_usec": 12.1
+        },
+        {
+          "bytes": 65536,
+          "iterations": 100000,
+          "latency_min_usec": 9.57,
+          "latency_max_usec": 113.62,
+          "latency_typical_usec": 16.03,
+          "latency_avg_usec": 15.6,
+          "latency_stdev_usec": 1.52,
+          "latency_99percentile_usec": 16.29,
+          "latency_99.9percentile_usec": 17.96
+        },
+        {
+          "bytes": 131072,
+          "iterations": 100000,
+          "latency_min_usec": 14.79,
+          "latency_max_usec": 125.49,
+          "latency_typical_usec": 14.94,
+          "latency_avg_usec": 15.06,
+          "latency_stdev_usec": 2.43,
+          "latency_99percentile_usec": 15.18,
+          "latency_99.9percentile_usec": 27.94
+        },
+        {
+          "bytes": 262144,
+          "iterations": 100000,
+          "latency_min_usec": 25.48,
+          "latency_max_usec": 144.7,
+          "latency_typical_usec": 25.64,
+          "latency_avg_usec": 25.79,
+          "latency_stdev_usec": 3.19,
+          "latency_99percentile_usec": 25.88,
+          "latency_99.9percentile_usec": 115.32
+        },
+        {
+          "bytes": 524288,
+          "iterations": 100000,
+          "latency_min_usec": 46.88,
+          "latency_max_usec": 195.33,
+          "latency_typical_usec": 47.03,
+          "latency_avg_usec": 47.25,
+          "latency_stdev_usec": 4.12,
+          "latency_99percentile_usec": 47.27,
+          "latency_99.9percentile_usec": 140.85
+        },
+        {
+          "bytes": 1048576,
+          "iterations": 100000,
+          "latency_min_usec": 89.69,
+          "latency_max_usec": 295.49,
+          "latency_typical_usec": 90.1,
+          "latency_avg_usec": 90.43,
+          "latency_stdev_usec": 5.66,
+          "latency_99percentile_usec": 90.35,
+          "latency_99.9percentile_usec": 185.87
+        },
+        {
+          "bytes": 2097152,
+          "iterations": 100000,
+          "latency_min_usec": 175.36,
+          "latency_max_usec": 2619.22,
+          "latency_typical_usec": 175.93,
+          "latency_avg_usec": 176.74,
+          "latency_stdev_usec": 14.42,
+          "latency_99percentile_usec": 176.31,
+          "latency_99.9percentile_usec": 273.75
+        },
+        {
+          "bytes": 4194304,
+          "iterations": 100000,
+          "latency_min_usec": 346.11,
+          "latency_max_usec": 1201.31,
+          "latency_typical_usec": 347.02,
+          "latency_avg_usec": 381.29,
+          "latency_stdev_usec": 59.23,
+          "latency_99percentile_usec": 556.68,
+          "latency_99.9percentile_usec": 802.52
+        },
+        {
+          "bytes": 8388608,
+          "iterations": 100000,
+          "latency_min_usec": 688.35,
+          "latency_max_usec": 1798.7,
+          "latency_typical_usec": 722.49,
+          "latency_avg_usec": 797.11,
+          "latency_stdev_usec": 143.93,
+          "latency_99percentile_usec": 1234.36,
+          "latency_99.9percentile_usec": 1422.49
+        }
+      ],
+      "timestamp": "2025-03-27 21:00:13"
+    },
+    "read_bw": {
+      "test_type": "ib_read_bw",
+      "configuration": {
+        "Dual-port": "OFF\t\tDevice         : mlx5_2",
+        "Number of qps": "1\t\tTransport type : IB",
+        "Connection type": "RC\t\tUsing SRQ      : OFF",
+        "PCIe relax order": "ON\t\tLock-free      : OFF",
+        "ibv_wr* API": "ON\t\tUsing DDP      : OFF",
+        "TX depth": "128",
+        "CQ Moderation": "100",
+        "Mtu": "4096[B]",
+        "Link type": "Ethernet",
+        "GID index": "3",
+        "Outstand reads": "16",
+        "rdma_cm QPs": "OFF",
+        "Data ex. method": "Ethernet"
+      },
+      "addresses": {
+        "local": "LID 0000 QPN 0x01c6 PSN 0x36f0a5 OUT 0x10 RKey 0x1a4f00 VAddr 0x007f596bbff000",
+        "local_gid": "00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:07",
+        "remote": "LID 0000 QPN 0x018f PSN 0x67571a OUT 0x10 RKey 0x190500 VAddr 0x007f408e6cc000",
+        "remote_gid": "00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:07\n remote address: LID 0000 QPN 0x018f PSN 0x67571a OUT 0x10 RKey 0x190500 VAddr 0x007f408e6cc000\n GID: 00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:08"
+      },
+      "results": [
+        {
+          "bytes": 2,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 10.98,
+          "msg_rate_Mpps": 5.757453
+        },
+        {
+          "bytes": 4,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 22.07,
+          "msg_rate_Mpps": 5.786692
+        },
+        {
+          "bytes": 8,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 44.14,
+          "msg_rate_Mpps": 5.785761
+        },
+        {
+          "bytes": 16,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 88.19,
+          "msg_rate_Mpps": 5.77953
+        },
+        {
+          "bytes": 32,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 176.3,
+          "msg_rate_Mpps": 5.777073
+        },
+        {
+          "bytes": 64,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 351.23,
+          "msg_rate_Mpps": 5.754628
+        },
+        {
+          "bytes": 128,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 847.3,
+          "msg_rate_Mpps": 6.94111
+        },
+        {
+          "bytes": 256,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 1644.98,
+          "msg_rate_Mpps": 6.737837
+        },
+        {
+          "bytes": 512,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 3135.57,
+          "msg_rate_Mpps": 6.421655
+        },
+        {
+          "bytes": 1024,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 5726.13,
+          "msg_rate_Mpps": 5.863559
+        },
+        {
+          "bytes": 2048,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 9568.78,
+          "msg_rate_Mpps": 4.899216
+        },
+        {
+          "bytes": 4096,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 13038.69,
+          "msg_rate_Mpps": 3.337903
+        },
+        {
+          "bytes": 8192,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 13011.93,
+          "msg_rate_Mpps": 1.665528
+        },
+        {
+          "bytes": 16384,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 14161.94,
+          "msg_rate_Mpps": 0.906364
+        },
+        {
+          "bytes": 32768,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 14889.83,
+          "msg_rate_Mpps": 0.476474
+        },
+        {
+          "bytes": 65536,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 15543.96,
+          "msg_rate_Mpps": 0.248703
+        },
+        {
+          "bytes": 131072,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 15045.29,
+          "msg_rate_Mpps": 0.120362
+        },
+        {
+          "bytes": 262144,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 14234.24,
+          "msg_rate_Mpps": 0.056937
+        },
+        {
+          "bytes": 524288,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 14762.18,
+          "msg_rate_Mpps": 0.029524
+        },
+        {
+          "bytes": 1048576,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 15789.08,
+          "msg_rate_Mpps": 0.015789
+        },
+        {
+          "bytes": 2097152,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 21788.98,
+          "msg_rate_Mpps": 0.010894
+        },
+        {
+          "bytes": 4194304,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 20615.42,
+          "msg_rate_Mpps": 0.005154
+        },
+        {
+          "bytes": 8388608,
+          "iterations": 100000,
+          "bw_peak_MBs": 0.0,
+          "bw_average_MBs": 19717.88,
+          "msg_rate_Mpps": 0.002465
+        }
+      ],
+      "timestamp": "2025-03-27 21:03:10"
+    },
+    "read_lat": {
+      "test_type": "ib_read_lat",
+      "configuration": {
+        "Dual-port": "OFF\t\tDevice         : mlx5_2",
+        "Number of qps": "1\t\tTransport type : IB",
+        "Connection type": "RC\t\tUsing SRQ      : OFF",
+        "PCIe relax order": "ON\t\tLock-free      : OFF",
+        "ibv_wr* API": "ON\t\tUsing DDP      : OFF",
+        "TX depth": "1",
+        "Mtu": "4096[B]",
+        "Link type": "Ethernet",
+        "GID index": "3",
+        "Outstand reads": "16",
+        "rdma_cm QPs": "OFF",
+        "Data ex. method": "Ethernet"
+      },
+      "addresses": {
+        "local": "LID 0000 QPN 0x01c7 PSN 0x5957 OUT 0x10 RKey 0x1a4f00 VAddr 0x007fa5f7cf9000",
+        "local_gid": "00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:07",
+        "remote": "LID 0000 QPN 0x0190 PSN 0x35e359 OUT 0x10 RKey 0x1d5800 VAddr 0x007fdf85b3b000",
+        "remote_gid": "00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:07\n remote address: LID 0000 QPN 0x0190 PSN 0x35e359 OUT 0x10 RKey 0x1d5800 VAddr 0x007fdf85b3b000\n GID: 00:00:00:00:00:00:00:00:00:00:255:255:10:10:01:08"
+      },
+      "results": [
+        {
+          "bytes": 2,
+          "iterations": 100000,
+          "latency_min_usec": 4.51,
+          "latency_max_usec": 21.53,
+          "latency_typical_usec": 4.58,
+          "latency_avg_usec": 4.66,
+          "latency_stdev_usec": 0.13,
+          "latency_99percentile_usec": 4.86,
+          "latency_99.9percentile_usec": 6.39
+        },
+        {
+          "bytes": 4,
+          "iterations": 100000,
+          "latency_min_usec": 4.73,
+          "latency_max_usec": 22.37,
+          "latency_typical_usec": 4.8,
+          "latency_avg_usec": 4.81,
+          "latency_stdev_usec": 0.11,
+          "latency_99percentile_usec": 4.87,
+          "latency_99.9percentile_usec": 5.33
+        },
+        {
+          "bytes": 8,
+          "iterations": 100000,
+          "latency_min_usec": 4.73,
+          "latency_max_usec": 21.05,
+          "latency_typical_usec": 4.81,
+          "latency_avg_usec": 4.82,
+          "latency_stdev_usec": 0.12,
+          "latency_99percentile_usec": 4.88,
+          "latency_99.9percentile_usec": 5.29
+        },
+        {
+          "bytes": 16,
+          "iterations": 100000,
+          "latency_min_usec": 4.71,
+          "latency_max_usec": 20.83,
+          "latency_typical_usec": 4.81,
+          "latency_avg_usec": 4.81,
+          "latency_stdev_usec": 0.12,
+          "latency_99percentile_usec": 4.88,
+          "latency_99.9percentile_usec": 5.57
+        },
+        {
+          "bytes": 32,
+          "iterations": 100000,
+          "latency_min_usec": 4.71,
+          "latency_max_usec": 21.67,
+          "latency_typical_usec": 4.78,
+          "latency_avg_usec": 4.79,
+          "latency_stdev_usec": 0.12,
+          "latency_99percentile_usec": 5.08,
+          "latency_99.9percentile_usec": 5.25
+        },
+        {
+          "bytes": 64,
+          "iterations": 100000,
+          "latency_min_usec": 4.73,
+          "latency_max_usec": 22.56,
+          "latency_typical_usec": 4.79,
+          "latency_avg_usec": 4.81,
+          "latency_stdev_usec": 0.14,
+          "latency_99percentile_usec": 5.1,
+          "latency_99.9percentile_usec": 5.88
+        },
+        {
+          "bytes": 128,
+          "iterations": 100000,
+          "latency_min_usec": 4.81,
+          "latency_max_usec": 22.69,
+          "latency_typical_usec": 4.88,
+          "latency_avg_usec": 4.89,
+          "latency_stdev_usec": 0.14,
+          "latency_99percentile_usec": 5.01,
+          "latency_99.9percentile_usec": 5.72
+        },
+        {
+          "bytes": 256,
+          "iterations": 100000,
+          "latency_min_usec": 4.87,
+          "latency_max_usec": 22.01,
+          "latency_typical_usec": 4.93,
+          "latency_avg_usec": 4.95,
+          "latency_stdev_usec": 0.12,
+          "latency_99percentile_usec": 5.25,
+          "latency_99.9percentile_usec": 5.39
+        },
+        {
+          "bytes": 512,
+          "iterations": 100000,
+          "latency_min_usec": 4.95,
+          "latency_max_usec": 24.0,
+          "latency_typical_usec": 5.02,
+          "latency_avg_usec": 5.03,
+          "latency_stdev_usec": 0.14,
+          "latency_99percentile_usec": 5.23,
+          "latency_99.9percentile_usec": 5.44
+        },
+        {
+          "bytes": 1024,
+          "iterations": 100000,
+          "latency_min_usec": 4.85,
+          "latency_max_usec": 23.35,
+          "latency_typical_usec": 4.9,
+          "latency_avg_usec": 4.92,
+          "latency_stdev_usec": 0.13,
+          "latency_99percentile_usec": 5.26,
+          "latency_99.9percentile_usec": 5.36
+        },
+        {
+          "bytes": 2048,
+          "iterations": 100000,
+          "latency_min_usec": 5.11,
+          "latency_max_usec": 24.56,
+          "latency_typical_usec": 5.17,
+          "latency_avg_usec": 5.22,
+          "latency_stdev_usec": 0.14,
+          "latency_99percentile_usec": 5.37,
+          "latency_99.9percentile_usec": 6.29
+        },
+        {
+          "bytes": 4096,
+          "iterations": 100000,
+          "latency_min_usec": 5.61,
+          "latency_max_usec": 24.91,
+          "latency_typical_usec": 5.66,
+          "latency_avg_usec": 5.69,
+          "latency_stdev_usec": 0.16,
+          "latency_99percentile_usec": 6.01,
+          "latency_99.9percentile_usec": 7.56
+        },
+        {
+          "bytes": 8192,
+          "iterations": 100000,
+          "latency_min_usec": 6.02,
+          "latency_max_usec": 24.05,
+          "latency_typical_usec": 6.09,
+          "latency_avg_usec": 6.11,
+          "latency_stdev_usec": 0.13,
+          "latency_99percentile_usec": 6.39,
+          "latency_99.9percentile_usec": 6.75
+        },
+        {
+          "bytes": 16384,
+          "iterations": 100000,
+          "latency_min_usec": 6.82,
+          "latency_max_usec": 26.09,
+          "latency_typical_usec": 6.98,
+          "latency_avg_usec": 7.0,
+          "latency_stdev_usec": 0.15,
+          "latency_99percentile_usec": 7.23,
+          "latency_99.9percentile_usec": 7.54
+        },
+        {
+          "bytes": 32768,
+          "iterations": 100000,
+          "latency_min_usec": 8.36,
+          "latency_max_usec": 22.74,
+          "latency_typical_usec": 8.53,
+          "latency_avg_usec": 8.55,
+          "latency_stdev_usec": 0.13,
+          "latency_99percentile_usec": 8.8,
+          "latency_99.9percentile_usec": 9.55
+        },
+        {
+          "bytes": 65536,
+          "iterations": 100000,
+          "latency_min_usec": 11.09,
+          "latency_max_usec": 26.83,
+          "latency_typical_usec": 11.25,
+          "latency_avg_usec": 11.28,
+          "latency_stdev_usec": 0.12,
+          "latency_99percentile_usec": 11.51,
+          "latency_99.9percentile_usec": 11.59
+        },
+        {
+          "bytes": 131072,
+          "iterations": 100000,
+          "latency_min_usec": 16.38,
+          "latency_max_usec": 206.81,
+          "latency_typical_usec": 16.6,
+          "latency_avg_usec": 16.62,
+          "latency_stdev_usec": 0.83,
+          "latency_99percentile_usec": 16.81,
+          "latency_99.9percentile_usec": 17.83
+        },
+        {
+          "bytes": 262144,
+          "iterations": 100000,
+          "latency_min_usec": 27.03,
+          "latency_max_usec": 227.76,
+          "latency_typical_usec": 27.2,
+          "latency_avg_usec": 27.43,
+          "latency_stdev_usec": 5.99,
+          "latency_99percentile_usec": 27.48,
+          "latency_99.9percentile_usec": 202.39
+        },
+        {
+          "bytes": 524288,
+          "iterations": 100000,
+          "latency_min_usec": 48.39,
+          "latency_max_usec": 247.11,
+          "latency_typical_usec": 48.55,
+          "latency_avg_usec": 48.92,
+          "latency_stdev_usec": 8.0,
+          "latency_99percentile_usec": 48.79,
+          "latency_99.9percentile_usec": 236.15
+        },
+        {
+          "bytes": 1048576,
+          "iterations": 100000,
+          "latency_min_usec": 91.22,
+          "latency_max_usec": 291.46,
+          "latency_typical_usec": 91.37,
+          "latency_avg_usec": 92.03,
+          "latency_stdev_usec": 10.63,
+          "latency_99percentile_usec": 91.61,
+          "latency_99.9percentile_usec": 281.75
+        },
+        {
+          "bytes": 2097152,
+          "iterations": 100000,
+          "latency_min_usec": 176.82,
+          "latency_max_usec": 4411.4,
+          "latency_typical_usec": 177.46,
+          "latency_avg_usec": 178.87,
+          "latency_stdev_usec": 22.91,
+          "latency_99percentile_usec": 177.74,
+          "latency_99.9percentile_usec": 372.14
+        },
+        {
+          "bytes": 4194304,
+          "iterations": 100000,
+          "latency_min_usec": 347.98,
+          "latency_max_usec": 1451.78,
+          "latency_typical_usec": 348.59,
+          "latency_avg_usec": 352.21,
+          "latency_stdev_usec": 42.71,
+          "latency_99percentile_usec": 498.32,
+          "latency_99.9percentile_usec": 1254.55
+        },
+        {
+          "bytes": 8388608,
+          "iterations": 100000,
+          "latency_min_usec": 690.29,
+          "latency_max_usec": 1817.1,
+          "latency_typical_usec": 690.87,
+          "latency_avg_usec": 696.58,
+          "latency_stdev_usec": 46.88,
+          "latency_99percentile_usec": 880.5,
+          "latency_99.9percentile_usec": 1601.88
+        }
+      ],
+      "timestamp": "2025-03-27 21:05:51"
+    }
+  }
+}
