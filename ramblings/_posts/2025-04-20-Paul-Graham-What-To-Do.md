@@ -106,7 +106,9 @@ Very hard to see sometimes.
 
 Great ending. "Just do it" - easier said than done. That's for sure. Another thing that Paul doesn't mention. It's like the gym. It takes reps to build muscle. It takes reps to make something amazing. "Just do it" - yes, but make sure you see your goals clearly in the moment and can learn to/be able to identify plateaus. Not every person in the olympics just randomly just went at it and did one thing and became good at their sport. 
 
+#### Final thoughts
 
+To answer this generically - I can't. But for doing stuff that you're interested in and try to create something: talking to people, reading/watching the literature, doing something and then thinking, or guessing, doing something and then thinking are some ways one can get to a point of creating something or at the point of creating something. However, going through it may not be fun at times, may be actually uninteresting at times, or even depressing/cause someone to re-evaluate a lot (lost). I think that as long one hold the belief at one's core, one will make progress. Ask anyone that one thinks is successful what they failed at/when they felt lost, they should answer with an event that sticks out or a couple or even mention that they wanted to give up. 
 
 
 
