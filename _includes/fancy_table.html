@@ -1,0 +1,337 @@
+{% comment %} fancy_table.html {% endcomment %}
+{% if include.first_load %}
+<link rel="stylesheet" href="{{ '/assets/css/fancy_table.css' | relative_url }}">
+<script>
+function toggleCalculations(tableId) {
+  // ... (toggleCalculations function remains the same)
+  const table = document.getElementById(tableId);
+  const cells = table.querySelectorAll('.has-calculation');
+  const tableWrapper = document.getElementById(tableId + '-wrapper');
+  const toggleSwitch = document.getElementById(tableId + '-switch');
+  const toggleText = document.getElementById(tableId + '-toggle-text');
+
+  if (tableWrapper.classList.contains('show-calculations')) {
+    tableWrapper.classList.remove('show-calculations');
+    toggleSwitch.classList.remove('active');
+    toggleText.textContent = "Show calculations";
+    cells.forEach(cell => {
+      const normalText = cell.querySelector('.normal-text');
+      const calculationText = cell.querySelector('.calculation-text');
+      normalText.style.display = 'inline';
+      calculationText.style.display = 'none';
+    });
+  } else {
+    tableWrapper.classList.add('show-calculations');
+    toggleSwitch.classList.add('active');
+    toggleText.textContent = "Hide calculations";
+    cells.forEach(cell => {
+      const normalText = cell.querySelector('.normal-text');
+      const calculationText = cell.querySelector('.calculation-text');
+      normalText.style.display = 'none';
+      calculationText.style.display = 'inline';
+    });
+  }
+}
+
+function isConsideredYellow(colorString) {
+    if (!colorString) return false;
+    const lowerColor = colorString.toLowerCase();
+
+    const yellowKeywords = ['yellow', 'gold', 'lemon', 'chiffon', 'goldenrod', 'papayawhip', 'moccasin', 'khaki', '#ff0', '#ffff00', '#ffffe0', '#fffacd', '#fafad2', '#fff8dc', '#eee8aa', '#f0e68c'];
+    if (yellowKeywords.some(k => lowerColor.includes(k))) {
+        return true;
+    }
+
+    const match = lowerColor.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        if (r > 200 && g > 180 && b < 200 && Math.abs(r - g) < 70) { 
+            return true;
+        }
+    }
+    if (lowerColor === '#ffdab9') return true; // PeachPuff
+    if (lowerColor === 'rgba(255,255,0,0.2)') return true; // Example: semi-transparent yellow
+    return false;
+}
+
+function initializeCellHighlighters() {
+  const highlighters = document.querySelectorAll('[data-highlight-cells]');
+
+  highlighters.forEach(highlighter => {
+    if (highlighter.dataset.highlighterInitialized === 'true') return;
+    highlighter.dataset.highlighterInitialized = 'true';
+
+    const cellIdsToHighlight = highlighter.dataset.highlightCells.split(',').map(id => id.trim());
+    const cellElements = cellIdsToHighlight.map(id => document.getElementById(id)).filter(el => el);
+
+    let descriptiveSpans = [];
+    if (highlighter.matches('span[data-hover-text-color]')) {
+      descriptiveSpans.push(highlighter);
+    } else {
+      descriptiveSpans = Array.from(highlighter.querySelectorAll('span[data-hover-text-color]'));
+    }
+
+    descriptiveSpans.forEach(span => {
+      if (typeof span.dataset.originalParaTextColor === 'undefined') {
+        span.dataset.originalParaTextColor = window.getComputedStyle(span).color || '';
+      }
+    });
+
+    highlighter.addEventListener('mouseenter', () => {
+      highlighter.classList.add('trigger-text-active');
+
+      descriptiveSpans.forEach(span => {
+        if (span.dataset.hoverTextColor) {
+          span.style.color = span.dataset.hoverTextColor;
+        }
+      });
+
+      cellElements.forEach((cell, idx) => {
+        cell.classList.add('cell-highlighted'); 
+
+        let hoverTextColorForCell = null;
+        let hoverCellBgFromDescSpan = null;
+
+        if (idx < descriptiveSpans.length) {
+          const descSpan = descriptiveSpans[idx];
+          if (descSpan.dataset.hoverTextColor) {
+            hoverTextColorForCell = descSpan.dataset.hoverTextColor;
+          }
+          if (descSpan.dataset.hoverCellBg) {
+            hoverCellBgFromDescSpan = descSpan.dataset.hoverCellBg;
+          }
+        } else if (descriptiveSpans.length === 1 && cellElements.length > 1) {
+          const descSpan = descriptiveSpans[0];
+           if (descSpan.dataset.hoverTextColor) {
+            hoverTextColorForCell = descSpan.dataset.hoverTextColor;
+          }
+          if (descSpan.dataset.hoverCellBg) {
+            hoverCellBgFromDescSpan = descSpan.dataset.hoverCellBg;
+          }
+        }
+
+
+        if (hoverTextColorForCell) {
+          const isCalcCell = cell.classList.contains('has-calculation');
+          if (isCalcCell) {
+            const normalTextSpan = cell.querySelector('.normal-text');
+            const calcResultSpan = cell.querySelector('.calc-result');
+            const calcWrapper = cell.querySelector('.calculation-text');
+            if (calcWrapper && window.getComputedStyle(calcWrapper).display !== 'none') {
+              if (calcResultSpan) calcResultSpan.style.setProperty('color', hoverTextColorForCell, 'important');
+            } else {
+              if (normalTextSpan) normalTextSpan.style.setProperty('color', hoverTextColorForCell, 'important');
+            }
+          } else {
+            const directSpan = cell.querySelector(':scope > span');
+            if (directSpan) directSpan.style.setProperty('color', hoverTextColorForCell, 'important');
+          }
+        }
+
+        if (hoverCellBgFromDescSpan && isConsideredYellow(hoverCellBgFromDescSpan)) {
+          if (typeof cell.dataset.originalBgColor === 'undefined') {
+            cell.dataset.originalBgColor = cell.style.backgroundColor; 
+          }
+          cell.style.backgroundColor = hoverCellBgFromDescSpan;
+          cell.dataset.bgChangedByScript = 'true';
+        }
+      });
+    });
+
+    highlighter.addEventListener('mouseleave', () => {
+      highlighter.classList.remove('trigger-text-active');
+
+      descriptiveSpans.forEach(span => {
+        if (typeof span.dataset.originalParaTextColor !== 'undefined') {
+          span.style.color = span.dataset.originalParaTextColor;
+        }
+      });
+
+      cellElements.forEach((cell, idx) => {
+        cell.classList.remove('cell-highlighted');
+
+        const isCalcCell = cell.classList.contains('has-calculation');
+        if (isCalcCell) {
+            const normalTextSpan = cell.querySelector('.normal-text');
+            const calcResultSpan = cell.querySelector('.calc-result');
+            if (normalTextSpan) normalTextSpan.style.removeProperty('color');
+            if (calcResultSpan) calcResultSpan.style.removeProperty('color');
+        } else {
+            const directSpan = cell.querySelector(':scope > span');
+            if (directSpan) directSpan.style.removeProperty('color');
+        }
+
+        if (cell.dataset.bgChangedByScript === 'true') {
+          cell.style.backgroundColor = cell.dataset.originalBgColor || '';
+          delete cell.dataset.originalBgColor;
+          delete cell.dataset.bgChangedByScript;
+        }
+      });
+    });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeCellHighlighters);
+} else {
+  initializeCellHighlighters();
+}
+</script>
+<style>
+/* ... (Other styles remain the same) ... */
+.toggle-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 6px;
+}
+.calc-toggle {
+  display: inline-flex;
+  align-items: center;
+}
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 16px;
+  background-color: #e5e7eb; /* gray-200 */
+  border-radius: 10px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  top: 2px;
+  left: 2px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.toggle-switch.active {
+  background-color: #8b5cf6; /* purple-500 */
+}
+.toggle-switch.active::after {
+  left: 18px;
+}
+.toggle-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.toggle-text {
+  font-size: 0.75rem;
+  color: #6b7280; /* gray-500 */
+  margin-right: 6px;
+}
+.calc-result {
+  color: rgb(75, 85, 99); /* gray-700 */
+}
+.calc-formula {
+  color: #6b83a6; /* Subtle bluish gray */
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+.calc-equals {
+  color: rgb(75, 85, 99); /* gray-700 */
+  display: inline-block;
+  margin: 0 4px;
+  font-weight: normal;
+}
+
+.cell-highlighted {
+  font-weight: bold !important; 
+}
+
+.trigger-text-active {
+  background-color: #E5E7EB; 
+  padding: 1px 3px;      
+  border-radius: 3px;    
+  transition: background-color 0.15s ease-in-out;
+}
+.trigger-text-active span[data-hover-text-color] {
+    padding: 0; 
+    background-color: transparent; 
+}
+</style>
+{% endif %}
+
+{% assign padx = include.padx | default: "4" %}
+{% assign pady = include.pady | default: "8" %}
+
+{% assign px = include.px | default: "6" %}
+{% assign py = include.py | default: "3" %}
+
+{% if include.id and include.id != "" %}
+  {% assign table_id = include.id %}
+{% else %}
+  {% assign table_id_suffix = include.headers | md5 %}
+  {% assign table_id = "fancy-table-" | append: table_id_suffix %}
+{% endif %}
+
+{% assign has_calculations = include.show_calculations | default: false %}
+
+<div id="{{ table_id }}-wrapper" class="px-4 rounded-lg __basic-table not-prose mt-{{ padx }} mb-{{ pady }} overflow-x-auto">
+  {% if has_calculations == "true" %}
+  <div class="toggle-container">
+    <div class="calc-toggle">
+      <span id="{{ table_id }}-toggle-text" class="toggle-text">Show calculations</span>
+      <span id="{{ table_id }}-toggle" onclick="toggleCalculations('{{ table_id }}')">
+        <span class="toggle-switch" id="{{ table_id }}-switch"></span>
+        <span class="toggle-label">Toggle calculations</span>
+      </span>
+    </div>
+  </div>
+  {% endif %}
+  <table id="{{ table_id }}" class="min-w-full divide-y divide-gray-200 font-sans basic-table-striped">
+    <thead class="bg-gray-50">
+      <tr>
+        {% assign headers_array = include.headers | split: "," %}
+        {% for header in headers_array %}
+          <th class="px-{{ px }} py-{{ py }} text-left text-xs font-medium text-gray-500 tracking-wider">
+            {{ header | strip }}
+          </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% assign rows_array = include.data | newline_to_br | strip_newlines | split: "<br />" %}
+      {% for row_item in rows_array %}
+        {% assign row_index = forloop.index0 %}
+        {% if row_item != "" %}
+        <tr class="border-b border-gray-200">
+          {% assign cells_array = row_item | split: "," %}
+          {% for cell_item in cells_array %}
+            {% assign col_index = forloop.index0 %}
+            {% assign cell_id = table_id | append: "-row" | append: row_index | append: "-col" | append: col_index %}
+            {% assign cell_parts = cell_item | strip | split: "=" %}
+            {% if cell_parts.size > 1 and has_calculations == "true" %}
+              <td id="{{ cell_id }}" class="px-{{ px }} py-{{ py }} whitespace-normal text-sm font-medium text-gray-600 has-calculation">
+                <span class="normal-text">{{ cell_parts[0] | strip }}</span>
+                <span class="calculation-text" style="display: none;">
+                  <span class="calc-result">{{ cell_parts[0] | strip }}</span>
+                  <span class="calc-equals">=</span>
+                  <span class="calc-formula">{{ cell_parts[1] | strip }}</span>
+                </span>
+              </td>
+            {% else %}
+              <td id="{{ cell_id }}" class="px-{{ px }} py-{{ py }} whitespace-nowrap text-sm font-medium text-gray-600">
+                <span style="color: rgb(75, 85, 99) !important;">{{ cell_item | strip }}</span>
+              </td>
+            {% endif %}
+          {% endfor %}
+        </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
