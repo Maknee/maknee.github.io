@@ -155,12 +155,18 @@ Yes I see... this is how you learn how to build such infrastructure
         - Dashboard
             - goal: easy to understand!
             - but brings together a lot of data
-            {% include image.html path="/assets/images/ramblings/2025-07-19/dashboard.png" width="100%" text="Dashboard example" %}
-            - Gives a lot of information and breaking each one down with e2e, network, and internal software
-            {% include image.html path="/assets/images/ramblings/2025-07-19/figure2.jpg" width="100%" text="Dashboard example" %}
-            - Example of how to expand and get a better understanding -- it depends on the inputs
-            {% include image.html path="/assets/images/ramblings/2025-07-19/figure3.jpg" width="100%" text="Dashboard example" %}
-            - Example of how to expand and get a better understanding -- it depends on the inputs (this time, you have to split the x into equal parts)
+
+{% include image.html path="/assets/images/ramblings/2025-07-19/dashboard.png" width="100%" text="Dashboard example" %}
+
+- Gives a lot of information and breaking each one down with e2e, network, and internal software
+
+{% include image.html path="/assets/images/ramblings/2025-07-19/figure2.jpg" width="100%" text="Dashboard example" %}
+
+- Example of how to expand and get a better understanding -- it depends on the inputs
+
+{% include image.html path="/assets/images/ramblings/2025-07-19/figure3.jpg" width="100%" text="Dashboard example" %}
+
+- Example of how to expand and get a better understanding -- it depends on the inputs (this time, you have to split the x into equal parts)
 
 
 #### Final thoughts
