@@ -394,3 +394,16 @@ In upcoming posts, I'll benchmark 3FS myself to verify these graph/claims and di
 # Acknowledgments
 
 Thanks to [Stefanos Baziotis](https://sbaziotis.com/), [Ahan Gupta](https://www.linkedin.com/in/ahan-gupta-405619103/), and [Vimarsh Sathia](https://vimarsh.me/) for reviewing this post.
+
+# Citation
+
+To cite this article:
+
+@article{zhu20253fs2,
+  title = {A Reality Check on DeepSeek's Distributed File System Benchmarks},
+  author = {Zhu, Henry},
+  journal = {maknee.github.io},
+  year = {2025},
+  month = {June},
+  url = "https://maknee.github.io/blog/2025/3FS-Performance-Journal-2/"
+}
