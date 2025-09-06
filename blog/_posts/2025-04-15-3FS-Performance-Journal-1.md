@@ -199,3 +199,17 @@ The system architecture is partially documented in [the Fire-Flyer AI-HPC paper]
 # Acknowledgments
 
 Thanks to [Vimarsh Sathia](https://vimarsh.me/) for reviewing this post.
+
+# Citation
+
+To cite this article:
+
+@article{zhu20253fs1,
+  title = {An Intro to DeepSeek's Distributed File System},
+  author = {Zhu, Henry},
+  journal = {maknee.github.io},
+  year = {2025},
+  month = {April},
+  url = "https://maknee.github.io/blog/2025/3FS-Performance-Journal-1/"
+}
+
