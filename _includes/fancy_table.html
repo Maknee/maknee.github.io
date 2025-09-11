@@ -262,6 +262,16 @@ if (document.readyState === 'loading') {
     padding: 0; 
     background-color: transparent; 
 }
+
+/* Add styles for no-scroll option */
+.table-wrapper-no-scroll {
+  overflow-x: visible !important;
+}
+
+.table-no-scroll td {
+  white-space: normal !important;
+  word-break: break-word;
+}
 </style>
 {% endif %}
 
@@ -270,6 +280,8 @@ if (document.readyState === 'loading') {
 
 {% assign px = include.px | default: "6" %}
 {% assign py = include.py | default: "3" %}
+
+{% assign no_scroll = include.no_scroll | default: false %}
 
 {% if include.id and include.id != "" %}
   {% assign table_id = include.id %}
@@ -280,7 +292,17 @@ if (document.readyState === 'loading') {
 
 {% assign has_calculations = include.show_calculations | default: false %}
 
-<div id="{{ table_id }}-wrapper" class="px-4 rounded-lg __basic-table not-prose mt-{{ padx }} mb-{{ pady }} overflow-x-auto">
+{% if no_scroll == "true" %}
+  {% assign wrapper_classes = "px-4 rounded-lg __basic-table not-prose mt-" | append: padx | append: " mb-" | append: pady | append: " table-wrapper-no-scroll" %}
+  {% assign table_classes = "min-w-full divide-y divide-gray-200 font-sans basic-table-striped table-no-scroll" %}
+  {% assign cell_whitespace = "whitespace-normal" %}
+{% else %}
+  {% assign wrapper_classes = "px-4 rounded-lg __basic-table not-prose mt-" | append: padx | append: " mb-" | append: pady | append: " overflow-x-auto" %}
+  {% assign table_classes = "min-w-full divide-y divide-gray-200 font-sans basic-table-striped" %}
+  {% assign cell_whitespace = "whitespace-nowrap" %}
+{% endif %}
+
+<div id="{{ table_id }}-wrapper" class="{{ wrapper_classes }}">
   {% if has_calculations == "true" %}
   <div class="toggle-container">
     <div class="calc-toggle">
@@ -292,7 +314,7 @@ if (document.readyState === 'loading') {
     </div>
   </div>
   {% endif %}
-  <table id="{{ table_id }}" class="min-w-full divide-y divide-gray-200 font-sans basic-table-striped">
+  <table id="{{ table_id }}" class="{{ table_classes }}">
     <thead class="bg-gray-50">
       <tr>
         {% assign headers_array = include.headers | split: "," %}
@@ -315,7 +337,7 @@ if (document.readyState === 'loading') {
             {% assign cell_id = table_id | append: "-row" | append: row_index | append: "-col" | append: col_index %}
             {% assign cell_parts = cell_item | strip | split: "=" %}
             {% if cell_parts.size > 1 and has_calculations == "true" %}
-              <td id="{{ cell_id }}" class="px-{{ px }} py-{{ py }} whitespace-normal text-sm font-medium text-gray-600 has-calculation">
+              <td id="{{ cell_id }}" class="px-{{ px }} py-{{ py }} {{ cell_whitespace }} text-sm font-medium text-gray-600 has-calculation">
                 <span class="normal-text">{{ cell_parts[0] | strip }}</span>
                 <span class="calculation-text" style="display: none;">
                   <span class="calc-result">{{ cell_parts[0] | strip }}</span>
@@ -324,7 +346,7 @@ if (document.readyState === 'loading') {
                 </span>
               </td>
             {% else %}
-              <td id="{{ cell_id }}" class="px-{{ px }} py-{{ py }} whitespace-nowrap text-sm font-medium text-gray-600">
+              <td id="{{ cell_id }}" class="px-{{ px }} py-{{ py }} {{ cell_whitespace }} text-sm font-medium text-gray-600">
                 <span style="color: rgb(75, 85, 99) !important;">{{ cell_item | strip }}</span>
               </td>
             {% endif %}
