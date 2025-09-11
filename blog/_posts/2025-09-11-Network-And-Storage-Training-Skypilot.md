@@ -16,7 +16,7 @@ mermaid:
     zoomable: true
 ---
 
-{% include image.html path="/assets/images/posts/2025-09-01/banner.png" width="125%" text="Distributed LLM training performance optimization" %}
+{% include image.html path="/assets/images/posts/2025-09-01/banner.png" width="125%" %}
 
 AI usage has become universal. Teams everywhere are building RAG, generating embeddings, and training increasingly sophisticated agents.
 
