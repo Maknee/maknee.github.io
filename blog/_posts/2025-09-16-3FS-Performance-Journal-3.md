@@ -269,7 +269,7 @@ This is a lot of data. Feel free to jump between the interactive graphs and the 
    id="ssd_xfs_iouring_4k" 
    title="4K Block Size - SSD XFS with IO_URING (Older)" 
    data_path="/assets/images/posts/2025-03-13/fio/4k_ssd_xfs_iouring_xl170_1.json" 
-   note="Small block (4K) performance using SSD with XFS filesystem and IO_URING driver on XL170 hardware."
+   note="Small block (4K) performance using SSD with XFS filesystem and IO_URING driver on older cluster."
    default_test_type="read"
    default_metric_type="bandwidth"
    first_load=true
@@ -279,7 +279,7 @@ This is a lot of data. Feel free to jump between the interactive graphs and the 
    id="ssd_xfs_iouring_64k" 
    title="64k Block Size - SSD XFS with IO_URING (Older)" 
    data_path="/assets/images/posts/2025-03-13/fio/64k_ssd_xfs_iouring_xl170_1.json" 
-   note="Small block (64k) performance using SSD with XFS filesystem and IO_URING driver on XL170 hardware."
+   note="Small block (64k) performance using SSD with XFS filesystem and IO_URING driver on older cluster."
    default_test_type="read"
    default_metric_type="bandwidth"
    first_load=true
@@ -290,7 +290,7 @@ This is a lot of data. Feel free to jump between the interactive graphs and the 
    id="ssd_xfs_iouring_1m" 
    title="1M Block Size - SSD XFS with IO_URING (Older)" 
    data_path="/assets/images/posts/2025-03-13/fio/1m_ssd_xfs_iouring_xl170_1.json" 
-   note="Performance characteristics of SSD with XFS filesystem using IO_URING driver with 1M block size on XL170 hardware."
+   note="Performance characteristics of SSD with XFS filesystem using IO_URING driver with 1M block size on older cluster."
    default_test_type="read"
    default_metric_type="bandwidth"
 %}
@@ -299,7 +299,7 @@ This is a lot of data. Feel free to jump between the interactive graphs and the 
    id="ssd_xfs_iouring_4m" 
    title="4m Block Size - SSD XFS with IO_URING (Older)" 
    data_path="/assets/images/posts/2025-03-13/fio/4m_ssd_xfs_iouring_xl170_1.json" 
-   note="Performance characteristics of SSD with XFS filesystem using IO_URING driver with 4m block size on XL170 hardware."
+   note="Performance characteristics of SSD with XFS filesystem using IO_URING driver with 4m block size on older cluster."
    default_test_type="read"
    default_metric_type="bandwidth"
 %}
@@ -392,7 +392,7 @@ The performance shown in the graphs above represent io_uring. Are there any diff
    id="ssd_xfs_libaio_4k" 
    title="4K Block Size - SSD XFS with LIBAIO (Older)" 
    data_path="/assets/images/posts/2025-03-13/fio/4k_ssd_xfs_libaio_xl170_1.json" 
-   note="Performance comparison of SSD with XFS filesystem using LIBAIO driver with 4k block size on XL170 hardware."
+   note="Performance comparison of SSD with XFS filesystem using LIBAIO driver with 4k block size on older cluster."
    default_test_type="read"
    default_metric_type="bandwidth"
 %}
@@ -401,7 +401,7 @@ The performance shown in the graphs above represent io_uring. Are there any diff
    id="ssd_xfs_libaio_1m" 
    title="1M Block Size - SSD XFS with LIBAIO (Older)" 
    data_path="/assets/images/posts/2025-03-13/fio/1m_ssd_xfs_libaio_xl170_1.json" 
-   note="Performance comparison of SSD with XFS filesystem using LIBAIO driver with 1M block size on XL170 hardware."
+   note="Performance comparison of SSD with XFS filesystem using LIBAIO driver with 1M block size on older cluster."
    default_test_type="read"
    default_metric_type="bandwidth"
 %}
@@ -423,7 +423,7 @@ Again, feel free to jump between the interactive graphs and the [performance ana
    id="4k_nvme_xfs_iouring_r650" 
    title="4k Block Size - NVME XFS with IO_URING (Modern)" 
    data_path="/assets/images/posts/2025-03-13/fio/4k_nvme_xfs_iouring_r650_1.json" 
-   note="Performance of NVME with XFS filesystem using IO_URING driver on R650 hardware with 4k block size."
+   note="Performance of NVME with XFS filesystem using IO_URING driver on modern cluster with 4k block size."
    default_test_type="read"
    default_metric_type="bandwidth"
 %}
@@ -433,7 +433,7 @@ Again, feel free to jump between the interactive graphs and the [performance ana
    id="64k_nvme_xfs_iouring_r650" 
    title="64k Block Size - NVME XFS with IO_URING (Modern)" 
    data_path="/assets/images/posts/2025-03-13/fio/64k_nvme_xfs_iouring_r650_1.json" 
-   note="Performance of NVME with XFS filesystem using IO_URING driver on R650 hardware with 64k block size."
+   note="Performance of NVME with XFS filesystem using IO_URING driver on modern cluster with 64k block size."
    default_test_type="read"
    default_metric_type="bandwidth"
 %}
@@ -443,7 +443,7 @@ Again, feel free to jump between the interactive graphs and the [performance ana
    id="1m_nvme_xfs_iouring_r650" 
    title="1M Block Size - NVME XFS with IO_URING (Modern)" 
    data_path="/assets/images/posts/2025-03-13/fio/1m_nvme_xfs_iouring_r650_1.json" 
-   note="Performance of NVME with XFS filesystem using IO_URING driver on R650 hardware with 1M block size."
+   note="Performance of NVME with XFS filesystem using IO_URING driver on modern cluster with 1M block size."
    default_test_type="read"
    default_metric_type="bandwidth"
 %}
@@ -545,7 +545,7 @@ Keeping in this mind, let's head into the benchmarks:
    id="1m_hf3fs_xfs_iouring_r650" 
    title="1M Block Size - HF3FS XFS with IO_URING (Modern)" 
    data_path="/assets/images/posts/2025-03-13/fio/1m_hf3fs_xfs_iouring_r650_5.json" 
-   note="Performance of HF3FS with XFS filesystem using IO_URING driver on R650 hardware with 1M block size."
+   note="Performance of HF3FS with XFS filesystem using IO_URING driver on modern cluster with 1M block size."
    default_test_type="read"
    default_metric_type="bandwidth"
 %}
@@ -556,7 +556,7 @@ Keeping in this mind, let's head into the benchmarks:
    id="1m_hf3fs_xfs_usrbio_r650"
    title="1M Block Size - HF3FS XFS with USRBIO (Modern)" 
    data_path="/assets/images/posts/2025-03-13/fio/1m_hf3fs_xfs_usrbio_r650_5.json" 
-   note="Performance of HF3FS with XFS filesystem using USRBIO driver on R650 hardware with 1M block size."
+   note="Performance of HF3FS with XFS filesystem using USRBIO driver on modern cluster with 1M block size."
    default_test_type="read"
    default_metric_type="bandwidth"
 %}
@@ -609,7 +609,7 @@ Now we examine how 3FS scales with block size and node count on the older cluste
    id="hf3fs_xfs_usrbio_4k" 
    title="4K Block Size - HF3FS XFS with USRBIO (Older-5)" 
    data_path="/assets/images/posts/2025-03-13/fio/4k_hf3fs_xfs_usrbio_xl170_5.json" 
-   note="Performance of HF3FS with XFS filesystem using USRBIO driver with 4K block size on XL170 hardware."
+   note="Performance of HF3FS with XFS filesystem using USRBIO driver with 4K block size on older cluster."
    default_test_type="read"
    default_metric_type="bandwidth"
 %}
@@ -618,7 +618,7 @@ Now we examine how 3FS scales with block size and node count on the older cluste
    id="hf3fs_xfs_usrbio_1m_xl170" 
    title="1M Block Size - HF3FS XFS with USRBIO (Older-5)" 
    data_path="/assets/images/posts/2025-03-13/fio/1m_hf3fs_ext4_usrbio_xl170_5.json" 
-   note="Medium block (1M) performance using HF3FS with XFS filesystem and USRBIO driver on XL170 hardware."
+   note="Medium block (1M) performance using HF3FS with XFS filesystem and USRBIO driver on older cluster."
    default_test_type="read"
    default_metric_type="bandwidth"
 %}
@@ -631,7 +631,7 @@ The 4K block size stays well below the 3.25 GB/s network limit, reaching only 1 
    id="hf3fs_xfs_usrbio_1m_xl170_5" 
    title="1M Block Size - HF3FS XFS with USRBIO (Older-5)" 
    data_path="/assets/images/posts/2025-03-13/fio/1m_hf3fs_ext4_usrbio_xl170_5.json" 
-   note="Medium block (1M) performance using HF3FS with XFS filesystem and USRBIO driver on XL170 hardware."
+   note="Medium block (1M) performance using HF3FS with XFS filesystem and USRBIO driver on older cluster."
    default_test_type="read"
    default_metric_type="bandwidth"
 %}
