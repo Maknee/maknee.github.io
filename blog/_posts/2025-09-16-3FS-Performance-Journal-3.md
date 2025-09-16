@@ -607,7 +607,7 @@ Now we examine how 3FS scales with block size and node count on the older cluste
 
 {% include benchmark.html 
    id="hf3fs_xfs_usrbio_4k" 
-   title="4K Block Size - HF3FS XFS with USRBIO (Older-5)" 
+   title="4K Block Size - HF3FS XFS with USRBIO (Older-5-Nodes)" 
    data_path="/assets/images/posts/2025-03-13/fio/4k_hf3fs_xfs_usrbio_xl170_5.json" 
    note="Performance of HF3FS with XFS filesystem using USRBIO driver with 4K block size on older cluster."
    default_test_type="read"
@@ -616,7 +616,7 @@ Now we examine how 3FS scales with block size and node count on the older cluste
 
 {% include benchmark.html 
    id="hf3fs_xfs_usrbio_1m_xl170" 
-   title="1M Block Size - HF3FS XFS with USRBIO (Older-5)" 
+   title="1M Block Size - HF3FS XFS with USRBIO (Older-5-Nodes)" 
    data_path="/assets/images/posts/2025-03-13/fio/1m_hf3fs_ext4_usrbio_xl170_5.json" 
    note="Medium block (1M) performance using HF3FS with XFS filesystem and USRBIO driver on older cluster."
    default_test_type="read"
@@ -629,7 +629,7 @@ The 4K block size stays well below the 3.25 GB/s network limit, reaching only 1 
 
 {% include benchmark.html 
    id="hf3fs_xfs_usrbio_1m_xl170_5" 
-   title="1M Block Size - HF3FS XFS with USRBIO (Older-5)" 
+   title="1M Block Size - HF3FS XFS with USRBIO (Older-5-Nodes)" 
    data_path="/assets/images/posts/2025-03-13/fio/1m_hf3fs_ext4_usrbio_xl170_5.json" 
    note="Medium block (1M) performance using HF3FS with XFS filesystem and USRBIO driver on older cluster."
    default_test_type="read"
@@ -638,7 +638,7 @@ The 4K block size stays well below the 3.25 GB/s network limit, reaching only 1 
 
 {% include benchmark.html 
    id="hf3fs_xfs_iouring_1m_xl170_18" 
-   title="1M Block Size - HF3FS XFS with IO_URING (Older-18)" 
+   title="1M Block Size - HF3FS XFS with IO_URING (Older-18-Nodes)" 
    data_path="/assets/images/posts/2025-03-13/fio/1m_hf3fs_xfs_usrbio_xl170_18.json" 
    note="Performance of HF3FS with XFS filesystem using IO_URING driver with 1M blocks on XL170-18 configuration."
    default_test_type="read"
