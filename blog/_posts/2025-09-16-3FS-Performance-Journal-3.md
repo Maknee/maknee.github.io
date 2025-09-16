@@ -640,7 +640,7 @@ The 4K block size stays well below the 3.25 GB/s network limit, reaching only 1 
    id="hf3fs_xfs_iouring_1m_xl170_18" 
    title="1M Block Size - HF3FS XFS with IO_URING (Older-18-Nodes)" 
    data_path="/assets/images/posts/2025-03-13/fio/1m_hf3fs_xfs_usrbio_xl170_18.json" 
-   note="Performance of HF3FS with XFS filesystem using IO_URING driver with 1M blocks on XL170-18 configuration."
+   note="Performance of HF3FS with XFS filesystem using IO_URING driver with 1M blocks on 18 node configuration."
    default_test_type="read"
    default_metric_type="bandwidth"
 %}
@@ -657,7 +657,7 @@ One thing that is a glaring issue are that after a certain point, the throughput
    id="hf3fs_xfs_usrbio_4m_xl170" 
    title="4M Block Size - HF3FS XFS with USRBIO (Older-18)" 
    data_path="/assets/images/posts/2025-03-13/fio/4m_hf3fs_xfs_usrbio_xl170_18.json" 
-   note="Large block (4M) performance using HF3FS with XFS filesystem and USRBIO driver on XL170-18 configuration."
+   note="Large block (4M) performance using HF3FS with XFS filesystem and USRBIO driver on 18 node configuration."
    default_test_type="read"
    default_metric_type="bandwidth"
 %}
