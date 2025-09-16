@@ -544,7 +544,7 @@ Keeping in this mind, let's head into the benchmarks:
 {% include benchmark.html 
    id="1m_hf3fs_xfs_iouring_r650" 
    title="1M Block Size - HF3FS XFS with IO_URING (Modern)" 
-   data_path="/assets/images/posts/2025-03-13/fio/1m_hf3fs_xfs_usrbio_r650_5.json" 
+   data_path="/assets/images/posts/2025-03-13/fio/1m_hf3fs_xfs_iouring_r650_5.json" 
    note="Performance of HF3FS with XFS filesystem using IO_URING driver on modern cluster with 1M block size."
    default_test_type="read"
    default_metric_type="bandwidth"
@@ -555,7 +555,7 @@ Keeping in this mind, let's head into the benchmarks:
 {% include benchmark.html 
    id="1m_hf3fs_xfs_usrbio_r650"
    title="1M Block Size - HF3FS XFS with USRBIO (Modern)" 
-   data_path="/assets/images/posts/2025-03-13/fio/1m_hf3fs_xfs_iouring_r650_5.json" 
+   data_path="/assets/images/posts/2025-03-13/fio/1m_hf3fs_xfs_usrbio_r650_5.json" 
    note="Performance of HF3FS with XFS filesystem using USRBIO driver on modern cluster with 1M block size."
    default_test_type="read"
    default_metric_type="bandwidth"
