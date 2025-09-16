@@ -18,6 +18,7 @@ mermaid:
 
 - [An Intro to DeepSeek's Distributed File System]({{ site.baseurl }}{% link _posts/2025-04-15-3FS-Performance-Journal-1.md %})
 - [A Reality Check on DeepSeek's Distributed File System Benchmarks]({{ site.baseurl }}{% link _posts/2025-06-18-3FS-Performance-Journal-2.md %})
+- [Network Storage and Scaling Characteristics of a Distributed Filesystem]({{ site.baseurl }}{% link _posts/2025-09-16-3FS-Performance-Journal-3.md %})
 
 <!--
 - [Theoretical Performance Limits of 3FS]({{ site.baseurl }}{% link _posts/2018-12-07-RTX-DXR Path Tracer Host.md %})
