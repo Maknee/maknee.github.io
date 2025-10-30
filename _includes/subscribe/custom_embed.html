@@ -7,9 +7,18 @@ email_subscribe:
 This file will be included verbatim on the Newsletter page (/newsletter/).
 {%- endcomment -%}
 
-<div class="alert alert-info">
-  Custom email embed not configured yet. Add your provider's HTML here.
-  This placeholder renders only when <code>custom_embed: true</code> is set.
-  Remove this and paste your embed snippet.
-  
-</div>
+{% assign kitcfg = site.email_subscribe | default: nil %}
+{% if kitcfg and kitcfg.kit and kitcfg.kit.embed_js %}
+  <script async src="{{ kitcfg.kit.embed_js }}"></script>
+{% elsif kitcfg and kitcfg.kit and kitcfg.kit.uid %}
+  <!-- Kit (ConvertKit) JS embed using UID -->
+  <script async data-uid="{{ kitcfg.kit.uid }}" src="https://f.convertkit.com/{{ kitcfg.kit.uid }}.js"></script>
+{% else %}
+  <div class="alert alert-info">
+    Custom embed active, but no Kit embed configured. Add one of:
+    <ul>
+      <li>Set <code>email_subscribe.kit.embed_js</code> to your form's JS URL, or</li>
+      <li>Set <code>email_subscribe.kit.uid</code> to your form UID to use the default <code>f.convertkit.com</code> embed.</li>
+    </ul>
+  </div>
+{% endif %}
