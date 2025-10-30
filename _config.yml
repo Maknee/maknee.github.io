@@ -415,6 +415,41 @@ enable_progressbar: true # enables a horizontal progress bar linked to the verti
 enable_video_embedding: true # enables video embedding for bibtex entries. If false, the button opens the video link in a new window.
 
 # -----------------------------------------------------------------------------
+# Email Subscriptions (provider-agnostic)
+# -----------------------------------------------------------------------------
+# Configure one provider or set `custom_embed: true` and add your own snippet in
+# _includes/subscribe/custom_embed.html. The Subscribe page will render the
+# appropriate form. Leaving all fields blank will show an informational placeholder.
+
+email_subscribe:
+  enabled: true
+  # Supported values: none, buttondown, mailchimp, mailerlite, brevo, convertkit, emailoctopus, custom
+  provider: none
+  # If true, the Subscribe page will include `_includes/subscribe/custom_embed.html`
+  custom_embed: false
+  # For iframe-based embeds (e.g., MailerLite/Brevo hosted forms). If set, it will be rendered.
+  iframe_src:
+  buttondown:
+    # Example: https://buttondown.email/api/emails/embed-subscribe/<publication>
+    action_url:
+  mailchimp:
+    # Example action URL from the Mailchimp embedded form (contains u= and id= params)
+    form_action:
+    u:
+    id:
+  mailerlite:
+    # If your provider gives an iframe snippet, paste the iframe src into `email_subscribe.iframe_src` above.
+    dummy: true
+  brevo:
+    dummy: true
+  convertkit:
+    # Example: https://app.convertkit.com/forms/<form_id>/subscriptions
+    form_action:
+  emailoctopus:
+    # Example: https://emailoctopus.com/lists/<list_id>/members/embedded/1/subscribe
+    form_action:
+
+# -----------------------------------------------------------------------------
 # Library versions
 # -----------------------------------------------------------------------------
 

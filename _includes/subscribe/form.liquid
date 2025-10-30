@@ -1,0 +1,101 @@
+{% comment %}
+Provider-agnostic email subscribe form renderer.
+
+Configuration: see `email_subscribe` in _config.yml.
+Order of precedence:
+1) If disabled → render nothing but a note.
+2) If custom_embed true → include subscribe/custom_embed.html
+3) If iframe_src provided → render iframe
+4) Provider-specific minimal forms for Buttondown / Mailchimp / ConvertKit / EmailOctopus
+5) Fallback placeholder with instructions
+{% endcomment %}
+
+{% assign cfg = site.email_subscribe %}
+
+{% unless cfg and cfg.enabled %}
+  <div class="alert alert-info">Email subscriptions are currently disabled.</div>
+  {% endunless %}
+
+{% if cfg and cfg.enabled %}
+  {% if cfg.custom_embed %}
+    {% include subscribe/custom_embed.html %}
+  {% elsif cfg.iframe_src %}
+    <iframe
+      src="{{ cfg.iframe_src }}"
+      style="width:100%;height:380px;border:0;overflow:auto;"
+      loading="lazy"
+      title="Email subscription"
+    ></iframe>
+  {% else %}
+    {% case cfg.provider %}
+      {% when 'buttondown' %}
+        {% if cfg.buttondown and cfg.buttondown.action_url %}
+          <form action="{{ cfg.buttondown.action_url }}" method="post" target="_blank" class="form-inline">
+            <div class="form-group mb-2 mr-2">
+              <label class="sr-only" for="bd-email">Email</label>
+              <input name="email" id="bd-email" type="email" class="form-control" placeholder="you@example.com" required>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Subscribe</button>
+          </form>
+        {% else %}
+          <div class="alert alert-warning">Buttondown selected, but `buttondown.action_url` is not set.</div>
+        {% endif %}
+
+      {% when 'mailchimp' %}
+        {% if cfg.mailchimp and cfg.mailchimp.form_action and cfg.mailchimp.u and cfg.mailchimp.id %}
+          <form action="{{ cfg.mailchimp.form_action }}" method="post" target="_blank" class="form-inline" novalidate>
+            <input type="hidden" name="u" value="{{ cfg.mailchimp.u }}">
+            <input type="hidden" name="id" value="{{ cfg.mailchimp.id }}">
+            <div class="form-group mb-2 mr-2">
+              <label class="sr-only" for="mc-email">Email</label>
+              <input type="email" name="EMAIL" id="mc-email" class="form-control" placeholder="you@example.com" required>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Subscribe</button>
+          </form>
+        {% else %}
+          <div class="alert alert-warning">Mailchimp selected, but `mailchimp.form_action`, `u`, and `id` are not set.</div>
+        {% endif %}
+
+      {% when 'convertkit' %}
+        {% if cfg.convertkit and cfg.convertkit.form_action %}
+          <form action="{{ cfg.convertkit.form_action }}" method="post" target="_blank" class="form-inline">
+            <div class="form-group mb-2 mr-2">
+              <label class="sr-only" for="ck-email">Email</label>
+              <input type="email" name="email_address" id="ck-email" class="form-control" placeholder="you@example.com" required>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Subscribe</button>
+          </form>
+        {% else %}
+          <div class="alert alert-warning">ConvertKit selected, but `convertkit.form_action` is not set.</div>
+        {% endif %}
+
+      {% when 'emailoctopus' %}
+        {% if cfg.emailoctopus and cfg.emailoctopus.form_action %}
+          <form action="{{ cfg.emailoctopus.form_action }}" method="post" target="_blank" class="form-inline">
+            <div class="form-group mb-2 mr-2">
+              <label class="sr-only" for="eo-email">Email</label>
+              <input type="email" name="email_address" id="eo-email" class="form-control" placeholder="you@example.com" required>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Subscribe</button>
+          </form>
+        {% else %}
+          <div class="alert alert-warning">EmailOctopus selected, but `emailoctopus.form_action` is not set.</div>
+        {% endif %}
+
+      {% else %}
+        <div class="card my-4">
+          <div class="card-body">
+            <p class="mb-2">Choose an email provider in <code>_config.yml → email_subscribe</code> or set <code>custom_embed: true</code> and add your HTML in <code>_includes/subscribe/custom_embed.html</code>.</p>
+            <ul class="mb-2">
+              <li>Easy: Buttondown</li>
+              <li>Marketing features: Mailchimp</li>
+              <li>Modern + automations: MailerLite</li>
+              <li>Developer-centric: ConvertKit / EmailOctopus</li>
+            </ul>
+            <p class="mb-0">Alternatively, subscribe by RSS: <a href="{{ '/feed.xml' | relative_url }}">{{ '/feed.xml' | relative_url }}</a></p>
+          </div>
+        </div>
+    {% endcase %}
+  {% endif %}
+{% endif %}
+
