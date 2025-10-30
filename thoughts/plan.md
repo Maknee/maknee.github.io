@@ -223,3 +223,48 @@ Manual QA
 - Any copy or branding you’d like on the Subscribe page?
 
 Once you confirm the choices, I’ll implement the changes, open a small PR-sized patch, and wire up the provider.
+
+--------------------------------------------------------------------------------
+
+## Email Options & Self‑Host Blueprints (extended)
+
+Matrix (quick)
+- Buttondown: fastest setup; great for indie/engineering audiences; good deliverability.
+- Mailchimp: most features; heavy UI; best if you want landing pages/CRM.
+- MailerLite: clean UI; strong automations; competitive pricing.
+- ConvertKit: creator‑centric; great sequences; pricier; good API.
+- EmailOctopus: budget option on top of SES; straightforward.
+- Brevo (Sendinblue): strong in EU; transactional + marketing in one.
+- Self‑hosted (Listmonk/Mautic): maximum control; higher ops burden; must manage deliverability (SPF/DKIM/DMARC, bounce/complaints).
+
+Self‑host Option A — Listmonk (recommended for self‑host)
+1) Provision a small VPS and a domain/subdomain for sending (e.g., mail.example.com).
+2) Set up Docker + docker-compose; open ports 80/443 (reverse proxy via Caddy/Traefik).
+3) Deploy Postgres + Listmonk:
+   - docker-compose with `listmonk:latest` and `postgres:15`.
+   - Run `listmonk --install` to initialize DB.
+4) Configure SMTP (Mailgun/SES/Postmark) in Listmonk; set DKIM/SPF/DMARC.
+5) Create a List + Campaign template; add an RSS import job (native RSS is not built-in; use a cron + webhook or n8n to create campaigns from new feed items).
+6) Embed Listmonk’s subscribe form HTML into `_includes/subscribe/custom_embed.html` and set `custom_embed: true`.
+
+Self‑host Option B — Mautic
+1) LAMP/LEMP or Docker; requires more resources than Listmonk.
+2) Configure cron jobs for segments/campaigns.
+3) Use the RSS to email plugin or campaign builder with a custom integration; embed the Mautic form on /subscribe.
+
+Self‑host Option C — GitHub Actions + SMTP (included in repo, disabled)
+What’s in this repo:
+- `.github/workflows/rss-to-email.yml`: template workflow that parses the site feed and sends HTML via SMTP using `dawidd6/action-send-mail`.
+How to use:
+1) Add repository secrets: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_PASSWORD`, `SMTP_FROM`, `SMTP_TO` (comma-separated for testing), and `FEED_URL`.
+2) Run manually in Actions (workflow_dispatch). If satisfied, uncomment the `schedule` block to automate.
+3) For production and to avoid duplicate sends, implement delta tracking (e.g., store last GUID in S3/DynamoDB, or commit a small state file back to the repo from the workflow).
+
+Serverless bridge (optional)
+- n8n (self-host) or Zapier/Make: Trigger on RSS new item → send email via your provider API.
+- Cloudflare Workers + MailChannels: implement double opt-in and an email sender endpoint; store subscribers in KV/D1; embed a minimal form on /subscribe.
+
+Deliverability checklist (applies to all)
+- Authenticate domain: SPF, DKIM, DMARC (p=none initially, then quarantine/reject as you mature).
+- Use double opt-in; add unsubscribe and physical mailing address/owner info.
+- Warm up domain if new; monitor bounces and complaints.
