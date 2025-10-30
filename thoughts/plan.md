@@ -68,7 +68,7 @@ Rationale
 
 ### 3) “Newsletter” Page and Entry Points
 
-Create a new page `_pages/subscribe.md`:
+Create a new page `_pages/newsletter.md`:
 
 ```yaml
 ---
@@ -250,7 +250,7 @@ Self‑host Option A — Listmonk (recommended for self‑host)
 Self‑host Option B — Mautic
 1) LAMP/LEMP or Docker; requires more resources than Listmonk.
 2) Configure cron jobs for segments/campaigns.
-3) Use the RSS to email plugin or campaign builder with a custom integration; embed the Mautic form on /subscribe.
+3) Use the RSS to email plugin or campaign builder with a custom integration; embed the Mautic form on /newsletter.
 
 Self‑host Option C — GitHub Actions + SMTP (included in repo, disabled)
 What’s in this repo:
@@ -262,7 +262,7 @@ How to use:
 
 Serverless bridge (optional)
 - n8n (self-host) or Zapier/Make: Trigger on RSS new item → send email via your provider API.
-- Cloudflare Workers + MailChannels: implement double opt-in and an email sender endpoint; store subscribers in KV/D1; embed a minimal form on /subscribe.
+- Cloudflare Workers + MailChannels: implement double opt-in and an email sender endpoint; store subscribers in KV/D1; embed a minimal form on /newsletter.
 
 Deliverability checklist (applies to all)
 - Authenticate domain: SPF, DKIM, DMARC (p=none initially, then quarantine/reject as you mature).

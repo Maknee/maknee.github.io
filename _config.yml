@@ -418,14 +418,14 @@ enable_video_embedding: true # enables video embedding for bibtex entries. If fa
 # Email Subscriptions (provider-agnostic)
 # -----------------------------------------------------------------------------
 # Configure one provider or set `custom_embed: true` and add your own snippet in
-# _includes/subscribe/custom_embed.html. The Subscribe page will render the
+# _includes/subscribe/custom_embed.html. The Newsletter page will render the
 # appropriate form. Leaving all fields blank will show an informational placeholder.
 
 email_subscribe:
   enabled: true
   # Supported values: none, buttondown, mailchimp, mailerlite, brevo, convertkit, emailoctopus, custom
   provider: none
-  # If true, the Subscribe page will include `_includes/subscribe/custom_embed.html`
+  # If true, the Newsletter page will include `_includes/subscribe/custom_embed.html`
   custom_embed: false
   # For iframe-based embeds (e.g., MailerLite/Brevo hosted forms). If set, it will be rendered.
   iframe_src:
