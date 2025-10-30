@@ -94,25 +94,33 @@ Then:
 
 We’ll choose one of the below based on your preferences. All support “RSS-to-email” so subscribers get new posts automatically when `/feed.xml` updates.
 
-Option A — Buttondown (simple, dev‑friendly)
+Option A — Kit (ConvertKit) — generous free tier, native RSS→email
+- Create a free Kit account and a form (or landing page).
+- Configure an RSS connection that points to `https://<username>.github.io/feed.xml`; choose per‑post or digest automation.
+- Copy the form’s action URL (often `https://app.convertkit.com/forms/<form_id>/subscriptions`) and paste into `_config.yml` under `email_subscribe.convertkit.form_action` (or `email_subscribe.kit.form_action`).
+- Embed: the Newsletter page already renders a minimal HTML form; you can also use Kit’s JS embed by setting `custom_embed: true` and pasting the snippet into `_includes/subscribe/custom_embed.html`.
+- Authenticate your sending domain (SPF/DKIM/DMARC) in Kit for deliverability.
+
+Option B — Buttondown (simple, dev‑friendly)
 - Create a Buttondown publication.
 - Configure “Create an email using an RSS feed” and set the site feed URL (`https://<username>.github.io/feed.xml`). Choose immediate sends per item or a digest cadence.
 - Generate an embedded subscription form in Buttondown; paste the HTML into the Newsletter page.
 - Optional: authenticate your sending domain for better deliverability (SPF/DKIM/DMARC via DNS).
 
-Option B — Mailchimp (marketing‑feature rich)
+Option C — Mailchimp (marketing‑feature rich)
 - Create an Audience and an “RSS to email” campaign using the site feed URL.
 - Choose schedule (e.g., daily at a time, weekly digests) and map the feed item fields into your template.
 - Use Mailchimp’s embedded form or pop‑up form on the Newsletter page.
 - Authenticate sending domain for deliverability; review GDPR/double opt-in settings.
 
-Option C — MailerLite (modern UI, strong automation)
+Option D — MailerLite (modern UI, strong automation)
 - Create an RSS campaign using the feed URL.
 - Build a subscription form/landing page; embed form HTML in the Newsletter page.
 - Authenticate domain; choose cadence and sender profile.
 
 Decision guidance
-- Want the simplest workflow and fast embed? Choose Buttondown.
+- Want generous free plan with native RSS→email and a quick embed? Choose Kit.
+- Want the simplest possible workflow and minimal UI? Choose Buttondown.
 - Want richer audience/automation/CRM features? Choose Mailchimp (or MailerLite if you prefer their UX).
 
 ### 5) Wiring It Up in This Repo (no code committed yet — plan only)

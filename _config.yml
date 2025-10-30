@@ -423,8 +423,8 @@ enable_video_embedding: true # enables video embedding for bibtex entries. If fa
 
 email_subscribe:
   enabled: true
-  # Supported values: none, buttondown, mailchimp, mailerlite, brevo, convertkit, emailoctopus, custom
-  provider: none
+  # Supported values: none, buttondown, mailchimp, mailerlite, brevo, convertkit, emailoctopus, kit, custom
+  provider: convertkit
   # If true, the Newsletter page will include `_includes/subscribe/custom_embed.html`
   custom_embed: false
   # For iframe-based embeds (e.g., MailerLite/Brevo hosted forms). If set, it will be rendered.
@@ -444,6 +444,9 @@ email_subscribe:
     dummy: true
   convertkit:
     # Example: https://app.convertkit.com/forms/<form_id>/subscriptions
+    form_action: # TODO: paste your Kit/ConvertKit form action URL here
+  kit:
+    # Optional alias for ConvertKit after rebrand to Kit; same form_action works
     form_action:
   emailoctopus:
     # Example: https://emailoctopus.com/lists/<list_id>/members/embedded/1/subscribe
