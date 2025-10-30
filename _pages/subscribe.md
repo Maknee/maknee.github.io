@@ -1,16 +1,9 @@
 ---
 layout: page
-title: Subscribe
-nav: true
+title: Subscribe (moved)
 permalink: /subscribe/
 ---
 
-Stay updated when new posts go live. You can subscribe via RSS or email.
+<meta http-equiv="refresh" content="0; url={{ '/newsletter/' | relative_url }}">
+<p>If you are not redirected, <a href="{{ '/newsletter/' | relative_url }}">click here for the newsletter</a>.</p>
 
-- RSS: <a href="{{ '/feed.xml' | relative_url }}">{{ '/feed.xml' | relative_url }}</a>
-
-Email subscription
-
-{% include subscribe/form.liquid %}
-
-<p class="text-muted mt-3">We use double opt‑in (where supported). Unsubscribe anytime.</p>

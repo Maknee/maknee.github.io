@@ -10,7 +10,7 @@ This plan adds a robust RSS/Atom feed and an email notification pipeline to the 
 
 - Ensure a standards-compliant site-wide feed for blog posts (Atom at `/feed.xml`).
 - Optional: add a JSON Feed (`/feed.json`) for API-style consumption.
-- Add prominent “Subscribe” entry points (header/footer/social) and RSS autodiscovery in `<head>`.
+- Add prominent “Newsletter” entry points (header/footer/social) and RSS autodiscovery in `<head>`.
 - Connect an email service that auto-sends new posts from the RSS feed to subscribers.
 - Keep the solution simple, maintainable, and compatible with GitHub Pages + Actions.
 
@@ -31,11 +31,11 @@ Implication: The Atom feed is likely being generated already at `/feed.xml`; we 
 
 1) Verified Atom feed at `/feed.xml` with proper metadata (title, url, author, description).
 2) Optional JSON feed at `/feed.json`.
-3) “Subscribe” page with an embedded email form (provider-specific) and an RSS link.
+3) “Newsletter” page with an embedded email form (provider-specific) and an RSS link.
 4) Visible entry points:
    - Add autodiscovery `<link rel="alternate" ...>` to `<head>` (via the plugin helper).
    - Keep/confirm the RSS icon in the social strip.
-   - Add a top‑nav “Subscribe” item.
+   - Add a top‑nav “Newsletter” item.
 5) Email automation that sends each new post to subscribers (from the RSS feed), plus a one‑time migration/QA checklist.
 
 --------------------------------------------------------------------------------
@@ -66,16 +66,16 @@ Checklist
 Rationale
 - Some consumers prefer JSON Feed; this is optional but nice-to-have.
 
-### 3) “Subscribe” Page and Entry Points
+### 3) “Newsletter” Page and Entry Points
 
 Create a new page `_pages/subscribe.md`:
 
 ```yaml
 ---
 layout: page
-title: Subscribe
+title: Newsletter
 nav: true
-permalink: /subscribe/
+permalink: /newsletter/
 ---
 
 Brief copy about what subscribers receive, + privacy note.
@@ -86,9 +86,9 @@ RSS: <a href="{{ '/feed.xml' | relative_url }}">/feed.xml</a>
 ```
 
 Then:
-- [ ] Ensure `nav: true` so that “Subscribe” appears in the navbar.
+- [ ] Ensure `nav: true` so that “Newsletter” appears in the navbar.
 - [ ] Keep the existing RSS icon in `_includes/social.liquid` (already present) and ensure `rss_icon: true` in config.
-- [ ] Add a footer link to Subscribe, if desired.
+- [ ] Add a footer link to Newsletter, if desired.
 
 ### 4) Email Notification Provider Choices
 
@@ -97,18 +97,18 @@ We’ll choose one of the below based on your preferences. All support “RSS-to
 Option A — Buttondown (simple, dev‑friendly)
 - Create a Buttondown publication.
 - Configure “Create an email using an RSS feed” and set the site feed URL (`https://<username>.github.io/feed.xml`). Choose immediate sends per item or a digest cadence.
-- Generate an embedded subscription form in Buttondown; paste the HTML into the Subscribe page.
+- Generate an embedded subscription form in Buttondown; paste the HTML into the Newsletter page.
 - Optional: authenticate your sending domain for better deliverability (SPF/DKIM/DMARC via DNS).
 
 Option B — Mailchimp (marketing‑feature rich)
 - Create an Audience and an “RSS to email” campaign using the site feed URL.
 - Choose schedule (e.g., daily at a time, weekly digests) and map the feed item fields into your template.
-- Use Mailchimp’s embedded form or pop‑up form on the Subscribe page.
+- Use Mailchimp’s embedded form or pop‑up form on the Newsletter page.
 - Authenticate sending domain for deliverability; review GDPR/double opt-in settings.
 
 Option C — MailerLite (modern UI, strong automation)
 - Create an RSS campaign using the feed URL.
-- Build a subscription form/landing page; embed form HTML in the Subscribe page.
+- Build a subscription form/landing page; embed form HTML in the Newsletter page.
 - Authenticate domain; choose cadence and sender profile.
 
 Decision guidance
@@ -125,8 +125,8 @@ JSON feed (optional)
 - Update `Gemfile` and `_config.yml` to include `jekyll-json-feed`.
 - Add a JSON autodiscovery `<link>` in head (or the plugin helper tag if available).
 
-Subscribe page
-- Add `_pages/subscribe.md` with front matter above.
+Newsletter page
+- Add `_pages/newsletter.md` with front matter above.
 - Paste provider’s embed form snippet into the page content.
 - Ensure the page shows in top nav; confirm responsive layout.
 
@@ -144,7 +144,7 @@ Manual QA
 
 ### 7) Privacy, Compliance, Deliverability
 
-- Use double opt‑in where possible; link to a simple privacy note (can be a paragraph on the Subscribe page).
+- Use double opt‑in where possible; link to a simple privacy note (can be a paragraph on the Newsletter page).
 - Authenticate sending domain (SPF/DKIM/DMARC) in DNS for the chosen provider.
 - Include an unsubscribe link (providers include this by default).
 
@@ -160,8 +160,8 @@ Manual QA
 - [ ] Add `gem 'jekyll-json-feed'` to `Gemfile` and `plugins:` in `_config.yml`.
 - [ ] Verify `/feed.json` builds; add autodiscovery link.
 
-3) Subscribe page and nav
-- [ ] Add `_pages/subscribe.md` with `nav: true` and provider form embed.
+3) Newsletter page and nav
+- [ ] Add `_pages/newsletter.md` with `nav: true` and provider form embed.
 - [ ] Verify nav layout and mobile behavior.
 
 4) Provider setup (choose one)
@@ -178,9 +178,9 @@ Manual QA
 
 ## Rollout and Timeline (suggested)
 
-- Day 0: Implement feed autodiscovery + Subscribe page; merge to `master`.
+- Day 0: Implement feed autodiscovery + Newsletter page; merge to `master`.
 - Day 0: Configure provider and create a private test segment; publish a test post; verify email.
-- Day 1: Announce Subscribe link; publish real post; monitor deliverability.
+- Day 1: Announce Newsletter link; publish real post; monitor deliverability.
 - Ongoing: Quarterly review provider settings + DNS auth; re‑validate feeds after theme/gem updates.
 
 --------------------------------------------------------------------------------
@@ -219,8 +219,8 @@ Manual QA
 
 - Which email provider would you like to use (Buttondown, Mailchimp, MailerLite)?
 - Do you want the optional JSON feed?
-- Should the Subscribe page live in the top nav or only the footer/social?
-- Any copy or branding you’d like on the Subscribe page?
+- Should the Newsletter page live in the top nav or only the footer/social?
+- Any copy or branding you’d like on the Newsletter page?
 
 Once you confirm the choices, I’ll implement the changes, open a small PR-sized patch, and wire up the provider.
 
