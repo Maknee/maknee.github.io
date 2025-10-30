@@ -47,7 +47,7 @@ Implication: The Atom feed is likely being generated already at `/feed.xml`; we 
 Checklist
 - [ ] Confirm site metadata in `_config.yml`: `title`, `description`, `url` (set), `email`.
 - [ ] Add feed autodiscovery to the HTML head by rendering the `jekyll-feed` tag in `_includes/head.liquid`:
-  - Insert near other `<link>` tags: `{{ feed_meta }}`
+  - Insert near other `<link>` tags: `{% feed_meta %}`
   - Outcome: browsers, feed readers, and mail services can auto-detect `/feed.xml`.
 - [ ] Build locally or on CI and verify `/feed.xml` resolves with absolute URLs.
 - [ ] Validate the feed (W3C / feedvalidator) and fix any metadata issues.
@@ -61,7 +61,7 @@ Checklist
 - [ ] Add `jekyll-json-feed` to `Gemfile` under the `:jekyll_plugins` group.
 - [ ] Add it to `_config.yml → plugins`.
 - [ ] Build and verify `/feed.json` exists.
-- [ ] Add JSON feed autodiscovery to `<head>` (helper tag if provided, or manual `<link rel="alternate" type="application/feed+json" href="/feed.json" />`).
+- [ ] Add JSON feed autodiscovery to `<head>` (helper tag `{% json_feed_meta %}` if provided by the plugin, or manual `<link rel="alternate" type="application/feed+json" href="/feed.json" />`).
 
 Rationale
 - Some consumers prefer JSON Feed; this is optional but nice-to-have.
@@ -223,4 +223,3 @@ Manual QA
 - Any copy or branding you’d like on the Subscribe page?
 
 Once you confirm the choices, I’ll implement the changes, open a small PR-sized patch, and wire up the provider.
-

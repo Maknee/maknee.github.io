@@ -62,6 +62,11 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+      - name: Verify feed artifacts
+        run: |
+          test -f _site/feed.xml && echo "feed.xml present"
+          # Uncomment if/when JSON feed is added
+          # test -f _site/feed.json && echo "feed.json present"
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3
