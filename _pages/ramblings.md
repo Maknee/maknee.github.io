@@ -3,7 +3,7 @@ layout: default
 permalink: /ramblings/
 title: ramblings
 nav: true
-nav_order: 1
+nav_order: 6
 pagination:
   enabled: false
   collection: rambling
