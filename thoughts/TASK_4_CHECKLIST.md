@@ -24,4 +24,3 @@ Optional tweaks (tell me if you want these)
 
 Marking done
 - When all checkboxes above are complete and you’ve received a real message from the automation, ping me and I’ll add `thoughts/TASK_4_DONE.md`.
-
