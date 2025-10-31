@@ -3,6 +3,7 @@ layout: page
 title: Newsletter
 nav: true
 permalink: /newsletter/
+nav_order: 30
 ---
 
 Stay updated when new posts go live. You can follow via RSS or join the email newsletter.
