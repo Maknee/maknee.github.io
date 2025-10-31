@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Privacy
-nav: true
+nav: false
 permalink: /privacy/
 nav_order: 95
 ---
@@ -14,4 +14,3 @@ This site runs on Jekyll (al‑folio) and offers a newsletter via Kit.
 - Standard web analytics may be enabled (see `_config.yml`).
 
 Questions? Reach out at {{ site.email | encode_email }}.
-
