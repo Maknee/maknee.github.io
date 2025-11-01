@@ -1810,7 +1810,10 @@ Lastly, the bottleneck in the system is most likely replay aggregation (which I 
 ## Wrapping Up
 
 Fun project. Captured hundred of thousands of replays and did some analysis on them, but got busy. Learned a bit more about reversing and rust.
+<<<<<<< HEAD
 
 # Dataset
 
 Released over 1.4M league replays on huggingface (with detailed network level packet data). You can find them here: [700K+ dataset](https://huggingface.co/datasets/maknee/league-of-legends-decoded-replay-packets) and the other [700K+ dataset](https://huggingface.co/datasets/maknee/leaague-of-legends-decoded-replay-packets-s12-unorganized)
+=======
+>>>>>>> fa2ce74f925588009360fae64567a5ea4be6c68d
