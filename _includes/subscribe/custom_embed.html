@@ -7,18 +7,47 @@ email_subscribe:
 This file will be included verbatim on the Newsletter page (/newsletter/).
 {%- endcomment -%}
 
-{% assign kitcfg = site.email_subscribe | default: nil %}
-{% if kitcfg and kitcfg.kit and kitcfg.kit.embed_js %}
-  <script async src="{{ kitcfg.kit.embed_js }}"></script>
-{% elsif kitcfg and kitcfg.kit and kitcfg.kit.uid %}
-  <!-- Kit (ConvertKit) JS embed using UID -->
-  <script async data-uid="{{ kitcfg.kit.uid }}" src="https://f.convertkit.com/{{ kitcfg.kit.uid }}.js"></script>
-{% else %}
-  <div class="alert alert-info">
-    Custom embed active, but no Kit embed configured. Add one of:
-    <ul>
-      <li>Set <code>email_subscribe.kit.embed_js</code> to your form's JS URL, or</li>
-      <li>Set <code>email_subscribe.kit.uid</code> to your form UID to use the default <code>f.convertkit.com</code> embed.</li>
-    </ul>
-  </div>
-{% endif %}
+<!-- Beehiiv embed (no dependencies on Kit). Provided by user. -->
+<script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+<style>
+  /* Make the Beehiiv iframe fit the screen and stay responsive */
+  .beehiiv-embed {
+    width: 100% !important;
+    max-width: 960px;
+    height: 72vh;          /* take most of the viewport height */
+    min-height: 520px;     /* sensible minimum on short screens */
+    border: 0;
+    margin: 0 auto;        /* center within the content column */
+    display: block;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  @media (max-width: 768px) {
+    .beehiiv-embed {
+      height: 80vh;
+      min-height: 560px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .beehiiv-embed { max-width: 1100px; }
+  }
+  /* Reduce extra spacing beneath the iframe on some browsers */
+  .beehiiv-embed + .embed-spacer { height: 0; margin: 0; padding: 0; }
+  /* Ensure container doesn’t constrain width */
+  .post .post-content .beehiiv-embed { width: 100% !important; }
+  .container .beehiiv-embed { width: 100% !important; }
+  .page .page-content .beehiiv-embed { width: 100% !important; }
+</style>
+<iframe
+  src="https://subscribe-forms.beehiiv.com/06a250f4-1b5c-49eb-bf45-6750172fee3c"
+  class="beehiiv-embed"
+  data-test-id="beehiiv-embed"
+  frameborder="0"
+  scrolling="auto"
+></iframe>
+
+<noscript>
+  <p class="mt-3">
+    JavaScript is disabled; if the form above doesn’t appear, please visit the Beehiiv hosted subscribe page.
+  </p>
+</noscript>

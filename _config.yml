@@ -188,7 +188,7 @@ announcements:
 latest_posts:
   enabled: true
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+  limit: # leave blank to include all the blog posts
 
 # -----------------------------------------------------------------------------
 # Jekyll settings
@@ -424,38 +424,12 @@ enable_video_embedding: true # enables video embedding for bibtex entries. If fa
 
 email_subscribe:
   enabled: true
-  # Supported values: none, buttondown, mailchimp, mailerlite, brevo, convertkit, emailoctopus, kit, custom
-  provider: kit
-  # If true, the Newsletter page will include `_includes/subscribe/custom_embed.html`
+  # Supported values: none, buttondown, mailchimp, mailerlite, brevo, emailoctopus, custom
+  provider: custom
+  # The subscribe page will include `_includes/subscribe/custom_embed.html` (Beehiiv embed)
   custom_embed: true
-  # For iframe-based embeds (e.g., MailerLite/Brevo hosted forms). If set, it will be rendered.
+  # For iframe-based embeds (left available for other providers)
   iframe_src:
-  buttondown:
-    # Example: https://buttondown.email/api/emails/embed-subscribe/<publication>
-    action_url:
-  mailchimp:
-    # Example action URL from the Mailchimp embedded form (contains u= and id= params)
-    form_action:
-    u:
-    id:
-  mailerlite:
-    # If your provider gives an iframe snippet, paste the iframe src into `email_subscribe.iframe_src` above.
-    dummy: true
-  brevo:
-    dummy: true
-  convertkit:
-    # Example: https://app.convertkit.com/forms/<form_id>/subscriptions
-    form_action: # TODO: paste your Kit/ConvertKit form action URL here
-  kit:
-    # Optional alias for ConvertKit after rebrand to Kit; same form_action works
-    form_action:
-    # If you prefer the JavaScript one-liner embed, set the UID below
-    uid: kit_78ac3bb19f84ec2a5c804325f7d9885d
-    # Optionally, if your embed JS uses an account host like `kit-yourname.kit.com/<uid>/index.js`, paste that full URL here.
-    embed_js:
-  emailoctopus:
-    # Example: https://emailoctopus.com/lists/<list_id>/members/embedded/1/subscribe
-    form_action:
 
 # -----------------------------------------------------------------------------
 # Library versions

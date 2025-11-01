@@ -6,7 +6,7 @@ Order of precedence:
 1) If disabled → render nothing but a note.
 2) If custom_embed true → include subscribe/custom_embed.html
 3) If iframe_src provided → render iframe
-4) Provider-specific minimal forms for Buttondown / Mailchimp / ConvertKit / EmailOctopus
+4) Provider-specific minimal forms for Buttondown / Mailchimp / EmailOctopus
 5) Fallback placeholder with instructions
 {% endcomment %}
 
@@ -56,32 +56,7 @@ Order of precedence:
           <div class="alert alert-warning">Mailchimp selected, but `mailchimp.form_action`, `u`, and `id` are not set.</div>
         {% endif %}
 
-      {% when 'convertkit' %}
-        {% if cfg.convertkit and cfg.convertkit.form_action %}
-          <form action="{{ cfg.convertkit.form_action }}" method="post" target="_blank" class="form-inline">
-            <div class="form-group mb-2 mr-2">
-              <label class="sr-only" for="ck-email">Email</label>
-              <input type="email" name="email_address" id="ck-email" class="form-control" placeholder="you@example.com" required>
-            </div>
-            <button type="submit" class="btn btn-primary mb-2">Subscribe</button>
-          </form>
-        {% else %}
-          <div class="alert alert-warning">ConvertKit selected, but `convertkit.form_action` is not set.</div>
-        {% endif %}
-
-      {% when 'kit' %}
-        {% assign kform = cfg.kit.form_action | default: cfg.convertkit.form_action %}
-        {% if kform %}
-          <form action="{{ kform }}" method="post" target="_blank" class="form-inline">
-            <div class="form-group mb-2 mr-2">
-              <label class="sr-only" for="kit-email">Email</label>
-              <input type="email" name="email_address" id="kit-email" class="form-control" placeholder="you@example.com" required>
-            </div>
-            <button type="submit" class="btn btn-primary mb-2">Subscribe</button>
-          </form>
-        {% else %}
-          <div class="alert alert-warning">Kit selected, but neither `kit.form_action` nor `convertkit.form_action` is set.</div>
-        {% endif %}
+      
 
       {% when 'emailoctopus' %}
         {% if cfg.emailoctopus and cfg.emailoctopus.form_action %}
@@ -104,7 +79,7 @@ Order of precedence:
               <li>Easy: Buttondown</li>
               <li>Marketing features: Mailchimp</li>
               <li>Modern + automations: MailerLite</li>
-              <li>Developer-centric: ConvertKit / EmailOctopus</li>
+              <li>Developer-centric: EmailOctopus</li>
             </ul>
             <p class="mb-0">Alternatively, subscribe by RSS: <a href="{{ '/feed.xml' | relative_url }}">{{ '/feed.xml' | relative_url }}</a></p>
           </div>

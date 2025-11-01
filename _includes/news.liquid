@@ -8,7 +8,7 @@
       {% endif %}
     >
       <table class="table table-sm table-borderless">
-        {% assign news = site.news | reverse %}
+        {% assign news = site.news | where_exp: "n", "n.hidden != true" | reverse %}
         {% if include.limit and site.announcements.limit %}
           {% assign news_limit = site.announcements.limit %}
         {% else %}

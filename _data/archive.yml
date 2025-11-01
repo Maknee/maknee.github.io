@@ -1,0 +1,21 @@
+highlights:
+  - url: "/blog/2025/League-Data-Scraping/"
+    title: "League of Legends data scraping the hard and tedious way for fun"
+    blurb: "Describes the process of building an end‑to‑end pipeline for scraping/decoding League of Legends replays. Datasets: <a href=\"https://huggingface.co/datasets/maknee/league-of-legends-decoded-replay-packets\" target=\"_blank\" rel=\"noopener\">700K+</a> and <a href=\"https://huggingface.co/datasets/maknee/league-of-legends-decoded-replay-packets-s12-unorganized\" target=\"_blank\" rel=\"noopener\">700K+ (S12)</a>."
+  - url: "/blog/2022/Raysterizer/"
+    title: "Raysterizer"
+    blurb: "Intercepts OpenGL pipelines and re‑renders them with NVIDIA ray tracing (and its many various difficulties)"
+  - url: "/blog/2025/Network-And-Storage-Training-Skypilot/"
+    title: "Network and Storage Benchmarks for LLM Training on the Cloud"
+    blurb: "Measuring cloud storage and network performance for LLM training pipelines"
+
+series:
+  - title: "DeepSeek 3FS Performance Journal"
+    blurb: "A series analyzing the filesystem (3FS) DeepSeek uses for LLM training and inference"
+    items:
+      - url: "/blog/2025/3FS-Performance-Journal-1/"
+        blurb: "Introduces 3FS, its claims and high‑level design"
+      - url: "/blog/2025/3FS-Performance-Journal-2/"
+        blurb: "Reviews DeepSeek’s published graphs against theoretical limits"
+      - url: "/blog/2025/3FS-Performance-Journal-3/"
+        blurb: "Builds and evaluates network and storage microbenchmarks ~ asking how does it perform in practice"

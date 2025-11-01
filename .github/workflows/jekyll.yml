@@ -69,7 +69,7 @@ jobs:
       - name: Verify head autodiscovery + subscribe embed
         run: |
           grep -E "rel=\"alternate\"[^"]*type=\"application/(atom\+xml|json)\"" _site/index.html
-          grep -E "data-uid=\"[a-zA-Z0-9_]+\"" _site/subscribe/index.html
+          grep -E "subscribe-forms\.beehii?v|beehiiv-embed" _site/subscribe/index.html
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3
