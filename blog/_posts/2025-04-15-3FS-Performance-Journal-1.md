@@ -205,6 +205,7 @@ Thanks to [Vimarsh Sathia](https://vimarsh.me/) for reviewing this post.
 
 To cite this article:
 
+```
 @article{zhu20253fs1,
   title = {An Intro to DeepSeek's Distributed File System},
   author = {Zhu, Henry},
@@ -213,4 +214,5 @@ To cite this article:
   month = {April},
   url = "https://maknee.github.io/blog/2025/3FS-Performance-Journal-1/"
 }
+```
 

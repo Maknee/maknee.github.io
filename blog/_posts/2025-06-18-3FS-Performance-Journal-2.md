@@ -400,6 +400,7 @@ Thanks to [Stefanos Baziotis](https://sbaziotis.com/), [Ahan Gupta](https://www.
 
 To cite this article:
 
+```
 @article{zhu20253fs2,
   title = {A Reality Check on DeepSeek's Distributed File System Benchmarks},
   author = {Zhu, Henry},
@@ -408,3 +409,4 @@ To cite this article:
   month = {June},
   url = "https://maknee.github.io/blog/2025/3FS-Performance-Journal-2/"
 }
+```

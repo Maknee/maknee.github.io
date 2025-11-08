@@ -1814,3 +1814,20 @@ Fun project. Captured hundred of thousands of replays and did some analysis on t
 # Dataset
 
 Released over 1.4M league replays on huggingface (with detailed network level packet data). You can find them here: [700K+ dataset](https://huggingface.co/datasets/maknee/league-of-legends-decoded-replay-packets) and the other [700K+ dataset](https://huggingface.co/datasets/maknee/leaague-of-legends-decoded-replay-packets-s12-unorganized)
+
+# Citation
+
+To cite this article:
+
+```
+@article{zhu2025leaguescrape,
+  title = {League of Legends data scraping the hard and tedious way for fun},
+  author = {Zhu, Henry},
+  journal = {maknee.github.io},
+  year = {2025},
+  month = {Feburary},
+  url = "https://maknee.github.io/blog/2025/League-Data-Scraping/"
+}
+```
+
+

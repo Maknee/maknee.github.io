@@ -678,6 +678,7 @@ The next step is testing 3FS with actual workloads to see how much the performan
 
 To cite this article:
 
+```
 @article{zhu20253fs3,
   title = {Network Storage and Scaling Characteristics of a Distributed Filesystem},
   author = {Zhu, Henry},
@@ -686,3 +687,4 @@ To cite this article:
   month = {September},
   url = "https://maknee.github.io/blog/2025/3FS-Performance-Journal-3/"
 }
+```
