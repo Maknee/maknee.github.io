@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Maybe consider putting "cutlass" in your CUDA/Triton kernels
-date:       2025-12-12 06:00:00
+date:       2025-12-15 06:00:00
 summary:    CUDA
 categories: CUDA
 thumbnail:  "/assets/images/posts/2025-03-13/thumbnails/thumbnail-2.png"
@@ -373,13 +373,13 @@ Perhaps this was also a part of the optimization in previous versions of `ptxas`
 
 # Takeaway
 
-Adding "cutlass" to your kernel name can give you 100+ TFLOPs or -20% FLOPS. Sounds quite odd, but here we are.
+So, adding "cutlass" to your kernel name can give you 100+ TFLOPs or -20% FLOPS.
 
-The real issue is that `ptxas` is a black box. You pass `-O3` and cross your fingers unlike LLVM or GCC where you get tons of flags to tweak optimization passes.
+The issue is two fold: `ptxas` is a black box and `sass` is undocumented. It's unlike other ecosystems. You can see the passes running through LLVM and x86/arm are documented.
 
-With this optimization? It helps some kernels, hurts others or not change much at all. Completely depends on your architecture and your specific code. What flies on an H100 might tank on a 5090 or B200, and you have no way to know until you run it.
+Well, with this optimization... it helps some kernels, hurts others or change not much at all. Completely depends on your architecture and your specific code. What flies on an H100 might tank on a 5090 or B200, and you have no way to know until you run it. 
 
-So what do you do? Benchmark it. Toggle flags, try reorder the PTX, check the SASS output. That's the only way to know what `ptxas` actually did.
+So what do you do? Benchmark it. Change the ordering in triton/cuda, see if PTX changes, check the SASS output. That's the only way to know what `ptxas` actually did.
 
 And this isn't going away. `tileiras` (the new TileIIR compiler) is also a black box. We may expect similar surprises like this moving forward.
 
