@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Maybe consider putting "cutlass" in your CUDA/Triton kernels
-date:       2025-12-11 06:00:00
+date:       2025-12-15 06:00:00
 summary:    CUDA
 categories: CUDA
 thumbnail:  "/assets/images/posts/2025-03-13/thumbnails/thumbnail-2.png"
