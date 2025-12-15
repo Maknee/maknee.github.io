@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Maybe consider putting "cutlass" in your CUDA/Triton kernels
-date:       2025-12-15 06:00:00
+date:       2025-12-11 06:00:00
 summary:    CUDA
 categories: CUDA
 thumbnail:  "/assets/images/posts/2025-03-13/thumbnails/thumbnail-2.png"
@@ -236,11 +236,11 @@ Below is a table of the different instructions that have changed for this kernel
 
 # So... what is it doing?
 
-So far, we've dug into specifics. The higher optimization seems to most likely do the following (think hardware store worker trying to get a project done):
+So far, we've dug into specifics. The higher optimization seems to most likely do the following:
 
-- Instruction selection - use f32 units instead of tensor cores for zeroing registers (Use the small screwdriver for simple tasks, not the power drill)
-- Instruction reordering - mix memory loads with math (Cut wood while paint dries)
-- Influence register pressure - may increase the number of registers used to achieve reodering (Bigger workbench means better organization, even if more crowded)
+- Instruction selection - use f32 units instead of tensor cores for zeroing<span class="sidenote-ref"></span><span class="sidenote">Zeroing registers isn't in the hot path, but it's a simple to see example!</span> registers<span class="sidenote-ref"></span><span class="sidenote">But wait there's more! I didn't show it in this blog in detail, but you can see some IMADs replacing instructions</span>
+- Instruction reordering - mix memory loads with math
+- Influence register pressure - may increase the number of registers used to achieve reodering
 
 ```md
 When ptxas sees matrix operations (MAD/MMA):
