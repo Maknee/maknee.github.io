@@ -181,9 +181,9 @@ Two common changes we can see are:
 
 <!-- https://godbolt.org/z/7TKvhv4Gj -->
 
-{% include image.html path="/assets/images/posts/2025-12-05/instruction_selection.svg" width="160%" text="The optimization now uses IMAD instead of HMMA to zero registers" %}
+{% include image.html path="/assets/images/posts/2025-12-05/instruction_selection.svg" width="160%" text="The optimization now uses IMAD instead of HFMA2.MMA to move constants" %}
 
-We can see that `IMAD` is used instead of `HMMA` for zeroing registers, which is neat!<span class="sidenote-ref"></span><span class="sidenote">Instead of using `tensor` units, we can use the `FP32` units to zero out the registers. Refer to [H100 SM Diagram](#h100-sm-diagram)</span>.
+We can see that `IMAD` is used instead of `HFMA2.MMA` for moving constants, which is neat!<span class="sidenote-ref"></span><span class="sidenote">By using `IMAD`, we can use the `FP32` units. Refer to [H100 SM Diagram](#h100-sm-diagram)</span>.
 
 {% include image.html path="/assets/images/posts/2025-12-05/instruction_reordering.svg" width="140%" text="Enable interleaving LDS and FFMA" %}
 
@@ -238,7 +238,7 @@ Below is a table of the different instructions that have changed for this kernel
 
 So far, we've dug into specifics. The higher optimization seems to most likely do the following:
 
-- Instruction selection - use f32 units instead of tensor cores for zeroing<span class="sidenote-ref"></span><span class="sidenote">Zeroing registers isn't in the hot path, but it's a simple to see example!</span> registers<span class="sidenote-ref"></span><span class="sidenote">But wait there's more! I didn't show it in this blog in detail, but you can see some IMADs replacing instructions</span>
+- Instruction selection - use f32 units for moving constants<span class="sidenote-ref"></span><span class="sidenote">Moving constants from registers isn't in the hot path, but it's a simple to see example!</span> registers<span class="sidenote-ref"></span><span class="sidenote">But wait there's more! I didn't show it in this blog in detail, but you can see some IMADs replacing instructions</span>
 - Instruction reordering - mix memory loads with math
 - Influence register pressure - may increase the number of registers used to achieve reodering
 
@@ -246,7 +246,7 @@ So far, we've dug into specifics. The higher optimization seems to most likely d
 When ptxas sees matrix operations (MAD/MMA):
 
   Instruction selection:
-    HMMA,MOV -> IMAD 
+    HFMA2.MMA,MOV -> IMAD 
 
   Instruction reordering:
     LDS spread across FMMA
@@ -347,7 +347,7 @@ Also with [a highly voted reddit comment](https://www.reddit.com/r/programming/c
 
 {% include image.html path="/assets/images/posts/2025-12-05/reddit.png" width="100%" url_source="https://www.reddit.com/r/programming/comments/1nx3g70/fp8_runs_100_tflops_faster_when_the_kernel_name/" url_text="Reddit - Fp8 runs ~100 tflops faster when the kernel name has 'cutlass' in it" %}
 
-This explanation is really hard to understand. I'm guessing that the user is stating this trick uses NaNs/zeroes to optimize the program. It doesn't use that. In fact, it tries to optimizes how registers are zeroed.
+This explanation is really hard to understand. I'm guessing that the user is stating this trick uses NaNs/zeroes to optimize the program. It doesn't use that. In fact, it tries to optimizes how registers are moved.
 
 # Previous mentions
 
@@ -394,6 +394,10 @@ NVIDIA’s toolchain works like this: `CUDA code` is compiled by *nvcc* into `PT
 ## H100 SM Diagram
 
 {% include image.html path="/assets/images/posts/2025-12-05/gh100.png" width="50%" text="H100 SM Diagram" url_source="https://resources.nvidia.com/en-us-hopper-architecture/nvidia-h100-tensor-c" url_text="NVIDIA H100 GPU Whitepaper" %}
+
+## Changes
+
+[12/16/2026] Thanks to @Firadeoclus on GPUMODE discord for pointing out that my original post mixes up `HMMA` and `HFMA2.MMA` and how they move constants instead of zeroing.
 
 # Citation
 
