@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: Some blog
+title: Henry Zhu
 first_name: Henry
 middle_name: 
 last_name: Zhu
@@ -188,7 +188,7 @@ announcements:
 latest_posts:
   enabled: true
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: # leave blank to include all the blog posts
+  limit: 5 # show the 5 most recent blog posts
 
 # -----------------------------------------------------------------------------
 # Jekyll settings
@@ -229,6 +229,7 @@ exclude:
   - README.md
   - readme_preview/
   - vendor
+  - blog/
 keep_files:
   - CNAME
   - .nojekyll
