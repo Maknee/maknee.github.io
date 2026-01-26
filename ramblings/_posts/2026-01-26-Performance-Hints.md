@@ -28,7 +28,7 @@ The early sections, especially in "The importance of thinking about performance"
 
 Estimation has and always will be important. It's one way to judge if your intuition is right or not (guess, run experiment, am i wrong). And most likely, for me, it's wrong. One tricky thing to spot is if something sounds right, but is wrong. Another habit that is hard to get is the "am I wrong" part, where I get lost in the sauce of doing something and then say "I'm done and ok yeah let's move on to the next thing" and not asking the question "was I wrong initially" to see where I went wrong in my estimations, which can trickle down to actually doing the thing properly. And I think this should apply generally to anything, but I haven't written and measured it outside of the work I do.
 
-Detailed example sections I find new to me and seemingly useful: "What to do when profiles are flat", "Code size considerations", "Parallelization and synchronization"
+Detailed example sections I find new to me and seemingly useful: "What to do when profiles are flat", "Code size considerations", "Parallelization and synchronization", "CLs that demonstrate multiple techniques"
 
 ## Side notes (my thoughts)
 
