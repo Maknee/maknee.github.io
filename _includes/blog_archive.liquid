@@ -1,5 +1,5 @@
 <div class="news blog-archive">
-  {%- assign posts = site.categories.blog | sort: 'date' | reverse -%}
+  {%- assign posts = site.posts | sort: 'date' | reverse -%}
   {%- assign groups = posts | group_by_exp: 'post', 'post.date | date: "%Y"' -%}
 
   {%- for grp in groups -%}

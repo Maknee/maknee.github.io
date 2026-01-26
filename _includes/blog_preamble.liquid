@@ -9,7 +9,7 @@
     {%- endif -%}
     <ul class="list-unstyled small">
       {%- for it in s.items -%}
-        {%- assign p = site.categories.blog | where: 'url', it.url | first -%}
+        {%- assign p = site.posts | where: 'url', it.url | first -%}
         {%- assign link_title = it.title | default: p.title -%}
         <li class="preamble-item">
           <div class="preamble-title"><a href="{{ it.url | relative_url }}">{{ link_title }}</a></div>
@@ -26,7 +26,7 @@
   <ul class="list-unstyled small">
     {%- if archive.highlights -%}
       {%- for h in archive.highlights -%}
-        {%- assign p = site.categories.blog | where: 'url', h.url | first -%}
+        {%- assign p = site.posts | where: 'url', h.url | first -%}
         {%- assign link_title = h.title | default: p.title -%}
         <li class="preamble-item">
           <div class="preamble-title"><a href="{{ h.url | relative_url }}">{{ link_title }}</a></div>
