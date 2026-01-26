@@ -16,7 +16,7 @@ tags:
 
 -->
 
-This post will be about going through https://abseil.io/fast/hints.html#performance-hints, a blog post written by the power duo Jeff Dean and Sanjay Ghemawat who argubly made google to what it is today. This is a knowledge distillation from the both of them with many examples from the codebase at internal. Hopefully I can a thing or two professionals who have worked in the industry longer than I have been alive
+This post will be about going through https://abseil.io/fast/hints.html#performance-hints, a blog post written by the power duo Jeff Dean and Sanjay Ghemawat who argubly made google to what it is today. This is a knowledge distillation from the both of them with many examples from the internal codebase. Hopefully I can a thing or two professionals who have worked in the industry longer than I have been alive
 
 # Reflection after reading this post
 
@@ -27,6 +27,8 @@ I think the intro was very very well written and puts some key points about thin
 The early sections, especially in "The importance of thinking about performance" and "Estimation" provides small window into how to think about performance as a sort of life-style choice (ie, having a habit of incorporating performance before and while the project is going rather than after). The motivations for why one sometimes should think in such a manner varies, but the authors argue that down the line, you face consequences or even bigger time sinks that could have been solved in the first place (harder time spotting the issues due to complexity, time sink to communicate with people complaining about what you wrote, changing existing library for performance gains is hard, using expensive bandaids to solve performance issues).
 
 Estimation has and always will be important. It's one way to judge if your intuition is right or not (guess, run experiment, am i wrong). And most likely, for me, it's wrong. One tricky thing to spot is if something sounds right, but is wrong. Another habit that is hard to get is the "am I wrong" part, where I get lost in the sauce of doing something and then say "I'm done and ok yeah let's move on to the next thing" and not asking the question "was I wrong initially" to see where I went wrong in my estimations, which can trickle down to actually doing the thing properly. And I think this should apply generally to anything, but I haven't written and measured it outside of the work I do.
+
+Detailed example sections I find new to me and seemingly useful: "What to do when profiles are flat", "Code size considerations", "Parallelization and synchronization"
 
 ## Side notes (my thoughts)
 
