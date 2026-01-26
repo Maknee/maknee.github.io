@@ -16,7 +16,7 @@ tags:
 
 -->
 
-This post will be about going through https://abseil.io/fast/hints.html#performance-hints, a blog post written by the power duo Jeff Dean and Sanjay Ghemawat who argubly made google to what it is today. This is a knowledge distillation from the both of them with many examples from the internal codebase. Hopefully I can a thing or two professionals who have worked in the industry longer than I have been alive
+This post will be about going through [https://abseil.io/fast/hints.html#performance-hints](https://abseil.io/fast/hints.html#performance-hints), a blog post written by the power duo Jeff Dean and Sanjay Ghemawat who argubly made google to what it is today. This is a knowledge distillation from the both of them with many examples from the internal codebase. Hopefully I can a thing or two professionals who have worked in the industry longer than I have been alive
 
 # Reflection after reading this post
 
