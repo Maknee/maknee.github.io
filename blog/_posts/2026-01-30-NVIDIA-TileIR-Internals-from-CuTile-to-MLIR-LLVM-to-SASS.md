@@ -148,7 +148,7 @@ These TileIR-specific environment variables affect compilation:
     py="2"
     id="env-vars-table"
     headers="Variable,Description"
-    data="TILEIR_ALWAYS_SWIZZLE,Force swizzle mode for TMA operations
+    data="TILEIR_ALWAYS_SWIZZLE,Force swizzle mode
     TILEIR_PREFER_TMA_FOR_LOAD_STORE,Prefer TMA for all load/store operations
     TILEIR_DELAY_TMA_STORE_WAIT,Delay TMA store wait (optimization for overlapping compute)"
 %}
