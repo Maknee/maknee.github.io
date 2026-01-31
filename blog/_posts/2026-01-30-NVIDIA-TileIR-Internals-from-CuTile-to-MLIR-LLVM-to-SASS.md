@@ -153,25 +153,6 @@ These TileIR-specific environment variables affect compilation:
     TILEIR_DELAY_TMA_STORE_WAIT,Delay TMA store wait (optimization for overlapping compute)"
 %}
 
-<details markdown="1">
-<summary><strong>Example: Effect of TILEIR_ALWAYS_SWIZZLE</strong></summary>
-
-```bash
-# Without swizzle
-$ tileiras --gpu-name sm_120 MoE.cutile -o moe.cubin
-$ cuobjdump -sass moe.cubin | grep -i "LD\|ST" | head -3
-        /*0910*/                   LDG.E R9, desc[UR8][R2.64] ;
-        /*1c30*/                   LDGSTS.E.BYPASS.128 [R45], desc[UR8][R10.64], P0 ;
-
-# With swizzle forced
-$ TILEIR_ALWAYS_SWIZZLE=1 tileiras --gpu-name sm_120 MoE.cutile -o moe_swizzle.cubin
-$ cuobjdump -sass moe_swizzle.cubin | grep -i "LD\|ST" | head -3
-        /*0910*/                   LDG.E.SWIZZLE R9, desc[UR8][R2.64] ;
-        /*1c30*/                   LDGSTS.E.BYPASS.SWIZZLE.128 [R45], desc[UR8][R10.64], P0 ;
-```
-
-</details>
-
 ## Interesting undocumented CLI options
 
 The `--print-before-all` flag dumps LLVM IR before each compilation pass. 
