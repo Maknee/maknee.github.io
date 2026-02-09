@@ -3,6 +3,24 @@
 
 @string{aps = {,}}
 
+
+Kiran Hombal (University of Illinois Urbana-Champaign) <khombal2@illinois.edu>
+Henry Zhu (University of Illinois Urbana-Champaign) <zhu109@illinois.edu>
+Shreesha G. Bhat (University of Illinois Urbana Champaign) <sgbhat3@illinois.edu>
+Neil Kaushikkar (Jump Trading Group) <neil.kaushikkar@gmail.com>
+Ramnatthan Alagappan (University of Illinois Urbana-Champaign) <ramn@illinois.edu>
+Aishwarya Ganesan (University of Illinois Urbana-Champaign) <aganesn2@illinois.edu>
+
+@inproceedings{2025hombal,
+  title     = {A Logically Disaggregated Cache for Replicated Storage Systems},
+  author    = {Hombal, Kiran and Zhu, Henry and Bhat, Shreesha and Kaushikkar, Neil and Alagappan, Ramnatthan and Aishwarya, Ganesan},
+  booktitle = {EuroSys 2026},
+  year      = {2026},
+  volume    = {},
+  number    = {We study if replicated storage systems effectively utilize the caches embedded within each replica. Our study reveals that existing systems manage the embedded caches in each replica in silos, leading to significant cache redundancy across replicas and consequently low performance. To address this problem, we introduce logically disaggregated cache (LDC), a new approach to managing caches in replicated storage systems. LDC disaggregates the embedded caches from the replicas to form a single, logical cache. LDC then allows any replica to access any part of the logical cache, which reduces redundancy caused by reads. Because writes pollute all caches, LDC quickly demotes written objects to limit redundancy caused by writes. LDC, however, realizes that reducing redundancy may hurt performance in some cases and thus employs an online analyzer to strike a balance between cache redundancy and coverage. We implement LDC in three systems: an eventually-consistent KV store, a strongly-consistent KV store, and a production database. Using microbenchmarks, macrobenchmarks, and real-world traces, we show that the LDC versions perform significantly better than the original systems (e.g., 2.6× to 5.4× higher throughput in the eventually-consistent KV store under YCSB workloads).},
+  paper     = {https://www.google.com}
+}
+
 @inproceedings{ionia2024xu,
   title     = {IONIA: High-Performance Replication for Modern Disk-based KV Stores},
   author    = {Xu*, Yi and Zhu*, Henry and Pandey, Prashant and Conway, Alex and Johnson, Rob and Ganesan, Aishwarya and Alagappan, Ramnatthan},
