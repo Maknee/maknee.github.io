@@ -148,29 +148,10 @@ These TileIR-specific environment variables affect compilation:
     py="2"
     id="env-vars-table"
     headers="Variable,Description"
-    data="TILEIR_ALWAYS_SWIZZLE,Force swizzle mode for TMA operations
+    data="TILEIR_ALWAYS_SWIZZLE,Force swizzle mode
     TILEIR_PREFER_TMA_FOR_LOAD_STORE,Prefer TMA for all load/store operations
     TILEIR_DELAY_TMA_STORE_WAIT,Delay TMA store wait (optimization for overlapping compute)"
 %}
-
-<details markdown="1">
-<summary><strong>Example: Effect of TILEIR_ALWAYS_SWIZZLE</strong></summary>
-
-```bash
-# Without swizzle
-$ tileiras --gpu-name sm_120 MoE.cutile -o moe.cubin
-$ cuobjdump -sass moe.cubin | grep -i "LD\|ST" | head -3
-        /*0910*/                   LDG.E R9, desc[UR8][R2.64] ;
-        /*1c30*/                   LDGSTS.E.BYPASS.128 [R45], desc[UR8][R10.64], P0 ;
-
-# With swizzle forced
-$ TILEIR_ALWAYS_SWIZZLE=1 tileiras --gpu-name sm_120 MoE.cutile -o moe_swizzle.cubin
-$ cuobjdump -sass moe_swizzle.cubin | grep -i "LD\|ST" | head -3
-        /*0910*/                   LDG.E.SWIZZLE R9, desc[UR8][R2.64] ;
-        /*1c30*/                   LDGSTS.E.BYPASS.SWIZZLE.128 [R45], desc[UR8][R10.64], P0 ;
-```
-
-</details>
 
 ## Interesting undocumented CLI options
 
