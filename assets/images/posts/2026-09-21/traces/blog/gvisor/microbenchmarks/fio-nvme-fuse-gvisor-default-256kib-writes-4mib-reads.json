@@ -1,0 +1,3025 @@
+{
+  "schema": "fio.stock-request-geometry.v1",
+  "status": "PASS",
+  "started_utc": "2026-10-16T03:24:37.447781+00:00",
+  "expected_cells": 8,
+  "rows": [
+    {
+      "storage": "md0",
+      "block_size": "256k",
+      "jobs": 1,
+      "iodepth": 128,
+      "mode": "buffered",
+      "operation": "seqwrite",
+      "status": "PASS",
+      "reference": "stock request geometry reference",
+      "trace": {
+        "kind": "cktrace host CPU and device disk counters; no fio call stacks",
+        "stop": {
+          "clock_pairs": [
+            {
+              "bracket_ns": 172,
+              "mono_ns": 23523452028265,
+              "real_ns": 1792121077605371859,
+              "t": "start"
+            },
+            {
+              "bracket_ns": 75,
+              "mono_ns": 23531717282142,
+              "real_ns": 1792121085870625688,
+              "t": "stop"
+            }
+          ],
+          "complete": true,
+          "driver_version": "610.57.04",
+          "errors": [],
+          "expected_cycles": 0,
+          "inject": false,
+          "lifecycle": false,
+          "lifecycle_validated": false,
+          "overhead": {
+            "observer_cpu_ms_recording": 158.538,
+            "stop_reply_ms": 23.894063
+          },
+          "profile": "lifecycle610",
+          "results": [
+            {
+              "metrics_only_processes": [
+                {
+                  "argv0": "/root/mambaforge/bin/python3",
+                  "cpu_ns_all_threads": 189314950,
+                  "cpu_ns_drawn_threads": 189314950,
+                  "cpu_ns_not_drawn": 0,
+                  "first_sample_us": 23523455665.33,
+                  "followed": false,
+                  "pid": 1468895,
+                  "threads_drawn": 2,
+                  "threads_not_drawn": 0,
+                  "threads_with_cpu": 2
+                },
+                {
+                  "argv0": "/root/Desktop/fio-aio-tools/root/usr/bin/fio",
+                  "cpu_ns_all_threads": 7549282272,
+                  "cpu_ns_drawn_threads": 7549282272,
+                  "cpu_ns_not_drawn": 0,
+                  "first_sample_us": 23523756096.627,
+                  "followed": true,
+                  "pid": 1469007,
+                  "threads_drawn": 1,
+                  "threads_not_drawn": 0,
+                  "threads_with_cpu": 1
+                }
+              ],
+              "systrap_stubs": [],
+              "threads_per_process": 16
+            },
+            {
+              "disk_io": {
+                "counter_rows": 5176,
+                "devices": [
+                  {
+                    "description": "/proc/diskstats md0. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: direct. md members: nvme1n1, nvme4n1, nvme8n1, nvme2n1, nvme3n1, nvme6n1, nvme7n1, nvme5n1.",
+                    "name": "md0"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme1n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme1n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme2n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme2n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme3n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme3n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme4n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme4n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme5n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme5n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme6n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme6n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme7n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme7n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme8n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme8n1"
+                  }
+                ],
+                "group": "Per-device disk I/O (host, 100 ms)",
+                "max_gap_ms": 118.54922100067138,
+                "readings": 83,
+                "resolution": {
+                  "devices": [
+                    "md0",
+                    "nvme1n1",
+                    "nvme2n1",
+                    "nvme3n1",
+                    "nvme4n1",
+                    "nvme5n1",
+                    "nvme6n1",
+                    "nvme7n1",
+                    "nvme8n1"
+                  ],
+                  "mapping": [
+                    {
+                      "basis": "st_dev 9:0 is block device md0",
+                      "canonical": "/__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4",
+                      "devices": [
+                        "md0",
+                        "nvme1n1",
+                        "nvme2n1",
+                        "nvme3n1",
+                        "nvme4n1",
+                        "nvme5n1",
+                        "nvme6n1",
+                        "nvme7n1",
+                        "nvme8n1"
+                      ],
+                      "mount": {
+                        "fstype": "xfs",
+                        "point": "/__modal/volumes",
+                        "root": "/task-data/ta-01M50Z6CD2879S0WDFZ93BMR1R/volumes-Gbi5pk",
+                        "source": "/dev/md0"
+                      },
+                      "path": "/__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4",
+                      "st_dev": "9:0"
+                    }
+                  ],
+                  "requested": {
+                    "disk_devices": [],
+                    "disk_paths": [
+                      "/__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4"
+                    ]
+                  }
+                },
+                "rounds": 83,
+                "totals": {
+                  "md0": {
+                    "bytes_read": 32768,
+                    "bytes_written": 17203683328,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.000327417067722766,
+                    "peak_write_GB_s": 14.174652567675448
+                  },
+                  "nvme1n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 2150449152,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 1.7755022063451962
+                  },
+                  "nvme2n1": {
+                    "bytes_read": 16384,
+                    "bytes_written": 2150105088,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.000163708533861383,
+                    "peak_write_GB_s": 1.7755022063451962
+                  },
+                  "nvme3n1": {
+                    "bytes_read": 16384,
+                    "bytes_written": 2150391808,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.000163708533861383,
+                    "peak_write_GB_s": 1.7749697850340114
+                  },
+                  "nvme4n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 2150215680,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 1.7755022063451962
+                  },
+                  "nvme5n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 2150662144,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 1.771898123623329
+                  },
+                  "nvme6n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 2150834176,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 1.7771404257642267
+                  },
+                  "nvme7n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 2150547456,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 1.7735772985278355
+                  },
+                  "nvme8n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 2150477824,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 1.7741916308099719
+                  }
+                }
+              }
+            },
+            {
+              "numa_sampler": {
+                "enabled": false
+              }
+            }
+          ],
+          "state": "stopped",
+          "trace": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/benchmarks/fio-stock-default-geometry-t02/md0-256k-jobs1-qd128-buffered-seqwrite.trace/detailed.perfetto.pftrace",
+          "trace_written": "in background; release waits for it"
+        },
+        "release": {
+          "state": "released",
+          "trace_write": {
+            "helpers": {
+              "exit_ms": {
+                "max": null,
+                "median": null
+              },
+              "setup_ms": {
+                "max": null,
+                "median": null
+              },
+              "traced": 0
+            },
+            "observer_cpu_ms_recording": 158.538,
+            "observer_cpu_ms_total": 178.892,
+            "stop_phases": {
+              "assemble_ms": 2.48706,
+              "capture_ms": 0.004517,
+              "helpers_ms": 0.000748,
+              "samplers_ms": 21.400395999999997,
+              "write_ms": 10.015776,
+              "write_split_ms": {
+                "compress": 2.229936,
+                "encode": 5.485018999999999,
+                "file": 2.2915010000000002
+              }
+            },
+            "stop_reply_ms": 23.894063,
+            "trace_bytes": 23255,
+            "trace_rows": 7312
+          }
+        },
+        "perfetto": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/benchmarks/fio-stock-default-geometry-t02/md0-256k-jobs1-qd128-buffered-seqwrite.trace/detailed.perfetto.pftrace",
+        "perfetto_bytes": 23255,
+        "perfetto_sha256": "4716cca12d49f34c21c88ef5289786425fdf848d8c75b3cdfe25ce06ab5b685c",
+        "fio_exec_release_monotonic_ns": 23523460504478,
+        "fio_exit_observed_monotonic_ns": 23531693366004
+      },
+      "returncode": 0,
+      "observer_seconds": 8.304949859,
+      "host_diskstats_delta": {
+        "nvme0n1": {
+          "read_bytes": 0,
+          "write_bytes": 1036288,
+          "busy_ms": 12
+        },
+        "nvme0n1p1": {
+          "read_bytes": 0,
+          "write_bytes": 1036288,
+          "busy_ms": 12
+        },
+        "nvme0n1p14": {
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "busy_ms": 0
+        },
+        "nvme0n1p15": {
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "busy_ms": 0
+        },
+        "nvme1n1": {
+          "read_bytes": 0,
+          "write_bytes": 2150449152,
+          "busy_ms": 1868
+        },
+        "nvme4n1": {
+          "read_bytes": 0,
+          "write_bytes": 2150215680,
+          "busy_ms": 1868
+        },
+        "nvme2n1": {
+          "read_bytes": 16384,
+          "write_bytes": 2150105088,
+          "busy_ms": 1868
+        },
+        "nvme8n1": {
+          "read_bytes": 0,
+          "write_bytes": 2150477824,
+          "busy_ms": 1872
+        },
+        "nvme3n1": {
+          "read_bytes": 16384,
+          "write_bytes": 2150391808,
+          "busy_ms": 1884
+        },
+        "nvme6n1": {
+          "read_bytes": 0,
+          "write_bytes": 2150834176,
+          "busy_ms": 1880
+        },
+        "nvme7n1": {
+          "read_bytes": 0,
+          "write_bytes": 2150547456,
+          "busy_ms": 1876
+        },
+        "nvme5n1": {
+          "read_bytes": 0,
+          "write_bytes": 2150662144,
+          "busy_ms": 1868
+        },
+        "md0": {
+          "read_bytes": 32768,
+          "write_bytes": 17203683328,
+          "busy_ms": 1892
+        }
+      },
+      "host_diskstats_boundary": "before observer setup to after observer export; host-wide, includes unrelated traffic",
+      "metrics": {
+        "bandwidth_bytes_per_second": 2223355659,
+        "iops": 8481.428756,
+        "mean_latency_us": 11583.616514678999,
+        "p99_completion_latency_us": 15925.248,
+        "io_bytes": 17179869184,
+        "runtime_ms": 7727,
+        "achieved_iodepth_percent": {
+          "1": 0.1,
+          "2": 0.1,
+          "4": 0.1,
+          "8": 0.1,
+          "16": 0.1,
+          "32": 0.1,
+          ">=64": 99.90387
+        },
+        "usr_cpu": 4.064199,
+        "sys_cpu": 93.476573,
+        "job_runtime_ms": 7726,
+        "exec_to_exit_seconds": 8.232861526,
+        "final_fsync_inclusive_wall_seconds": 8.232861526,
+        "logical_bytes_per_exec_to_exit_second": 2086743367.3874717,
+        "short_duration_below5s": false
+      }
+    },
+    {
+      "storage": "md0",
+      "block_size": "4m",
+      "jobs": 1,
+      "iodepth": 12,
+      "mode": "buffered",
+      "operation": "seqread",
+      "status": "PASS",
+      "reference": "stock request geometry reference",
+      "cache_invalidation": {
+        "files": [
+          {
+            "path": "/__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4/data.0",
+            "advice": "POSIX_FADV_DONTNEED",
+            "requested": true
+          }
+        ],
+        "fio_invalidate": 1,
+        "global_dropcache": false,
+        "limitation": "Successful advice is not proof of eviction. Repeated16GiB reads may hit caller/FUSE/server/device caches; O_DIRECT does not bypass every backend cache."
+      },
+      "trace": {
+        "kind": "cktrace host CPU and device disk counters; no fio call stacks",
+        "stop": {
+          "clock_pairs": [
+            {
+              "bracket_ns": 107,
+              "mono_ns": 23532758154853,
+              "real_ns": 1792121086911498414,
+              "t": "start"
+            },
+            {
+              "bracket_ns": 75,
+              "mono_ns": 23540080934638,
+              "real_ns": 1792121094234278183,
+              "t": "stop"
+            }
+          ],
+          "complete": true,
+          "driver_version": "610.57.04",
+          "errors": [],
+          "expected_cycles": 0,
+          "inject": false,
+          "lifecycle": false,
+          "lifecycle_validated": false,
+          "overhead": {
+            "observer_cpu_ms_recording": 144.172,
+            "stop_reply_ms": 26.190155999999998
+          },
+          "profile": "lifecycle610",
+          "results": [
+            {
+              "metrics_only_processes": [
+                {
+                  "argv0": "/root/mambaforge/bin/python3",
+                  "cpu_ns_all_threads": 186604126,
+                  "cpu_ns_drawn_threads": 186604126,
+                  "cpu_ns_not_drawn": 0,
+                  "first_sample_us": 23532761725.474,
+                  "followed": false,
+                  "pid": 1469279,
+                  "threads_drawn": 2,
+                  "threads_not_drawn": 0,
+                  "threads_with_cpu": 2
+                },
+                {
+                  "argv0": "/root/Desktop/fio-aio-tools/root/usr/bin/fio",
+                  "cpu_ns_all_threads": 6827575335,
+                  "cpu_ns_drawn_threads": 6827575335,
+                  "cpu_ns_not_drawn": 0,
+                  "first_sample_us": 23533062132.173,
+                  "followed": true,
+                  "pid": 1469370,
+                  "threads_drawn": 1,
+                  "threads_not_drawn": 0,
+                  "threads_with_cpu": 1
+                }
+              ],
+              "systrap_stubs": [],
+              "threads_per_process": 16
+            },
+            {
+              "disk_io": {
+                "counter_rows": 4546,
+                "devices": [
+                  {
+                    "description": "/proc/diskstats md0. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: direct. md members: nvme1n1, nvme4n1, nvme8n1, nvme2n1, nvme3n1, nvme6n1, nvme7n1, nvme5n1.",
+                    "name": "md0"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme1n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme1n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme2n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme2n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme3n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme3n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme4n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme4n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme5n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme5n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme6n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme6n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme7n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme7n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme8n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme8n1"
+                  }
+                ],
+                "group": "Per-device disk I/O (host, 100 ms)",
+                "max_gap_ms": 117.76710400009155,
+                "readings": 73,
+                "resolution": {
+                  "devices": [
+                    "md0",
+                    "nvme1n1",
+                    "nvme2n1",
+                    "nvme3n1",
+                    "nvme4n1",
+                    "nvme5n1",
+                    "nvme6n1",
+                    "nvme7n1",
+                    "nvme8n1"
+                  ],
+                  "mapping": [
+                    {
+                      "basis": "st_dev 9:0 is block device md0",
+                      "canonical": "/__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4",
+                      "devices": [
+                        "md0",
+                        "nvme1n1",
+                        "nvme2n1",
+                        "nvme3n1",
+                        "nvme4n1",
+                        "nvme5n1",
+                        "nvme6n1",
+                        "nvme7n1",
+                        "nvme8n1"
+                      ],
+                      "mount": {
+                        "fstype": "xfs",
+                        "point": "/__modal/volumes",
+                        "root": "/task-data/ta-01M50Z6CD2879S0WDFZ93BMR1R/volumes-Gbi5pk",
+                        "source": "/dev/md0"
+                      },
+                      "path": "/__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4",
+                      "st_dev": "9:0"
+                    }
+                  ],
+                  "requested": {
+                    "disk_devices": [],
+                    "disk_paths": [
+                      "/__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4"
+                    ]
+                  }
+                },
+                "rounds": 73,
+                "totals": {
+                  "md0": {
+                    "bytes_read": 17180131328,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 84.02029005838466,
+                    "peak_read_GB_s": 2.8153028538748317,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme1n1": {
+                    "bytes_read": 2147516416,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 81.44282645435307,
+                    "peak_read_GB_s": 0.3560029643207598,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme2n1": {
+                    "bytes_read": 2147393536,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 83.92428015828955,
+                    "peak_read_GB_s": 0.3560029643207598,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme3n1": {
+                    "bytes_read": 2147110912,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 81.44282645435307,
+                    "peak_read_GB_s": 0.3560029643207598,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme4n1": {
+                    "bytes_read": 2147483648,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 81.44282645435307,
+                    "peak_read_GB_s": 0.3560029643207598,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme5n1": {
+                    "bytes_read": 2147495936,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 81.44282645435307,
+                    "peak_read_GB_s": 0.3560029643207598,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme6n1": {
+                    "bytes_read": 2147573760,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 87.90987303717472,
+                    "peak_read_GB_s": 0.3560029643207598,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme7n1": {
+                    "bytes_read": 2148007936,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 81.44282645435307,
+                    "peak_read_GB_s": 0.3560029643207598,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme8n1": {
+                    "bytes_read": 2147549184,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 81.44282645435307,
+                    "peak_read_GB_s": 0.3560029643207598,
+                    "peak_write_GB_s": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "numa_sampler": {
+                "enabled": false
+              }
+            }
+          ],
+          "state": "stopped",
+          "trace": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/benchmarks/fio-stock-default-geometry-t02/md0-4m-jobs1-qd12-buffered-seqread.trace/detailed.perfetto.pftrace",
+          "trace_written": "in background; release waits for it"
+        },
+        "release": {
+          "state": "released",
+          "trace_write": {
+            "helpers": {
+              "exit_ms": {
+                "max": null,
+                "median": null
+              },
+              "setup_ms": {
+                "max": null,
+                "median": null
+              },
+              "traced": 0
+            },
+            "observer_cpu_ms_recording": 144.172,
+            "observer_cpu_ms_total": 162.55100000000002,
+            "stop_phases": {
+              "assemble_ms": 2.254683,
+              "capture_ms": 0.003079,
+              "helpers_ms": 0.0006360000000000001,
+              "samplers_ms": 23.930577000000003,
+              "write_ms": 14.596705,
+              "write_split_ms": {
+                "compress": 2.500283,
+                "encode": 4.707602,
+                "file": 7.381642
+              }
+            },
+            "stop_reply_ms": 26.190155999999998,
+            "trace_bytes": 30898,
+            "trace_rows": 6425
+          }
+        },
+        "perfetto": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/benchmarks/fio-stock-default-geometry-t02/md0-4m-jobs1-qd12-buffered-seqread.trace/detailed.perfetto.pftrace",
+        "perfetto_bytes": 30898,
+        "perfetto_sha256": "8ec845075c5eb2fd6a26c74257720735da238b057047eefedf4f5289c2d38127",
+        "fio_exec_release_monotonic_ns": 23532773978866,
+        "fio_exit_observed_monotonic_ns": 23540054917407
+      },
+      "returncode": 0,
+      "observer_seconds": 7.371909988,
+      "host_diskstats_delta": {
+        "nvme0n1": {
+          "read_bytes": 0,
+          "write_bytes": 2977792,
+          "busy_ms": 44
+        },
+        "nvme0n1p1": {
+          "read_bytes": 0,
+          "write_bytes": 2977792,
+          "busy_ms": 44
+        },
+        "nvme0n1p14": {
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "busy_ms": 0
+        },
+        "nvme0n1p15": {
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "busy_ms": 0
+        },
+        "nvme1n1": {
+          "read_bytes": 2147516416,
+          "write_bytes": 0,
+          "busy_ms": 4844
+        },
+        "nvme4n1": {
+          "read_bytes": 2147483648,
+          "write_bytes": 0,
+          "busy_ms": 4856
+        },
+        "nvme2n1": {
+          "read_bytes": 2147393536,
+          "write_bytes": 0,
+          "busy_ms": 4924
+        },
+        "nvme8n1": {
+          "read_bytes": 2147549184,
+          "write_bytes": 0,
+          "busy_ms": 4896
+        },
+        "nvme3n1": {
+          "read_bytes": 2147110912,
+          "write_bytes": 0,
+          "busy_ms": 4884
+        },
+        "nvme6n1": {
+          "read_bytes": 2147573760,
+          "write_bytes": 0,
+          "busy_ms": 4892
+        },
+        "nvme7n1": {
+          "read_bytes": 2148007936,
+          "write_bytes": 0,
+          "busy_ms": 4840
+        },
+        "nvme5n1": {
+          "read_bytes": 2147495936,
+          "write_bytes": 0,
+          "busy_ms": 4828
+        },
+        "md0": {
+          "read_bytes": 17180131328,
+          "write_bytes": 0,
+          "busy_ms": 5020
+        }
+      },
+      "host_diskstats_boundary": "before observer setup to after observer export; host-wide, includes unrelated traffic",
+      "metrics": {
+        "bandwidth_bytes_per_second": 2516828184,
+        "iops": 600.058599,
+        "mean_latency_us": 19920.572270507997,
+        "p99_completion_latency_us": 22151.168,
+        "io_bytes": 17179869184,
+        "runtime_ms": 6826,
+        "achieved_iodepth_percent": {
+          "1": 0.1,
+          "2": 0.1,
+          "4": 0.1,
+          "8": 99.829102,
+          "16": 0.0,
+          "32": 0.0,
+          ">=64": 0.0
+        },
+        "usr_cpu": 0.102564,
+        "sys_cpu": 99.868132,
+        "job_runtime_ms": 6825,
+        "exec_to_exit_seconds": 7.280938541,
+        "final_fsync_inclusive_wall_seconds": null,
+        "logical_bytes_per_exec_to_exit_second": 2359567944.0579967,
+        "short_duration_below5s": false
+      }
+    },
+    {
+      "storage": "md0",
+      "block_size": "256k",
+      "jobs": 1,
+      "iodepth": 128,
+      "mode": "direct",
+      "operation": "seqwrite",
+      "status": "PASS",
+      "reference": "stock request geometry reference",
+      "trace": {
+        "kind": "cktrace host CPU and device disk counters; no fio call stacks",
+        "stop": {
+          "clock_pairs": [
+            {
+              "bracket_ns": 107,
+              "mono_ns": 23540159335716,
+              "real_ns": 1792121094312679278,
+              "t": "start"
+            },
+            {
+              "bracket_ns": 73,
+              "mono_ns": 23543152916518,
+              "real_ns": 1792121097306260065,
+              "t": "stop"
+            }
+          ],
+          "complete": true,
+          "driver_version": "610.57.04",
+          "errors": [],
+          "expected_cycles": 0,
+          "inject": false,
+          "lifecycle": false,
+          "lifecycle_validated": false,
+          "overhead": {
+            "observer_cpu_ms_recording": 77.32900000000001,
+            "stop_reply_ms": 8.130144000000001
+          },
+          "profile": "lifecycle610",
+          "results": [
+            {
+              "metrics_only_processes": [
+                {
+                  "argv0": "/root/mambaforge/bin/python3",
+                  "cpu_ns_all_threads": 174016586,
+                  "cpu_ns_drawn_threads": 174016586,
+                  "cpu_ns_not_drawn": 0,
+                  "first_sample_us": 23540162993.299,
+                  "followed": false,
+                  "pid": 1469519,
+                  "threads_drawn": 2,
+                  "threads_not_drawn": 0,
+                  "threads_with_cpu": 2
+                },
+                {
+                  "argv0": "/root/Desktop/fio-aio-tools/root/usr/bin/fio",
+                  "cpu_ns_all_threads": 2411042059,
+                  "cpu_ns_drawn_threads": 2411042059,
+                  "cpu_ns_not_drawn": 0,
+                  "first_sample_us": 23540463425.368,
+                  "followed": true,
+                  "pid": 1469610,
+                  "threads_drawn": 1,
+                  "threads_not_drawn": 0,
+                  "threads_with_cpu": 1
+                }
+              ],
+              "systrap_stubs": [],
+              "threads_per_process": 16
+            },
+            {
+              "disk_io": {
+                "counter_rows": 1837,
+                "devices": [
+                  {
+                    "description": "/proc/diskstats md0. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: direct. md members: nvme1n1, nvme4n1, nvme8n1, nvme2n1, nvme3n1, nvme6n1, nvme7n1, nvme5n1.",
+                    "name": "md0"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme1n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme1n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme2n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme2n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme3n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme3n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme4n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme4n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme5n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme5n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme6n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme6n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme7n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme7n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme8n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme8n1"
+                  }
+                ],
+                "group": "Per-device disk I/O (host, 100 ms)",
+                "max_gap_ms": 121.95223399734498,
+                "readings": 30,
+                "resolution": {
+                  "devices": [
+                    "md0",
+                    "nvme1n1",
+                    "nvme2n1",
+                    "nvme3n1",
+                    "nvme4n1",
+                    "nvme5n1",
+                    "nvme6n1",
+                    "nvme7n1",
+                    "nvme8n1"
+                  ],
+                  "mapping": [
+                    {
+                      "basis": "st_dev 9:0 is block device md0",
+                      "canonical": "/__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4",
+                      "devices": [
+                        "md0",
+                        "nvme1n1",
+                        "nvme2n1",
+                        "nvme3n1",
+                        "nvme4n1",
+                        "nvme5n1",
+                        "nvme6n1",
+                        "nvme7n1",
+                        "nvme8n1"
+                      ],
+                      "mount": {
+                        "fstype": "xfs",
+                        "point": "/__modal/volumes",
+                        "root": "/task-data/ta-01M50Z6CD2879S0WDFZ93BMR1R/volumes-Gbi5pk",
+                        "source": "/dev/md0"
+                      },
+                      "path": "/__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4",
+                      "st_dev": "9:0"
+                    }
+                  ],
+                  "requested": {
+                    "disk_devices": [],
+                    "disk_paths": [
+                      "/__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4"
+                    ]
+                  }
+                },
+                "rounds": 30,
+                "totals": {
+                  "md0": {
+                    "bytes_read": 0,
+                    "bytes_written": 17180655616,
+                    "peak_busy_pct": 99.96590263292505,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 13.66592091816706
+                  },
+                  "nvme1n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 2147483648,
+                    "peak_busy_pct": 99.96590263292505,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 1.7088943622296229
+                  },
+                  "nvme2n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 2147348480,
+                    "peak_busy_pct": 99.96590263292505,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 1.7062773723946616
+                  },
+                  "nvme3n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 2147094528,
+                    "peak_busy_pct": 99.96590263292505,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 1.7062773723946616
+                  },
+                  "nvme4n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 2147483648,
+                    "peak_busy_pct": 99.96590263292505,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 1.7075858673121422
+                  },
+                  "nvme5n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 2147680256,
+                    "peak_busy_pct": 99.96590263292505,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 1.7102028571471033
+                  },
+                  "nvme6n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 2147549184,
+                    "peak_busy_pct": 99.96590263292505,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 1.7062773723946616
+                  },
+                  "nvme7n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 2148532224,
+                    "peak_busy_pct": 99.96590263292505,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 1.7075858673121422
+                  },
+                  "nvme8n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 2147483648,
+                    "peak_busy_pct": 99.96590263292505,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 1.7075858673121422
+                  }
+                }
+              }
+            },
+            {
+              "numa_sampler": {
+                "enabled": false
+              }
+            }
+          ],
+          "state": "stopped",
+          "trace": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/benchmarks/fio-stock-default-geometry-t02/md0-256k-jobs1-qd128-direct-seqwrite.trace/detailed.perfetto.pftrace",
+          "trace_written": "in background; release waits for it"
+        },
+        "release": {
+          "state": "released",
+          "trace_write": {
+            "helpers": {
+              "exit_ms": {
+                "max": null,
+                "median": null
+              },
+              "setup_ms": {
+                "max": null,
+                "median": null
+              },
+              "traced": 0
+            },
+            "observer_cpu_ms_recording": 77.32900000000001,
+            "observer_cpu_ms_total": 86.086,
+            "stop_phases": {
+              "assemble_ms": 1.311558,
+              "capture_ms": 0.004945,
+              "helpers_ms": 0.000651,
+              "samplers_ms": 6.811784,
+              "write_ms": 6.075104,
+              "write_split_ms": {
+                "compress": 1.395241,
+                "encode": 1.920104,
+                "file": 2.753076
+              }
+            },
+            "stop_reply_ms": 8.130144000000001,
+            "trace_bytes": 13483,
+            "trace_rows": 2603
+          }
+        },
+        "perfetto": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/benchmarks/fio-stock-default-geometry-t02/md0-256k-jobs1-qd128-direct-seqwrite.trace/detailed.perfetto.pftrace",
+        "perfetto_bytes": 13483,
+        "perfetto_sha256": "77c78096bd70c9259ba563aa16d08f33c8f57fb6a8a221597bd656cfc0202604",
+        "fio_exec_release_monotonic_ns": 23540172951371,
+        "fio_exit_observed_monotonic_ns": 23543144877795
+      },
+      "returncode": 0,
+      "observer_seconds": 3.040983803,
+      "host_diskstats_delta": {
+        "nvme0n1": {
+          "read_bytes": 0,
+          "write_bytes": 462848,
+          "busy_ms": 8
+        },
+        "nvme0n1p1": {
+          "read_bytes": 0,
+          "write_bytes": 462848,
+          "busy_ms": 8
+        },
+        "nvme0n1p14": {
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "busy_ms": 0
+        },
+        "nvme0n1p15": {
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "busy_ms": 0
+        },
+        "nvme1n1": {
+          "read_bytes": 0,
+          "write_bytes": 2147483648,
+          "busy_ms": 1376
+        },
+        "nvme4n1": {
+          "read_bytes": 0,
+          "write_bytes": 2147483648,
+          "busy_ms": 1376
+        },
+        "nvme2n1": {
+          "read_bytes": 0,
+          "write_bytes": 2147348480,
+          "busy_ms": 1376
+        },
+        "nvme8n1": {
+          "read_bytes": 0,
+          "write_bytes": 2147483648,
+          "busy_ms": 1376
+        },
+        "nvme3n1": {
+          "read_bytes": 0,
+          "write_bytes": 2147094528,
+          "busy_ms": 1372
+        },
+        "nvme6n1": {
+          "read_bytes": 0,
+          "write_bytes": 2147549184,
+          "busy_ms": 1380
+        },
+        "nvme7n1": {
+          "read_bytes": 0,
+          "write_bytes": 2148532224,
+          "busy_ms": 1372
+        },
+        "nvme5n1": {
+          "read_bytes": 0,
+          "write_bytes": 2147680256,
+          "busy_ms": 1372
+        },
+        "md0": {
+          "read_bytes": 0,
+          "write_bytes": 17180655616,
+          "busy_ms": 1384
+        }
+      },
+      "host_diskstats_boundary": "before observer setup to after observer export; host-wide, includes unrelated traffic",
+      "metrics": {
+        "bandwidth_bytes_per_second": 6946975003,
+        "iops": 26500.606551,
+        "mean_latency_us": 2656.475862015,
+        "p99_completion_latency_us": 3883.008,
+        "io_bytes": 17179869184,
+        "runtime_ms": 2473,
+        "achieved_iodepth_percent": {
+          "1": 0.1,
+          "2": 0.1,
+          "4": 0.1,
+          "8": 0.1,
+          "16": 0.1,
+          "32": 0.1,
+          ">=64": 99.90387
+        },
+        "usr_cpu": 20.509709,
+        "sys_cpu": 76.375405,
+        "job_runtime_ms": 2472,
+        "exec_to_exit_seconds": 2.971926424,
+        "final_fsync_inclusive_wall_seconds": 2.971926424,
+        "logical_bytes_per_exec_to_exit_second": 5780718205.290267,
+        "short_duration_below5s": true
+      }
+    },
+    {
+      "storage": "md0",
+      "block_size": "4m",
+      "jobs": 1,
+      "iodepth": 12,
+      "mode": "direct",
+      "operation": "seqread",
+      "status": "PASS",
+      "reference": "stock request geometry reference",
+      "cache_invalidation": {
+        "files": [
+          {
+            "path": "/__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4/data.0",
+            "advice": "POSIX_FADV_DONTNEED",
+            "requested": true
+          }
+        ],
+        "fio_invalidate": 1,
+        "global_dropcache": false,
+        "limitation": "Successful advice is not proof of eviction. Repeated16GiB reads may hit caller/FUSE/server/device caches; O_DIRECT does not bypass every backend cache."
+      },
+      "trace": {
+        "kind": "cktrace host CPU and device disk counters; no fio call stacks",
+        "stop": {
+          "clock_pairs": [
+            {
+              "bracket_ns": 118,
+              "mono_ns": 23543243563373,
+              "real_ns": 1792121097396906937,
+              "t": "start"
+            },
+            {
+              "bracket_ns": 136,
+              "mono_ns": 23544393164424,
+              "real_ns": 1792121098546507938,
+              "t": "stop"
+            }
+          ],
+          "complete": true,
+          "driver_version": "610.57.04",
+          "errors": [],
+          "expected_cycles": 0,
+          "inject": false,
+          "lifecycle": false,
+          "lifecycle_validated": false,
+          "overhead": {
+            "observer_cpu_ms_recording": 38.193,
+            "stop_reply_ms": 18.580126
+          },
+          "profile": "lifecycle610",
+          "results": [
+            {
+              "metrics_only_processes": [
+                {
+                  "argv0": "/root/mambaforge/bin/python3",
+                  "cpu_ns_all_threads": 170189029,
+                  "cpu_ns_drawn_threads": 170189029,
+                  "cpu_ns_not_drawn": 0,
+                  "first_sample_us": 23543248263.279,
+                  "followed": false,
+                  "pid": 1469706,
+                  "threads_drawn": 2,
+                  "threads_not_drawn": 0,
+                  "threads_with_cpu": 2
+                },
+                {
+                  "argv0": "/root/Desktop/fio-aio-tools/root/usr/bin/fio",
+                  "cpu_ns_all_threads": 616510386,
+                  "cpu_ns_drawn_threads": 616510386,
+                  "cpu_ns_not_drawn": 0,
+                  "first_sample_us": 23543549066.798,
+                  "followed": true,
+                  "pid": 1469832,
+                  "threads_drawn": 1,
+                  "threads_not_drawn": 0,
+                  "threads_with_cpu": 1
+                }
+              ],
+              "systrap_stubs": [],
+              "threads_per_process": 16
+            },
+            {
+              "disk_io": {
+                "counter_rows": 703,
+                "devices": [
+                  {
+                    "description": "/proc/diskstats md0. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: direct. md members: nvme1n1, nvme4n1, nvme8n1, nvme2n1, nvme3n1, nvme6n1, nvme7n1, nvme5n1.",
+                    "name": "md0"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme1n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme1n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme2n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme2n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme3n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme3n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme4n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme4n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme5n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme5n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme6n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme6n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme7n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme7n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme8n1. Backs: /__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4: member of md0.",
+                    "name": "nvme8n1"
+                  }
+                ],
+                "group": "Per-device disk I/O (host, 100 ms)",
+                "max_gap_ms": 112.29674100112915,
+                "readings": 12,
+                "resolution": {
+                  "devices": [
+                    "md0",
+                    "nvme1n1",
+                    "nvme2n1",
+                    "nvme3n1",
+                    "nvme4n1",
+                    "nvme5n1",
+                    "nvme6n1",
+                    "nvme7n1",
+                    "nvme8n1"
+                  ],
+                  "mapping": [
+                    {
+                      "basis": "st_dev 9:0 is block device md0",
+                      "canonical": "/__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4",
+                      "devices": [
+                        "md0",
+                        "nvme1n1",
+                        "nvme2n1",
+                        "nvme3n1",
+                        "nvme4n1",
+                        "nvme5n1",
+                        "nvme6n1",
+                        "nvme7n1",
+                        "nvme8n1"
+                      ],
+                      "mount": {
+                        "fstype": "xfs",
+                        "point": "/__modal/volumes",
+                        "root": "/task-data/ta-01M50Z6CD2879S0WDFZ93BMR1R/volumes-Gbi5pk",
+                        "source": "/dev/md0"
+                      },
+                      "path": "/__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4",
+                      "st_dev": "9:0"
+                    }
+                  ],
+                  "requested": {
+                    "disk_devices": [],
+                    "disk_paths": [
+                      "/__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4"
+                    ]
+                  }
+                },
+                "rounds": 12,
+                "totals": {
+                  "md0": {
+                    "bytes_read": 17179869184,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 99.99550620247003,
+                    "peak_read_GB_s": 28.68775013265787,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme1n1": {
+                    "bytes_read": 2147483648,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 99.99550620247003,
+                    "peak_read_GB_s": 3.58727942768113,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme2n1": {
+                    "bytes_read": 2147348480,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 99.99550620247003,
+                    "peak_read_GB_s": 3.5853134360327847,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme3n1": {
+                    "bytes_read": 2147094528,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 99.99550620247003,
+                    "peak_read_GB_s": 3.585968766582234,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme4n1": {
+                    "bytes_read": 2147483648,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 99.99550620247003,
+                    "peak_read_GB_s": 3.5925220720767186,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme5n1": {
+                    "bytes_read": 2147483648,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 99.99550620247003,
+                    "peak_read_GB_s": 3.585968766582234,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme6n1": {
+                    "bytes_read": 2147483648,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 99.99550620247003,
+                    "peak_read_GB_s": 3.5925220720767186,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme7n1": {
+                    "bytes_read": 2148007936,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 99.99550620247003,
+                    "peak_read_GB_s": 3.579415461087749,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme8n1": {
+                    "bytes_read": 2147483648,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 99.99550620247003,
+                    "peak_read_GB_s": 3.5899007498789244,
+                    "peak_write_GB_s": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "numa_sampler": {
+                "enabled": false
+              }
+            }
+          ],
+          "state": "stopped",
+          "trace": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/benchmarks/fio-stock-default-geometry-t02/md0-4m-jobs1-qd12-direct-seqread.trace/detailed.perfetto.pftrace",
+          "trace_written": "in background; release waits for it"
+        },
+        "release": {
+          "state": "released",
+          "trace_write": {
+            "helpers": {
+              "exit_ms": {
+                "max": null,
+                "median": null
+              },
+              "setup_ms": {
+                "max": null,
+                "median": null
+              },
+              "traced": 0
+            },
+            "observer_cpu_ms_recording": 38.193,
+            "observer_cpu_ms_total": 42.641999999999996,
+            "stop_phases": {
+              "assemble_ms": 0.42548,
+              "capture_ms": 0.0030529999999999997,
+              "helpers_ms": 0.000593,
+              "samplers_ms": 18.149973,
+              "write_ms": 3.556517,
+              "write_split_ms": {
+                "compress": 0.9739300000000001,
+                "encode": 0.941937,
+                "file": 1.634855
+              }
+            },
+            "stop_reply_ms": 18.580126,
+            "trace_bytes": 9471,
+            "trace_rows": 993
+          }
+        },
+        "perfetto": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/benchmarks/fio-stock-default-geometry-t02/md0-4m-jobs1-qd12-direct-seqread.trace/detailed.perfetto.pftrace",
+        "perfetto_bytes": 9471,
+        "perfetto_sha256": "9d0c433f548a288b1c83e3815bee2a8a772d4401427727f2d8c29ba1eb0ab706",
+        "fio_exec_release_monotonic_ns": 23543257491915,
+        "fio_exit_observed_monotonic_ns": 23544374835490
+      },
+      "returncode": 0,
+      "observer_seconds": 1.182638795,
+      "host_diskstats_delta": {
+        "nvme0n1": {
+          "read_bytes": 0,
+          "write_bytes": 57344,
+          "busy_ms": 4
+        },
+        "nvme0n1p1": {
+          "read_bytes": 0,
+          "write_bytes": 57344,
+          "busy_ms": 4
+        },
+        "nvme0n1p14": {
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "busy_ms": 0
+        },
+        "nvme0n1p15": {
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "busy_ms": 0
+        },
+        "nvme1n1": {
+          "read_bytes": 2147483648,
+          "write_bytes": 0,
+          "busy_ms": 660
+        },
+        "nvme4n1": {
+          "read_bytes": 2147483648,
+          "write_bytes": 0,
+          "busy_ms": 660
+        },
+        "nvme2n1": {
+          "read_bytes": 2147348480,
+          "write_bytes": 0,
+          "busy_ms": 660
+        },
+        "nvme8n1": {
+          "read_bytes": 2147483648,
+          "write_bytes": 0,
+          "busy_ms": 660
+        },
+        "nvme3n1": {
+          "read_bytes": 2147094528,
+          "write_bytes": 0,
+          "busy_ms": 660
+        },
+        "nvme6n1": {
+          "read_bytes": 2147483648,
+          "write_bytes": 0,
+          "busy_ms": 660
+        },
+        "nvme7n1": {
+          "read_bytes": 2148007936,
+          "write_bytes": 0,
+          "busy_ms": 660
+        },
+        "nvme5n1": {
+          "read_bytes": 2147483648,
+          "write_bytes": 0,
+          "busy_ms": 660
+        },
+        "md0": {
+          "read_bytes": 17179869184,
+          "write_bytes": 0,
+          "busy_ms": 660
+        }
+      },
+      "host_diskstats_boundary": "before observer setup to after observer export; host-wide, includes unrelated traffic",
+      "metrics": {
+        "bandwidth_bytes_per_second": 26148963750,
+        "iops": 6234.398782,
+        "mean_latency_us": 1903.5010881350001,
+        "p99_completion_latency_us": 3325.952,
+        "io_bytes": 17179869184,
+        "runtime_ms": 657,
+        "achieved_iodepth_percent": {
+          "1": 0.1,
+          "2": 0.1,
+          "4": 0.1,
+          "8": 99.829102,
+          "16": 0.0,
+          "32": 0.0,
+          ">=64": 0.0
+        },
+        "usr_cpu": 1.067073,
+        "sys_cpu": 93.597561,
+        "job_runtime_ms": 656,
+        "exec_to_exit_seconds": 1.117343575,
+        "final_fsync_inclusive_wall_seconds": null,
+        "logical_bytes_per_exec_to_exit_second": 15375636973.613956,
+        "short_duration_below5s": true
+      }
+    },
+    {
+      "storage": "fuse",
+      "block_size": "256k",
+      "jobs": 1,
+      "iodepth": 128,
+      "mode": "buffered",
+      "operation": "seqwrite",
+      "status": "PASS",
+      "reference": "stock request geometry reference",
+      "trace": {
+        "kind": "cktrace host CPU and device disk counters; no fio call stacks",
+        "stop": {
+          "clock_pairs": [
+            {
+              "bracket_ns": 109,
+              "mono_ns": 23544469153531,
+              "real_ns": 1792121098622497094,
+              "t": "start"
+            },
+            {
+              "bracket_ns": 79,
+              "mono_ns": 23562944019530,
+              "real_ns": 1792121117097363077,
+              "t": "stop"
+            }
+          ],
+          "complete": true,
+          "driver_version": "610.57.04",
+          "errors": [],
+          "expected_cycles": 0,
+          "inject": false,
+          "lifecycle": false,
+          "lifecycle_validated": false,
+          "overhead": {
+            "observer_cpu_ms_recording": 473.56699999999995,
+            "stop_reply_ms": 46.365317000000005
+          },
+          "profile": "lifecycle610",
+          "results": [
+            {
+              "metrics_only_processes": [
+                {
+                  "argv0": "/root/mambaforge/bin/python3",
+                  "cpu_ns_all_threads": 214705775,
+                  "cpu_ns_drawn_threads": 214705775,
+                  "cpu_ns_not_drawn": 0,
+                  "first_sample_us": 23544474158.961,
+                  "followed": false,
+                  "pid": 1469859,
+                  "threads_drawn": 2,
+                  "threads_not_drawn": 0,
+                  "threads_with_cpu": 2
+                },
+                {
+                  "argv0": "/root/Desktop/fio-aio-tools/root/usr/bin/fio",
+                  "cpu_ns_all_threads": 10909568965,
+                  "cpu_ns_drawn_threads": 10909568965,
+                  "cpu_ns_not_drawn": 0,
+                  "first_sample_us": 23544774510.564,
+                  "followed": true,
+                  "pid": 1469950,
+                  "threads_drawn": 1,
+                  "threads_not_drawn": 0,
+                  "threads_with_cpu": 1
+                }
+              ],
+              "systrap_stubs": [],
+              "threads_per_process": 16
+            },
+            {
+              "disk_io": {
+                "counter_rows": 11602,
+                "devices": [
+                  {
+                    "description": "/proc/diskstats md0. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: parent mount of fuse /__modal/volumes/**** (inferred). md members: nvme1n1, nvme4n1, nvme8n1, nvme2n1, nvme3n1, nvme6n1, nvme7n1, nvme5n1.",
+                    "name": "md0"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme1n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme1n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme2n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme2n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme3n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme3n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme4n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme4n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme5n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme5n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme6n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme6n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme7n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme7n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme8n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme8n1"
+                  }
+                ],
+                "group": "Per-device disk I/O (host, 100 ms)",
+                "max_gap_ms": 112.38275100326538,
+                "readings": 185,
+                "resolution": {
+                  "devices": [
+                    "md0",
+                    "nvme1n1",
+                    "nvme2n1",
+                    "nvme3n1",
+                    "nvme4n1",
+                    "nvme5n1",
+                    "nvme6n1",
+                    "nvme7n1",
+                    "nvme8n1"
+                  ],
+                  "mapping": [
+                    {
+                      "basis": "inferred: fuse volumefs2 at /__modal/volumes/**** (st_dev 0:56) has no block device; its mount sits on /__modal/volumes xfs /dev/md0 (md0)",
+                      "canonical": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7",
+                      "devices": [
+                        "md0",
+                        "nvme1n1",
+                        "nvme2n1",
+                        "nvme3n1",
+                        "nvme4n1",
+                        "nvme5n1",
+                        "nvme6n1",
+                        "nvme7n1",
+                        "nvme8n1"
+                      ],
+                      "mount": {
+                        "fstype": "fuse",
+                        "point": "/__modal/volumes/****",
+                        "root": "/",
+                        "source": "volumefs2"
+                      },
+                      "path": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7",
+                      "st_dev": "0:56"
+                    }
+                  ],
+                  "requested": {
+                    "disk_devices": [],
+                    "disk_paths": [
+                      "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7"
+                    ]
+                  }
+                },
+                "rounds": 185,
+                "totals": {
+                  "md0": {
+                    "bytes_read": 2555904,
+                    "bytes_written": 395755520,
+                    "peak_busy_pct": 47.99035681685178,
+                    "peak_read_GB_s": 0.0009823902470965664,
+                    "peak_write_GB_s": 2.205539538846026
+                  },
+                  "nvme1n1": {
+                    "bytes_read": 344064,
+                    "bytes_written": 49082368,
+                    "peak_busy_pct": 39.991964014043155,
+                    "peak_read_GB_s": 0.0001656590774794233,
+                    "peak_write_GB_s": 0.2723292781500283
+                  },
+                  "nvme2n1": {
+                    "bytes_read": 245760,
+                    "bytes_written": 48635904,
+                    "peak_busy_pct": 35.992767612638836,
+                    "peak_read_GB_s": 0.0003313181549588466,
+                    "peak_write_GB_s": 0.27171500158277256
+                  },
+                  "nvme3n1": {
+                    "bytes_read": 360448,
+                    "bytes_written": 50237440,
+                    "peak_busy_pct": 35.992767612638836,
+                    "peak_read_GB_s": 0.00031535579159410766,
+                    "peak_write_GB_s": 0.2836319669875332
+                  },
+                  "nvme4n1": {
+                    "bytes_read": 311296,
+                    "bytes_written": 49807360,
+                    "peak_busy_pct": 35.992767612638836,
+                    "peak_read_GB_s": 0.00032006399716653916,
+                    "peak_write_GB_s": 0.276178744638164
+                  },
+                  "nvme5n1": {
+                    "bytes_read": 409600,
+                    "bytes_written": 49197056,
+                    "peak_busy_pct": 39.991964014043155,
+                    "peak_read_GB_s": 0.00032746341569885544,
+                    "peak_write_GB_s": 0.2717969051250733
+                  },
+                  "nvme6n1": {
+                    "bytes_read": 311296,
+                    "bytes_written": 50003968,
+                    "peak_busy_pct": 39.991964014043155,
+                    "peak_read_GB_s": 0.00032748137272340186,
+                    "peak_write_GB_s": 0.27978250049939746
+                  },
+                  "nvme7n1": {
+                    "bytes_read": 311296,
+                    "bytes_written": 48730112,
+                    "peak_busy_pct": 35.992767612638836,
+                    "peak_read_GB_s": 0.0003278962902340298,
+                    "peak_write_GB_s": 0.27646540703621664
+                  },
+                  "nvme8n1": {
+                    "bytes_read": 262144,
+                    "bytes_written": 50061312,
+                    "peak_busy_pct": 35.992767612638836,
+                    "peak_read_GB_s": 0.00032684952764736947,
+                    "peak_write_GB_s": 0.2736397348268404
+                  }
+                }
+              }
+            },
+            {
+              "numa_sampler": {
+                "enabled": false
+              }
+            }
+          ],
+          "state": "stopped",
+          "trace": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/benchmarks/fio-stock-default-geometry-t02/fuse-256k-jobs1-qd128-buffered-seqwrite.trace/detailed.perfetto.pftrace",
+          "trace_written": "in background; release waits for it"
+        },
+        "release": {
+          "state": "released",
+          "trace_write": {
+            "helpers": {
+              "exit_ms": {
+                "max": null,
+                "median": null
+              },
+              "setup_ms": {
+                "max": null,
+                "median": null
+              },
+              "traced": 0
+            },
+            "observer_cpu_ms_recording": 473.56699999999995,
+            "observer_cpu_ms_total": 519.885,
+            "stop_phases": {
+              "assemble_ms": 5.884946,
+              "capture_ms": 0.004164,
+              "helpers_ms": 0.000853,
+              "samplers_ms": 40.474175,
+              "write_ms": 19.919316,
+              "write_split_ms": {
+                "compress": 4.305236,
+                "encode": 13.281543,
+                "file": 2.3240320000000003
+              }
+            },
+            "stop_reply_ms": 46.365317000000005,
+            "trace_bytes": 39018,
+            "trace_rows": 16400
+          }
+        },
+        "perfetto": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/benchmarks/fio-stock-default-geometry-t02/fuse-256k-jobs1-qd128-buffered-seqwrite.trace/detailed.perfetto.pftrace",
+        "perfetto_bytes": 39018,
+        "perfetto_sha256": "ab7a59c45cf771df6b949e99ac738e8cd12e65b901bdd3e33b8057066b74a3ca",
+        "fio_exec_release_monotonic_ns": 23544481227049,
+        "fio_exit_observed_monotonic_ns": 23562897695930
+      },
+      "returncode": 0,
+      "observer_seconds": 18.527099744,
+      "host_diskstats_delta": {
+        "nvme0n1": {
+          "read_bytes": 0,
+          "write_bytes": 4501504,
+          "busy_ms": 80
+        },
+        "nvme0n1p1": {
+          "read_bytes": 0,
+          "write_bytes": 4501504,
+          "busy_ms": 80
+        },
+        "nvme0n1p14": {
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "busy_ms": 0
+        },
+        "nvme0n1p15": {
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "busy_ms": 0
+        },
+        "nvme1n1": {
+          "read_bytes": 344064,
+          "write_bytes": 49082368,
+          "busy_ms": 180
+        },
+        "nvme4n1": {
+          "read_bytes": 311296,
+          "write_bytes": 49807360,
+          "busy_ms": 172
+        },
+        "nvme2n1": {
+          "read_bytes": 245760,
+          "write_bytes": 48635904,
+          "busy_ms": 148
+        },
+        "nvme8n1": {
+          "read_bytes": 262144,
+          "write_bytes": 50061312,
+          "busy_ms": 156
+        },
+        "nvme3n1": {
+          "read_bytes": 360448,
+          "write_bytes": 50237440,
+          "busy_ms": 172
+        },
+        "nvme6n1": {
+          "read_bytes": 311296,
+          "write_bytes": 50003968,
+          "busy_ms": 164
+        },
+        "nvme7n1": {
+          "read_bytes": 311296,
+          "write_bytes": 48730112,
+          "busy_ms": 160
+        },
+        "nvme5n1": {
+          "read_bytes": 409600,
+          "write_bytes": 49197056,
+          "busy_ms": 212
+        },
+        "md0": {
+          "read_bytes": 2555904,
+          "write_bytes": 395755520,
+          "busy_ms": 756
+        }
+      },
+      "host_diskstats_boundary": "before observer setup to after observer export; host-wide, includes unrelated traffic",
+      "metrics": {
+        "bandwidth_bytes_per_second": 964781781,
+        "iops": 3680.350424,
+        "mean_latency_us": 17594.391205917,
+        "p99_completion_latency_us": 26869.76,
+        "io_bytes": 17179869184,
+        "runtime_ms": 17807,
+        "achieved_iodepth_percent": {
+          "1": 0.1,
+          "2": 0.1,
+          "4": 0.1,
+          "8": 0.1,
+          "16": 0.1,
+          "32": 0.1,
+          ">=64": 99.90387
+        },
+        "usr_cpu": 2.341907,
+        "sys_cpu": 58.834101,
+        "job_runtime_ms": 17806,
+        "exec_to_exit_seconds": 18.416468881,
+        "final_fsync_inclusive_wall_seconds": 18.416468881,
+        "logical_bytes_per_exec_to_exit_second": 932853593.9766508,
+        "short_duration_below5s": false
+      }
+    },
+    {
+      "storage": "fuse",
+      "block_size": "4m",
+      "jobs": 1,
+      "iodepth": 12,
+      "mode": "buffered",
+      "operation": "seqread",
+      "status": "PASS",
+      "reference": "stock request geometry reference",
+      "cache_invalidation": {
+        "files": [
+          {
+            "path": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7/data.0",
+            "advice": "POSIX_FADV_DONTNEED",
+            "requested": true
+          }
+        ],
+        "fio_invalidate": 1,
+        "global_dropcache": false,
+        "limitation": "Successful advice is not proof of eviction. Repeated16GiB reads may hit caller/FUSE/server/device caches; O_DIRECT does not bypass every backend cache."
+      },
+      "trace": {
+        "kind": "cktrace host CPU and device disk counters; no fio call stacks",
+        "stop": {
+          "clock_pairs": [
+            {
+              "bracket_ns": 108,
+              "mono_ns": 23564283476197,
+              "real_ns": 1792121118436819758,
+              "t": "start"
+            },
+            {
+              "bracket_ns": 74,
+              "mono_ns": 23571486223183,
+              "real_ns": 1792121125639566728,
+              "t": "stop"
+            }
+          ],
+          "complete": true,
+          "driver_version": "610.57.04",
+          "errors": [],
+          "expected_cycles": 0,
+          "inject": false,
+          "lifecycle": false,
+          "lifecycle_validated": false,
+          "overhead": {
+            "observer_cpu_ms_recording": 151.27800000000002,
+            "stop_reply_ms": 16.576009
+          },
+          "profile": "lifecycle610",
+          "results": [
+            {
+              "metrics_only_processes": [
+                {
+                  "argv0": "/root/mambaforge/bin/python3",
+                  "cpu_ns_all_threads": 185414999,
+                  "cpu_ns_drawn_threads": 185414999,
+                  "cpu_ns_not_drawn": 0,
+                  "first_sample_us": 23564287489.84,
+                  "followed": false,
+                  "pid": 1470474,
+                  "threads_drawn": 2,
+                  "threads_not_drawn": 0,
+                  "threads_with_cpu": 2
+                },
+                {
+                  "argv0": "/root/Desktop/fio-aio-tools/root/usr/bin/fio",
+                  "cpu_ns_all_threads": 6729604473,
+                  "cpu_ns_drawn_threads": 6729604473,
+                  "cpu_ns_not_drawn": 0,
+                  "first_sample_us": 23564587925.897,
+                  "followed": true,
+                  "pid": 1470565,
+                  "threads_drawn": 1,
+                  "threads_not_drawn": 0,
+                  "threads_with_cpu": 1
+                }
+              ],
+              "systrap_stubs": [],
+              "threads_per_process": 16
+            },
+            {
+              "disk_io": {
+                "counter_rows": 4483,
+                "devices": [
+                  {
+                    "description": "/proc/diskstats md0. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: parent mount of fuse /__modal/volumes/**** (inferred). md members: nvme1n1, nvme4n1, nvme8n1, nvme2n1, nvme3n1, nvme6n1, nvme7n1, nvme5n1.",
+                    "name": "md0"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme1n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme1n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme2n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme2n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme3n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme3n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme4n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme4n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme5n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme5n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme6n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme6n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme7n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme7n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme8n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme8n1"
+                  }
+                ],
+                "group": "Per-device disk I/O (host, 100 ms)",
+                "max_gap_ms": 104.89999499893189,
+                "readings": 72,
+                "resolution": {
+                  "devices": [
+                    "md0",
+                    "nvme1n1",
+                    "nvme2n1",
+                    "nvme3n1",
+                    "nvme4n1",
+                    "nvme5n1",
+                    "nvme6n1",
+                    "nvme7n1",
+                    "nvme8n1"
+                  ],
+                  "mapping": [
+                    {
+                      "basis": "inferred: fuse volumefs2 at /__modal/volumes/**** (st_dev 0:56) has no block device; its mount sits on /__modal/volumes xfs /dev/md0 (md0)",
+                      "canonical": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7",
+                      "devices": [
+                        "md0",
+                        "nvme1n1",
+                        "nvme2n1",
+                        "nvme3n1",
+                        "nvme4n1",
+                        "nvme5n1",
+                        "nvme6n1",
+                        "nvme7n1",
+                        "nvme8n1"
+                      ],
+                      "mount": {
+                        "fstype": "fuse",
+                        "point": "/__modal/volumes/****",
+                        "root": "/",
+                        "source": "volumefs2"
+                      },
+                      "path": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7",
+                      "st_dev": "0:56"
+                    }
+                  ],
+                  "requested": {
+                    "disk_devices": [],
+                    "disk_paths": [
+                      "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7"
+                    ]
+                  }
+                },
+                "rounds": 72,
+                "totals": {
+                  "md0": {
+                    "bytes_read": 49152,
+                    "bytes_written": 4096,
+                    "peak_busy_pct": 7.988471597006154,
+                    "peak_read_GB_s": 0.00032720779661337204,
+                    "peak_write_GB_s": 4.086676614995281e-05
+                  },
+                  "nvme1n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 4096,
+                    "peak_busy_pct": 3.990895131831329,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 4.086676614995281e-05
+                  },
+                  "nvme2n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 0.0,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme3n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 0.0,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme4n1": {
+                    "bytes_read": 16384,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 7.988471597006154,
+                    "peak_read_GB_s": 0.00016360389830668602,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme5n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 0.0,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme6n1": {
+                    "bytes_read": 16384,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 3.994235798503077,
+                    "peak_read_GB_s": 0.00016360389830668602,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme7n1": {
+                    "bytes_read": 16384,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 3.9972437805313863,
+                    "peak_read_GB_s": 0.0001637271052505656,
+                    "peak_write_GB_s": 0.0
+                  },
+                  "nvme8n1": {
+                    "bytes_read": 0,
+                    "bytes_written": 0,
+                    "peak_busy_pct": 0.0,
+                    "peak_read_GB_s": 0.0,
+                    "peak_write_GB_s": 0.0
+                  }
+                }
+              }
+            },
+            {
+              "numa_sampler": {
+                "enabled": false
+              }
+            }
+          ],
+          "state": "stopped",
+          "trace": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/benchmarks/fio-stock-default-geometry-t02/fuse-4m-jobs1-qd12-buffered-seqread.trace/detailed.perfetto.pftrace",
+          "trace_written": "in background; release waits for it"
+        },
+        "release": {
+          "state": "released",
+          "trace_write": {
+            "helpers": {
+              "exit_ms": {
+                "max": null,
+                "median": null
+              },
+              "setup_ms": {
+                "max": null,
+                "median": null
+              },
+              "traced": 0
+            },
+            "observer_cpu_ms_recording": 151.27800000000002,
+            "observer_cpu_ms_total": 168.577,
+            "stop_phases": {
+              "assemble_ms": 2.39914,
+              "capture_ms": 0.0043479999999999994,
+              "helpers_ms": 0.000932,
+              "samplers_ms": 14.170594999999999,
+              "write_ms": 9.032821,
+              "write_split_ms": {
+                "compress": 1.697906,
+                "encode": 4.477651,
+                "file": 2.849303
+              }
+            },
+            "stop_reply_ms": 16.576009,
+            "trace_bytes": 16076,
+            "trace_rows": 6336
+          }
+        },
+        "perfetto": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/benchmarks/fio-stock-default-geometry-t02/fuse-4m-jobs1-qd12-buffered-seqread.trace/detailed.perfetto.pftrace",
+        "perfetto_bytes": 16076,
+        "perfetto_sha256": "530a7784ca03faedaaf4bc79d1335e17441cfc088220477894f893f847b94557",
+        "fio_exec_release_monotonic_ns": 23564290158233,
+        "fio_exit_observed_monotonic_ns": 23571469631543
+      },
+      "returncode": 0,
+      "observer_seconds": 7.23570758,
+      "host_diskstats_delta": {
+        "nvme0n1": {
+          "read_bytes": 0,
+          "write_bytes": 2969600,
+          "busy_ms": 40
+        },
+        "nvme0n1p1": {
+          "read_bytes": 0,
+          "write_bytes": 2969600,
+          "busy_ms": 40
+        },
+        "nvme0n1p14": {
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "busy_ms": 0
+        },
+        "nvme0n1p15": {
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "busy_ms": 0
+        },
+        "nvme1n1": {
+          "read_bytes": 49152,
+          "write_bytes": 4096,
+          "busy_ms": 8
+        },
+        "nvme4n1": {
+          "read_bytes": 90112,
+          "write_bytes": 0,
+          "busy_ms": 12
+        },
+        "nvme2n1": {
+          "read_bytes": 73728,
+          "write_bytes": 0,
+          "busy_ms": 4
+        },
+        "nvme8n1": {
+          "read_bytes": 49152,
+          "write_bytes": 0,
+          "busy_ms": 4
+        },
+        "nvme3n1": {
+          "read_bytes": 57344,
+          "write_bytes": 0,
+          "busy_ms": 4
+        },
+        "nvme6n1": {
+          "read_bytes": 90112,
+          "write_bytes": 0,
+          "busy_ms": 8
+        },
+        "nvme7n1": {
+          "read_bytes": 65536,
+          "write_bytes": 0,
+          "busy_ms": 8
+        },
+        "nvme5n1": {
+          "read_bytes": 57344,
+          "write_bytes": 0,
+          "busy_ms": 4
+        },
+        "md0": {
+          "read_bytes": 532480,
+          "write_bytes": 4096,
+          "busy_ms": 20
+        }
+      },
+      "host_diskstats_boundary": "before observer setup to after observer export; host-wide, includes unrelated traffic",
+      "metrics": {
+        "bandwidth_bytes_per_second": 2553108810,
+        "iops": 608.708575,
+        "mean_latency_us": 19611.899418457,
+        "p99_completion_latency_us": 27394.048,
+        "io_bytes": 17179869184,
+        "runtime_ms": 6729,
+        "achieved_iodepth_percent": {
+          "1": 0.1,
+          "2": 0.1,
+          "4": 0.1,
+          "8": 99.829102,
+          "16": 0.0,
+          "32": 0.0,
+          ">=64": 0.0
+        },
+        "usr_cpu": 0.104043,
+        "sys_cpu": 99.836504,
+        "job_runtime_ms": 6728,
+        "exec_to_exit_seconds": 7.17947331,
+        "final_fsync_inclusive_wall_seconds": null,
+        "logical_bytes_per_exec_to_exit_second": 2392914973.3129935,
+        "short_duration_below5s": false
+      }
+    },
+    {
+      "storage": "fuse",
+      "block_size": "256k",
+      "jobs": 1,
+      "iodepth": 128,
+      "mode": "direct",
+      "operation": "seqwrite",
+      "status": "PASS",
+      "reference": "stock request geometry reference",
+      "trace": {
+        "kind": "cktrace host CPU and device disk counters; no fio call stacks",
+        "stop": {
+          "clock_pairs": [
+            {
+              "bracket_ns": 115,
+              "mono_ns": 23571544415744,
+              "real_ns": 1792121125697759307,
+              "t": "start"
+            },
+            {
+              "bracket_ns": 74,
+              "mono_ns": 23634382824150,
+              "real_ns": 1792121188536167695,
+              "t": "stop"
+            }
+          ],
+          "complete": true,
+          "driver_version": "610.57.04",
+          "errors": [],
+          "expected_cycles": 0,
+          "inject": false,
+          "lifecycle": false,
+          "lifecycle_validated": false,
+          "overhead": {
+            "observer_cpu_ms_recording": 1092.239,
+            "stop_reply_ms": 103.31584000000001
+          },
+          "profile": "lifecycle610",
+          "results": [
+            {
+              "metrics_only_processes": [
+                {
+                  "argv0": "/root/mambaforge/bin/python3",
+                  "cpu_ns_all_threads": 315840990,
+                  "cpu_ns_drawn_threads": 315840990,
+                  "cpu_ns_not_drawn": 0,
+                  "first_sample_us": 23571549014.432,
+                  "followed": false,
+                  "pid": 1470719,
+                  "threads_drawn": 2,
+                  "threads_not_drawn": 0,
+                  "threads_with_cpu": 2
+                },
+                {
+                  "argv0": "/root/Desktop/fio-aio-tools/root/usr/bin/fio",
+                  "cpu_ns_all_threads": 4489576243,
+                  "cpu_ns_drawn_threads": 4489576243,
+                  "cpu_ns_not_drawn": 0,
+                  "first_sample_us": 23571849437.528,
+                  "followed": true,
+                  "pid": 1470810,
+                  "threads_drawn": 1,
+                  "threads_not_drawn": 0,
+                  "threads_with_cpu": 1
+                }
+              ],
+              "systrap_stubs": [],
+              "threads_per_process": 16
+            },
+            {
+              "disk_io": {
+                "counter_rows": 39448,
+                "devices": [
+                  {
+                    "description": "/proc/diskstats md0. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: parent mount of fuse /__modal/volumes/**** (inferred). md members: nvme1n1, nvme4n1, nvme8n1, nvme2n1, nvme3n1, nvme6n1, nvme7n1, nvme5n1.",
+                    "name": "md0"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme1n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme1n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme2n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme2n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme3n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme3n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme4n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme4n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme5n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme5n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme6n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme6n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme7n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme7n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme8n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme8n1"
+                  }
+                ],
+                "group": "Per-device disk I/O (host, 100 ms)",
+                "max_gap_ms": 111.27029899978638,
+                "readings": 627,
+                "resolution": {
+                  "devices": [
+                    "md0",
+                    "nvme1n1",
+                    "nvme2n1",
+                    "nvme3n1",
+                    "nvme4n1",
+                    "nvme5n1",
+                    "nvme6n1",
+                    "nvme7n1",
+                    "nvme8n1"
+                  ],
+                  "mapping": [
+                    {
+                      "basis": "inferred: fuse volumefs2 at /__modal/volumes/**** (st_dev 0:56) has no block device; its mount sits on /__modal/volumes xfs /dev/md0 (md0)",
+                      "canonical": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7",
+                      "devices": [
+                        "md0",
+                        "nvme1n1",
+                        "nvme2n1",
+                        "nvme3n1",
+                        "nvme4n1",
+                        "nvme5n1",
+                        "nvme6n1",
+                        "nvme7n1",
+                        "nvme8n1"
+                      ],
+                      "mount": {
+                        "fstype": "fuse",
+                        "point": "/__modal/volumes/****",
+                        "root": "/",
+                        "source": "volumefs2"
+                      },
+                      "path": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7",
+                      "st_dev": "0:56"
+                    }
+                  ],
+                  "requested": {
+                    "disk_devices": [],
+                    "disk_paths": [
+                      "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7"
+                    ]
+                  }
+                },
+                "rounds": 627,
+                "totals": {
+                  "md0": {
+                    "bytes_read": 28155904,
+                    "bytes_written": 36103565312,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.22616838658848498,
+                    "peak_write_GB_s": 14.070137386340424
+                  },
+                  "nvme1n1": {
+                    "bytes_read": 3604480,
+                    "bytes_written": 4470980608,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.028271048323560623,
+                    "peak_write_GB_s": 1.7392681914344545
+                  },
+                  "nvme2n1": {
+                    "bytes_read": 3432448,
+                    "bytes_written": 4548816896,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.028271048323560623,
+                    "peak_write_GB_s": 1.7942712844316522
+                  },
+                  "nvme3n1": {
+                    "bytes_read": 3678208,
+                    "bytes_written": 4527734784,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.028271048323560623,
+                    "peak_write_GB_s": 1.7738546618765463
+                  },
+                  "nvme4n1": {
+                    "bytes_read": 3678208,
+                    "bytes_written": 4528500736,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.028271048323560623,
+                    "peak_write_GB_s": 1.752323241037212
+                  },
+                  "nvme5n1": {
+                    "bytes_read": 3465216,
+                    "bytes_written": 4466581504,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.028271048323560623,
+                    "peak_write_GB_s": 1.734713171818751
+                  },
+                  "nvme6n1": {
+                    "bytes_read": 3510272,
+                    "bytes_written": 4532707328,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.028271048323560623,
+                    "peak_write_GB_s": 1.8098435423794772
+                  },
+                  "nvme7n1": {
+                    "bytes_read": 3362816,
+                    "bytes_written": 4493250560,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.028271048323560623,
+                    "peak_write_GB_s": 1.746709465319728
+                  },
+                  "nvme8n1": {
+                    "bytes_read": 3424256,
+                    "bytes_written": 4534992896,
+                    "peak_busy_pct": 100.0,
+                    "peak_read_GB_s": 0.028271048323560623,
+                    "peak_write_GB_s": 1.7715170286976925
+                  }
+                }
+              }
+            },
+            {
+              "numa_sampler": {
+                "enabled": false
+              }
+            }
+          ],
+          "state": "stopped",
+          "trace": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/benchmarks/fio-stock-default-geometry-t02/fuse-256k-jobs1-qd128-direct-seqwrite.trace/detailed.perfetto.pftrace",
+          "trace_written": "in background; release waits for it"
+        },
+        "release": {
+          "state": "released",
+          "trace_write": {
+            "helpers": {
+              "exit_ms": {
+                "max": null,
+                "median": null
+              },
+              "setup_ms": {
+                "max": null,
+                "median": null
+              },
+              "traced": 0
+            },
+            "observer_cpu_ms_recording": 1092.239,
+            "observer_cpu_ms_total": 1243.029,
+            "stop_phases": {
+              "assemble_ms": 19.968533,
+              "capture_ms": 0.0073100000000000005,
+              "helpers_ms": 0.0010580000000000001,
+              "samplers_ms": 83.337537,
+              "write_ms": 47.639497000000006,
+              "write_split_ms": {
+                "compress": 5.015803,
+                "encode": 39.364596,
+                "file": 3.250424
+              }
+            },
+            "stop_reply_ms": 103.31584000000001,
+            "trace_bytes": 118409,
+            "trace_rows": 55754
+          }
+        },
+        "perfetto": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/benchmarks/fio-stock-default-geometry-t02/fuse-256k-jobs1-qd128-direct-seqwrite.trace/detailed.perfetto.pftrace",
+        "perfetto_bytes": 118409,
+        "perfetto_sha256": "2cdbd49a896dc0184580c9e027f88f75bfb3674fdb8ae9cc09ea1d5205c1f771",
+        "fio_exec_release_monotonic_ns": 23571551735956,
+        "fio_exit_observed_monotonic_ns": 23634279317172
+      },
+      "returncode": 0,
+      "observer_seconds": 62.925942408,
+      "host_diskstats_delta": {
+        "nvme0n1": {
+          "read_bytes": 0,
+          "write_bytes": 16609280,
+          "busy_ms": 272
+        },
+        "nvme0n1p1": {
+          "read_bytes": 0,
+          "write_bytes": 16609280,
+          "busy_ms": 272
+        },
+        "nvme0n1p14": {
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "busy_ms": 0
+        },
+        "nvme0n1p15": {
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "busy_ms": 0
+        },
+        "nvme1n1": {
+          "read_bytes": 3604480,
+          "write_bytes": 4470980608,
+          "busy_ms": 3388
+        },
+        "nvme4n1": {
+          "read_bytes": 3678208,
+          "write_bytes": 4528500736,
+          "busy_ms": 3388
+        },
+        "nvme2n1": {
+          "read_bytes": 3432448,
+          "write_bytes": 4548816896,
+          "busy_ms": 3440
+        },
+        "nvme8n1": {
+          "read_bytes": 3424256,
+          "write_bytes": 4534992896,
+          "busy_ms": 3360
+        },
+        "nvme3n1": {
+          "read_bytes": 3678208,
+          "write_bytes": 4527734784,
+          "busy_ms": 3428
+        },
+        "nvme6n1": {
+          "read_bytes": 3510272,
+          "write_bytes": 4532707328,
+          "busy_ms": 3520
+        },
+        "nvme7n1": {
+          "read_bytes": 3362816,
+          "write_bytes": 4493250560,
+          "busy_ms": 3476
+        },
+        "nvme5n1": {
+          "read_bytes": 3465216,
+          "write_bytes": 4466581504,
+          "busy_ms": 3392
+        },
+        "md0": {
+          "read_bytes": 28155904,
+          "write_bytes": 36103565312,
+          "busy_ms": 4340
+        }
+      },
+      "host_diskstats_boundary": "before observer setup to after observer export; host-wide, includes unrelated traffic",
+      "metrics": {
+        "bandwidth_bytes_per_second": 275981834,
+        "iops": 1052.787149,
+        "mean_latency_us": 119419.31599052399,
+        "p99_completion_latency_us": 147849.216,
+        "io_bytes": 17179869184,
+        "runtime_ms": 62250,
+        "achieved_iodepth_percent": {
+          "1": 0.1,
+          "2": 0.1,
+          "4": 0.1,
+          "8": 0.1,
+          "16": 0.1,
+          "32": 0.1,
+          ">=64": 99.90387
+        },
+        "usr_cpu": 2.774342,
+        "sys_cpu": 4.417742,
+        "job_runtime_ms": 62249,
+        "exec_to_exit_seconds": 62.727581216,
+        "final_fsync_inclusive_wall_seconds": 62.727581216,
+        "logical_bytes_per_exec_to_exit_second": 273880625.57109904,
+        "short_duration_below5s": false
+      }
+    },
+    {
+      "storage": "fuse",
+      "block_size": "4m",
+      "jobs": 1,
+      "iodepth": 12,
+      "mode": "direct",
+      "operation": "seqread",
+      "status": "PASS",
+      "reference": "stock request geometry reference",
+      "cache_invalidation": {
+        "files": [
+          {
+            "path": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7/data.0",
+            "advice": "POSIX_FADV_DONTNEED",
+            "requested": true
+          }
+        ],
+        "fio_invalidate": 1,
+        "global_dropcache": false,
+        "limitation": "Successful advice is not proof of eviction. Repeated16GiB reads may hit caller/FUSE/server/device caches; O_DIRECT does not bypass every backend cache."
+      },
+      "trace": {
+        "kind": "cktrace host CPU and device disk counters; no fio call stacks",
+        "stop": {
+          "clock_pairs": [
+            {
+              "bracket_ns": 120,
+              "mono_ns": 23634500418850,
+              "real_ns": 1792121188653762415,
+              "t": "start"
+            },
+            {
+              "bracket_ns": 75,
+              "mono_ns": 23656561425474,
+              "real_ns": 1792121210714769019,
+              "t": "stop"
+            }
+          ],
+          "complete": true,
+          "driver_version": "610.57.04",
+          "errors": [],
+          "expected_cycles": 0,
+          "inject": false,
+          "lifecycle": false,
+          "lifecycle_validated": false,
+          "overhead": {
+            "observer_cpu_ms_recording": 374.395,
+            "stop_reply_ms": 34.317242
+          },
+          "profile": "lifecycle610",
+          "results": [
+            {
+              "metrics_only_processes": [
+                {
+                  "argv0": "/root/mambaforge/bin/python3",
+                  "cpu_ns_all_threads": 219714221,
+                  "cpu_ns_drawn_threads": 219714221,
+                  "cpu_ns_not_drawn": 0,
+                  "first_sample_us": 23634503877.331,
+                  "followed": false,
+                  "pid": 1473311,
+                  "threads_drawn": 2,
+                  "threads_not_drawn": 0,
+                  "threads_with_cpu": 2
+                },
+                {
+                  "argv0": "/root/Desktop/fio-aio-tools/root/usr/bin/fio",
+                  "cpu_ns_all_threads": 490210108,
+                  "cpu_ns_drawn_threads": 490210108,
+                  "cpu_ns_not_drawn": 0,
+                  "first_sample_us": 23634804224.111,
+                  "followed": true,
+                  "pid": 1473405,
+                  "threads_drawn": 1,
+                  "threads_not_drawn": 0,
+                  "threads_with_cpu": 1
+                }
+              ],
+              "systrap_stubs": [],
+              "threads_per_process": 16
+            },
+            {
+              "disk_io": {
+                "counter_rows": 13870,
+                "devices": [
+                  {
+                    "description": "/proc/diskstats md0. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: parent mount of fuse /__modal/volumes/**** (inferred). md members: nvme1n1, nvme4n1, nvme8n1, nvme2n1, nvme3n1, nvme6n1, nvme7n1, nvme5n1.",
+                    "name": "md0"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme1n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme1n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme2n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme2n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme3n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme3n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme4n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme4n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme5n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme5n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme6n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme6n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme7n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme7n1"
+                  },
+                  {
+                    "description": "/proc/diskstats nvme8n1. Backs: /__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7: member of md0.",
+                    "name": "nvme8n1"
+                  }
+                ],
+                "group": "Per-device disk I/O (host, 100 ms)",
+                "max_gap_ms": 105.4669230003357,
+                "readings": 221,
+                "resolution": {
+                  "devices": [
+                    "md0",
+                    "nvme1n1",
+                    "nvme2n1",
+                    "nvme3n1",
+                    "nvme4n1",
+                    "nvme5n1",
+                    "nvme6n1",
+                    "nvme7n1",
+                    "nvme8n1"
+                  ],
+                  "mapping": [
+                    {
+                      "basis": "inferred: fuse volumefs2 at /__modal/volumes/**** (st_dev 0:56) has no block device; its mount sits on /__modal/volumes xfs /dev/md0 (md0)",
+                      "canonical": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7",
+                      "devices": [
+                        "md0",
+                        "nvme1n1",
+                        "nvme2n1",
+                        "nvme3n1",
+                        "nvme4n1",
+                        "nvme5n1",
+                        "nvme6n1",
+                        "nvme7n1",
+                        "nvme8n1"
+                      ],
+                      "mount": {
+                        "fstype": "fuse",
+                        "point": "/__modal/volumes/****",
+                        "root": "/",
+                        "source": "volumefs2"
+                      },
+                      "path": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7",
+                      "st_dev": "0:56"
+                    }
+                  ],
+                  "requested": {
+                    "disk_devices": [],
+                    "disk_paths": [
+                      "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7"
+                    ]
+                  }
+                },
+                "rounds": 221,
+                "totals": {
+                  "md0": {
+                    "bytes_read": 2457600,
+                    "bytes_written": 10163478528,
+                    "peak_busy_pct": 99.98100360931423,
+                    "peak_read_GB_s": 0.005233528469582255,
+                    "peak_write_GB_s": 13.397518471490418
+                  },
+                  "nvme1n1": {
+                    "bytes_read": 258048,
+                    "bytes_written": 1270583296,
+                    "peak_busy_pct": 99.98100360931423,
+                    "peak_read_GB_s": 0.0005323615548747316,
+                    "peak_write_GB_s": 1.682931443025825
+                  },
+                  "nvme2n1": {
+                    "bytes_read": 282624,
+                    "bytes_written": 1270185984,
+                    "peak_busy_pct": 99.98100360931423,
+                    "peak_read_GB_s": 0.0006541910586977819,
+                    "peak_write_GB_s": 1.6707276817404695
+                  },
+                  "nvme3n1": {
+                    "bytes_read": 389120,
+                    "bytes_written": 1270263808,
+                    "peak_busy_pct": 99.98100360931423,
+                    "peak_read_GB_s": 0.0009829506891147856,
+                    "peak_write_GB_s": 1.6697448284825882
+                  },
+                  "nvme4n1": {
+                    "bytes_read": 270336,
+                    "bytes_written": 1270841344,
+                    "peak_busy_pct": 99.98100360931423,
+                    "peak_read_GB_s": 0.0008190177767303563,
+                    "peak_write_GB_s": 1.6784266989272039
+                  },
+                  "nvme5n1": {
+                    "bytes_read": 155648,
+                    "bytes_written": 1270239232,
+                    "peak_busy_pct": 99.98100360931423,
+                    "peak_read_GB_s": 0.0004914753445573928,
+                    "peak_write_GB_s": 1.6828495385876685
+                  },
+                  "nvme6n1": {
+                    "bytes_read": 335872,
+                    "bytes_written": 1269817344,
+                    "peak_busy_pct": 99.98100360931423,
+                    "peak_read_GB_s": 0.0009812865880466728,
+                    "peak_write_GB_s": 1.664789609974105
+                  },
+                  "nvme7n1": {
+                    "bytes_read": 466944,
+                    "bytes_written": 1270980608,
+                    "peak_busy_pct": 99.98100360931423,
+                    "peak_read_GB_s": 0.0011448343527211183,
+                    "peak_write_GB_s": 1.6831771563402953
+                  },
+                  "nvme8n1": {
+                    "bytes_read": 299008,
+                    "bytes_written": 1270566912,
+                    "peak_busy_pct": 99.98100360931423,
+                    "peak_read_GB_s": 0.0007771092749376699,
+                    "peak_write_GB_s": 1.6729391015707016
+                  }
+                }
+              }
+            },
+            {
+              "numa_sampler": {
+                "enabled": false
+              }
+            }
+          ],
+          "state": "stopped",
+          "trace": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/benchmarks/fio-stock-default-geometry-t02/fuse-4m-jobs1-qd12-direct-seqread.trace/detailed.perfetto.pftrace",
+          "trace_written": "in background; release waits for it"
+        },
+        "release": {
+          "state": "released",
+          "trace_write": {
+            "helpers": {
+              "exit_ms": {
+                "max": null,
+                "median": null
+              },
+              "setup_ms": {
+                "max": null,
+                "median": null
+              },
+              "traced": 0
+            },
+            "observer_cpu_ms_recording": 374.395,
+            "observer_cpu_ms_total": 428.781,
+            "stop_phases": {
+              "assemble_ms": 6.829234,
+              "capture_ms": 0.004804,
+              "helpers_ms": 0.000943,
+              "samplers_ms": 27.481229,
+              "write_ms": 26.569044,
+              "write_split_ms": {
+                "compress": 3.909297,
+                "encode": 13.91885,
+                "file": 8.731083
+              }
+            },
+            "stop_reply_ms": 34.317242,
+            "trace_bytes": 45612,
+            "trace_rows": 19592
+          }
+        },
+        "perfetto": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/benchmarks/fio-stock-default-geometry-t02/fuse-4m-jobs1-qd12-direct-seqread.trace/detailed.perfetto.pftrace",
+        "perfetto_bytes": 45612,
+        "perfetto_sha256": "d5d36b90a68c69e9fe16f9f0f10355a2d26b075a90086fe716f4f49abfde1383",
+        "fio_exec_release_monotonic_ns": 23634506351898,
+        "fio_exit_observed_monotonic_ns": 23656527122661
+      },
+      "returncode": 0,
+      "observer_seconds": 22.116967721,
+      "host_diskstats_delta": {
+        "nvme0n1": {
+          "read_bytes": 0,
+          "write_bytes": 7385088,
+          "busy_ms": 108
+        },
+        "nvme0n1p1": {
+          "read_bytes": 0,
+          "write_bytes": 7385088,
+          "busy_ms": 108
+        },
+        "nvme0n1p14": {
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "busy_ms": 0
+        },
+        "nvme0n1p15": {
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "busy_ms": 0
+        },
+        "nvme1n1": {
+          "read_bytes": 258048,
+          "write_bytes": 1270583296,
+          "busy_ms": 1032
+        },
+        "nvme4n1": {
+          "read_bytes": 270336,
+          "write_bytes": 1270841344,
+          "busy_ms": 1004
+        },
+        "nvme2n1": {
+          "read_bytes": 282624,
+          "write_bytes": 1270185984,
+          "busy_ms": 1044
+        },
+        "nvme8n1": {
+          "read_bytes": 299008,
+          "write_bytes": 1270566912,
+          "busy_ms": 1020
+        },
+        "nvme3n1": {
+          "read_bytes": 389120,
+          "write_bytes": 1270263808,
+          "busy_ms": 1056
+        },
+        "nvme6n1": {
+          "read_bytes": 335872,
+          "write_bytes": 1269817344,
+          "busy_ms": 1064
+        },
+        "nvme7n1": {
+          "read_bytes": 466944,
+          "write_bytes": 1270980608,
+          "busy_ms": 1084
+        },
+        "nvme5n1": {
+          "read_bytes": 155648,
+          "write_bytes": 1270239232,
+          "busy_ms": 1024
+        },
+        "md0": {
+          "read_bytes": 2457600,
+          "write_bytes": 10163478528,
+          "busy_ms": 1368
+        }
+      },
+      "host_diskstats_boundary": "before observer setup to after observer export; host-wide, includes unrelated traffic",
+      "metrics": {
+        "bandwidth_bytes_per_second": 797172715,
+        "iops": 190.060786,
+        "mean_latency_us": 63023.634698974995,
+        "p99_completion_latency_us": 66846.72,
+        "io_bytes": 17179869184,
+        "runtime_ms": 21551,
+        "achieved_iodepth_percent": {
+          "1": 0.1,
+          "2": 0.1,
+          "4": 0.1,
+          "8": 99.829102,
+          "16": 0.0,
+          "32": 0.0,
+          ">=64": 0.0
+        },
+        "usr_cpu": 0.190255,
+        "sys_cpu": 2.074246,
+        "job_runtime_ms": 21550,
+        "exec_to_exit_seconds": 22.020770763,
+        "final_fsync_inclusive_wall_seconds": null,
+        "logical_bytes_per_exec_to_exit_second": 780166569.5038323,
+        "short_duration_below5s": false
+      }
+    }
+  ],
+  "preconditioning": [],
+  "scratch": [
+    {
+      "path": "/__modal/volumes/oct11_gvisor/10-16-2026/fio-stock-owned-4gfvxzn4",
+      "storage": "md0",
+      "removed": true
+    },
+    {
+      "path": "/__modal/volumes/****/mak2n/gpucheckpoint/DELETE_ME/oct11_gvisor/10-16-2026/checkpoint-images-fuse/fio-stock-owned-5nivg3o7",
+      "storage": "fuse",
+      "removed": true
+    }
+  ],
+  "scope": "Stock request geometry reference only. fio libaio does not reproduce stock serial buffered GoQueue writes, parallel12-worker GoQueue reads, direct-writer preextension or fallback behavior. Record actual depth. Shared host, finite16GiB, possible short intervals and backend caches; no device ceiling or plateau claim. FUSE md0 counter mapping is parent-mount inference, not proven physical backend.",
+  "read_prerequisite": "Measured256KiB write completely initializes and fsyncs the owned16GiB file before each measured4MiB read; one shared file per storage.",
+  "current": "fuse-4m-jobs1-qd12-direct-seqread",
+  "finished_utc": "2026-10-16T03:26:50.832128+00:00"
+}

@@ -269,7 +269,7 @@ sass:
 # -----------------------------------------------------------------------------
 
 jekyll-minifier:
-  exclude: ["robots.txt"]
+  exclude: ["robots.txt", "assets/images/posts/2026-09-21/graphs/dynamic/post.css"]
   uglifier_args:
     harmony: true
 

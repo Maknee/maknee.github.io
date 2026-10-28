@@ -1,0 +1,73 @@
+{%- comment -%}
+Perfetto trace card with an optional preview.
+
+Usage:
+  {% include perfetto_trace_card.html path="/assets/.../trace.pftrace" id="x" title="Huge pages" %}
+  {% include perfetto_trace_card.html path="/assets/.../trace.pftrace" id="x" title="Huge pages"
+     preview="/assets/.../traces/previews/blog__checkpoint__checkpoint-huge-pages.json" %}
+
+Parameters:
+  path     site-relative path to the .pftrace (required)
+  id       element id suffix; defaults to the slugified path
+  title    shown on the card and passed to Perfetto
+  preview  optional JSON written by TMP_GRAPHING/final/trace_previews/build_previews.py. When given,
+           the card shows a small interactive preview of the part of the trace to look at: one
+           checkpoint-and-restore cycle (or the gVisor checkpoint and restore), PCIe and CPU-copy
+           bandwidth, and the key metrics. Hover for values; click it to open that window in Perfetto.
+  height   optional fixed height for the embedded viewer
+
+Set page.perfetto_trace_base to an HTTPS base URL ending in / to host trace
+downloads separately. The portion after /traces/ is appended to that base;
+previews remain local, and data-source-path preserves the source for exports.
+
+Actions: "Open in Perfetto" opens a new tab (zoomed to the preview window when the site is served
+from a public host); "Load here" replaces the preview with the embedded viewer. Nothing is
+downloaded until the reader asks. Behaviour and styles live in assets/js/perfetto-card.js and
+assets/css/perfetto-card.css, shared by every card on the page.
+{%- endcomment -%}
+{% assign pt_path = include.path | relative_url %}
+{% assign pt_id = include.id | default: include.path | slugify %}
+{% assign pt_title = include.title | default: "Perfetto trace" %}
+{% assign pt_file = pt_path | split: "/" | last %}
+{% if page.perfetto_trace_base and include.path contains '/traces/' %}
+  {% assign pt_suffix = include.path | split: '/traces/' | last %}
+  {% assign pt_path = page.perfetto_trace_base | append: pt_suffix %}
+{% endif %}
+{% assign pt_abs_enc = pt_path | absolute_url | url_encode %}
+{% assign pt_open_url = "https://ui.perfetto.dev/#!/?url=" | append: pt_abs_enc %}
+{%- comment -%} The stylesheet and script are emitted once per page (assign is page-global in Liquid). {%- endcomment -%}
+{% unless pt_card_assets_done %}<link rel="stylesheet" href="{{ '/assets/css/perfetto-card.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+<script src="{{ '/assets/js/perfetto-card.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>{% assign pt_card_assets_done = true %}{% endunless %}
+<div class="perfetto-trace pt-card" id="perfetto-{{ pt_id }}"
+     data-path="{{ pt_path | escape }}" data-source-path="{{ include.path | escape }}" data-open-url="{{ pt_open_url }}" data-title="{{ pt_title | escape }}"
+     {% if include.preview %}data-preview="{{ include.preview | relative_url }}"{% endif %}
+     {% if include.height %}style="--pt-frame-height: {{ include.height }};"{% endif %}>
+  <div class="pt-card-row">
+    <span class="pt-card-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="pt-card-text">
+      <span class="pt-card-title">{{ pt_title }}</span>
+      <span class="pt-card-meta">Perfetto trace &middot; {{ pt_file }}</span>
+    </span>
+    <span class="pt-card-actions">
+      <a class="pt-open" href="{{ pt_open_url }}" target="_blank" rel="noopener">Open in Perfetto <span aria-hidden="true">&#8599;</span></a>
+      <button class="pt-here" type="button">Load here</button>
+      <span class="pt-progress" hidden>
+        <progress value="0" max="100" aria-label="Loading {{ pt_title | escape }}"></progress>
+        <span aria-live="polite">0%</span>
+      </span>
+    </span>
+    <span class="pt-card-tools">
+      <a href="{{ pt_path | escape }}" download title="Download the trace" aria-label="Download the trace">&#8595;</a>
+      <details class="pt-card-more">
+        <summary title="More" aria-label="More">&#8943;</summary>
+        <label class="pt-autoload">
+          <input type="checkbox">
+          Always load traces here automatically
+        </label>
+      </details>
+    </span>
+  </div>
+  {% if include.preview %}<div class="pt-preview"><div class="pt-pv-skeleton">Loading preview…</div></div>{% endif %}
+  <iframe class="pt-frame" title="{{ pt_title | escape }}" hidden></iframe>
+  <p class="pt-error" role="alert" hidden></p>
+</div>

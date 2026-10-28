@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="780" viewBox="0 0 2000 780" role="img" aria-labelledby="title desc">
+<title id="title">B300 GPU and NUMA topology</title>
+<desc id="desc">Two CPU sockets, each with 2006 GiB of DRAM and four B300 GPUs with 275 GB each. A bidirectional UPI link joins the sockets. Each GPU has a PCIe x16 host connection labeled CUDA approximately 57 GB/s and theoretical reference 64 GB/s per direction. The theoretical reference is PCIe Gen5 x16; the negotiated host link generation is not specified. Eight GPU branches join a shared connection labeled NVLink.</desc>
+<defs>
+  <marker id="pcie-arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 2 2 L 10 6 L 2 10" fill="none" stroke="#58645b" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="upi-arrow" viewBox="0 0 14 14" refX="11" refY="7" markerWidth="12" markerHeight="12" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 3 3 L 11 7 L 3 11" fill="none" stroke="#66843b" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+  <marker id="nvlink-arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 2 2 L 10 6 L 2 10" fill="none" stroke="#b86e36" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect x="0" y="0" width="2000" height="780" rx="0" fill="#ffffff" stroke="none" stroke-width="1.5"/>
+<g id="socket-0">
+<rect x="60" y="44" width="870" height="578" rx="16" fill="#f7f7f3" stroke="#b6c0b7" stroke-width="1.8"/>
+<text x="86" y="97" font-family="DejaVu Sans, Arial, sans-serif" font-size="30" font-weight="700" fill="#202820" text-anchor="start">Socket 0 · NUMA node 0</text>
+<rect x="84" y="132" width="399" height="100" rx="10" fill="#e9eae2" stroke="#a9b3a9" stroke-width="1.6"/>
+<rect x="507" y="132" width="399" height="100" rx="10" fill="#ffffff" stroke="#a9b3a9" stroke-width="1.6"/>
+<text x="283.5" y="174" font-family="DejaVu Sans, Arial, sans-serif" font-size="23" font-weight="600" fill="#202820" text-anchor="middle">DRAM 2006 GiB</text>
+<text x="283.5" y="205" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="400" fill="#556056" text-anchor="middle">(node 0)</text>
+<text x="706.5" y="174" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="600" fill="#202820" text-anchor="middle">48 cores, CPUs 0–47</text>
+<text x="706.5" y="205" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="400" fill="#556056" text-anchor="middle">(cpuset 10–47)</text>
+<path d="M 178 250 L 178 446" fill="none" stroke="#58645b" stroke-width="2.5" stroke-linecap="round" marker-start="url(#pcie-arrow)" marker-end="url(#pcie-arrow)"/>
+<rect x="86" y="283" width="184" height="120" rx="9" fill="#ffffff" stroke="#e3e7df" stroke-width="1"/>
+<text x="178" y="312" font-family="DejaVu Sans, Arial, sans-serif" font-size="17.5" font-weight="600" fill="#202820" text-anchor="middle">PCIe ×16</text>
+<text x="178" y="349" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="400" fill="#202820" text-anchor="middle">CUDA: ~57 GB/s</text>
+<text x="178" y="378" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#202820" text-anchor="middle">64 GB/s theoretical</text>
+<rect x="84" y="466" width="188" height="128" rx="11" fill="#367b22" stroke="#275b1a" stroke-width="1.9"/>
+<text x="178" y="504" font-family="DejaVu Sans, Arial, sans-serif" font-size="24" font-weight="700" fill="#ffffff" text-anchor="middle">GPU 0</text>
+<text x="178" y="538" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="600" fill="#ffffff" text-anchor="middle">B300</text>
+<text x="178" y="568" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="500" fill="#ffffff" text-anchor="middle">275 GB</text>
+<path d="M 389 250 L 389 446" fill="none" stroke="#58645b" stroke-width="2.5" stroke-linecap="round" marker-start="url(#pcie-arrow)" marker-end="url(#pcie-arrow)"/>
+<rect x="297" y="283" width="184" height="120" rx="9" fill="#ffffff" stroke="#e3e7df" stroke-width="1"/>
+<text x="389" y="312" font-family="DejaVu Sans, Arial, sans-serif" font-size="17.5" font-weight="600" fill="#202820" text-anchor="middle">PCIe ×16</text>
+<text x="389" y="349" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="400" fill="#202820" text-anchor="middle">CUDA: ~57 GB/s</text>
+<text x="389" y="378" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#202820" text-anchor="middle">64 GB/s theoretical</text>
+<rect x="295" y="466" width="188" height="128" rx="11" fill="#367b22" stroke="#275b1a" stroke-width="1.9"/>
+<text x="389" y="504" font-family="DejaVu Sans, Arial, sans-serif" font-size="24" font-weight="700" fill="#ffffff" text-anchor="middle">GPU 1</text>
+<text x="389" y="538" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="600" fill="#ffffff" text-anchor="middle">B300</text>
+<text x="389" y="568" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="500" fill="#ffffff" text-anchor="middle">275 GB</text>
+<path d="M 600 250 L 600 446" fill="none" stroke="#58645b" stroke-width="2.5" stroke-linecap="round" marker-start="url(#pcie-arrow)" marker-end="url(#pcie-arrow)"/>
+<rect x="508" y="283" width="184" height="120" rx="9" fill="#ffffff" stroke="#e3e7df" stroke-width="1"/>
+<text x="600" y="312" font-family="DejaVu Sans, Arial, sans-serif" font-size="17.5" font-weight="600" fill="#202820" text-anchor="middle">PCIe ×16</text>
+<text x="600" y="349" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="400" fill="#202820" text-anchor="middle">CUDA: ~57 GB/s</text>
+<text x="600" y="378" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#202820" text-anchor="middle">64 GB/s theoretical</text>
+<rect x="506" y="466" width="188" height="128" rx="11" fill="#cce7af" stroke="#6f994b" stroke-width="1.9"/>
+<text x="600" y="504" font-family="DejaVu Sans, Arial, sans-serif" font-size="24" font-weight="700" fill="#244318" text-anchor="middle">GPU 2</text>
+<text x="600" y="538" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="600" fill="#244318" text-anchor="middle">B300</text>
+<text x="600" y="568" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="500" fill="#244318" text-anchor="middle">275 GB</text>
+<path d="M 811 250 L 811 446" fill="none" stroke="#58645b" stroke-width="2.5" stroke-linecap="round" marker-start="url(#pcie-arrow)" marker-end="url(#pcie-arrow)"/>
+<rect x="719" y="283" width="184" height="120" rx="9" fill="#ffffff" stroke="#e3e7df" stroke-width="1"/>
+<text x="811" y="312" font-family="DejaVu Sans, Arial, sans-serif" font-size="17.5" font-weight="600" fill="#202820" text-anchor="middle">PCIe ×16</text>
+<text x="811" y="349" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="400" fill="#202820" text-anchor="middle">CUDA: ~57 GB/s</text>
+<text x="811" y="378" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#202820" text-anchor="middle">64 GB/s theoretical</text>
+<rect x="717" y="466" width="188" height="128" rx="11" fill="#cce7af" stroke="#6f994b" stroke-width="1.9"/>
+<text x="811" y="504" font-family="DejaVu Sans, Arial, sans-serif" font-size="24" font-weight="700" fill="#244318" text-anchor="middle">GPU 3</text>
+<text x="811" y="538" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="600" fill="#244318" text-anchor="middle">B300</text>
+<text x="811" y="568" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="500" fill="#244318" text-anchor="middle">275 GB</text>
+</g>
+<g id="socket-1">
+<rect x="1070" y="44" width="870" height="578" rx="16" fill="#f7f7f3" stroke="#b6c0b7" stroke-width="1.8"/>
+<text x="1096" y="97" font-family="DejaVu Sans, Arial, sans-serif" font-size="30" font-weight="700" fill="#202820" text-anchor="start">Socket 1 · NUMA node 1</text>
+<rect x="1094" y="132" width="399" height="100" rx="10" fill="#e9eae2" stroke="#a9b3a9" stroke-width="1.6"/>
+<rect x="1517" y="132" width="399" height="100" rx="10" fill="#ffffff" stroke="#a9b3a9" stroke-width="1.6"/>
+<text x="1293.5" y="174" font-family="DejaVu Sans, Arial, sans-serif" font-size="23" font-weight="600" fill="#202820" text-anchor="middle">DRAM 2006 GiB</text>
+<text x="1293.5" y="205" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="400" fill="#556056" text-anchor="middle">(node 1)</text>
+<text x="1716.5" y="174" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="600" fill="#202820" text-anchor="middle">48 cores, CPUs 48–95</text>
+<text x="1716.5" y="205" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="400" fill="#556056" text-anchor="middle">(cpuset 48–95)</text>
+<path d="M 1188 250 L 1188 446" fill="none" stroke="#58645b" stroke-width="2.5" stroke-linecap="round" marker-start="url(#pcie-arrow)" marker-end="url(#pcie-arrow)"/>
+<rect x="1096" y="283" width="184" height="120" rx="9" fill="#ffffff" stroke="#e3e7df" stroke-width="1"/>
+<text x="1188" y="312" font-family="DejaVu Sans, Arial, sans-serif" font-size="17.5" font-weight="600" fill="#202820" text-anchor="middle">PCIe ×16</text>
+<text x="1188" y="349" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="400" fill="#202820" text-anchor="middle">CUDA: ~57 GB/s</text>
+<text x="1188" y="378" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#202820" text-anchor="middle">64 GB/s theoretical</text>
+<rect x="1094" y="466" width="188" height="128" rx="11" fill="#cce7af" stroke="#6f994b" stroke-width="1.9"/>
+<text x="1188" y="504" font-family="DejaVu Sans, Arial, sans-serif" font-size="24" font-weight="700" fill="#244318" text-anchor="middle">GPU 4</text>
+<text x="1188" y="538" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="600" fill="#244318" text-anchor="middle">B300</text>
+<text x="1188" y="568" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="500" fill="#244318" text-anchor="middle">275 GB</text>
+<path d="M 1399 250 L 1399 446" fill="none" stroke="#58645b" stroke-width="2.5" stroke-linecap="round" marker-start="url(#pcie-arrow)" marker-end="url(#pcie-arrow)"/>
+<rect x="1307" y="283" width="184" height="120" rx="9" fill="#ffffff" stroke="#e3e7df" stroke-width="1"/>
+<text x="1399" y="312" font-family="DejaVu Sans, Arial, sans-serif" font-size="17.5" font-weight="600" fill="#202820" text-anchor="middle">PCIe ×16</text>
+<text x="1399" y="349" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="400" fill="#202820" text-anchor="middle">CUDA: ~57 GB/s</text>
+<text x="1399" y="378" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#202820" text-anchor="middle">64 GB/s theoretical</text>
+<rect x="1305" y="466" width="188" height="128" rx="11" fill="#cce7af" stroke="#6f994b" stroke-width="1.9"/>
+<text x="1399" y="504" font-family="DejaVu Sans, Arial, sans-serif" font-size="24" font-weight="700" fill="#244318" text-anchor="middle">GPU 5</text>
+<text x="1399" y="538" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="600" fill="#244318" text-anchor="middle">B300</text>
+<text x="1399" y="568" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="500" fill="#244318" text-anchor="middle">275 GB</text>
+<path d="M 1610 250 L 1610 446" fill="none" stroke="#58645b" stroke-width="2.5" stroke-linecap="round" marker-start="url(#pcie-arrow)" marker-end="url(#pcie-arrow)"/>
+<rect x="1518" y="283" width="184" height="120" rx="9" fill="#ffffff" stroke="#e3e7df" stroke-width="1"/>
+<text x="1610" y="312" font-family="DejaVu Sans, Arial, sans-serif" font-size="17.5" font-weight="600" fill="#202820" text-anchor="middle">PCIe ×16</text>
+<text x="1610" y="349" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="400" fill="#202820" text-anchor="middle">CUDA: ~57 GB/s</text>
+<text x="1610" y="378" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#202820" text-anchor="middle">64 GB/s theoretical</text>
+<rect x="1516" y="466" width="188" height="128" rx="11" fill="#cce7af" stroke="#6f994b" stroke-width="1.9"/>
+<text x="1610" y="504" font-family="DejaVu Sans, Arial, sans-serif" font-size="24" font-weight="700" fill="#244318" text-anchor="middle">GPU 6</text>
+<text x="1610" y="538" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="600" fill="#244318" text-anchor="middle">B300</text>
+<text x="1610" y="568" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="500" fill="#244318" text-anchor="middle">275 GB</text>
+<path d="M 1821 250 L 1821 446" fill="none" stroke="#58645b" stroke-width="2.5" stroke-linecap="round" marker-start="url(#pcie-arrow)" marker-end="url(#pcie-arrow)"/>
+<rect x="1729" y="283" width="184" height="120" rx="9" fill="#ffffff" stroke="#e3e7df" stroke-width="1"/>
+<text x="1821" y="312" font-family="DejaVu Sans, Arial, sans-serif" font-size="17.5" font-weight="600" fill="#202820" text-anchor="middle">PCIe ×16</text>
+<text x="1821" y="349" font-family="DejaVu Sans, Arial, sans-serif" font-size="18" font-weight="400" fill="#202820" text-anchor="middle">CUDA: ~57 GB/s</text>
+<text x="1821" y="378" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#202820" text-anchor="middle">64 GB/s theoretical</text>
+<rect x="1727" y="466" width="188" height="128" rx="11" fill="#cce7af" stroke="#6f994b" stroke-width="1.9"/>
+<text x="1821" y="504" font-family="DejaVu Sans, Arial, sans-serif" font-size="24" font-weight="700" fill="#244318" text-anchor="middle">GPU 7</text>
+<text x="1821" y="538" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="600" fill="#244318" text-anchor="middle">B300</text>
+<text x="1821" y="568" font-family="DejaVu Sans, Arial, sans-serif" font-size="21" font-weight="500" fill="#244318" text-anchor="middle">275 GB</text>
+</g>
+<text x="1000" y="166" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="700" fill="#66843b" text-anchor="middle">UPI</text>
+<path d="M 946 189 L 1054 189" fill="none" stroke="#66843b" stroke-width="4" stroke-linecap="round" marker-start="url(#upi-arrow)" marker-end="url(#upi-arrow)"/>
+<g id="nvlink">
+<path d="M 178 594 L 178 667" fill="none" stroke="#b86e36" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M 389 594 L 389 667" fill="none" stroke="#b86e36" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M 600 594 L 600 667" fill="none" stroke="#b86e36" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M 811 594 L 811 667" fill="none" stroke="#b86e36" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M 1188 594 L 1188 667" fill="none" stroke="#b86e36" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M 1399 594 L 1399 667" fill="none" stroke="#b86e36" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M 1610 594 L 1610 667" fill="none" stroke="#b86e36" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M 1821 594 L 1821 667" fill="none" stroke="#b86e36" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M 178 667 L 1821 667" fill="none" stroke="#b86e36" stroke-width="2.6" stroke-linecap="round"/>
+<path d="M 1000 667 L 1000 705" fill="none" stroke="#b86e36" stroke-width="2.5" stroke-linecap="round" marker-end="url(#nvlink-arrow)"/>
+<text x="1000" y="739" font-family="DejaVu Sans, Arial, sans-serif" font-size="25" font-weight="600" fill="#a65c29" text-anchor="middle">NVLink</text>
+</g>
+</svg>

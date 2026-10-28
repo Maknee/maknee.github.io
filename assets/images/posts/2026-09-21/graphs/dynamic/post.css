@@ -1,0 +1,191 @@
+/* Perfetto trace cards and previews (see _includes/perfetto_trace_card.html). */
+.pt-card { margin: 1rem 0 1.6rem; --pt-accent: #d97757; --pt-line: var(--global-divider-color, #e0ded5); }
+.pt-card-row {
+  display: flex; align-items: center; gap: .8rem; padding: .55rem .75rem;
+  border: 1px solid var(--pt-line); border-radius: 8px; font-size: .9rem;
+}
+.pt-card.has-preview .pt-card-row { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.pt-card-icon {
+  flex: none; display: flex; flex-direction: column; justify-content: center; gap: 3px;
+  width: 32px; height: 32px; padding: 0 7px; box-sizing: border-box;
+  border: 1px solid var(--pt-accent); border-radius: 6px; background: rgba(217, 119, 87, .1);
+}
+.pt-card-icon i { display: block; height: 4px; border-radius: 2px; background: var(--pt-accent); }
+.pt-card-icon i:nth-child(2) { width: 60%; }
+.pt-card-icon i:nth-child(3) { width: 80%; margin-left: 20%; }
+.pt-card-text { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.3; }
+.pt-card-title { font-weight: 600; color: var(--global-text-color, #141413); }
+.pt-card-meta { font-size: .78rem; color: var(--global-text-color-light, #6c6a63); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pt-card-actions { flex: none; display: flex; align-items: center; gap: .4rem; }
+.pt-card-actions[hidden], .pt-here[hidden], .pt-open[hidden] { display: none; }
+.pt-open {
+  padding: .3rem .8rem; border-radius: 6px; background: var(--pt-accent); color: #fff !important;
+  font-weight: 600; text-decoration: none !important; white-space: nowrap;
+}
+.pt-open:hover { background: #c4633f; }
+/* The site colours every span directly; the arrow should match the white button label. */
+.pt-open span, .pt-pv-go span { color: inherit; }
+.pt-here {
+  padding: .28rem .7rem; border: 1px solid var(--pt-line); border-radius: 6px; background: transparent;
+  color: var(--global-text-color, #141413); font: inherit; font-size: .85rem; cursor: pointer; white-space: nowrap;
+}
+.pt-here:hover { border-color: var(--pt-accent); color: var(--pt-accent); }
+.pt-progress:not([hidden]) { display: inline-flex; align-items: center; gap: .4rem; font-size: .8rem; font-variant-numeric: tabular-nums; color: var(--global-text-color-light, #6c6a63); }
+/* Undo the site's fixed reading-progress <progress> rule (_sass/_base.scss) so the bar stays in the card. */
+.pt-progress progress {
+  position: static; top: auto; left: auto; z-index: auto; width: 6rem; height: .5rem;
+  -webkit-appearance: none; -moz-appearance: none; appearance: none; border: 0; border-radius: 3px; overflow: hidden;
+  background-color: #e8eaed; color: var(--pt-accent);
+}
+.pt-progress progress::-webkit-progress-bar { background-color: #e8eaed; }
+.pt-progress progress::-webkit-progress-value { background-color: var(--pt-accent); }
+.pt-progress progress::-moz-progress-bar { background-color: var(--pt-accent); }
+.pt-card-tools { flex: none; display: flex; align-items: center; gap: .15rem; }
+.pt-card-tools a, .pt-preview-toggle, .pt-card-more summary {
+  display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 6px;
+  color: var(--global-text-color-light, #6c6a63); text-decoration: none; cursor: pointer; list-style: none;
+}
+.pt-card-more summary::-webkit-details-marker { display: none; }
+.pt-card-tools a:hover, .pt-preview-toggle:hover, .pt-card-more summary:hover { background: rgba(217, 119, 87, .12); color: var(--pt-accent); }
+.pt-preview-toggle { border: 0; padding: 0; margin: 0; background: transparent; font: inherit; }
+.pt-preview-toggle[hidden] { display: none; }
+.pt-preview-toggle:focus-visible { outline: 2px solid var(--pt-accent); outline-offset: 2px; }
+.pt-preview-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pt-preview-toggle[aria-pressed="true"] .pt-preview-slash { display: none; }
+.pt-card-more { position: relative; }
+.pt-card-more[open] .pt-card-options {
+  position: absolute; right: 0; top: 32px; z-index: 20; display: grid; gap: .4rem;
+  width: max-content; max-width: min(20rem, calc(100vw - 2.5rem));
+  margin: 0; padding: .5rem .7rem; border: 1px solid var(--pt-line); border-radius: 6px;
+  background: var(--global-bg-color, #fff); font-size: .8rem;
+}
+.pt-card-options { display: none; }
+.pt-card-options label { display: flex; align-items: center; gap: .4rem; margin: 0; font-weight: normal; cursor: pointer; }
+.pt-card-options input { margin: 0; flex: none; accent-color: var(--pt-accent); }
+.pt-card-options input:focus-visible { outline: 2px solid var(--pt-accent); outline-offset: 2px; }
+/* Never taller than the viewport below the navbar (landscape phones), so the whole viewer is visible. */
+.pt-frame {
+  display: block; width: 100%; border: 0; margin-top: .5rem; height: var(--pt-frame-height, auto); aspect-ratio: 16 / 10;
+  min-height: min(360px, calc(100vh - 4.5rem)); max-height: calc(100vh - 4.5rem);
+}
+@supports (height: 100svh) {
+  .pt-frame { min-height: min(360px, calc(100svh - 4.5rem)); max-height: calc(100svh - 4.5rem); }
+}
+.pt-frame[hidden] { display: none; }
+.pt-error { margin: .3rem 0 0; font-size: .85em; text-align: center; color: var(--global-danger-block-text, #a00); }
+
+/* ---- preview ---- */
+.pt-preview {
+  position: relative; border: 1px solid var(--pt-line); border-top: 0; border-radius: 0 0 8px 8px;
+  padding: .55rem .7rem .45rem; background: #fff; color-scheme: light;
+}
+.pt-preview[hidden] { display: none; }
+.pt-pv-skeleton { height: 220px; display: flex; align-items: center; justify-content: center; font-size: .8rem; color: #5f6368; }
+/* Metrics: a plain table-like grid below the plot, one cell per metric (value over label). The outer
+   border closes the table; cells overlap it by 1 px so the edges are not doubled. */
+.pt-pv-metrics {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); margin: .5rem 0 0;
+  border: 1px solid #dadce0; overflow: hidden; background: #fff; color-scheme: light;
+}
+.pt-chip {
+  display: flex; flex-direction: column; align-items: flex-start; gap: .05rem; padding: .35rem .6rem; min-width: 0;
+  margin: 0 -1px -1px 0; border-right: 1px solid #dadce0; border-bottom: 1px solid #dadce0; background: #fff;
+  font-size: .76rem; line-height: 1.3; color: #3c4043; font-variant-numeric: tabular-nums;
+}
+.pt-chip b { color: #000; font-weight: 600; font-size: .9rem; white-space: nowrap; }
+.pt-chip .pt-chip-note { color: #5f6368; }
+.pt-pv-plot { position: relative; cursor: pointer; border: 1px solid #dadce0; outline-offset: 2px; background: #fff; color-scheme: light; }
+.pt-pv-plot:focus-visible { outline: 2px solid var(--pt-accent); }
+.pt-pv-plot svg { display: block; width: 100%; height: auto; overflow: visible; font-family: inherit; }
+.pt-pv-plot { box-shadow: 0 0 0 1px transparent; transition: box-shadow .15s; }
+@media (hover: hover) { .pt-pv-plot:hover { box-shadow: 0 0 0 1px #1a73e8; } }
+/* Touch: horizontal drags move the cursor, vertical swipes still scroll the page. */
+.pt-pv-plot { touch-action: pan-y pinch-zoom; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.pt-pv-touchbar { display: flex; gap: .4rem; margin: .4rem 0 0; }
+.pt-pv-touchbar[hidden] { display: none; }
+.pt-pv-touchbar button { min-height: 40px; border-radius: 6px; font: inherit; font-size: .85rem; cursor: pointer; }
+.pt-pv-touchbar .pt-pv-go { flex: 1; border: 0; background: var(--pt-accent); color: #fff; font-weight: 600; }
+.pt-pv-touchbar .pt-pv-x { flex: none; width: 40px; border: 1px solid #dadce0; background: #fff; color: #5f6368; font-size: 1.2rem; line-height: 1; }
+.pt-pv-tip {
+  position: fixed; z-index: 1040; pointer-events: none; box-sizing: border-box; margin: 0; text-align: left;
+  min-width: 11rem; max-width: min(26rem, calc(100vw - 16px)); max-height: calc(100vh - 16px); overflow: hidden;
+  padding: .4rem .55rem; border-radius: 6px; border: 1px solid #dadce0;
+  background: #fff; box-shadow: 0 2px 10px rgba(0, 0, 0, .12);
+  font-size: .8rem; line-height: 1.45; color: #000; font-variant-numeric: tabular-nums;
+}
+.pt-pv-tip[hidden] { display: none; }
+/* The site's `div, span { color: var(--global-text-color) }` would turn these light grey in dark mode. */
+.pt-pv-tip div, .pt-pv-tip span { color: #000; }
+.pt-pv-tip .pt-tt-t { font-weight: 600; margin-bottom: .15rem; }
+.pt-pv-tip .pt-tt-row { display: flex; justify-content: space-between; gap: .8rem; white-space: nowrap; }
+.pt-pv-tip .pt-tt-row > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; color: #000; }
+.pt-pv-tip .pt-tt-row > span:last-child { flex: none; font-weight: 600; color: #000; }
+.pt-pv-tip .pt-tt-sw { display: inline-block; width: .6rem; height: .6rem; border-radius: 2px; margin-right: .3rem; vertical-align: -1px; }
+/* Very narrow phones: a row whose name and value do not fit side by side puts the value on its own line. */
+@media (max-width: 400px) {
+  .pt-pv-tip .pt-tt-row { flex-wrap: wrap; column-gap: .8rem; row-gap: 0; }
+  .pt-pv-tip .pt-tt-row > span:first-child { overflow: visible; }
+  .pt-pv-tip .pt-tt-row > span:last-child { margin-left: auto; }
+}
+/* Touch screens: tap targets of at least 40 px. */
+@media (max-width: 640px), (pointer: coarse) {
+  .pt-open, .pt-here { display: inline-flex; align-items: center; justify-content: center; gap: .3em; min-height: 40px; box-sizing: border-box; }
+  .pt-card-tools a, .pt-preview-toggle, .pt-card-more summary { width: 40px; height: 40px; font-size: 1.05rem; }
+  .pt-card-more[open] .pt-card-options { top: 44px; }
+  .pt-card-options label { min-height: 40px; }
+}
+@media (max-width: 640px) {
+  .pt-card-row { flex-wrap: wrap; row-gap: .5rem; padding: .5rem .6rem; }
+  .pt-card-meta { display: none; }
+  .pt-card-actions { order: 3; width: 100%; }
+  .pt-open, .pt-here { flex: 1 1 0; }
+  .pt-preview { padding: .45rem .45rem .4rem; }
+  .pt-frame { aspect-ratio: auto; height: var(--pt-frame-height, 70vh); min-height: min(420px, calc(100vh - 4.5rem)); }
+}
+@supports (height: 100svh) {
+  @media (max-width: 640px) {
+    .pt-frame { height: var(--pt-frame-height, 70svh); min-height: min(420px, calc(100svh - 4.5rem)); }
+  }
+}
+
+.post-rail { position: fixed; top: 7rem; width: 220px; max-height: calc(100vh - 9rem); overflow-y: auto; font-size: .85rem; line-height: 1.35; padding-left: .9rem; padding-right: .5rem; border-left: 1px solid var(--global-divider-color, #e8e6dc); z-index: 30; }
+.post-rail[hidden] { display: none; }
+.post-rail-label { margin: 0 0 .5rem; font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--global-text-color-light, #5e5d59); }
+.post-rail-list, .post-rail-list ol { list-style: none; margin: 0; padding: 0; }
+.post-rail-list li { margin: .2rem 0; }
+.post-rail-list ol { margin: .15rem 0 .4rem .8rem; display: none; }
+.post-rail-list li.is-open > ol { display: block; }
+.post-rail-list a { display: block; padding: .1rem 0 .1rem .6rem; margin-left: -.95rem; border-left: 2px solid transparent; color: var(--global-text-color-light, #5e5d59); text-decoration: none; }
+.post-rail-list > li > a { color: var(--global-text-color, #141413); }
+.post-rail-list a:hover { text-decoration: underline; }
+.post-rail-list a.is-active { color: #d97757; border-left-color: #d97757; font-weight: 600; }
+/* Narrow screens: the rail becomes a panel opened from a floating button. */
+.post-rail.is-panel { top: auto; bottom: calc(4.4rem + env(safe-area-inset-bottom, 0px)); overscroll-behavior: contain; left: 1rem !important; width: min(300px, calc(100vw - 2rem)); max-height: min(70vh, calc(100vh - 4.4rem - 56px - 1rem - env(safe-area-inset-bottom, 0px))); padding: .8rem .8rem .8rem 1.7rem; border: 1px solid var(--global-divider-color, #e8e6dc); border-radius: 10px; background: var(--global-bg-color, #fff); box-shadow: 0 6px 24px rgba(0, 0, 0, .16); }
+.post-rail.is-panel .post-rail-list ol { display: block; }
+.post-rail.is-panel .post-rail-list a { padding-top: .45rem; padding-bottom: .45rem; }
+.post-rail.is-panel .post-rail-list li { margin: 0; }
+.post-rail-toggle { position: fixed; left: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); z-index: 31; min-height: 40px; padding: .45rem .85rem; border: 1px solid #d97757; border-radius: 999px; background: var(--global-bg-color, #fff); color: #c4633f; font: inherit; font-size: .85rem; font-weight: 600; cursor: pointer; box-shadow: 0 2px 10px rgba(0, 0, 0, .12); }
+.post-rail-toggle[aria-expanded="true"] { background: #d97757; color: #fff; }
+@media (hover: hover) { .post-rail-toggle:hover { background: #d97757; color: #fff; } }
+.post-rail-toggle[hidden] { display: none; }
+/* Slides away while the reader scrolls down so it does not sit over the text; any scroll up brings it back. */
+.post-rail-toggle { transition: transform .2s ease, opacity .2s ease; }
+.post-rail-toggle.is-tucked { transform: translateY(calc(100% + 1.5rem)); opacity: 0; pointer-events: none; }
+@media (max-width: 1000px) { #markdown-content { padding-bottom: 4rem; } }
+
+/* Navigation and overview links are local to this post. */
+.post-rail a:focus-visible, .post-rail-toggle:focus-visible { outline: 2px solid #d97757; outline-offset: 2px; }
+#markdown-content a[id]:empty { display: block; scroll-margin-top: 76px; }
+.checkpoint-overview-plot { overflow-x: auto; overscroll-behavior-x: contain; }
+.checkpoint-overview-plot > img, .checkpoint-overview-plot > svg { display: block; width: 100%; height: auto; }
+.checkpoint-overview-cue { margin: .3rem 0 .5rem; text-align: center; font-size: .85rem; color: var(--global-text-color-light, #68757c); }
+.checkpoint-overview-cue[hidden] { display: none; }
+.checkpoint-overview-mobile { display: none; }
+.checkpoint-step rect { fill: transparent; stroke: transparent; stroke-width: 2px; }
+.checkpoint-step { cursor: pointer; outline: none; }
+.checkpoint-step:focus-visible rect { stroke: #d97757; fill: rgba(217,119,87,.06); }
+@media (hover: hover) { .checkpoint-step:hover rect { stroke: #a6a397; fill: rgba(166,163,151,.06); } }
+@media (max-width: 700px) {
+  .checkpoint-overview-plot > svg { min-width: 700px; }
+  .checkpoint-overview-mobile { display: inline; }
+}

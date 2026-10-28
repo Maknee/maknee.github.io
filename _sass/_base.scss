@@ -1559,3 +1559,20 @@ article {
   font-size: 0.9em;
   display: inline-block;
 }
+
+@media only screen and (max-width: 768px) {
+  .image-container {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 5px;
+  }
+  
+  /* Fix for image width calculation issues */
+  .image-container img {
+    width: auto !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}

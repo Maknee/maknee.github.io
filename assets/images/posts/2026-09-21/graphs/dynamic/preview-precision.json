@@ -1,0 +1,130 @@
+{
+  "/assets/images/posts/2026-09-21/traces/blog/gvisor/glm/fuse/stream-buffered256-cuda-slots16.pftrace": {
+    "preview_sha256": "bd02b341a8c8fd6b9e1506b868003bc6a928cc08afe185c4580e9495f3fe2fac",
+    "metrics": [
+      {
+        "label": "CUDA save",
+        "stored_seconds": 14.9,
+        "exact_seconds": 14.901818442
+      }
+    ],
+    "segments": []
+  },
+  "/assets/images/posts/2026-09-21/traces/blog/gvisor/glm/fuse/stream-odirect-32mib-background-cuda-slots16.pftrace": {
+    "preview_sha256": "500ac74e0676a8b69ab29f6699763868d0d634984d633eb4b78040b33cbcbc08",
+    "metrics": [
+      {
+        "label": "restore to completion",
+        "stored_seconds": 45.1,
+        "exact_seconds": 45.10061651
+      }
+    ],
+    "segments": []
+  },
+  "/assets/images/posts/2026-09-21/traces/blog/gvisor/glm/nvme/stock.pftrace": {
+    "preview_sha256": "69432a7561852f014969cd7e43d2dbc5cfcf1990b557353943d272756446ee4d",
+    "metrics": [
+      {
+        "label": "CUDA save",
+        "stored_seconds": 67.4,
+        "exact_seconds": 67.402772916
+      }
+    ],
+    "segments": []
+  },
+  "/assets/images/posts/2026-09-21/traces/blog/gvisor/glm/nvme/stream-odirect-32mib-background-cuda-slots16.pftrace": {
+    "preview_sha256": "6825f75329d3bcf3cf6d5954064a38b9ecb41ac128325f131ad86e73f038ac72",
+    "metrics": [
+      {
+        "label": "pages from file",
+        "stored_seconds": 16.4,
+        "exact_seconds": 16.404661
+      }
+    ],
+    "segments": []
+  },
+  "/assets/images/posts/2026-09-21/traces/final/EPYC_9575F/glm-tp2-baseline-numa-sampler.pftrace": {
+    "preview_sha256": "8c50a66a3aa3d5e5a87e7e6eb7a504c2f03aa9d562b609b31a3e355d11cc5afb",
+    "metrics": [
+      {
+        "label": "checkpoint",
+        "stored_seconds": 27.1,
+        "exact_seconds": 27.103521028
+      }
+    ],
+    "segments": []
+  },
+  "/assets/images/posts/2026-09-21/traces/blog/checkpoint/checkpoint-ckdirect.pftrace": {
+    "preview_sha256": "613723c24b3f6bbac90b8874792e47d8b2cabbdb4dba69ff1d458dd0f4a4c45d",
+    "metrics": [
+      {
+        "label": "checkpoint",
+        "stored_seconds": 78.4,
+        "exact_seconds": 78.403957613
+      }
+    ],
+    "segments": []
+  },
+  "/assets/images/posts/2026-09-21/traces/blog/checkpoint/checkpoint-slots-16.pftrace": {
+    "preview_sha256": "23bd956c42f280265e69f9e3e1d2b6d633d446830e96c374475f1c5d21740863",
+    "metrics": [
+      {
+        "label": "checkpoint",
+        "stored_seconds": 5.9,
+        "exact_seconds": 5.904309175
+      }
+    ],
+    "segments": [
+      {
+        "lane": "rank 1 \u00b7 GPU 1",
+        "name": "restore",
+        "start": 6.2823,
+        "stored_seconds": 5.4,
+        "exact_seconds": 5.400104021
+      }
+    ]
+  },
+  "/assets/images/posts/2026-09-21/traces/blog/checkpoint/checkpoint-pcie-split.pftrace": {
+    "preview_sha256": "1bd1369f8d17bbdfcb49d0c72f5c95eb7f940e44bf23df6d1e1d46988f5ebc7a",
+    "metrics": [
+      {
+        "label": "checkpoint",
+        "stored_seconds": 4.8,
+        "exact_seconds": 4.800446012
+      }
+    ],
+    "segments": [
+      {
+        "lane": "rank 0 \u00b7 GPU 0",
+        "name": "checkpoint",
+        "start": 0.3049,
+        "stored_seconds": 4.8,
+        "exact_seconds": 4.800446012
+      }
+    ]
+  },
+  "/assets/images/posts/2026-09-21/traces/blog/checkpoint/checkpoint-preallocation.pftrace": {
+    "preview_sha256": "42d8e700ae8426eebad341918da8fc0d8809fbf7b265cf13810750aa065cb872",
+    "metrics": [
+      {
+        "label": "cycle",
+        "stored_seconds": 68.9,
+        "exact_seconds": 68.901577678
+      }
+    ],
+    "segments": []
+  },
+  "/assets/images/posts/2026-09-21/traces/blog/checkpoint/other/b200-glm-opt159-gpus0123.pftrace": {
+    "preview_sha256": "90899bcfa87a018793611290406d5a4f66c70682ee2d501917f4c45186b7fdb7",
+    "metrics": [],
+    "segments": [
+      {
+        "lane": "rank 1 \u00b7 GPU 1",
+        "name": "unlock",
+        "start": 20.2174,
+        "stored_seconds": 1.9,
+        "exact_seconds": 1.900210343
+      }
+    ]
+  }
+}
