@@ -1,5 +1,6 @@
 {% assign have_related_posts = false %}
-{% for post in site.related_posts | limit: site.related_blog_posts.max_related %}
+{% assign visible_related_posts = site.related_posts | where_exp: 'post', 'post.date <= site.time' %}
+{% for post in visible_related_posts limit: site.related_blog_posts.max_related %}
   {% unless have_related_posts %}
     {% assign have_related_posts = true %}
     <br>

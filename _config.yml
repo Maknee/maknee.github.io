@@ -131,6 +131,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 blog_name: Blog about random tidbits of knowledge that others may find interesting # blog_name will be displayed in your blog page
 blog_description: Thoughts & Complaints I have on various topics
 permalink: /blog/:year/:title/
+future: true
 
 # Pagination
 pagination:

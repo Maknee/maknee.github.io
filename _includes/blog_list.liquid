@@ -1,5 +1,5 @@
 <div class="news">
-  {% assign posts = site.categories.blog | sort: 'date' | reverse %}
+  {% assign posts = site.categories.blog | where_exp: 'post', 'post.date <= site.time' | sort: 'date' | reverse %}
   <div class="table-responsive">
     <table class="table table-sm table-borderless">
       {% for item in posts %}
