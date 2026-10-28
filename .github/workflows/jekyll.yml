@@ -14,9 +14,9 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-  # Rebuild for the CUDA post dated October 29, 2026, 03:00 America/New_York.
+  # Rebuild daily at 07:00 UTC so post listings reflect their publication dates.
   schedule:
-    - cron: "0 7 29 10 *"
+    - cron: "0 7 * * *"
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
