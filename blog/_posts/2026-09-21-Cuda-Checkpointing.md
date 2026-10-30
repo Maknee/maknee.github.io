@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Making CUDA Checkpointing 15x and gVisor 2x Faster on a B300: A Worklog"
-date:       2026-10-30 03:00:00 -0400
+title:      "Making CUDA Checkpointing 15x Faster on a B300: A Worklog"
+date:       2026-10-31 03:00:00 -0400
 summary:    Checkpointing
 categories: Checkpointing
 thumbnail:  "/assets/images/posts/2025-03-13/thumbnails/thumbnail-1.svg"
