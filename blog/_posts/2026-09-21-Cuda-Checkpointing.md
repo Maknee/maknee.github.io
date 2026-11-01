@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Making CUDA Checkpointing 15x Faster on a B300: A Worklog"
-date:       2026-10-31 03:00:00 -0400
+date:       2026-11-02 03:00:00 -0400
 summary:    Checkpointing
 categories: Checkpointing
 thumbnail:  "/assets/images/posts/2025-03-13/thumbnails/thumbnail-1.svg"
@@ -53,7 +53,7 @@ We observe a possible 2x speedup by running this version of cuda-checkpoint.
 - Tuning is difficult. There's many types of hardware and system configurations.
   - Hardware makes a difference for application performance where sometimes copies can be 3x faster on one platform.
   - The configuration of the number of threads and buffers difficult as host copy speeds must match up to the PCIE copy speeds.
-- It's hard to predict performance without tools. Always have some benchmarks and traces to understand what is going o.
+- It's hard to predict performance without tools. Always have some benchmarks and traces to understand what is going on.
 - NUMA affects performance (up to 2x the performance) due to memory being allocated on a different socket
 - The two application specific bottlenecks of `cuda-checkpoint` are memory allocation and the number of buffers and threads used for copying data to and from the GPU.
 - Find opporunities in parallelize operations
